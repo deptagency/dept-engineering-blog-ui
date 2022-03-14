@@ -40,7 +40,7 @@ interface CmsData extends CmsDataCore {
   isPost: boolean
 }
 
-interface PostOrPageProps {
+export interface PostOrPageProps {
   cmsData: CmsData
 }
 
