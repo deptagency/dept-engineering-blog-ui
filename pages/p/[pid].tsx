@@ -16,7 +16,6 @@ const Pid = ({ cmsData }: PostOrPageProps) => {
 
 export default Pid
 
-
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   if (!(params && params.pid && Array.isArray(params.pid))) throw Error('getStaticProps: wrong parameters.')
   const [pid] = params.pid.reverse()
