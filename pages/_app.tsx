@@ -9,7 +9,6 @@ import * as gtag from '../lib/gtag'
 
 import '@styles/screen.css'
 import '@styles/screen-fixings.css'
-import '@styles/dark-mode.css'
 import '@styles/prism.css'
 import '@styles/toc.css'
 
