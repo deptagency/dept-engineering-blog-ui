@@ -1,0 +1,12 @@
+.grid-wrapper {
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .grid-wrapper {
+    max-width: 1440px;
+  }
+  .grid-inner {
+    padding: 0 calc(100% / 12)
+  }
+}

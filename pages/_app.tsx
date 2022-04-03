@@ -11,6 +11,7 @@ import '@styles/screen.css'
 import '@styles/screen-fixings.css'
 import '@styles/prism.css'
 import '@styles/toc.css'
+import '@styles/grid.css'
 
 function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
