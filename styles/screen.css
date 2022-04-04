@@ -114,8 +114,8 @@ html.casper .site-header-background {
     position: relative;
     margin-top: 64px;
     padding-bottom: 12px;
-    color: #fff;
-    background: color-mod(var(--darkgrey) l(-5%)) no-repeat center center;
+    color: --onyx;
+    background: --white;
     background-size: cover;
 }
 
@@ -284,7 +284,7 @@ html.casper .site-nav-main {
     right: 0;
     left: 0;
     z-index: 1000;
-    background: color-mod(var(--darkgrey) l(-5%));
+    background: #fff;
 }
 
 html.casper .site-nav {
@@ -302,22 +302,6 @@ html.casper .site-nav-left-wrapper {
     position: relative;
     flex: 1 0 auto;
     display: flex;
-}
-
-html.casper .site-header-background:not(.responsive-header-img) .site-nav-left-wrapper:after,
-html.casper .site-nav-main .site-nav-left-wrapper:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    z-index: 1000;
-    width: 40px;
-    height: 100%;
-}
-
-html.casper .site-header-background:not(.responsive-header-img) .site-nav-left-wrapper:after,
-html.casper .site-nav-main .site-nav-left-wrapper:after {
-    right: 0;
-    background: linear-gradient(to right, color-mod(var(--darkgrey) l(-5%) a(0)) 0%,color-mod(var(--darkgrey) l(-5%)) 100%);
 }
 
 html.casper .site-nav-left {
@@ -403,8 +387,9 @@ html.casper .nav li a {
     position: relative;
     display: block;
     padding: 12px 12px;
-    color: #fff;
-    opacity: 0.8;
+    color: var(--onyx);
+    opacity: 1;
+    text-transform: uppercase;
     transition: opacity 0.35s ease-in-out;
 }
 
@@ -570,7 +555,7 @@ html.casper .home-template .site-nav-main {
 }
 
 html.casper .home-template .site-nav-main .site-nav {
-    opacity: 0;
+    opacity: 1;
     transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1) 0s;
 }
 

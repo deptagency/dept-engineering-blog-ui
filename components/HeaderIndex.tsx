@@ -32,7 +32,7 @@ export const HeaderIndex = ({ settings }: HeaderIndexProps) => {
     <header className="site-home-header">
       <HeaderBackground srcImg={coverImg}>
         <div className="inner">
-          <SiteNav className="site-nav" {...{ siteUrl, settings }} />
+          {/* <SiteNav className="site-nav" {...{ siteUrl, settings }} /> */}
           <div className="site-header-content">
             <h1 className="site-title">
               {siteLogo && nextFeatureImages ? (
