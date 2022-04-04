@@ -30,10 +30,12 @@ production stylesheet in assets/built/screen.css
 /* 1. Global - Set up the things
 /* ---------------------------------------------------------- */
 @import "global.css";
+@import "fonts.css";
 
 
 html.casper body {
     background: #fff;
+    font-family: 'Maison Neue';
 }
 
 html.casper .img {
@@ -179,8 +181,6 @@ html.casper .site-description {
     padding: 5px 0;
     font-size: 2.1rem;
     line-height: 1.4em;
-    font-weight: 400;
-    opacity: 0.8;
 }
 
 /* 4.1 Home header
@@ -194,8 +194,8 @@ html.casper .site-home-header .site-header-background {
     margin-top: 0;
 }
 
-html.casper .site-home-header .site-header-content {
-    padding: 5vw 3vw 6vw;
+html.casper .site-home-header .header-tagline {
+    padding: 150px 0 85px;
 }
 
 html.casper .site-home-header .site-title {
@@ -204,9 +204,9 @@ html.casper .site-home-header .site-title {
 }
 
 html.casper .site-home-header .site-description {
-    font-size: 2.2rem;
-    font-weight: 300;
-    text-align: center;
+    color: var(--onyx);
+    font-size: 6rem;
+    font-weight: 400;
 }
 
 
@@ -610,7 +610,6 @@ html.casper .post-card {
     margin: 0 0 40px;
     padding: 0 20px 40px;
     min-height: 220px;
-    border-bottom: 1px solid color-mod(var(--lightgrey) l(+12%));
     background-size: cover;
 }
 
