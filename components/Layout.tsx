@@ -52,7 +52,7 @@ export const Layout = ({ settings, header, children, isHome, sticky, previewPost
         {/* The main header section on top of the screen */}
         {header}
         {/* The main content area */}
-        <main ref={(isHome && sticky && sticky.anchorRef) || null} id="site-main" className={`site-main outer ${errorClass}`}>
+        <main ref={(isHome && sticky && sticky.anchorRef) || null} id="site-main" className={`site-main ${errorClass}`}>
           {/* All the main content gets inserted here, index.js, post.js */}
           {children}
         </main>
@@ -62,7 +62,7 @@ export const Layout = ({ settings, header, children, isHome, sticky, previewPost
         {previewPosts}
 
         {/* The footer at the very bottom of the screen */}
-        <footer className="site-footer outer">
+        <footer className="site-footer">
           <div className="site-footer-content inner">
             <section className="copyright">
               <a href={resolve(siteUrl, '')}>{title}</a> &copy; {new Date().getFullYear()}

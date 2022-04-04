@@ -31,6 +31,7 @@ production stylesheet in assets/built/screen.css
 /* ---------------------------------------------------------- */
 @import "global.css";
 
+
 html.casper body {
     background: #fff;
 }
@@ -74,7 +75,7 @@ html.casper .outer {
 /* Centered content container blocks */
 html.casper .inner {
     margin: 0 auto;
-    max-width: 1040px;
+    max-width: 1440px;
     width: 100%;
 }
 
