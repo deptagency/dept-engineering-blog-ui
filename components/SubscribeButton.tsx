@@ -8,7 +8,7 @@ export const SubscribeButton = ({ lang }: { lang?: string }) => {
   const { handleOpen } = useOverlay()
 
   return (
-    <a className="subscribe-button" onClick={handleOpen}>
+    <a className="subscribe-btn btn" onClick={handleOpen}>
       {text(`SUBSCRIBE`)}
       <style jsx>{`
         a:hover {

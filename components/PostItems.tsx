@@ -10,14 +10,15 @@ interface FirstPostItemProps {
   settings: GhostSettings
   post: GhostPostOrPage
   isHome?: boolean
+  num: number
 }
 
-const FirstPost = ({ settings, post, isHome }: FirstPostItemProps) => (
-  <div style={{ backgroundColor: 'black', width: '100%' }}>
+const FirstPost = ({ settings, post, isHome, num }: FirstPostItemProps) => (
+  <div className="first-post-wrapper">
     <div className="grid-wrapper">
       <Grid className="grid-inner" container spacing="2">
         <Grid item xs={12}>
-          <PostCard key={1} {...{settings, post, isHome, num: 1 }} />
+          <PostCard key={1} {...{settings, post, isHome, num }} />
         </Grid>
       </Grid>
     </div>
@@ -46,8 +47,8 @@ export const PostItems = ({ settings, posts, isHome }: PostItemsProps) => {
     <div className={`grid-wrapper`} key={i + 1}>
       <Grid className="grid-inner" container>
         {row.map((post, n) => (
-          <Grid key={`${i} ${n}`} item xs={row.length === 3 ? 4 : 6}>
-            <PostCard {...{settings, post, isHome }} />
+          <Grid key={`${i} ${n}`} item xs={12} md={row.length === 1 ? 12 : row.length === 3 ? 4 : 6}>
+            <PostCard {...{settings, post, isHome, num: parseInt(`${i}${n}`) }} />
           </Grid>
         ))}
       </Grid>

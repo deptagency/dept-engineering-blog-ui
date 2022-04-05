@@ -77,7 +77,7 @@ html.casper .outer {
 /* Centered content container blocks */
 html.casper .inner {
     margin: 0 auto;
-    max-width: 1440px;
+    max-width: 1040px;
     width: 100%;
 }
 
@@ -194,8 +194,8 @@ html.casper .site-home-header .site-header-background {
     margin-top: 0;
 }
 
-html.casper .site-home-header .header-tagline {
-    padding: 150px 0 85px;
+html.casper .site-home-header .site-header-content {
+    padding: 5vw 3vw 6vw;
 }
 
 html.casper .site-home-header .site-title {
@@ -204,9 +204,9 @@ html.casper .site-home-header .site-title {
 }
 
 html.casper .site-home-header .site-description {
-    color: var(--onyx);
-    font-size: 6rem;
-    font-weight: 400;
+    font-size: 2.2rem;
+    font-weight: 300;
+    text-align: center;
 }
 
 
@@ -284,7 +284,7 @@ html.casper .site-nav-main {
     right: 0;
     left: 0;
     z-index: 1000;
-    background: #fff;
+    background: color-mod(var(--darkgrey) l(-5%));
 }
 
 html.casper .site-nav {
