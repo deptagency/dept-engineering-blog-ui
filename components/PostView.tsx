@@ -8,7 +8,7 @@ interface PostViewProps {
 }
 
 export const PostView = (props: PostViewProps) => (
-  <div className="inner posts">
+  <div className="posts">
     <div className="post-feed">
       <PostItems {...props} />
     </div>

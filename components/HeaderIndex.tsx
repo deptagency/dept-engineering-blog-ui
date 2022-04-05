@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import Grid from '@mui/material/Grid'
 
 import { SiteNav } from '@components/SiteNav'
 import { HeaderBackground } from '@components/HeaderBackground'
@@ -32,36 +33,15 @@ export const HeaderIndex = ({ settings }: HeaderIndexProps) => {
     <header className="site-home-header">
       <HeaderBackground srcImg={coverImg}>
         <div className="inner">
-          <SiteNav className="site-nav" {...{ siteUrl, settings }} />
-          <div className="site-header-content">
-            <h1 className="site-title">
-              {siteLogo && nextFeatureImages ? (
-                <Link href="/">
-                  <a>
-                    <div
-                      className="site-logo"
-                      style={{
-                        marginTop: '8px',
-                        height: `${targetHeight}px`,
-                        width: `${calcSiteLogoWidth(siteLogo, targetHeight)}px`,
-                      }}
-                    >
-                      <Image src={siteLogo.url} alt={title} layout="responsive" quality={imageQuality} {...siteLogo.dimensions} />
-                    </div>
-                  </a>
-                </Link>
-              ) : site.logo ? (
-                <Link href="/">
-                  <a>
-                    {/* eslint-disable @next/next/no-img-element */}
-                    <img className="site-logo" src={site.logo} alt={title} />
-                  </a>
-                </Link>
-              ) : (
-                title
-              )}
-            </h1>
-            <h2 className="site-description">{site.description}</h2>
+          {/* <SiteNav className="site-nav" {...{ siteUrl, settings }} /> */}
+          <div className="grid-wrapper">
+            <Grid className="grid-inner" container>
+              <Grid item xs={12} md={10} lg={8}>
+                <div className="header-tagline">
+                  <h2 className="site-description">{site.description}</h2>
+                </div>
+              </Grid>
+            </Grid>
           </div>
         </div>
       </HeaderBackground>
