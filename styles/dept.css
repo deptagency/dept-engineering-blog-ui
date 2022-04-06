@@ -311,3 +311,37 @@ html.casper aside.toc li a.active {
   border-bottom: none;
   font-weight: 400;
 }
+
+/* Read Next/Prev Section */
+html.casper .read-next {
+  background: var(--onyx);
+  border-bottom: 4px solid #fff;
+}
+
+html.casper .read-next .post-card {
+  padding: 0 0 50px;
+}
+
+html.casper .up-next-header {
+  color: #fff;
+  font-size: 3.6rem;
+  font-weight: 300;
+  margin: 0;
+}
+html.casper .read-next .post-card-primary-tag {
+  color: var(--onyx);
+  opacity: 1;
+}
+
+html.casper .read-next .post-card-title {
+  opacity: 1;
+}
+
+html.casper .read-next .post-card-excerpt,
+html.casper .read-next .post-card-byline-content { 
+  display: none;
+}
+
+html.casper .read-next .btn {
+  border-color: #fff;
+}
