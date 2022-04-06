@@ -47,8 +47,8 @@ export const PostItems = ({ settings, posts, isHome }: PostItemsProps) => {
     <div className={`grid-wrapper`} key={i + 1}>
       <Grid className="grid-inner" container>
         {row.map((post, n) => (
-          <Grid key={`${i} ${n}`} item xs={12} md={row.length === 1 ? 12 : row.length === 3 ? 4 : 6}>
-            <PostCard {...{settings, post, isHome, num: parseInt(`${i}${n}`) }} />
+          <Grid key={`${i + 1} ${n}`} item xs={12} md={row.length === 1 ? 12 : row.length === 3 ? 4 : 6}>
+            <PostCard {...{settings, post, isHome, num: parseInt(`${i + 1}${n}`) }} />
           </Grid>
         ))}
       </Grid>
