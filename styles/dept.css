@@ -206,8 +206,14 @@ html.casper .post-card-large .post-card-byline-content a {
 
 
 /* Single Post Page */
+
+html.casper .post-template .site-main {
+  padding-bottom: 0;
+}
+
 .post-full {
   margin-top: 50px;
+  padding-bottom: 4vw;
 }
 
 html.casper .post-full-tags {
@@ -344,4 +350,94 @@ html.casper .read-next .post-card-byline-content {
 
 html.casper .read-next .btn {
   border-color: #fff;
+}
+
+
+/* Footer */
+html.casper .site-footer {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+html.casper .site-footer-content {
+  color: #fff;
+  font-size: 1.4rem;
+}
+
+html.casper .site-footer-content a {
+  color: #fff;
+}
+
+html.casper .site-footer-content a:hover {
+  text-decoration: underline;
+}
+
+
+/* Subscribe section */
+html.casper .subscribe-form {
+  background: var(--platinum);
+  margin: 0;
+  padding: 0;
+  border: none;
+  text-align: inherit;
+}
+
+.subscribe-form .inner {
+  padding: 50px 0 90px;
+}
+
+html.casper .subscribe-form-title {
+  color: var(--onyx);
+  font-size: 3.6rem;
+  font-weight: 400;
+  line-height: 4.4rem;
+}
+
+html.casper .subscribe-form-description {
+  color: var(--onyx);
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  margin-bottom: 0;
+}
+
+html.casper .subscribe-form form {
+  margin: 0;
+  max-width: none;
+  align-items: start;
+}
+
+html.casper .subscribe-email {
+  background: var(--platinum);
+  border: 1px solid var(--gray);
+  border-radius: 0;
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: var(--gray);
+
+}
+
+/* Same as .btn with added overrides */
+html.casper .subscribe-form button {
+  background: var(--onyx);
+  border: 1px solid var(--onyx);
+  color: #fff;
+  display: inline-block;
+  font-family: 'Maison Neue';
+  font-size: 1.4rem;
+  line-height: 2rem;
+  text-transform: uppercase;
+  padding: 8px 60px;
+  height: auto;
+  line-height: auto;
+  font-weight: 300;
+  border-radius: 0;
+  margin-left: 25px;
+}
+
+html.casper .subscribe-form .success .message-success,
+html.casper .subscribe-form .success .message-error {
+  color: inherit;
+  text-align: left;
+  max-width: none;
+  margin: 1em 0 0;
 }
