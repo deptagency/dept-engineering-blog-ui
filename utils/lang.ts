@@ -39,7 +39,7 @@ export const lang: KeyObjectMap = {
     SUBSCRIBE_SECTION: `Get the latest posts delivered right to your inbox`,
     SUBSCRIBE_TO: `Subscribe to`,
     SUBSCRIBED_FAILED: `Could not sign up! Invalid sign up link.`,
-    YOUR_EMAIL: `youremail@example.com`,
+    YOUR_EMAIL: `Email address`,
     AT_LEAST: `at least`,
     CHARACTERS_LONG: `characters long`,
     CHARACTERS_OR_LESS: `characters or less`,

@@ -120,8 +120,6 @@ export const Post = ({ cmsData }: PostProps) => {
                         </div>
                       </section>
 
-                      {memberSubscriptions && <Subscribe {...{ settings }} />}
-
                       {commenting.system === 'commento' && <CommentoComments {...{ id: post.id, url: commenting.commentoUrl }} />}
 
                       {commenting.system === 'disqus' && <DisqusComments {...{ post, shortname: commenting.disqusShortname, siteUrl: processEnv.siteUrl }} />}
@@ -158,6 +156,7 @@ export const Post = ({ cmsData }: PostProps) => {
                 </article>
               </div>
             </div>
+            {memberSubscriptions && <Subscribe {...{ settings }} />}
           </Layout>
         )}
       />
