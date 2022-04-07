@@ -40,9 +40,18 @@ html.casper .inner {
   display: inline-block;
   font-family: 'Maison Neue';
   font-size: 1.4rem;
+  font-weight: 700;
   line-height: 2rem;
   text-transform: uppercase;
   padding: 8px 16px;
+
+}
+
+.btn:hover {
+  background: #fff;
+  border: 1px solid var(--onyx);
+  color: var(--onyx);
+  text-decoration: none;
 }
 
 .btn-white {
@@ -51,10 +60,21 @@ html.casper .inner {
   color: var(--onyx);
 }
 
+.btn-white:hover {
+  background: var(--onyx);
+  color: #fff;
+}
+
 .btn-small {
   font-size: 1.2rem;
   line-height: 1.2rem;
   padding: 6px 8px;
+}
+
+.btn-filter-selected:hover {
+  background: var(--onyx);
+  border: 1px solid var(--onyx);
+  color: #fff;
 }
 
 /* Nav overrides */
@@ -471,10 +491,21 @@ html.casper .subscribe-form button {
   padding: 8px 60px;
   height: auto;
   line-height: auto;
-  font-weight: 300;
+  font-weight: 700;
   border-radius: 0;
   margin-left: 25px;
+
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizelegibility;
 }
+
+html.casper .subscribe-form button:hover,
+html.casper .subscribe-form button:active,
+html.casper .subscribe-form button:focus {
+  color: var(--onyx);
+  background: #fff;
+}
+
 
 html.casper .subscribe-form .success .message-success,
 html.casper .subscribe-form .success .message-error {
