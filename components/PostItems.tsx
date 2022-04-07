@@ -16,7 +16,7 @@ interface FirstPostItemProps {
 const FirstPost = ({ settings, post, isHome, num }: FirstPostItemProps) => (
   <div className="first-post-wrapper">
     <div className="grid-wrapper">
-      <Grid className="grid-inner" container spacing="2">
+      <Grid className="grid-inner" container>
         <Grid item xs={12}>
           <PostCard key={1} {...{settings, post, isHome, num }} />
         </Grid>
@@ -44,8 +44,8 @@ export const PostItems = ({ settings, posts, isHome }: PostItemsProps) => {
   }
 
   const mainRows = rows.map((row, i) => (
-    <div className={`grid-wrapper`} key={i + 1}>
-      <Grid className="grid-inner" container>
+    <div className="grid-wrapper" key={i + 1}>
+      <Grid className="grid-inner" columnSpacing={{ xs: 0, md: 3 }} container>
         {row.map((post, n) => (
           <Grid key={`${i + 1} ${n}`} item xs={12} md={row.length === 1 ? 12 : row.length === 3 ? 4 : 6}>
             <PostCard {...{settings, post, isHome, num: parseInt(`${i + 1}${n}`) }} />

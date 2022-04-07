@@ -1,3 +1,5 @@
+import Grid from '@mui/material/Grid'
+
 import { Tag } from '@tryghost/content-api'
 import { GhostSettings } from '@lib/ghost'
 import { SiteNav } from '@components/SiteNav'
@@ -23,13 +25,17 @@ export const HeaderTag = ({ settings, tag }: HeaderTagProps) => {
       </div>
       <HeaderBackground srcImg={featureImg}>
         <div className="inner site-header-content">
-          <h1 className="site-title">{tag.name}</h1>
-          <h2 className="site-description">
-            {tag.description ||
-              `${text(`A_COLLECTION_OF`)} ${
-                (numberOfPosts && numberOfPosts > 0 && (numberOfPosts === 1 ? `1 ${text(`POST`)}` : `${numberOfPosts} ${text(`POSTS`)}`)) || `${text(`POSTS`)}`
-              }`}
-          </h2>
+          <Grid className="grid-inner" container columnSpacing={{ xs: 0, md: 3 }}>
+            <Grid item xs={12} md={4}>
+              <h1 className="site-title">{tag.name}</h1>
+              <h2 className="site-description">
+                {tag.description ||
+                  `${text(`A_COLLECTION_OF`)} ${
+                    (numberOfPosts && numberOfPosts > 0 && (numberOfPosts === 1 ? `1 ${text(`POST`)}` : `${numberOfPosts} ${text(`POSTS`)}`)) || `${text(`POSTS`)}`
+                  }`}
+              </h2>
+            </Grid>
+          </Grid>
         </div>
       </HeaderBackground>
     </header>

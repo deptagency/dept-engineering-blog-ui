@@ -62,7 +62,7 @@ export const Layout = ({ settings, header, children, isHome, sticky, previewPost
         {previewPosts}
 
         {/* The footer at the very bottom of the screen */}
-        <footer className="site-footer">
+        <footer className="site-footer outer">
           <div className="site-footer-content inner">
             <section className="copyright">
               <a href={resolve(siteUrl, '')}>{title}</a> &copy; {new Date().getFullYear()}
