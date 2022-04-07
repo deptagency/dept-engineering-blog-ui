@@ -1,3 +1,6 @@
+import { useRouter } from 'next/router'
+
+import { FilterTags } from '@components/FilterTags'
 import { PostCard } from '@components/PostCard'
 import { GhostPostOrPage, GhostPostsOrPages, GhostSettings } from '@lib/ghost'
 import Grid from '@mui/material/Grid'
@@ -28,12 +31,25 @@ const FirstPost = ({ settings, post, isHome, num }: FirstPostItemProps) => (
 export const PostItems = ({ settings, posts, isHome }: PostItemsProps) => {
   const firstRow: React.ReactNode[] = []
   const rows: GhostPostOrPage[][] = [];
+  const { asPath } = useRouter();
 
   if (!posts.length) {
     return null
   }
 
   firstRow.push(<FirstPost key={0} {...{settings, post: posts[0], isHome, num: 0 }} />)
+
+  if (isHome || asPath.indexOf('/tag') >= 0) {
+    firstRow.push(
+      <div className="grid-wrapper">
+        <Grid className="grid-inner" container>
+          <Grid item xs={12}>
+            <FilterTags currentTag={asPath.split('/').at(-1) || ''} tags={["Platforms", "Teams", "Process", "People"]} />
+          </Grid>
+        </Grid>
+      </div>
+    )
+  }
 
   let newPosts: GhostPostOrPage[] = posts.slice(1);
   let breakOn: number = 2;
