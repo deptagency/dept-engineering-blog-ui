@@ -44,7 +44,7 @@ export const PostItems = ({ settings, posts, isHome }: PostItemsProps) => {
       <div className="grid-wrapper">
         <Grid className="grid-inner" container>
           <Grid item xs={12}>
-            <FilterTags currentTag={asPath.split('/').at(-1) || ''} tags={["Platforms", "Teams", "Process", "People"]} />
+            <FilterTags currentTag={asPath.split('/').slice(-1)[0] || ''} tags={["Platforms", "Teams", "Process", "People"]} />
           </Grid>
         </Grid>
       </div>
