@@ -131,7 +131,7 @@ html.casper .post-card-primary-tag {
   padding: 6px 8px;
   color: var(--onyx);
   font-size: 1.2rem;
-  margin-bottom: 16px;
+  margin: 24px 0 0;
 }
 
 html.casper .post-card-title {
@@ -183,7 +183,7 @@ html.casper .post-card-byline-date .bull {
 
 html.casper .post-card-large .post-card-primary-tag {
   background: #fff;
-  
+  margin: 0 0 16px;
 }
 html.casper .post-card-large .post-card-title {
   color: #fff;

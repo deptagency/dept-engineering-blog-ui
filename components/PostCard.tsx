@@ -107,7 +107,6 @@ export const PostCard = ({ settings, post, num, isHome }: PostCardProps) => {
 
   return (
     <article className={`post-card ${postClass} ${large}`}>
-      {post.primary_tag && <div><div className="post-card-primary-tag">{post.primary_tag.name}</div></div>}
       {featImg && (
         <Link href={url}>
           <a className="post-card-image-link" aria-label={post.title}>
@@ -128,6 +127,8 @@ export const PostCard = ({ settings, post, num, isHome }: PostCardProps) => {
           </a>
         </Link>
       )}
+
+      {post.primary_tag && <div><div className="post-card-primary-tag">{post.primary_tag.name}</div></div>}
 
       <div className="post-card-content">
         <Link href={url}>
