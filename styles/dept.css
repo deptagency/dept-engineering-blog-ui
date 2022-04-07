@@ -504,3 +504,7 @@ html.casper .site-archive-header .no-image .site-header-content {
 html.casper .author-header-content {
   margin: 0;
 }
+
+html.casper .site-archive-header .no-image .author-header {
+  padding-bottom: 10px;
+}
