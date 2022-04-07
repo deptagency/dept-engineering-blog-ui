@@ -40,9 +40,18 @@ html.casper .inner {
   display: inline-block;
   font-family: 'Maison Neue';
   font-size: 1.4rem;
+  font-weight: 700;
   line-height: 2rem;
   text-transform: uppercase;
   padding: 8px 16px;
+
+}
+
+.btn:hover {
+  background: #fff;
+  border: 1px solid var(--onyx);
+  color: var(--onyx);
+  text-decoration: none;
 }
 
 .btn-white {
@@ -51,10 +60,21 @@ html.casper .inner {
   color: var(--onyx);
 }
 
+.btn-white:hover {
+  background: var(--onyx);
+  color: #fff;
+}
+
 .btn-small {
   font-size: 1.2rem;
   line-height: 1.2rem;
   padding: 6px 8px;
+}
+
+.btn-filter-selected:hover {
+  background: var(--onyx);
+  border: 1px solid var(--onyx);
+  color: #fff;
 }
 
 /* Nav overrides */
@@ -131,7 +151,7 @@ html.casper .post-card-primary-tag {
   padding: 6px 8px;
   color: var(--onyx);
   font-size: 1.2rem;
-  margin-bottom: 16px;
+  margin: 24px 0 0;
 }
 
 html.casper .post-card-title {
@@ -177,13 +197,13 @@ html.casper .post-card-byline-date .bull {
 /* Homepage Featured Post */
 .first-post-wrapper {
   background: var(--onyx);
-  margin-bottom: 90px;
+  margin-bottom: 76px;
   width: 100%;
 }
 
 html.casper .post-card-large .post-card-primary-tag {
   background: #fff;
-  
+  margin: 0 0 16px;
 }
 html.casper .post-card-large .post-card-title {
   color: #fff;
@@ -216,6 +236,29 @@ html.casper .post-card-large .post-card-byline-content a {
 html.casper .grid-wrapper .post-card {
   padding-left: 0;
   padding-right: 0;
+}
+
+/* Filter Tags */
+.filter-tags {
+  display: flex;
+  margin-bottom: 75px;
+}
+.filter-tags-label {
+  color: var(--onyx);
+  font-weight: 300;
+  line-height: 2.4rem;
+  padding-right: 28px;
+  margin-right: 34px;
+  border-right: 1px solid var(--onyx);
+}
+.filter-tags .btn {
+  margin-right: 16px;
+}
+.filter-tags .remove-filter-link {
+  color:#fff;
+  font-size: 1.5rem;
+  vertical-align: middle;
+  margin-left: 5px;
 }
 
 
@@ -448,10 +491,21 @@ html.casper .subscribe-form button {
   padding: 8px 60px;
   height: auto;
   line-height: auto;
-  font-weight: 300;
+  font-weight: 700;
   border-radius: 0;
   margin-left: 25px;
+
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizelegibility;
 }
+
+html.casper .subscribe-form button:hover,
+html.casper .subscribe-form button:active,
+html.casper .subscribe-form button:focus {
+  color: var(--onyx);
+  background: #fff;
+}
+
 
 html.casper .subscribe-form .success .message-success,
 html.casper .subscribe-form .success .message-error {
@@ -480,4 +534,8 @@ html.casper .site-archive-header .no-image .site-header-content {
 
 html.casper .author-header-content {
   margin: 0;
+}
+
+html.casper .site-archive-header .no-image .author-header {
+  padding-bottom: 10px;
 }
