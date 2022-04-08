@@ -238,6 +238,11 @@ html.casper .grid-wrapper .post-card {
   padding-right: 0;
 }
 
+html.casper .no-image .post-card-primary-tag {
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
 /* Filter Tags */
 .filter-tags {
   display: flex;
@@ -265,6 +270,49 @@ html.casper .grid-wrapper .post-card {
 /* Single Post Page */
 html.casper .post-template .site-main {
   padding-bottom: 0;
+}
+
+.grid-post .post-header {
+  grid-area: header;
+}
+.grid-post .post-content {
+  grid-area: content;
+}
+.grid-post .post-meta {
+  grid-area: meta;
+}
+
+.grid-post {
+  display: grid;
+  grid-template-areas:
+  'header'
+  'meta'
+  'content';
+}
+
+@media (min-width: 900px) {
+  .grid-post {
+    gap: 24px;
+    grid-template-areas:
+    'meta meta meta meta header header header header header header header header'
+    'meta meta meta meta content content content content content content content content';
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+@media (min-width: 1170px) {
+  .grid-post {
+    gap: 0;
+    grid-template-areas:
+    'meta meta meta meta . header header header header header header header'
+    'meta meta meta meta . content content content content content content content';
+  }
+}
+@media (min-width: 1536px) {
+  .grid-post {
+    grid-template-areas:
+    'meta meta meta meta meta . header header header header header header'
+    'meta meta meta meta meta . content content content content content content';
+  }
 }
 
 .post-full {
@@ -320,6 +368,8 @@ html.casper .post-full-header {
 }
 
 html.casper .post-full-content {
+  font-family: inherit;
+  font-size: 1.6rem;
   padding-left: 0;
   padding-right: 0;
 }
@@ -338,10 +388,14 @@ html.casper .post-full-custom-excerpt {
 
 html.casper .post-full-image {
   margin-top: 0;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 /* Single post Table of Contents */
 html.casper aside.toc {
+  background:none;
+  font-size: 1.4rem;
   padding: 0;
   margin: 0;
 }
