@@ -4,5 +4,5 @@ export const siteDescriptionMeta = 'Jamify blog system powered by Next.js and he
 
 // Defaults, if not configured in CMS
 // Images can be fund in the /public folder
-export const siteIcon = 'favicon.png'
-export const siteImage = 'site-meta.png'
+export const siteIcon = 'favicon.svg'
+export const siteImage = 'site-meta.jpg'
