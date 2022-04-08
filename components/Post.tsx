@@ -2,7 +2,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import dayjs from 'dayjs'
-import Grid from '@mui/material/Grid'
 
 import { resolveUrl } from '@utils/routing'
 import { getLang, get } from '@utils/use-lang'
@@ -73,58 +72,53 @@ export const Post = ({ cmsData }: PostProps) => {
           >
             <div className="inner">
               <div className="grid-wrapper">
-                <article className={`post-full ${postClass}`}>
-                  <Grid className="grid-inner" container direction="row-reverse" justifyContent="space-between">
-                    <Grid item xs={12} md={7}>
-                      <header className="post-full-header">
-                        {post.primary_tag && (
-                          <section className="post-full-tags">
-                            <Link href={resolveUrl({ cmsUrl, slug: post.primary_tag.slug, url: post.primary_tag.url })}>
-                              <a>{post.primary_tag.name}</a>
-                            </Link>
+                <article className={`post-full grid-inner ${postClass}`}>
+                  <div className="grid-post">
+                    <header className="post-full-header post-header">
+                      {post.primary_tag && (
+                        <section className="post-full-tags">
+                          <Link href={resolveUrl({ cmsUrl, slug: post.primary_tag.slug, url: post.primary_tag.url })}>
+                            <a>{post.primary_tag.name}</a>
+                          </Link>
+                        </section>
+                      )}
+
+                      <h1 ref={sticky && sticky.anchorRef} className="post-full-title">
+                        {title}
+                      </h1>
+
+                      {post.custom_excerpt && <p className="post-full-custom-excerpt">{post.custom_excerpt}</p>}
+
+                      <div className="post-full-byline">
+                        <section className="post-full-byline-content">
+                          <section className="post-full-byline-meta">
+                            <h4 className="author-name">
+                              {post.authors?.map((author, i) => (
+                                <div key={i}>
+                                  {i > 0 ? `, ` : ``}
+                                  <Link href={resolveUrl({ cmsUrl, slug: author.slug, url: author.url || undefined })}>
+                                    <a>{author.name}</a>
+                                  </Link>
+                                </div>
+                              ))}
+                            </h4>
+                            <div className="byline-meta-content">
+                              <time className="byline-meta-date" dateTime={post.published_at || ''}>
+                                {dayjs(post.published_at || '').format('D MMMM, YYYY')}&nbsp;
+                              </time>
+                            </div>
                           </section>
-                        )}
+                        </section>
+                      </div>
+                    </header>
 
-                        <h1 ref={sticky && sticky.anchorRef} className="post-full-title">
-                          {title}
-                        </h1>
+                    <section className="post-full-content post-content">
+                      <div className="post-content load-external-scripts">
+                        <RenderContent htmlAst={htmlAst} />
+                      </div>
+                    </section>
 
-                        {post.custom_excerpt && <p className="post-full-custom-excerpt">{post.custom_excerpt}</p>}
-
-                        <div className="post-full-byline">
-                          <section className="post-full-byline-content">
-                            <section className="post-full-byline-meta">
-                              <h4 className="author-name">
-                                {post.authors?.map((author, i) => (
-                                  <div key={i}>
-                                    {i > 0 ? `, ` : ``}
-                                    <Link href={resolveUrl({ cmsUrl, slug: author.slug, url: author.url || undefined })}>
-                                      <a>{author.name}</a>
-                                    </Link>
-                                  </div>
-                                ))}
-                              </h4>
-                              <div className="byline-meta-content">
-                                <time className="byline-meta-date" dateTime={post.published_at || ''}>
-                                  {dayjs(post.published_at || '').format('D MMMM, YYYY')}&nbsp;
-                                </time>
-                              </div>
-                            </section>
-                          </section>
-                        </div>
-                      </header>
-
-                      <section className="post-full-content">
-                        <div className="post-content load-external-scripts">
-                          <RenderContent htmlAst={htmlAst} />
-                        </div>
-                      </section>
-
-                      {commenting.system === 'commento' && <CommentoComments {...{ id: post.id, url: commenting.commentoUrl }} />}
-
-                      {commenting.system === 'disqus' && <DisqusComments {...{ post, shortname: commenting.disqusShortname, siteUrl: processEnv.siteUrl }} />}
-                    </Grid>
-                    <Grid item xs={12} md={4}>
+                    <div className="post-meta">
                       {featImg &&
                         (nextImages.feature && featImg.dimensions ? (
                           <figure className="post-full-image" style={{ display: 'inherit' }}>
@@ -151,8 +145,8 @@ export const Post = ({ cmsData }: PostProps) => {
                           )
                         ))}
                       {toc.enable && !!post.toc && <TableOfContents {...{ toc: post.toc, url: resolveUrl({ cmsUrl, collectionPath, slug, url }), maxDepth: toc.maxDepth, lang }} />}
-                    </Grid>
-                  </Grid>
+                    </div>
+                  </div>
                 </article>
               </div>
             </div>
