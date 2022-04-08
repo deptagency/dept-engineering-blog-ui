@@ -562,3 +562,19 @@ html.casper .author-header-content {
 html.casper .site-archive-header .no-image .author-header {
   padding-bottom: 10px;
 }
+
+
+/* Error Pages - 404/500 */
+html.casper .error-code {
+  color: var(--onyx);
+  font-weight: 400;
+  opacity: 1;
+}
+
+html.casper .error-description {
+  color: var(--onyx);
+}
+
+html.casper .error-message {
+  border-bottom: none;
+}
