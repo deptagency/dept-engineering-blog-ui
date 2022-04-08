@@ -53,10 +53,11 @@ export const PostItems = ({ settings, posts, isHome }: PostItemsProps) => {
 
   let newPosts: GhostPostOrPage[] = posts.slice(1);
   let breakOn: number = 2;
+
   while (newPosts.length) {
     rows.push(newPosts.slice(0, breakOn));
-    breakOn = breakOn === 2 ? 3 : 2;
     newPosts = newPosts.slice(breakOn);
+    breakOn = breakOn === 2 ? 3 : 2;
   }
 
   const mainRows = rows.map((row, i) => (
