@@ -21,25 +21,39 @@ export default class MyDocument extends Document {
           <link
             rel="alternate"
             type="application/rss+xml"
-            title="Jamify RSS Feed"
+            title="Dept Engineering Blog RSS Feed"
             href={`${resolve(processEnv.siteUrl, 'rss.xml')}`}
+          />
+          <link
+            rel="preload"
+            href="/fonts/MaisonNeue-Demi.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preload"
+            href="/fonts/MaisonNeue-Medium.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preload"
+            href="/fonts/MaisonNeue-Light.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preload"
+            href="/fonts/MaisonNeue-Bold.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
           />
         </Head>
         <body {...{className: bodyClass}}>
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-            (function(){
-                window.isDark = localStorage.getItem('dark');
-                if ( window.isDark === 'dark' ) {
-                  document.body.classList.add('dark')
-                } else if( window.isDark === undefined && window.matchMedia('(prefers-color-scheme: dark)').matches === true ){
-                  document.body.classList.add('dark')
-                }
-            })()
-          `,
-            }}
-          />
           <Main />
           <NextScript />
         </body>
