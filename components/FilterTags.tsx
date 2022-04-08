@@ -11,7 +11,7 @@ export const FilterTags = ({ currentTag, tags }: FilterTagsProps) => (
     <div className="tags">
       {tags.map((tag, i) => (
         tag.toLowerCase() === currentTag ? (
-          <div className="btn btn-small btn-filter-selected">{tag} <Link href="/"><a className="remove-filter-link" title="Remove Filter">&times;</a></Link></div>
+          <div className="btn btn-small btn-filter-selected" key={currentTag}>{tag} <Link href="/"><a className="remove-filter-link" title="Remove Filter">&times;</a></Link></div>
         ) : (
           <Link href={`/tag/${tag.toLowerCase()}`} key={`${tag}-${i}`}>
             <a className="btn btn-white btn-small">{tag}</a>

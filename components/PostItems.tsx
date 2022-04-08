@@ -41,7 +41,7 @@ export const PostItems = ({ settings, posts, isHome }: PostItemsProps) => {
 
   if (isHome || asPath.indexOf('/tag') >= 0) {
     firstRow.push(
-      <div className="grid-wrapper">
+      <div className="grid-wrapper" key="filter-tags">
         <Grid className="grid-inner" container>
           <Grid item xs={12}>
             <FilterTags currentTag={asPath.split('/').slice(-1)[0] || ''} tags={["Platforms", "Teams", "Process", "People"]} />
