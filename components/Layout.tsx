@@ -1,5 +1,5 @@
 import { ReactFragment } from 'react'
-import Link from 'next/link'
+import Image from 'next/image'
 
 import { DocumentHead } from '@components/DocumentHead'
 import { StickyNav } from '@components/StickyNav'
@@ -39,9 +39,6 @@ export const Layout = ({ settings, header, children, isHome, sticky, previewPost
   const title = text(`SITE_TITLE`, site.title)
   const { siteUrl, memberSubscriptions } = settings.processEnv
 
-  const twitterUrl = site.twitter && `https://twitter.com/${site.twitter.replace(/^@/, ``)}`
-  const facebookUrl = site.facebook && `https://www.facebook.com/${site.facebook.replace(/^\//, ``)}`
-
   errorClass = errorClass || ``
 
   return (
@@ -69,21 +66,20 @@ export const Layout = ({ settings, header, children, isHome, sticky, previewPost
             </section>
 
             <nav className="site-footer-nav">
-              {site.facebook && (
-                <a href={facebookUrl} target="_blank" rel="noopener noreferrer">
-                  Facebook
-                </a>
-              )}
-              {site.twitter && (
-                <a href={twitterUrl} target="_blank" rel="noopener noreferrer">
-                  Twitter
-                </a>
-              )}
-              <a href="https://www.linkedin.com/company/deptagency" target="_blank" rel="noopener noreferrer">
-                LinkedIn
+              <a href="https://github.com/deptagency" target="_blank" title="Github" rel="noopener noreferrer">
+                <Image alt="GitHub Logo" src="/icons/github.svg" height="18" width="18" />
               </a>
-              <a href="https://github.com/deptagency" target="_blank" rel="noopener noreferrer">
-                GitHub
+              <a href="https://www.instagram.com/deptagency" target="_blank" title="Instagram" rel="noopener noreferrer">
+                <Image alt="Instagram Logo" src="/icons/instagram.svg" height="18" width="18" />
+              </a>
+              <a href="https://twitter.com/DeptAgency" target="_blank" title="Twitter" rel="noopener noreferrer">
+                <Image alt="Twitter Logo" src="/icons/twitter.svg" height="15" width="18" />
+              </a>
+              <a href="https://www.facebook.com/DeptAgency" target="_blank" title="Facebook" rel="noopener noreferrer">
+                <Image alt="Facebook Logo" src="/icons/facebook.svg" height="18" width="18" />
+              </a>
+              <a href="https://www.linkedin.com/company/deptagency" target="_blank" title="LinkedIn" rel="noopener noreferrer">
+                <Image alt="LinkedIn Logo" src="/icons/linkedin.svg" height="18" width="18" />
               </a>
             </nav>
           </div>

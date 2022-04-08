@@ -41,7 +41,7 @@ export const PostItems = ({ settings, posts, isHome }: PostItemsProps) => {
 
   if (isHome || asPath.indexOf('/tag') >= 0) {
     firstRow.push(
-      <div className="grid-wrapper">
+      <div className="grid-wrapper" key="filter-tags">
         <Grid className="grid-inner" container>
           <Grid item xs={12}>
             <FilterTags currentTag={asPath.split('/').slice(-1)[0] || ''} tags={["Platforms", "Teams", "Process", "People"]} />
@@ -53,10 +53,11 @@ export const PostItems = ({ settings, posts, isHome }: PostItemsProps) => {
 
   let newPosts: GhostPostOrPage[] = posts.slice(1);
   let breakOn: number = 2;
+
   while (newPosts.length) {
     rows.push(newPosts.slice(0, breakOn));
-    breakOn = breakOn === 2 ? 3 : 2;
     newPosts = newPosts.slice(breakOn);
+    breakOn = breakOn === 2 ? 3 : 2;
   }
 
   const mainRows = rows.map((row, i) => (

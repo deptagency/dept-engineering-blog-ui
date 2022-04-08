@@ -38,13 +38,13 @@ export default function Custom404({ posts, settings, bodyClass }: Custom404Props
           <h1 className="error-code">404</h1>
           <p className="error-description">{text(`PAGE_NOT_FOUND`)}</p>
           <Link href="/">
-            <a className="error-link">{text(`GOTO_FRONT_PAGE`)} →</a>
+            <a className="btn error-link">{text(`GOTO_FRONT_PAGE`)} →</a>
           </Link>
         </section>
 
         <div className="post-feed">
           {posts.map((post, i) => (
-            <PostCard key={post.id} {...{ settings, post, num: i }} />
+            <PostCard key={post.id} {...{ settings, post, num: i + 1 }} />
           ))}
         </div>
       </div>
