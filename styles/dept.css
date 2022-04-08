@@ -93,7 +93,7 @@ html.casper .site-nav-main {
   }
 }
 .site-nav .subscribe-btn {
-  margin: 0 0 0 10px;
+  margin: 0 0 0 16px;
 }
 
 
@@ -428,10 +428,16 @@ html.casper .site-footer-content {
 
 html.casper .site-footer-content a {
   color: #fff;
+  line-height: 0;
+  margin-left: 30px;
 }
 
 html.casper .site-footer-content a:hover {
   text-decoration: underline;
+}
+
+html.casper .site-footer-nav a:before {
+  display: none;
 }
 
 
@@ -475,7 +481,6 @@ html.casper .subscribe-email {
   font-size: 1.6rem;
   font-weight: 300;
   color: var(--gray);
-
 }
 
 /* Same as .btn with added overrides */
@@ -513,6 +518,24 @@ html.casper .subscribe-form .success .message-error {
   text-align: left;
   max-width: none;
   margin: 1em 0 0;
+}
+
+
+html.casper .subscribe-overlay-title {
+  font-weight: 400;
+}
+
+html.casper .subscribe-overlay-description {
+  font-family: inherit;
+}
+
+html.casper .subscribe-overlay .subscribe-email {
+  border-radius: 0;
+}
+
+html.casper .subscribe-overlay button {
+  color: #fff;
+  border-color: #fff;
 }
 
 /* Tag and Author Header */
