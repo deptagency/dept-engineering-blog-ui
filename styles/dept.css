@@ -474,6 +474,10 @@ html.casper .site-footer-content a {
   margin-left: 30px;
 }
 
+html.casper .site-footer-content .twitter {
+  margin-top: 2px;
+}
+
 html.casper .site-footer-content a:hover {
   text-decoration: underline;
 }

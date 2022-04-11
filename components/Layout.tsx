@@ -72,7 +72,7 @@ export const Layout = ({ settings, header, children, isHome, sticky, previewPost
               <a href="https://www.instagram.com/deptagency" target="_blank" title="Instagram" rel="noopener noreferrer">
                 <Image alt="Instagram Logo" src="/icons/instagram.svg" height="18" width="18" />
               </a>
-              <a href="https://twitter.com/DeptAgency" target="_blank" title="Twitter" rel="noopener noreferrer">
+              <a className="twitter" href="https://twitter.com/DeptAgency" target="_blank" title="Twitter" rel="noopener noreferrer">
                 <Image alt="Twitter Logo" src="/icons/twitter.svg" height="15" width="18" />
               </a>
               <a href="https://www.facebook.com/DeptAgency" target="_blank" title="Facebook" rel="noopener noreferrer">
