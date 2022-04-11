@@ -360,6 +360,7 @@ html.casper .post-full-content {
   font-size: 1.6rem;
   padding-left: 0;
   padding-right: 0;
+  max-width: 100%;
 }
 
 html.casper .post-full-title {
@@ -472,6 +473,10 @@ html.casper .site-footer-content a {
   color: #fff;
   line-height: 0;
   margin-left: 30px;
+}
+
+html.casper .site-footer-content .twitter {
+  margin-top: 2px;
 }
 
 html.casper .site-footer-content a:hover {
