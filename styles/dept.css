@@ -77,6 +77,12 @@ html.casper .inner {
   color: #fff;
 }
 
+.btn-inverted {
+  border: 1px solid #fff;
+  background: var(--onyx);
+  color: #fff;
+}
+
 /* Nav overrides */
 html.casper .home-template .site-nav-main {
   z-index: 1000;
@@ -223,10 +229,6 @@ html.casper .post-card-large {
   margin: 0;
 }
 
-html.casper .post-card-large .btn {
-  border-color: #fff;
-}
-
 
 html.casper .post-card-large .post-card-byline-date,
 html.casper .post-card-large .post-card-byline-content a {
@@ -299,21 +301,7 @@ html.casper .post-template .site-main {
     grid-template-columns: repeat(12, 1fr);
   }
 }
-@media (min-width: 1170px) {
-  .grid-post {
-    gap: 0;
-    grid-template-areas:
-    'meta meta meta meta . header header header header header header header'
-    'meta meta meta meta . content content content content content content content';
-  }
-}
-@media (min-width: 1536px) {
-  .grid-post {
-    grid-template-areas:
-    'meta meta meta meta meta . header header header header header header'
-    'meta meta meta meta meta . content content content content content content';
-  }
-}
+
 
 .post-full {
   margin-top: 50px;
@@ -525,7 +513,7 @@ html.casper .subscribe-form-description {
 html.casper .subscribe-form form {
   margin: 0;
   max-width: none;
-  align-items: start;
+  align-items: flex-start;
 }
 
 html.casper .subscribe-email {
@@ -618,17 +606,74 @@ html.casper .site-archive-header .no-image .author-header {
 }
 
 
-/* Error Pages - 404/500 */
+/* Error Pages - 404 */
 html.casper .error-code {
   color: var(--onyx);
-  font-weight: 400;
+  font-weight: 300;
+  font-size: 4.8rem;
+  letter-spacing: inherit;
   opacity: 1;
 }
 
-html.casper .error-description {
-  color: var(--onyx);
+html.casper .error-content {
+  display: flex;
+  padding: 64px 0 0;
+}
+
+@media (min-width: 768px) {
+  html.casper .error-content {
+    background: linear-gradient(to right, #fff, #fff 50%, var(--onyx) 50%, var(--onyx) 100%);
+  }
+}
+
+.error-content-inner {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .error-content-inner {
+    flex-direction: row;
+  }
 }
 
 html.casper .error-message {
+  background: var(--onyx);
   border-bottom: none;
+  color: #fff;
+  text-align: left;
+  padding: 24px;
+}
+
+@media (min-width: 768px) {
+  html.casper .error-message {
+    background: none;
+    padding: 10vh 100px 0 10vh;
+    width: 50%;
+  }
+}
+
+html.casper .error-description {
+  color: #fff;
+  font-size: 2.2rem;
+  font-weight: 400;
+  margin-bottom: 24px;
+}
+
+@media (min-width: 768px) {
+  html.capser .error-description {
+    font-size: 3.6rem;
+  }
+}
+
+html.casper .error-code-wrap {
+  padding: 68px 24px 24px;
+}
+
+@media (min-width: 768px) {
+  html.casper .error-code-wrap {
+    padding: 10vh 0 0 10vh;
+    width: 50%;
+  }
 }
