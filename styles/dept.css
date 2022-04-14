@@ -90,6 +90,10 @@ html.casper .home-template .site-nav-main {
 html.casper .site-nav-main {
   background: #fff;
 }
+html.casper .site-nav-right .nav a {
+  white-space: inherit;
+  text-transform: none;
+}
 @media (max-width: 700px) {
   html.casper .site-nav-right {
     display: inherit
