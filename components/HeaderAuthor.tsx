@@ -28,7 +28,7 @@ export const HeaderAuthor = ({ settings, author }: HeaderAuthorProps) => {
       <HeaderBackground srcImg={coverImg}>
         <div className="inner">
           <Grid className="grid-inner" container columnSpacing={{ xs: 0, md: 3 }}>
-            <Grid item xs={12} md={4}>
+            <Grid item xs={12}>
               <div className="site-header-content author-header">
                 <div className="author-header-content">
                   <h1 className="site-title">{author.name}</h1>

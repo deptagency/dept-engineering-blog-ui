@@ -25,9 +25,10 @@ export const SubscribeOverlay = ({ settings }: { settings: GhostSettings }) => {
         {siteLogo && <img className="subscribe-overlay-logo" src={siteLogo} alt={title} />}
         <div className="subscribe-form">
           <h1 className="subscribe-overlay-title">
-            {text(`SUBSCRIBE_TO`)} {title}
+            STAY UP TO DATE
           </h1>
           <p className="subscribe-overlay-description">{text(`SUBSCRIBE_OVERLAY`)}</p>
+          <p className="subscribe-overlay-description">See the DEPT® <a href="https://www.deptagency.com/en-us/terms-conditions/" rel="noreferrer" target="_blank">Terms &amp; Conditions</a></p>
           <SubscribeForm {...{ settings }} />
         </div>
       </div>

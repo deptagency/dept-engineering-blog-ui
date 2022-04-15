@@ -44,7 +44,6 @@ html.casper .inner {
   line-height: 2rem;
   text-transform: uppercase;
   padding: 8px 16px;
-
 }
 
 .btn:hover {
@@ -52,6 +51,10 @@ html.casper .inner {
   border: 1px solid var(--onyx);
   color: var(--onyx);
   text-decoration: none;
+}
+
+.btn-cta {
+  border-radius: 100rem;
 }
 
 .btn-white {
@@ -90,6 +93,10 @@ html.casper .home-template .site-nav-main {
 html.casper .site-nav-main {
   background: #fff;
 }
+html.casper .site-nav-right .nav a {
+  white-space: inherit;
+  text-transform: none;
+}
 @media (max-width: 700px) {
   html.casper .site-nav-right {
     display: inherit
@@ -117,7 +124,7 @@ html.casper .site-home-header .site-description {
   color: var(--onyx);
   font-size: 3.6rem;
   line-height: 4.4rem;
-  font-weight: 400;
+  font-weight: 300;
   text-align: left;
   padding: 0;
 }
@@ -330,6 +337,17 @@ html.casper .post-full-tags a:hover {
   text-decoration: underline;
 }
 
+html.casper .post-full-tags .breadcrumb-home {
+  font-weight: 400;
+  text-transform: uppercase;
+}
+html.casper .post-full-tags .breadcrumb-home:after {
+  content: "/";
+  display: inline-block;
+  font-weight: 300;
+  margin: 0 .5rem;
+}
+
 html.casper .post-full-byline {
   border-top: none;
   margin-top: 26px;
@@ -497,6 +515,16 @@ html.casper .subscribe-form {
   text-align: inherit;
 }
 
+html.casper .subscribe-form a {
+  color: var(--onyx);
+  box-shadow: var(--darkgrey) 0 -1px 0 inset;
+  text-decoration: none;
+}
+
+html.capser .subscribe-form a:hover {
+  text-decoration: none;
+}
+
 .subscribe-form .inner {
   padding: 50px 0 90px;
 }
@@ -534,6 +562,7 @@ html.casper .subscribe-email {
 html.casper .subscribe-form button {
   background: var(--onyx);
   border: 1px solid var(--onyx);
+  border-radius: 100rem;
   color: #fff;
   display: inline-block;
   font-family: 'Maison Neue';
@@ -544,7 +573,6 @@ html.casper .subscribe-form button {
   height: auto;
   line-height: auto;
   font-weight: 700;
-  border-radius: 0;
   margin-left: 25px;
 
   -webkit-font-smoothing: antialiased;
@@ -591,6 +619,7 @@ html.casper .site-header-content .site-title {
   line-height: 6.8rem;
   color: var(--onyx);
   font-weight: 300;
+  text-align: left;
 }
 
 html.casper .site-archive-header .no-image .site-description {
@@ -603,6 +632,7 @@ html.casper .site-archive-header .no-image .site-header-content {
 }
 
 html.casper .author-header-content {
+  display: block;
   margin: 0;
 }
 

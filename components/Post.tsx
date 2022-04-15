@@ -69,6 +69,9 @@ export const Post = ({ cmsData }: PostProps) => {
                 <header className="post-full-header post-header">
                   {post.primary_tag && (
                     <section className="post-full-tags">
+                      <Link href="/">
+                        <a className="breadcrumb-home">DEPT® Engineering Blog</a>
+                      </Link>
                       <Link href={resolveUrl({ cmsUrl, slug: post.primary_tag.slug, url: post.primary_tag.url })}>
                         <a>{post.primary_tag.name}</a>
                       </Link>
