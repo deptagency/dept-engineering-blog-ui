@@ -337,6 +337,17 @@ html.casper .post-full-tags a:hover {
   text-decoration: underline;
 }
 
+html.casper .post-full-tags .breadcrumb-home {
+  font-weight: 400;
+  text-transform: uppercase;
+}
+html.casper .post-full-tags .breadcrumb-home:after {
+  content: "/";
+  display: inline-block;
+  font-weight: 300;
+  margin: 0 .5rem;
+}
+
 html.casper .post-full-byline {
   border-top: none;
   margin-top: 26px;
