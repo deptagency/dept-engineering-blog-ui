@@ -35,7 +35,7 @@ export const lang: KeyObjectMap = {
     ENTER_VALID_EMAIL: `Please enter a valid email address`,
     GREAT: `Great`,
     SUBSCRIBE: `Subscribe`,
-    SUBSCRIBE_OVERLAY: `Stay up to date! Get all the latest & greatest posts delivered straight to your inbox`,
+    SUBSCRIBE_OVERLAY: `Get all the latest updates to the DEPT® Engineering blog by signing up here.`,
     SUBSCRIBE_SECTION: `Get the latest posts delivered right to your inbox`,
     SUBSCRIBE_TO: `Subscribe to`,
     SUBSCRIBED_FAILED: `Could not sign up! Invalid sign up link.`,

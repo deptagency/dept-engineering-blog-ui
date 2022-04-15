@@ -14,9 +14,10 @@ export const Subscribe = ({ settings }: { settings: GhostSettings }) => {
           <Grid alignItems="center" className="grid-inner" container justifyContent="space-between">
             <Grid item xs={12} md={3}>
               <h3 className="subscribe-form-title">
-                Subscribe
+                STAY UP TO DATE
               </h3>
               <p className="subscribe-form-description">{text(`SUBSCRIBE_OVERLAY`)}</p>
+              <p className="subscribe-form-description">See the DEPT® <a href="https://www.deptagency.com/en-us/terms-conditions/" rel="noreferrer" target="_blank">Terms &amp; Conditions</a></p>
             </Grid>
             <Grid item xs={12} md={7}>
               <SubscribeForm {...{ settings }} />
