@@ -95,7 +95,7 @@ export const PostCard = ({ settings, post, num, isHome }: PostCardProps) => {
                     <span className="bull">&bull; </span> {readingTime}
                   </span>
                 </div>
-                <a href={url} className="btn btn-inverted">Keep Reading</a>
+                <a href={url} className="btn btn-inverted btn-cta">Keep Reading</a>
               </footer>
             </div>
           </Grid>
@@ -164,7 +164,7 @@ export const PostCard = ({ settings, post, num, isHome }: PostCardProps) => {
               <span className="bull">&bull; </span> {readingTime}
             </span>
           </div>
-          <a href={url} className="btn">Keep Reading</a>
+          <a href={url} className="btn btn-cta">Keep Reading</a>
         </footer>
       </div>
     </article>

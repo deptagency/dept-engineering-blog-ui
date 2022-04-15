@@ -44,7 +44,6 @@ html.casper .inner {
   line-height: 2rem;
   text-transform: uppercase;
   padding: 8px 16px;
-
 }
 
 .btn:hover {
@@ -52,6 +51,10 @@ html.casper .inner {
   border: 1px solid var(--onyx);
   color: var(--onyx);
   text-decoration: none;
+}
+
+.btn-cta {
+  border-radius: 100rem;
 }
 
 .btn-white {
@@ -538,6 +541,7 @@ html.casper .subscribe-email {
 html.casper .subscribe-form button {
   background: var(--onyx);
   border: 1px solid var(--onyx);
+  border-radius: 100rem;
   color: #fff;
   display: inline-block;
   font-family: 'Maison Neue';
@@ -548,7 +552,6 @@ html.casper .subscribe-form button {
   height: auto;
   line-height: auto;
   font-weight: 700;
-  border-radius: 0;
   margin-left: 25px;
 
   -webkit-font-smoothing: antialiased;
