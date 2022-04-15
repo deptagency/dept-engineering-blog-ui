@@ -17,15 +17,15 @@ const Pid = ({ cmsData }: PostOrPageProps) => {
 export default Pid
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  if (!(params && params.pid && Array.isArray(params.pid))) throw Error('getStaticProps: wrong parameters.')
-  const [pid] = params.pid.reverse()
+  if (!(params && params.pid)) throw Error('getStaticProps: wrong parameters.')
+  const pid = typeof params.pid === 'string' ? params.pid : params.pid[0]
 
   console.time('Post Preview - getStaticProps')
 
   const settings = await getAllSettings()
 
   let post: GhostPostOrPage | null = null
-
+  console.log(pid);
   post = await getPostPreviewById(pid);
 
   let previewPosts: GhostPostsOrPages | never[] = []
