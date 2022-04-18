@@ -540,7 +540,7 @@ html.casper .subscribe-form-description {
   color: var(--onyx);
   font-size: 1.6rem;
   line-height: 2.4rem;
-  margin-bottom: 0;
+  margin-bottom: 1rem;
 }
 
 html.casper .subscribe-form form {
@@ -552,10 +552,12 @@ html.casper .subscribe-form form {
 html.casper .subscribe-email {
   background: var(--platinum);
   border: 1px solid var(--gray);
+  border-width: 0 0 1px;
   border-radius: 0;
   font-size: 1.6rem;
   font-weight: 300;
   color: var(--gray);
+  padding: 0;
 }
 
 /* Same as .btn with added overrides */
@@ -570,13 +572,19 @@ html.casper .subscribe-form button {
   line-height: 2rem;
   text-transform: uppercase;
   padding: 8px 60px;
+  margin: 2rem 0 0;
   height: auto;
   line-height: auto;
   font-weight: 700;
-  margin-left: 25px;
 
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizelegibility;
+}
+
+@media (min-width: 501px) {
+  html.casper .subscribe-form button {
+    margin: 0 0 0 25px;
+  }
 }
 
 html.casper .subscribe-form button:hover,
@@ -595,17 +603,40 @@ html.casper .subscribe-form .success .message-error {
   margin: 1em 0 0;
 }
 
+html.casper .subscribe-overlay .subscribe-form {
+  text-align: left;
+}
+
+html.casper .subscribe-overlay .subscribe-form form {
+  margin-top: 3rem;
+}
 
 html.casper .subscribe-overlay-title {
   font-weight: 400;
 }
 
 html.casper .subscribe-overlay-description {
+  margin-bottom: 1em;
   font-family: inherit;
+  opacity: 1;
+}
+
+html.casper .subscribe-overlay-description a {
+  color: #fff;
+  box-shadow: #fff 0 -1px 0 inset;
 }
 
 html.casper .subscribe-overlay .subscribe-email {
   border-radius: 0;
+  padding: 0;
+  background: transparent;
+  border-bottom: 1px solid #fff;
+  font-weight: 300;
+  color: #fff;
+}
+
+html.casper .subscribe-overlay .subscribe-email::placeholder {
+  color: #999;
 }
 
 html.casper .subscribe-overlay button {

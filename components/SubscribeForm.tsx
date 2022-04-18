@@ -36,7 +36,9 @@ export const SubscribeForm = ({ settings }: { settings: GhostSettings }) => {
           autoComplete="false"
         />
         <button className="button primary" type="submit" value="Submit">
-          <span className="button-content">{text(`SUBSCRIBE`)}</span>
+          <span className="button-content">
+            {text(`SUBSCRIBE`)}
+          </span>
           <span className="button-loader">
             <LoaderIcon />
           </span>
