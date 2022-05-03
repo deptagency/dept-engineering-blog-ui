@@ -1,9 +1,9 @@
 import { useRouter } from 'next/router'
-
+import { GridWrapper, Row, Col } from '@components/Grid'
 import { FilterTags } from '@components/FilterTags'
 import { PostCard } from '@components/PostCard'
 import { GhostPostOrPage, GhostPostsOrPages, GhostSettings } from '@lib/ghost'
-import Grid from '@mui/material/Grid'
+
 interface PostItemsProps {
   settings: GhostSettings
   posts: GhostPostsOrPages
@@ -17,14 +17,8 @@ interface FirstPostItemProps {
 }
 
 const FirstPost = ({ settings, post, isHome, num }: FirstPostItemProps) => (
-  <div className="first-post-wrapper">
-    <div className="grid-wrapper">
-      <Grid className="grid-inner" container>
-        <Grid item xs={12}>
-          <PostCard key={1} {...{settings, post, isHome, num }} />
-        </Grid>
-      </Grid>
-    </div>
+  <div className="first-post-wrapper">   
+    <PostCard key={1} {...{settings, post, isHome, num }} />
   </div>
 );
 
@@ -41,13 +35,13 @@ export const PostItems = ({ settings, posts, isHome }: PostItemsProps) => {
 
   if (isHome || asPath.indexOf('/tag') >= 0) {
     firstRow.push(
-      <div className="grid-wrapper" key="filter-tags">
-        <Grid className="grid-inner" container>
-          <Grid item xs={12}>
+      <GridWrapper key="filter-tags">
+          <Row>
+            <Col width="100%">
             <FilterTags currentTag={asPath.split('/').slice(-1)[0] || ''} tags={["Platforms", "Teams", "Process", "People"]} />
-          </Grid>
-        </Grid>
-      </div>
+            </Col>
+          </Row>
+      </GridWrapper>
     )
   }
 
@@ -61,15 +55,15 @@ export const PostItems = ({ settings, posts, isHome }: PostItemsProps) => {
   }
 
   const mainRows = rows.map((row, i) => (
-    <div className="grid-wrapper" key={i + 1}>
-      <Grid className="grid-inner" columnSpacing={{ xs: 0, md: 3 }} container>
+    <GridWrapper key={i + 1}>
+        <Row>
         {row.map((post, n) => (
-          <Grid key={`${i + 1} ${n}`} item xs={12} md={row.length === 1 ? 12 : row.length === 3 ? 4 : 6}>
+          <Col key={`${i + 1} ${n}`} width={row.length === 1 ? "100%": row.length === 2 ? "50%" : row.length === 3 ? "33.3%" : "100%"}>
             <PostCard {...{settings, post, isHome, num: parseInt(`${i + 1}${n}`) }} />
-          </Grid>
+          </Col>
         ))}
-      </Grid>
-    </div>
+      </Row>
+    </GridWrapper>
   ))
 
   return <>{firstRow.concat(mainRows)}</>;

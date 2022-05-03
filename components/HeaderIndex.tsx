@@ -1,8 +1,5 @@
 import Image from 'next/image'
-import Link from 'next/link'
-import Grid from '@mui/material/Grid'
-
-import { SiteNav } from '@components/SiteNav'
+import { GridWrapper, Col, Row } from '@components/Grid'
 import { HeaderBackground } from '@components/HeaderBackground'
 import { getLang, get } from '@utils/use-lang'
 import { GhostSettings, NextImage } from '@lib/ghost'
@@ -35,13 +32,15 @@ export const HeaderIndex = ({ settings }: HeaderIndexProps) => {
         <div className="inner">
           {/* <SiteNav className="site-nav" {...{ siteUrl, settings }} /> */}
           <div className="grid-wrapper">
-            <Grid className="grid-inner" container>
-              <Grid item xs={12} md={10} lg={8}>
+            <GridWrapper>
+              <Row>
+                <Col width="60%">
                 <div className="header-tagline">
                   <h2 className="site-description">{site.description}</h2>
                 </div>
-              </Grid>
-            </Grid>
+                </Col>
+              </Row>
+            </GridWrapper>
           </div>
         </div>
       </HeaderBackground>

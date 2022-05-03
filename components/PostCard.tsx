@@ -2,8 +2,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import dayjs from 'dayjs'
-import Grid from '@mui/material/Grid'
-
+import { GridWrapper, Row, FirstPostCol } from '@components/Grid'
 import { readingTime as readingTimeHelper } from '@lib/readingTime'
 import { resolveUrl } from '@utils/routing'
 import { getLang, get } from '@utils/use-lang'
@@ -35,10 +34,11 @@ export const PostCard = ({ settings, post, num, isHome }: PostCardProps) => {
 
   if (isFirstPost) {
     return (
-      <article className={`post-card ${postClass} ${large}`}>
-        <Grid alignItems="center" container spacing={{ xs: 2, md: 5 }}>
+      <article className={`${postClass} ${large}`}>
+        <GridWrapper>
+          <Row>
+          <FirstPostCol width="40%">
           {featImg && (
-            <Grid item xs={12} lg={5}>
               <Link href={url}>
                 <a className="post-card-image-link" aria-label={post.title}>
                   {nextImages.feature ? (
@@ -57,9 +57,9 @@ export const PostCard = ({ settings, post, num, isHome }: PostCardProps) => {
                   )}
                 </a>
               </Link>
-            </Grid>
           )}
-          <Grid item xs={12} lg={7}>
+          </FirstPostCol>
+          <FirstPostCol width="60%" padding="40px">
             <div className="post-card-content">
               <Link href={url}>
                 <a className="post-card-content-link">
@@ -97,16 +97,16 @@ export const PostCard = ({ settings, post, num, isHome }: PostCardProps) => {
                 </div>
                 <a href={url} className="btn btn-inverted btn-cta">Keep Reading</a>
               </footer>
-            </div>
-          </Grid>
-        </Grid>
-
+            </div>    
+            </FirstPostCol>
+            </Row>
+            </GridWrapper> 
       </article>
     )
   }
 
   return (
-    <article className={`post-card ${postClass} ${large}`}>
+    <article className={`${postClass} ${large}`} style={{ padding: "0px 20px 40px 0px"}}>
       {featImg && (
         <Link href={url}>
           <a className="post-card-image-link" aria-label={post.title}>

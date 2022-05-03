@@ -1,5 +1,5 @@
 import Grid from '@mui/material/Grid'
-
+import { GridWrapper, Col, Row } from '@components/Grid'
 import { SiteNav } from '@components/SiteNav'
 import { HeaderBackground } from '@components/HeaderBackground'
 import { getLang, get } from '@utils/use-lang'
@@ -27,8 +27,9 @@ export const HeaderAuthor = ({ settings, author }: HeaderAuthorProps) => {
       </div>
       <HeaderBackground srcImg={coverImg}>
         <div className="inner">
-          <Grid className="grid-inner" container columnSpacing={{ xs: 0, md: 3 }}>
-            <Grid item xs={12}>
+          <GridWrapper>
+            <Row>
+              <Col>
               <div className="site-header-content author-header">
                 <div className="author-header-content">
                   <h1 className="site-title">{author.name}</h1>
@@ -39,8 +40,9 @@ export const HeaderAuthor = ({ settings, author }: HeaderAuthorProps) => {
                   </h2>
                 </div>
               </div>
-            </Grid>
-          </Grid>
+              </Col>
+            </Row>
+          </GridWrapper>
         </div>
       </HeaderBackground>
     </header>
