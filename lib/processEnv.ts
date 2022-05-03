@@ -58,7 +58,6 @@ export interface ProcessEnvProps {
     enable: boolean
     ignoreMissing: boolean
   }
-  contactPage: boolean
   toc: {
     enable: boolean
     maxDepth: number
@@ -97,7 +96,6 @@ export const processEnv: ProcessEnvProps = {
     enable: resolveBool(process.env.JAMIFY_PRISM, appConfig.prism),
     ignoreMissing: resolveBool(process.env.JAMIFY_PRISM_IGNORE_MISSING, appConfig.prismIgnoreMissing),
   },
-  contactPage: resolveBool(process.env.JAMIFY_CONTACT_PAGE, appConfig.contactPage),
   toc: {
     enable: resolveBool(process.env.JAMIFY_TOC, appConfig.toc),
     maxDepth: resolveNumber(process.env.JAMIFY_TOC_MAX_DEPTH, appConfig.maxDepth),

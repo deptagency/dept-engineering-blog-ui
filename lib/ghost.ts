@@ -9,8 +9,6 @@ import { ghostAPIUrl, ghostAPIKey, processEnv, ProcessEnvProps } from '@lib/proc
 import { imageDimensions, normalizedImageUrl, Dimensions } from '@lib/images'
 import { IToC } from '@lib/toc'
 
-import { contactPage } from '@appConfig'
-
 export interface NextImage {
   url: string
   dimensions: Dimensions
@@ -75,11 +73,6 @@ const postAndPageSlugOptions: Params = {
   fields: 'slug',
 }
 
-const excludePostOrPageBySlug = () => {
-  if (!contactPage) return ''
-  return 'slug:-contact'
-}
-
 // helpers
 export const createNextImage = async (url?: string | null): Promise<NextImage | undefined> => {
   if (!url) return undefined
@@ -119,6 +112,7 @@ export async function getAllSettings(): Promise<GhostSettings> {
   //const cached = getCache<SettingsResponse>('settings')
   //if (cached) return cached
   const settings = await api.settings.browse()
+    
   settings.url = settings?.url?.replace(/\/$/, ``)
 
   const iconImage = await createNextImage(settings.icon)
@@ -149,7 +143,6 @@ export async function getAllAuthors() {
 export async function getAllPosts(props?: { limit: number }): Promise<GhostPostsOrPages> {
   const posts = await api.posts.browse({
     ...postAndPageFetchOptions,
-    filter: excludePostOrPageBySlug(),
     ...(props && { ...props }),
   })
   const results = await createNextProfileImagesFromPosts(posts)
@@ -164,7 +157,6 @@ export async function getAllPostSlugs(): Promise<string[]> {
 export async function getAllPages(props?: { limit: number }): Promise<GhostPostsOrPages> {
   const pages = await api.pages.browse({
     ...postAndPageFetchOptions,
-    filter: excludePostOrPageBySlug(),
     ...(props && { ...props }),
   })
   return await createNextFeatureImages(pages)
