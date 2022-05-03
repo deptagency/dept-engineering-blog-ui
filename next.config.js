@@ -26,7 +26,7 @@ const defaultOptions = withBundleAnalyzer({
     return [
       {
         source: '/contact',
-        destination: 'https://www.deptagency.com/en-us/contact/',
+        destination: 'https://www.deptagency.com/contact/',
         permanent: true
       }
     ]
