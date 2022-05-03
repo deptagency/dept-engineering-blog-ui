@@ -21,24 +21,13 @@ const defaultOptions = withBundleAnalyzer({
       ...(process.env.IMAGE_DOMAINS || '').split(','),
     ],
   },
-  reactStrictMode: true,
-  async redirects() {
-    return [
-      {
-        source: '/contact',
-        destination: 'https://www.deptagency.com/contact/',
-        permanent: true
-      }
-    ]
-  }
+  reactStrictMode: true
 })
 
 /**
  * The customImageLoaderOptions object is returned only when `next export` is used,
  * since `next export` requires a custom image loader(https://nextjs.org/docs/advanced-features/static-html-export)
  * which you can customize in image-loader.config.js
- * 
- * Redirects are not supported by `next export`.
  */
 const customImageLoaderOptions = withBundleAnalyzer(
   withImageLoader({
