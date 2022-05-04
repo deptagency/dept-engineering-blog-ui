@@ -2,7 +2,6 @@ import { ReactFragment } from 'react'
 import Image from 'next/image'
 
 import { DocumentHead } from '@components/DocumentHead'
-import { StickyNav } from '@components/StickyNav'
 import { SubscribeOverlay } from '@components/SubscribeOverlay'
 import { SubscribeSuccess } from '@components/SubscribeSuccess'
 
@@ -46,19 +45,19 @@ export const Layout = ({ settings, header, children, isHome, sticky, previewPost
       <DocumentHead className={bodyClass} />
 
       <div className="site-wrapper">
+
         {/* The main header section on top of the screen */}
         {header}
+
         {/* The main content area */}
         <main ref={(isHome && sticky && sticky.anchorRef) || null} id="site-main" className={`site-main ${errorClass}`}>
-          {/* All the main content gets inserted here, index.js, post.js */}
           {children}
         </main>
-        {/* For sticky nav bar */}
-        {isHome && <StickyNav className={`site-nav ${sticky && sticky.state.currentClass}`} {...{ siteUrl, settings }} />}
+
         {/* Links to Previous/Next posts */}
         {previewPosts}
 
-        {/* The footer at the very bottom of the screen */}
+        {/* The footer */}
         <footer className="site-footer outer">
           <div className="site-footer-content inner">
             <section className="copyright">

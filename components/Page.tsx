@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Image from 'next/image'
 
-import { HeaderPage } from '@components/HeaderPage'
 import { Layout } from '@components/Layout'
 import { RenderContent } from '@components/RenderContent'
 
@@ -10,6 +9,7 @@ import { SEO } from '@meta/seo'
 
 import { GhostPostOrPage, GhostSettings } from '@lib/ghost'
 import { ISeoImage } from '@meta/seoImage'
+import { Header } from './Header'
 
 /**
  * Single page (/:slug)
@@ -40,7 +40,7 @@ export const Page = ({ cmsData }: PageProps) => {
   return (
     <>
       <SEO {...{ settings, meta_title, meta_description, seoImage }} />
-      <Layout {...{ settings, bodyClass }} header={<HeaderPage {...{ settings }} />}>
+      <Layout {...{ settings, bodyClass }} header={<Header {...{ settings }} />}>
         <div className="inner">
           <article className={`post-full ${postClass}`}>
             <header className="post-full-header">

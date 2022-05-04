@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 
 import { Layout } from '@components/Layout'
 import { PostView } from '@components/PostView'
-import { HeaderIndex } from '@components/HeaderIndex'
+import { Header } from '@components/Header'
 import { SEO } from '@meta/seo'
 
 import { processEnv } from '@lib/processEnv'
@@ -42,7 +42,7 @@ export default function Index({ cmsData }: IndexProps) {
   return (
     <>
       <SEO {...{ settings, seoImage }} />
-      <Layout {...{ bodyClass, settings, isHome: true }} header={<HeaderIndex {...{ settings }} />}>
+      <Layout {...{ bodyClass, settings, isHome: true }} header={<Header {...{ settings }} />}>
         <PostView {...{ settings, posts, isHome: true }} />
       </Layout>
     </>

@@ -2,12 +2,11 @@ import Link from 'next/link'
 import { GetStaticProps } from 'next'
 
 import { Layout } from '@components/Layout'
-import { HeaderPage } from '@components/HeaderPage'
-import { PostCard } from '@components/PostCard'
 
 import { getAllSettings, GhostSettings, GhostPostsOrPages } from '@lib/ghost'
 import { getLang, get } from '@utils/use-lang'
 import { BodyClass } from '@helpers/BodyClass'
+import { Header } from '@components/Header'
 
 export const getStaticProps: GetStaticProps = async () => {
   const settings = await getAllSettings()
@@ -26,11 +25,11 @@ interface Custom404Props {
   bodyClass: string
 }
 
-export default function Custom404({ posts, settings, bodyClass }: Custom404Props) {
+export default function Custom404({ settings, bodyClass }: Custom404Props) {
   const text = get(getLang(settings.lang))
 
   return (
-    <Layout {...{ settings, bodyClass }} header={<HeaderPage {...{ settings }} />} errorClass="error-content">
+    <Layout {...{ settings, bodyClass }} header={<Header {...{ settings }} />} errorClass="error-content">
       <div className="inner error-content-inner">
       <div className="error-code-wrap">
         <h1 className="error-code">404</h1>

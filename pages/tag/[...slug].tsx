@@ -2,7 +2,6 @@ import { useRouter } from 'next/router'
 
 import { Tag } from '@tryghost/content-api'
 import { GetStaticProps, GetStaticPaths } from 'next'
-import { HeaderTag } from '@components/HeaderTag'
 import { Layout } from '@components/Layout'
 import { PostView } from '@components/PostView'
 import { SEO } from '@meta/seo'
@@ -13,6 +12,7 @@ import { ISeoImage, seoImage } from '@meta/seoImage'
 import { processEnv } from '@lib/processEnv'
 
 import { BodyClass } from '@helpers/BodyClass'
+import { Header } from '@components/Header'
 
 /**
  * Tag page (/tag/:slug)
@@ -46,7 +46,7 @@ const TagIndex = ({ cmsData }: TagIndexProps) => {
   return (
     <>
       <SEO {...{ settings, title: meta_title || '', description: meta_description || '', seoImage }} />
-      <Layout {...{ settings, bodyClass }} header={<HeaderTag {...{ settings, tag }} />}>
+      <Layout {...{ settings, bodyClass }} header={<Header {...{ settings }} />}>
         <PostView {...{ settings, posts }} />
       </Layout>
     </>

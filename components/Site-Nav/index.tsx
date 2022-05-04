@@ -1,21 +1,19 @@
 /* eslint-disable @next/next/no-img-element */
 import Image from 'next/image'
 import Link from 'next/link'
-import { resolve } from 'url'
 
 import { Navigation } from '@components/Navigation'
 import { SocialLinks } from '@components/SocialLinks'
 import { SubscribeButton } from '@components/SubscribeButton'
 import { getLang, get } from '@utils/use-lang'
 import { GhostSettings, NavItem, NextImage } from '@lib/ghost'
+import { NavContainer, NavContent, NavLeft, NavLeftWrapper, NavLogoLink, NavRight, StyledSiteNav } from './components'
 
 export interface SiteNavProps {
   settings: GhostSettings
-  className: string
-  postTitle?: string
 }
 
-export const SiteNav = ({ settings, className, postTitle }: SiteNavProps) => {
+export const SiteNav = ({ settings }: SiteNavProps) => {
   const text = get(getLang(settings.lang))
   const { processEnv } = settings
   const { customNavigation, nextImages, memberSubscriptions } = processEnv
@@ -32,7 +30,7 @@ export const SiteNav = ({ settings, className, postTitle }: SiteNavProps) => {
   const secondaryNav = site.secondary_navigation && 0 < site.secondary_navigation.length
   const siteLogo = site.logoImage
 
-  const navigation = site.navigation
+  const { navigation } = site
 
   // overwrite navigation if specified in options
   const labels = navigation?.map((item) => item.label)
@@ -51,53 +49,53 @@ export const SiteNav = ({ settings, className, postTitle }: SiteNavProps) => {
     config.addNavigation.map((item) => urls?.indexOf(item.url) === -1 && navigation?.push(item))
   }
 
-  // targetHeight is coming from style .site-nav-logo img
-  const targetHeight = 21
+  const imageHeight = 21;
   const calcSiteLogoWidth = (image: NextImage, targetHeight: number) => {
     const { width, height } = image.dimensions
     return (targetHeight * width) / height
   }
 
   return (
-    <nav className={className}>
-      <div className="site-nav-left-wrapper">
-        <div className="site-nav-left">
-          <Link href="/">
-            {siteLogo && nextImages.feature ? (
-              <a className="site-nav-logo">
-                <div
-                  style={{
-                    height: '${targetHeight}px',
-                    width: `${calcSiteLogoWidth(siteLogo, targetHeight)}px`,
-                  }}
-                >
-                  <Image className="site-nav-logo" src={siteLogo.url} alt={title} layout="responsive" quality={nextImages.quality} {...siteLogo.dimensions} />
-                </div>
-              </a>
-            ) : site.logo ? (
-              <a className="site-nav-logo">
-                <img src={site.logo} alt={title} />
-              </a>
+    <NavContainer>
+        <StyledSiteNav>
+          <NavLeftWrapper>
+            <NavLeft>
+              <Link href="/">
+                {siteLogo && nextImages.feature ? (
+                  <NavLogoLink imageHeight={imageHeight}>
+                    <div
+                      style={{
+                        height: '${targetHeight}px',
+                        width: `${calcSiteLogoWidth(siteLogo, imageHeight)}px`,
+                      }}
+                    >
+                      <Image src={siteLogo.url} alt={title} layout="responsive" quality={nextImages.quality} {...siteLogo.dimensions} />
+                    </div>
+                  </NavLogoLink>
+                ) : site.logo ? (
+                  <NavLogoLink imageHeight={imageHeight}>
+                    <img src={site.logo} alt={title} />
+                  </NavLogoLink>
+                ) : (
+                  <NavLogoLink imageHeight={imageHeight}>{title}</NavLogoLink>
+                )}
+              </Link>
+              <NavContent>
+                <Navigation data={navigation} />
+              </NavContent>
+            </NavLeft>
+          </NavLeftWrapper>
+          <NavRight>
+            {secondaryNav ? (
+              <Navigation data={site.secondary_navigation} isRightNav />
             ) : (
-              <a className="site-nav-logo">{title}</a>
+              <div className="social-links">
+                <SocialLinks {...{ siteUrl, site }} />
+              </div>
             )}
-          </Link>
-          <div className="site-nav-content">
-            <Navigation data={navigation} />
-            {postTitle && <span className={`nav-post-title ${site.logo ? `` : `dash`}`}>{postTitle}</span>}
-          </div>
-        </div>
-      </div>
-      <div className="site-nav-right">
-        {secondaryNav ? (
-          <Navigation data={site.secondary_navigation} />
-        ) : (
-          <div className="social-links">
-            <SocialLinks {...{ siteUrl, site }} />
-          </div>
-        )}
-        {memberSubscriptions && <SubscribeButton {...{ lang: settings.lang }} />}
-      </div>
-    </nav>
+            {memberSubscriptions && <SubscribeButton {...{ lang: settings.lang }} />}
+          </NavRight>
+        </StyledSiteNav>
+    </NavContainer>
   )
 }

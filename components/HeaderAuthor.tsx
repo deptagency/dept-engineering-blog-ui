@@ -1,6 +1,6 @@
 import Grid from '@mui/material/Grid'
 
-import { SiteNav } from '@components/SiteNav'
+import { SiteNav } from '@components/Site-Nav'
 import { HeaderBackground } from '@components/HeaderBackground'
 import { getLang, get } from '@utils/use-lang'
 
@@ -11,6 +11,10 @@ interface HeaderAuthorProps {
   author: GhostAuthor
 }
 
+/**
+ * Delete me
+*/
+
 export const HeaderAuthor = ({ settings, author }: HeaderAuthorProps) => {
   const text = get(getLang(settings.lang))
 
@@ -20,11 +24,9 @@ export const HeaderAuthor = ({ settings, author }: HeaderAuthorProps) => {
 
   return (
     <header className="site-archive-header">
-      <div className="outer site-nav-main">
-        <div className="inner">
-          <SiteNav {...{ settings }} className="site-nav" />
-        </div>
-      </div>
+
+      <SiteNav {...{ settings }} />
+
       <HeaderBackground srcImg={coverImg}>
         <div className="inner">
           <Grid className="grid-inner" container columnSpacing={{ xs: 0, md: 3 }}>
@@ -33,9 +35,8 @@ export const HeaderAuthor = ({ settings, author }: HeaderAuthorProps) => {
                 <div className="author-header-content">
                   <h1 className="site-title">{author.name}</h1>
                   <h2 className="site-description">
-                    {`${text(`A_COLLECTION_OF`)} ${
-                      (numberOfPosts && numberOfPosts > 0 && (numberOfPosts === 1 ? `1 ${text(`POST`)}` : `${numberOfPosts} ${text(`POSTS`)}`)) || `${text(`POSTS`)}`
-                    }`}
+                    {`${text(`A_COLLECTION_OF`)} ${(numberOfPosts && numberOfPosts > 0 && (numberOfPosts === 1 ? `1 ${text(`POST`)}` : `${numberOfPosts} ${text(`POSTS`)}`)) || `${text(`POSTS`)}`
+                      }`}
                   </h2>
                 </div>
               </div>
