@@ -5,6 +5,10 @@ interface HeaderBackgroundProps {
   children: ReactFragment
 }
 
+/**
+ * Delete me
+*/
+
 export const HeaderBackground = ({ srcImg, children }: HeaderBackgroundProps) => {
   return (
     <>

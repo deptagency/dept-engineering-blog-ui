@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Grid from '@mui/material/Grid'
 
-import { SiteNav } from '@components/SiteNav'
+import { SiteNav } from '@components/Site-Nav'
 import { HeaderBackground } from '@components/HeaderBackground'
 import { getLang, get } from '@utils/use-lang'
 import { GhostSettings, NextImage } from '@lib/ghost'
@@ -10,6 +10,10 @@ import { GhostSettings, NextImage } from '@lib/ghost'
 interface HeaderIndexProps {
   settings: GhostSettings
 }
+
+/**
+ * Delete me
+*/
 
 export const HeaderIndex = ({ settings }: HeaderIndexProps) => {
   const text = get(getLang(settings.lang))
