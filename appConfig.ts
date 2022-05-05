@@ -48,3 +48,6 @@ export const isr: boolean = false
 export const revalidate: number = 10
 export const maxNumberOfPosts: number = 20
 export const maxNumberOfPages: number = 20
+
+// Custom slugs to be excluded from static generation
+export const customSlugs: string[] = []

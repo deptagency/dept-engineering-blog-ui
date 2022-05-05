@@ -22,6 +22,7 @@ const defaultOptions = withBundleAnalyzer({
     ],
   },
   reactStrictMode: true,
+  // Redirects are not supported by `next export`.
   async redirects() {
     return [
       {
@@ -37,8 +38,6 @@ const defaultOptions = withBundleAnalyzer({
  * The customImageLoaderOptions object is returned only when `next export` is used,
  * since `next export` requires a custom image loader(https://nextjs.org/docs/advanced-features/static-html-export)
  * which you can customize in image-loader.config.js
- * 
- * Redirects are not supported by `next export`.
  */
 const customImageLoaderOptions = withBundleAnalyzer(
   withImageLoader({
