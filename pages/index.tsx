@@ -42,7 +42,9 @@ export default function Index({ cmsData }: IndexProps) {
   return (
     <>
       <SEO {...{ settings, seoImage }} />
-      <Layout {...{ bodyClass, settings, isHome: true }} header={<Header {...{ settings }} />}>
+      <Layout {...{ bodyClass, settings, isHome: true }} header={<Header {...{ settings, content: {
+        title: settings.description
+      }}} />}>
         <PostView {...{ settings, posts, isHome: true }} />
       </Layout>
     </>

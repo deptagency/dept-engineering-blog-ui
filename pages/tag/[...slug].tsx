@@ -8,6 +8,7 @@ import { SEO } from '@meta/seo'
 
 import { getTagBySlug, getAllTags, getAllSettings, getPostsByTag, GhostSettings, GhostPostOrPage, GhostPostsOrPages } from '@lib/ghost'
 import { resolveUrl } from '@utils/routing'
+import { getLang, get } from '@utils/use-lang'
 import { ISeoImage, seoImage } from '@meta/seoImage'
 import { processEnv } from '@lib/processEnv'
 
@@ -42,11 +43,19 @@ const TagIndex = ({ cmsData }: TagIndexProps) => {
 
   const { tag, posts, settings, seoImage, bodyClass } = cmsData
   const { meta_title, meta_description } = tag
+  const text = get(getLang(settings.lang))
+  const numberOfPosts = tag.count?.posts
+  const fallbackDescription = `${text(`A_COLLECTION_OF`)} ${(numberOfPosts && numberOfPosts > 0 && (numberOfPosts === 1 ? `1 ${text(`POST`)}` : `${numberOfPosts} ${text(`POSTS`)}`)) || `${text(`POSTS`)}`}`
 
   return (
     <>
       <SEO {...{ settings, title: meta_title || '', description: meta_description || '', seoImage }} />
-      <Layout {...{ settings, bodyClass }} header={<Header {...{ settings }} />}>
+      <Layout {...{ settings, bodyClass }} header={<Header {...{
+        settings, content: {
+          title: tag.name,
+          description: tag.description || fallbackDescription
+        }
+      }} />}>
         <PostView {...{ settings, posts }} />
       </Layout>
     </>

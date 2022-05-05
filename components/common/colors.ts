@@ -21,3 +21,5 @@ export const colors = {
   platinum: "#F2F2F2",
   purple: "#5115F7"
 }
+
+export type Colors =  keyof typeof colors

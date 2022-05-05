@@ -22,6 +22,7 @@ import { ISeoImage } from '@meta/seoImage'
 
 import React from 'react'
 import { Header } from './Header'
+import { Headline } from './text/Headlines'
 
 interface PostProps {
   cmsData: {
@@ -59,7 +60,7 @@ export const Post = ({ cmsData }: PostProps) => {
       <SEO {...{ description, settings, seoImage, article: post, title }} />
       <Layout
         {...{ bodyClass, settings }}
-        header={<Header {...{ settings, title }} />}
+        header={<Header {...{ settings }} />}
         previewPosts={<PreviewPosts {...{ settings, primaryTag: post.primary_tag, posts: previewPosts, prev: prevPost, next: nextPost }} />}
       >
         <div className="inner">
@@ -78,9 +79,7 @@ export const Post = ({ cmsData }: PostProps) => {
                     </section>
                   )}
 
-                  <h1 className="post-full-title">
-                    {title}
-                  </h1>
+                  <Headline>{title}</Headline>
 
                   {post.custom_excerpt && <p className="post-full-custom-excerpt">{post.custom_excerpt}</p>}
 
