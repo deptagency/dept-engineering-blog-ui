@@ -8,6 +8,7 @@ import { StyledHeader } from './components'
 
 interface HeaderProps {
   settings: GhostSettings,
+  isHome?: boolean,
   content?: {
     title?: string,
     description?: string
@@ -23,25 +24,23 @@ interface HeaderProps {
  * Post - nav only
  * Tag - H1 (tag) & "a collection of x posts"
 */
-export const Header = ({ settings, content }: HeaderProps) => {
-
-  return (
-    <StyledHeader>
-      <SiteNav {...{ settings }} />
-      {content && (
-        <div className="grid-wrapper">
-          <Grid className="grid-inner" container>
-            <Grid item xs={12} md={10} lg={8}>
-              {content.title && (
-                <Headline order={0} responsive>{content.title}</Headline>
-              )}
-              {content.description && (
-                <Headline order={2} as="h2" color="gray">{content.description}</Headline>
-              )}
-            </Grid>
+export const Header = ({ settings, isHome, content }: HeaderProps) => (
+  <StyledHeader>
+    <SiteNav {...{ settings }} />
+    {content && (
+      <div className="grid-wrapper">
+        <Grid className="grid-inner" container>
+          <Grid item xs={12} md={10} lg={8}>
+            {content.title && (
+              <Headline order={0} responsive={isHome}>{content.title}</Headline>
+            )}
+            {content.description && (
+              <Headline order={2} as="h2" color="gray">{content.description}</Headline>
+            )}
           </Grid>
-        </div>
-      )}
-    </StyledHeader>
-  )
-}
+        </Grid>
+      </div>
+    )}
+  </StyledHeader>
+)
+
