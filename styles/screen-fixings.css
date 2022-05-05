@@ -10,14 +10,6 @@ html.casper .next-image-wrapper {
   display: flex;
 }
 
- {
-  /*
-html.casper .next-image-wrapper img {
-  background-color: #eee;
-}
-*/
-}
-
 @media (min-width: 1040px) {
   html.casper .post-full-content .kg-image-card.kg-width-wide .next-image-wrapper {
     width: 1040px;

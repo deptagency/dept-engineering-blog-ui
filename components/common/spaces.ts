@@ -4,5 +4,8 @@
 export const MAX_WIDTH = 1440;
 
 export const spaces = {
-  m: 24
+  xs: 5,
+  s: 24,
+  m: 40,
+  l: 85
 };
