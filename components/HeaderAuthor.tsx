@@ -1,6 +1,6 @@
 import Grid from '@mui/material/Grid'
 
-import { SiteNav } from '@components/Site-Nav'
+import { SiteNav } from '@components/SiteNav'
 import { HeaderBackground } from '@components/HeaderBackground'
 import { getLang, get } from '@utils/use-lang'
 

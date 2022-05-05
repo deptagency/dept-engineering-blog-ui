@@ -2,7 +2,7 @@ import Grid from '@mui/material/Grid'
 
 import { Tag } from '@tryghost/content-api'
 import { GhostSettings } from '@lib/ghost'
-import { SiteNav } from '@components/Site-Nav'
+import { SiteNav } from '@components/SiteNav'
 import { HeaderBackground } from '@components/HeaderBackground'
 import { getLang, get } from '@utils/use-lang'
 

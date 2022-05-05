@@ -1,5 +1,5 @@
 import { GhostSettings } from 'lib/ghost'
-import { SiteNav } from '@components/Site-Nav'
+import { SiteNav } from '@components/SiteNav'
 
 interface HeaderPostProps {
   settings: GhostSettings,

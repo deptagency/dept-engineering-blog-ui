@@ -1,5 +1,5 @@
 
-import { SiteNav } from '@components/Site-Nav'
+import { SiteNav } from '@components/SiteNav'
 import { GhostSettings } from '@lib/ghost'
 import { Grid } from '@mui/material'
 import { StyledHeader } from './components'
@@ -11,6 +11,12 @@ interface HeaderProps {
 
 /**
  * The beginnings of a fancy new header component
+ *
+ * Index - H1
+ * Author - H1 (name) & "a collection of x posts"
+ * Page - H1
+ * Post - nav only
+ * Tag - H1 (tag) & "a collection of x posts"
 */
 export const Header = ({ settings }: HeaderProps) => {
 

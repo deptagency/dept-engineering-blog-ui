@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Grid from '@mui/material/Grid'
 
-import { SiteNav } from '@components/Site-Nav'
+import { SiteNav } from '@components/SiteNav'
 import { HeaderBackground } from '@components/HeaderBackground'
 import { getLang, get } from '@utils/use-lang'
 import { GhostSettings, NextImage } from '@lib/ghost'
