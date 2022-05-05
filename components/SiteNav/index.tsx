@@ -14,9 +14,7 @@ export interface SiteNavProps {
 }
 
 export const SiteNav = ({ settings }: SiteNavProps) => {
-  const text = get(getLang(settings.lang))
-  const { processEnv } = settings
-  const { customNavigation, nextImages, memberSubscriptions } = processEnv
+  const { processEnv: { customNavigation, nextImages, memberSubscriptions, siteUrl }, title, secondary_navigation, logoImage, logo, navigation, lang } = settings
   const config: {
     overwriteNavigation: NavItem[]
     addNavigation: NavItem[]
@@ -24,13 +22,8 @@ export const SiteNav = ({ settings }: SiteNavProps) => {
     overwriteNavigation: customNavigation || [],
     addNavigation: customNavigation || [],
   }
-  const site = settings
-  const siteUrl = settings.processEnv.siteUrl
-  const title = text(`SITE_TITLE`, site.title)
-  const secondaryNav = site.secondary_navigation && 0 < site.secondary_navigation.length
-  const siteLogo = site.logoImage
-
-  const { navigation } = site
+  const text = get(getLang(lang))
+  const siteTitle = text(`SITE_TITLE`, title)
 
   // overwrite navigation if specified in options
   const labels = navigation?.map((item) => item.label)
@@ -61,23 +54,23 @@ export const SiteNav = ({ settings }: SiteNavProps) => {
         <NavLeftWrapper>
           <NavLeft>
             <Link href="/">
-            {siteLogo && nextImages.feature ? (
+            {logoImage && nextImages.feature ? (
               <NavLogoLink imageHeight={imageHeight}>
                 <div
                   style={{
                     height: '${targetHeight}px',
-                    width: `${calcSiteLogoWidth(siteLogo, imageHeight)}px`,
+                    width: `${calcSiteLogoWidth(logoImage, imageHeight)}px`,
                   }}
                 >
-                  <Image src={siteLogo.url} alt={title} layout="responsive" quality={nextImages.quality} {...siteLogo.dimensions} />
+                  <Image src={logoImage.url} alt={siteTitle} layout="responsive" quality={nextImages.quality} {...logoImage.dimensions} />
                 </div>
               </NavLogoLink>
-            ) : site.logo ? (
+            ) : logo ? (
               <NavLogoLink imageHeight={imageHeight}>
-                <img src={site.logo} alt={title} />
+                <img src={logo} alt={siteTitle} />
               </NavLogoLink>
             ) : (
-              <NavLogoLink imageHeight={imageHeight}>{title}</NavLogoLink>
+              <NavLogoLink imageHeight={imageHeight}>{siteTitle}</NavLogoLink>
             )}
             </Link>
             {
@@ -90,14 +83,14 @@ export const SiteNav = ({ settings }: SiteNavProps) => {
           </NavLeft>
         </NavLeftWrapper>
         <NavRight>
-          {secondaryNav ? (
-            <Navigation data={site.secondary_navigation} isRightNav />
+          {secondary_navigation && secondary_navigation.length > 0 ? (
+            <Navigation data={secondary_navigation} isRightNav />
           ) : (
             <div className="social-links">
-              <SocialLinks {...{ siteUrl, site }} />
+              <SocialLinks {...{ siteUrl, site: settings }} />
             </div>
           )}
-          {memberSubscriptions && <SubscribeButton {...{ lang: settings.lang }} />}
+          {memberSubscriptions && <SubscribeButton {...{ lang }} />}
         </NavRight>
       </StyledSiteNav>
     </NavContainer>
