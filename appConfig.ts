@@ -32,10 +32,6 @@ export const disqusShortname: string = 'short-name-here'
 export const prism: boolean = true
 export const prismIgnoreMissing: boolean = true
 
-// Contact Page
-export const contactPage: boolean = true
-export const customPage = {}
-
 // Table of Contents
 export const toc: boolean = true
 export const maxDepth: number = 2
@@ -52,3 +48,6 @@ export const isr: boolean = false
 export const revalidate: number = 10
 export const maxNumberOfPosts: number = 20
 export const maxNumberOfPages: number = 20
+
+// Custom slugs to be excluded from static generation
+export const customSlugs: string[] = []

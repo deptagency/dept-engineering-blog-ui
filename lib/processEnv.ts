@@ -48,7 +48,6 @@ export interface ProcessEnvProps {
     enable: boolean
     ignoreMissing: boolean
   }
-  contactPage: boolean
   toc: {
     enable: boolean
     maxDepth: number
@@ -60,6 +59,7 @@ export interface ProcessEnvProps {
     maxNumberOfPosts: number
     maxNumberOfPages: number
   }
+  customSlugs: string[]
 }
 
 export const processEnv: ProcessEnvProps = {
@@ -83,7 +83,6 @@ export const processEnv: ProcessEnvProps = {
     enable: resolveBool(process.env.JAMIFY_PRISM, appConfig.prism),
     ignoreMissing: resolveBool(process.env.JAMIFY_PRISM_IGNORE_MISSING, appConfig.prismIgnoreMissing),
   },
-  contactPage: resolveBool(process.env.JAMIFY_CONTACT_PAGE, appConfig.contactPage),
   toc: {
     enable: resolveBool(process.env.JAMIFY_TOC, appConfig.toc),
     maxDepth: resolveNumber(process.env.JAMIFY_TOC_MAX_DEPTH, appConfig.maxDepth),
@@ -95,4 +94,5 @@ export const processEnv: ProcessEnvProps = {
     maxNumberOfPosts: resolveNumber(process.env.JAMIFY_NEXT_ISR_MAX_NUMBER_POSTS, appConfig.maxNumberOfPosts),
     maxNumberOfPages: resolveNumber(process.env.JAMIFY_NEXT_ISR_MAX_NUMBER_PAGES, appConfig.maxNumberOfPages),
   },
+  customSlugs: appConfig.customSlugs || []
 }
