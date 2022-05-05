@@ -56,15 +56,6 @@ html.casper figure.kg-width-full:not(.fluid-image) {
   z-index: 1;
 }
 
-/* Dark mode */
-html.casper body.dark .post-full-content aside {
-  color: #bbb;
-  background: color-mod(var(--darkgrey) alpha(0.6));
-}
-html.casper body.dark .post-full-content aside a {
-  box-shadow: none;
-}
-
 /* Page styles */
 html.casper aside.toc {
   order: 1;

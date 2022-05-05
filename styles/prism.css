@@ -131,7 +131,3 @@ html.casper .gatsby-highlight pre[class*='language-'] {
   min-width: 100%;
   margin-bottom: 3em;
 }
-html.casper body.dark code[class*='language-'],
-html.casper body.dark pre[class*='language-'] {
-  background: none;
-}

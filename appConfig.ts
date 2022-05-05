@@ -9,11 +9,6 @@ export const fileCache: boolean = true
 // Google analytics tracking ID (now called measurement ID in version 4)
 export const gaMeasurementId: string = 'UA-76046545-1'
 
-// Dark mode
-export type DarkMode = 'dark' | 'light' | null
-export const defaultMode: DarkMode = 'light'
-export const overrideOS: boolean = true
-
 // Images
 export const nextFeatureImages: boolean = true
 export const nextInlineImages: boolean = true
