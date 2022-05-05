@@ -9,7 +9,7 @@ import { ghostAPIUrl, ghostAPIKey, processEnv, ProcessEnvProps } from '@lib/proc
 import { imageDimensions, normalizedImageUrl, Dimensions } from '@lib/images'
 import { IToC } from '@lib/toc'
 
-import { contactPage } from '@appConfig'
+import { customSlugs } from '@appConfig'
 
 export interface NextImage {
   url: string
@@ -76,8 +76,8 @@ const postAndPageSlugOptions: Params = {
 }
 
 const excludePostOrPageBySlug = () => {
-  if (!contactPage) return ''
-  return 'slug:-contact'
+  if (customSlugs.length === 0) return ''
+  return customSlugs.map(slug => `slug:-${slug}`)
 }
 
 // helpers
