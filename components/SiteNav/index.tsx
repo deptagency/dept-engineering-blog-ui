@@ -57,45 +57,49 @@ export const SiteNav = ({ settings }: SiteNavProps) => {
 
   return (
     <NavContainer>
-        <StyledSiteNav>
-          <NavLeftWrapper>
-            <NavLeft>
-              <Link href="/">
-                {siteLogo && nextImages.feature ? (
-                  <NavLogoLink imageHeight={imageHeight}>
-                    <div
-                      style={{
-                        height: '${targetHeight}px',
-                        width: `${calcSiteLogoWidth(siteLogo, imageHeight)}px`,
-                      }}
-                    >
-                      <Image src={siteLogo.url} alt={title} layout="responsive" quality={nextImages.quality} {...siteLogo.dimensions} />
-                    </div>
-                  </NavLogoLink>
-                ) : site.logo ? (
-                  <NavLogoLink imageHeight={imageHeight}>
-                    <img src={site.logo} alt={title} />
-                  </NavLogoLink>
-                ) : (
-                  <NavLogoLink imageHeight={imageHeight}>{title}</NavLogoLink>
-                )}
-              </Link>
-              <NavContent>
-                <Navigation data={navigation} />
-              </NavContent>
-            </NavLeft>
-          </NavLeftWrapper>
-          <NavRight>
-            {secondaryNav ? (
-              <Navigation data={site.secondary_navigation} isRightNav />
+      <StyledSiteNav>
+        <NavLeftWrapper>
+          <NavLeft>
+            <Link href="/">
+            {siteLogo && nextImages.feature ? (
+              <NavLogoLink imageHeight={imageHeight}>
+                <div
+                  style={{
+                    height: '${targetHeight}px',
+                    width: `${calcSiteLogoWidth(siteLogo, imageHeight)}px`,
+                  }}
+                >
+                  <Image src={siteLogo.url} alt={title} layout="responsive" quality={nextImages.quality} {...siteLogo.dimensions} />
+                </div>
+              </NavLogoLink>
+            ) : site.logo ? (
+              <NavLogoLink imageHeight={imageHeight}>
+                <img src={site.logo} alt={title} />
+              </NavLogoLink>
             ) : (
-              <div className="social-links">
-                <SocialLinks {...{ siteUrl, site }} />
-              </div>
+              <NavLogoLink imageHeight={imageHeight}>{title}</NavLogoLink>
             )}
-            {memberSubscriptions && <SubscribeButton {...{ lang: settings.lang }} />}
-          </NavRight>
-        </StyledSiteNav>
+            </Link>
+            {
+              navigation && navigation.length > 0 && (
+                <NavContent>
+                  <Navigation data={navigation} />
+                </NavContent>
+              )
+            }
+          </NavLeft>
+        </NavLeftWrapper>
+        <NavRight>
+          {secondaryNav ? (
+            <Navigation data={site.secondary_navigation} isRightNav />
+          ) : (
+            <div className="social-links">
+              <SocialLinks {...{ siteUrl, site }} />
+            </div>
+          )}
+          {memberSubscriptions && <SubscribeButton {...{ lang: settings.lang }} />}
+        </NavRight>
+      </StyledSiteNav>
     </NavContainer>
   )
 }

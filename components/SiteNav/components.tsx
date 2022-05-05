@@ -67,7 +67,7 @@ export const NavLogoLink = styled.a<{ imageHeight: number }>(({ imageHeight }) =
   display: inline-block;
   margin-right: ${spaces.lg}px;
   padding: ${spaces.xs}px 0;
-  color: #fff;
+  color: ${colors.white};
   font-size: 1.7rem;
   line-height: 1.8rem;
   font-weight: bold;
@@ -96,7 +96,7 @@ export const NavRight = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding: 10px 0;
+  padding: ${spaces.xs}px 0;
   height: ${SITE_NAV_HEIGHT}px;
 
   @media (max-width: 700px) {
