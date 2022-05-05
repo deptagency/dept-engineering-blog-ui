@@ -2,7 +2,7 @@ import { MAX_WIDTH, spaces } from '@components/common/spaces';
 import styled from '@emotion/styled';
 
 const Outer = styled.div`
-  padding: 0 ${spaces.s}px;
+  padding: 0 ${spaces.md}px;
 `;
 
 const Inner = styled.div`

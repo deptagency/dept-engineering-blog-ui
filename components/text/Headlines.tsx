@@ -3,11 +3,9 @@ import { colors, Colors } from '@components/common/colors';
 
 /**
  *
- * Order 0: Primary headline
- * Order 1: Secondary headline
- *      Post Card Titles (h2)
- * Order 2: Primary Subheadline
- *     Header site description (h2)
+ * Order 0: Primary headlines (ie. header headlines)
+ * Order 1: Secondary headlines (ie. post card headlines)
+ * Order 2: Primary Subheadline (ie. header subheadlines)
 */
 
 interface HeadlineProps {

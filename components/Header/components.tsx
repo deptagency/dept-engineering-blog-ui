@@ -8,25 +8,17 @@ export const StyledHeader = styled.header`
 `;
 
 export const StyledSubHeadline = styled(Headline)`
-  margin-top: ${spaces.xs}px;
+  margin-top: ${spaces.xxxs}px;
 `;
 
 export const StyledHeaderContent = styled.div<{ isHome?: boolean }>`
-  padding: 12vw 0 ${spaces.s}px;
-
-  @media (min-width: 500px) {
-    padding-bottom: ${spaces.m}px;
-  }
-
-  @media (min-width: 900px) {
-    padding: 5vw 0 ${spaces.s}px;
-  }
+  padding: ${spaces.lg}px 0;
 
   ${({ isHome }) => isHome && `
-    padding: ${spaces.m}px 0;
+    padding: ${spaces.lg}px 0;
 
     @media (min-width: 900px) {
-      padding: ${spaces.l}px 0;
+      padding: ${spaces.xl}px 0;
     }
   `}
 `;

@@ -3,9 +3,16 @@
 */
 export const MAX_WIDTH = 1440;
 
+/**
+ * The basis for a spatial system.
+*/
 export const spaces = {
-  xs: 5,
-  s: 24,
-  m: 40,
-  l: 85
+  xxxs: 4,
+  xxs: 8,
+  xs: 12,
+  sm: 16,
+  md: 24,
+  lg: 32,
+  xl: 64,
+  xxl: 128
 };

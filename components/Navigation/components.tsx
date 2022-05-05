@@ -1,4 +1,5 @@
 import { colors } from '@components/common/colors';
+import { spaces } from '@components/common/spaces';
 import styled from '@emotion/styled';
 
 interface NavProps {
@@ -12,7 +13,7 @@ export const NavList = styled.ul<NavProps>(
   position: absolute;
   z-index: 1000;
   display: flex;
-  margin: 0 0 0 -12px;
+  margin: 0 0 0 -${spaces.xs}px;
   padding: 0;
   list-style: none;
   transition: all 1.0s cubic-bezier(0.19, 1, 0.22, 1);
@@ -20,8 +21,6 @@ export const NavList = styled.ul<NavProps>(
   ${isRightNav && `
     position: relative;
     margin: 0;
-
-
   `}
 `);
 
@@ -34,13 +33,13 @@ export const NavListItem = styled.li<NavProps>(
     padding: 0;
 
     &:last-of-type {
-      padding-right: 20px;
+      padding-right: ${spaces.md}px;
     }
 
     a {
       position: relative;
       display: block;
-      padding: 12px 12px;
+      padding: ${spaces.xs}px ${spaces.xs}px;
       color: ${colors.onyx};
       opacity: 1;
       text-transform: uppercase;

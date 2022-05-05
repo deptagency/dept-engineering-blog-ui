@@ -1,8 +1,9 @@
 import styled from '@emotion/styled';
 import { colors } from '@components/common/colors';
 import { Container } from '@components/helpers/Container';
+import { spaces } from '@components/common/spaces';
 
-export const SITE_NAV_HEIGHT = 64;
+export const SITE_NAV_HEIGHT = spaces.xl;
 
 export const NavContainer = styled(Container)`
   position: fixed;
@@ -37,8 +38,8 @@ export const NavLeft = styled.div`
   overflow-x: auto;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
-  margin-right: 10px;
-  padding: 10px 0 80px;
+  margin-right: ${spaces.xs}px;
+  padding: ${spaces.xs}px 0 ${spaces.xxl}px;
   font-weight: 500;
   letter-spacing: 0.2px;
   text-transform: uppercase;
@@ -55,7 +56,7 @@ export const NavLeft = styled.div`
 
 What's happening above is NavLeft is set to overflow-x and allow sideways scrolling, so that when there isn't enough space for all nav items (either due to lots of nav items, or a small viewport), you can still scroll side-to-side to reach them. Also, there is a small gradient on the left and right side covering the menu so that the menu goes offscreen smoothly.
 
-The knock-on effect of this is ugly browser-scroll bars at the bottom, so 80px of padding-bottom and a fixed height parent (StyledSiteNav) hides that entirely. Slightly hacky code. But nice clean end-result.
+The knock-on effect of this is ugly browser-scroll bars at the bottom, so 128px of padding-bottom and a fixed height parent (StyledSiteNav) hides that entirely. Slightly hacky code. But nice clean end-result.
 
 */
 
@@ -64,8 +65,8 @@ export const NavLogoLink = styled.a<{ imageHeight: number }>(({ imageHeight }) =
   z-index: 100;
   flex-shrink: 0;
   display: inline-block;
-  margin-right: 32px;
-  padding: 12px 0;
+  margin-right: ${spaces.lg}px;
+  padding: ${spaces.xs}px 0;
   color: #fff;
   font-size: 1.7rem;
   line-height: 1.8rem;
