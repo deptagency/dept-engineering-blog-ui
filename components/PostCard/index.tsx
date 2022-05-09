@@ -29,7 +29,7 @@ export const PostCard = ({ settings, post, num, isColorInverted }: PostCardProps
   const featImg = post.featureImage
   const readingTime = readingTimeHelper(post).replace(`min read`, text(`MIN_READ`))
   const postClass = PostClass({ tags: post.tags, isFeatured: post.featured, isImage: !!featImg })
-  const isFirstPost = (featImg && num !== undefined && num < 1)
+  const isFirstPost = (num !== undefined && num < 1)
   const authors = post?.authors?.filter((_, i) => (i < 2 ? true : false))
   const textColor = isFirstPost || isColorInverted ? "white" : undefined;
 
