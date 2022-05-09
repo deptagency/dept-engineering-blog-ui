@@ -5,6 +5,7 @@ import { Subheading2 } from '@components/text/Subheadings'
 import { GhostSettings } from '@lib/ghost'
 import { Grid } from '@mui/material'
 import { StyledHeader, StyledHeaderContent } from './components'
+
 interface HeaderProps {
   settings: GhostSettings,
   isHome?: boolean,
@@ -28,7 +29,7 @@ export const Header = ({ settings, isHome, content }: HeaderProps) => (
               {content.description && (
                 <Subheading2>{content.description}</Subheading2>
               )}
-              </ StyledHeaderContent>
+              </StyledHeaderContent>
           </Grid>
         </Grid>
       </div>
