@@ -38,7 +38,7 @@ const NavLogoLink = styled.a`
   }
 `;
 
-const NextImageWrapper = styled.div<{ imageWidth?: number }>`
+const ImageWrapper = styled.div<{ imageWidth?: number }>`
   width: ${({imageWidth}) => imageWidth ? `${imageWidth}px` : "auto"};
 `;
 
@@ -58,9 +58,9 @@ export const LogoLink: React.FC<LogoLinkProps> = ({ settings }) => {
     <Link href="/">
       {logoImage && nextImages.feature ? (
         <NavLogoLink>
-          <NextImageWrapper imageWidth={imageWidth}>
+          <ImageWrapper imageWidth={imageWidth}>
             <Image src={logoImage.url} alt={siteTitle} layout="responsive" quality={nextImages.quality} {...logoImage.dimensions} />
-          </NextImageWrapper>
+          </ImageWrapper>
         </NavLogoLink>
       ) : logo ? (
         <NavLogoLink>
