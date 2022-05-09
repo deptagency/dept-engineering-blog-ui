@@ -18,7 +18,7 @@ const mapPropsToStyles = ({ order = 0 }: SubscribeHeadlineProps) => {
       return `
         font-size: 3.6rem;
         line-height: 4.4rem;
-        font-weight: 300;
+        font-weight: 400;
       `
   }
 }

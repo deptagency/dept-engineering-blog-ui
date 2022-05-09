@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 import { CSSProperties } from 'react'
-
 import styled from '@emotion/styled';
 
 import { useOverlay } from '@components/contexts/overlayProvider'
@@ -8,9 +7,9 @@ import { GhostSettings } from '@lib/ghost'
 import { getLang, get } from '@utils/use-lang'
 import { siteIcon } from '@meta/siteDefaults'
 
-import { SubscribeForm } from '@components/Subscribe/form'
-import { SubscribeHeadline } from './components'
 import { spaces } from '@components/common/spaces';
+import { SubscribeForm } from './form';
+import { SubscribeHeadline } from './components'
 
 const StyledSubscribeHeadline = styled(SubscribeHeadline)`
   display: inline-block;
