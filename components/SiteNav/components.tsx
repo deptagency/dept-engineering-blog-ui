@@ -60,32 +60,6 @@ The knock-on effect of this is ugly browser-scroll bars at the bottom, so 128px 
 
 */
 
-export const NavLogoLink = styled.a<{ imageHeight: number }>(({ imageHeight }) =>`
-  position: relative;
-  z-index: 100;
-  flex-shrink: 0;
-  display: inline-block;
-  margin-right: ${spaces.lg}px;
-  padding: ${spaces.xs}px 0;
-  color: ${colors.white};
-  font-size: 1.7rem;
-  line-height: 1.8rem;
-  font-weight: bold;
-  letter-spacing: -0.5px;
-  text-transform: none;
-
-  &:hover {
-    text-decoration: none;
-    cursor: pointer;
-  }
-
-  img {
-    display: block;
-    width: auto;
-    height: ${imageHeight}px;
-  }
-`);
-
 export const NavContent = styled.div`
   position: relative;
   align-self: flex-start;

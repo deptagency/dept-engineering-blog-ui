@@ -1,29 +1,26 @@
-/* eslint-disable @next/next/no-img-element */
-import Image from 'next/image'
-import Link from 'next/link'
-
 import { Navigation } from '@components/Navigation'
 import { SocialLinks } from '@components/SocialLinks'
 import { SubscribeButton } from '@components/SubscribeButton'
-import { getLang, get } from '@utils/use-lang'
-import { GhostSettings, NavItem, NextImage } from '@lib/ghost'
-import { NavContainer, NavContent, NavLeft, NavLeftWrapper, NavLogoLink, NavRight, StyledSiteNav } from './components'
+import { GhostSettings, NavItem } from '@lib/ghost'
+import { NavContainer, NavContent, NavLeft, NavLeftWrapper, NavRight, StyledSiteNav } from './components'
+import { LogoLink } from './LogoLink'
 
 export interface SiteNavProps {
   settings: GhostSettings
 }
 
+interface SiteNavConfig {
+  overwriteNavigation: NavItem[]
+  addNavigation: NavItem[]
+}
+
 export const SiteNav = ({ settings }: SiteNavProps) => {
-  const { processEnv: { customNavigation, nextImages, memberSubscriptions, siteUrl }, title, secondary_navigation, logoImage, logo, navigation, lang } = settings
-  const config: {
-    overwriteNavigation: NavItem[]
-    addNavigation: NavItem[]
-  } = {
+  const { processEnv: { customNavigation, memberSubscriptions, siteUrl }, secondary_navigation, navigation, lang } = settings
+
+  const config: SiteNavConfig  = {
     overwriteNavigation: customNavigation || [],
     addNavigation: customNavigation || [],
   }
-  const text = get(getLang(lang))
-  const siteTitle = text(`SITE_TITLE`, title)
 
   // overwrite navigation if specified in options
   const labels = navigation?.map((item) => item.label)
@@ -42,37 +39,12 @@ export const SiteNav = ({ settings }: SiteNavProps) => {
     config.addNavigation.map((item) => urls?.indexOf(item.url) === -1 && navigation?.push(item))
   }
 
-  const imageHeight = 21;
-  const calcSiteLogoWidth = (image: NextImage, targetHeight: number) => {
-    const { width, height } = image.dimensions
-    return (targetHeight * width) / height
-  }
-
   return (
     <NavContainer>
       <StyledSiteNav>
         <NavLeftWrapper>
           <NavLeft>
-            <Link href="/">
-            {logoImage && nextImages.feature ? (
-              <NavLogoLink imageHeight={imageHeight}>
-                <div
-                  style={{
-                    height: '${targetHeight}px',
-                    width: `${calcSiteLogoWidth(logoImage, imageHeight)}px`,
-                  }}
-                >
-                  <Image src={logoImage.url} alt={siteTitle} layout="responsive" quality={nextImages.quality} {...logoImage.dimensions} />
-                </div>
-              </NavLogoLink>
-            ) : logo ? (
-              <NavLogoLink imageHeight={imageHeight}>
-                <img src={logo} alt={siteTitle} />
-              </NavLogoLink>
-            ) : (
-              <NavLogoLink imageHeight={imageHeight}>{siteTitle}</NavLogoLink>
-            )}
-            </Link>
+            <LogoLink settings={settings} />
             {
               navigation && navigation.length > 0 && (
                 <NavContent>
