@@ -35,7 +35,7 @@ export const PostCard = ({ settings, post, num, isColorInverted }: PostCardProps
 
   if (isFirstPost) {
     return (
-      <article className={`post-card ${postClass} post-card-large`} data-Num={num}>
+      <article className={`post-card ${postClass} post-card-large`}>
         <Grid alignItems="center" container spacing={{ xs: 2, md: 5 }}>
           {featImg && (
             <Grid item xs={12} lg={5}>
@@ -104,7 +104,7 @@ export const PostCard = ({ settings, post, num, isColorInverted }: PostCardProps
   }
 
   return (
-    <article className={`post-card ${postClass}`} data-Num={num}>
+    <article className={`post-card ${postClass}`}>
       {featImg && (
         <Link href={url}>
           <a className="post-card-image-link" aria-label={post.title}>
