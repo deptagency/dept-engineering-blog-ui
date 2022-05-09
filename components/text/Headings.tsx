@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { colors, Colors } from '@components/common/colors';
+import { spaces } from '@components/common/spaces';
 
 /**
  *
@@ -59,6 +60,7 @@ export const Heading1 = styled.h1<HeadingProps>`
 `;
 
 export const Heading2 = styled.h2<HeadingProps>`
+  margin: 0 0 ${spaces.sm}px;
   ${props => mapHeadingOrderToStyles({...props, order: 2})};
   color: ${({ color }) => color ? colors[color] : colors.onyx};
 `;
