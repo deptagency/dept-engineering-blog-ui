@@ -8,7 +8,6 @@ import { readingTime as readingTimeHelper } from '@lib/readingTime'
 import { resolveUrl } from '@utils/routing'
 import { getLang, get } from '@utils/use-lang'
 
-// import { AuthorList } from '@components/AuthorList'
 import { PostClass } from '@helpers/PostClass'
 import { collections } from '@lib/collections'
 import { GhostPostOrPage, GhostSettings } from '@lib/ghost'
@@ -75,7 +74,6 @@ export const PostCard = ({ settings, post, num, isHome }: PostCardProps) => {
               </Link>
 
               <footer className="post-card-meta">
-                {/* <AuthorList {...{ settings, authors: post.authors }} /> */}
                 <div className="post-card-byline-content">
                   {post.authors && post.authors.length > 2 && <span>{text(`MULTIPLE_AUTHORS`)}</span>}
                   {post.authors && post.authors.length < 3 && (
@@ -144,7 +142,6 @@ export const PostCard = ({ settings, post, num, isHome }: PostCardProps) => {
         </Link>
 
         <footer className="post-card-meta">
-          {/* <AuthorList {...{ settings, authors: post.authors }} /> */}
           <div className="post-card-byline-content">
             {post.authors && post.authors.length > 2 && <span>{text(`MULTIPLE_AUTHORS`)}</span>}
             {post.authors && post.authors.length < 3 && (
