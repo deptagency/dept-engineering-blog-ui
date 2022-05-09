@@ -14,6 +14,7 @@ import { processEnv } from '@lib/processEnv'
 
 import { BodyClass } from '@helpers/BodyClass'
 import { Header } from '@components/Header'
+import { getPostCollectionDescription } from '@utils/get-collection-description'
 
 /**
  * Tag page (/tag/:slug)
@@ -43,9 +44,7 @@ const TagIndex = ({ cmsData }: TagIndexProps) => {
 
   const { tag, posts, settings, seoImage, bodyClass } = cmsData
   const { meta_title, meta_description } = tag
-  const text = get(getLang(settings.lang))
-  const numberOfPosts = tag.count?.posts
-  const fallbackDescription = `${text(`A_COLLECTION_OF`)} ${(numberOfPosts && numberOfPosts > 0 && (numberOfPosts === 1 ? `1 ${text(`POST`)}` : `${numberOfPosts} ${text(`POSTS`)}`)) || `${text(`POSTS`)}`}`
+  const fallbackDescription = getPostCollectionDescription(tag.count?.posts, settings.lang)
 
   return (
     <>

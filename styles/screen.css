@@ -595,11 +595,6 @@ html.casper .post-full-meta-date {
     }
 }
 
-html.casper .post-full-title {
-    margin: 0 0 0.2em;
-    color: color-mod(var(--darkgrey) l(-5%));
-}
-
 html.casper .post-full-custom-excerpt {
     margin: 20px 0 0;
     color: var(--midgrey);
@@ -1033,12 +1028,6 @@ html.casper .footnote-backref {
     html.casper .post-full-meta {
         font-size: 1.2rem;
         line-height: 1.3em;
-    }
-
-    html.casper .post-full-title {
-        margin-top: 0.2em;
-        font-size: 4.2rem;
-        line-height: 1.05em;
     }
 
     html.casper .post-full-image {
