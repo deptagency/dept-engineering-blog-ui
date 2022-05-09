@@ -2,6 +2,7 @@ import Grid from '@mui/material/Grid';
 
 import { PostCard } from '@components/PostCard'
 import { GhostPostOrPage, GhostSettings } from '@lib/ghost'
+import { PreviewPostsHeadline } from './components';
 
 interface PreviewPostsProps {
   settings: GhostSettings
@@ -17,7 +18,7 @@ export const PreviewPosts = ({ settings, prev, next }: PreviewPostsProps) => {
           <div className="grid-wrapper">
             <Grid className="grid-inner" container columnSpacing={{ xs: 0, md: 3 }}>
               <Grid item xs={12} md={4}>
-                <h2 className="up-next-header">Up next</h2>
+                <PreviewPostsHeadline as="h2" order={1} color="white">Up next</PreviewPostsHeadline>
               </Grid>
               <Grid item xs={12} md={4}>
                 {prev && prev.slug && <PostCard {...{ settings, post: prev, isColorInverted: true }} />}
