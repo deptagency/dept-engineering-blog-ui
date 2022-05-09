@@ -22,7 +22,7 @@ import { ISeoImage } from '@meta/seoImage'
 
 import React from 'react'
 import { Header } from './Header'
-import { Headline } from './text/Headlines'
+import { Heading1 } from './text/Headings'
 
 interface PostProps {
   cmsData: {
@@ -79,7 +79,7 @@ export const Post = ({ cmsData }: PostProps) => {
                     </section>
                   )}
 
-                  <Headline>{title}</Headline>
+                  <Heading1>{title}</Heading1>
 
                   {post.custom_excerpt && <p className="post-full-custom-excerpt">{post.custom_excerpt}</p>}
 
