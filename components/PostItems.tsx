@@ -16,12 +16,12 @@ interface FirstPostItemProps {
   num: number
 }
 
-const FirstPost = ({ settings, post, isHome, num }: FirstPostItemProps) => (
+const FirstPost = ({ settings, post, num }: FirstPostItemProps) => (
   <div className="first-post-wrapper">
     <div className="grid-wrapper">
       <Grid className="grid-inner" container>
         <Grid item xs={12}>
-          <PostCard key={1} {...{settings, post, isHome, num }} />
+          <PostCard key={1} {...{settings, post, num }} />
         </Grid>
       </Grid>
     </div>
@@ -65,7 +65,7 @@ export const PostItems = ({ settings, posts, isHome }: PostItemsProps) => {
       <Grid className="grid-inner" columnSpacing={{ xs: 0, md: 3 }} container>
         {row.map((post, n) => (
           <Grid key={`${i + 1} ${n}`} item xs={12} md={row.length === 1 ? 12 : row.length === 3 ? 4 : 6}>
-            <PostCard {...{settings, post, isHome, num: parseInt(`${i + 1}${n}`) }} />
+            <PostCard {...{settings, post, num: parseInt(`${i + 1}${n}`) }} />
           </Grid>
         ))}
       </Grid>

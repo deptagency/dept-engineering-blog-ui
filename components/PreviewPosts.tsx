@@ -1,19 +1,15 @@
 import Grid from '@mui/material/Grid';
 
 import { PostCard } from '@components/PostCard'
-
-import { Tag } from '@tryghost/content-api'
-import { GhostPostOrPage, GhostPostsOrPages, GhostSettings } from '@lib/ghost'
+import { GhostPostOrPage, GhostSettings } from '@lib/ghost'
 
 interface PreviewPostsProps {
   settings: GhostSettings
-  primaryTag?: Tag | null
-  posts?: GhostPostsOrPages
   prev?: GhostPostOrPage
   next?: GhostPostOrPage
 }
 
-export const PreviewPosts = ({ settings, primaryTag, posts, prev, next }: PreviewPostsProps) => {
+export const PreviewPosts = ({ settings, prev, next }: PreviewPostsProps) => {
   return (
     <aside className="read-next outer">
       <div className="inner">
@@ -24,10 +20,10 @@ export const PreviewPosts = ({ settings, primaryTag, posts, prev, next }: Previe
                 <h2 className="up-next-header">Up next</h2>
               </Grid>
               <Grid item xs={12} md={4}>
-                {prev && prev.slug && <PostCard {...{ settings, post: prev }} />}
+                {prev && prev.slug && <PostCard {...{ settings, post: prev, isColorInverted: true }} />}
               </Grid>
               <Grid item xs={12} md={4}>
-                {next && next.slug && <PostCard {...{ settings, post: next }} />}
+                {next && next.slug && <PostCard {...{ settings, post: next, isColorInverted: true }} />}
               </Grid>
             </Grid>
           </div>
