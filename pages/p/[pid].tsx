@@ -25,7 +25,6 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const settings = await getAllSettings()
 
   let post: GhostPostOrPage | null = null
-  console.log(pid);
   post = await getPostPreviewById(pid);
 
   let previewPosts: GhostPostsOrPages | never[] = []

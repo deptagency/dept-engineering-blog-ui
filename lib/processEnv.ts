@@ -22,12 +22,6 @@ const resolveNumber = (value: string | undefined, defaultValue: number) => {
   return parseInt(value, 10)
 }
 
-const resolveDarkMode = (value: string | undefined, defaultValue: appConfig.DarkMode) => {
-  if (!value) return defaultValue
-  if (value === 'dark') return 'dark'
-  return 'light'
-}
-
 function reolveJSON<T>(value: string | undefined, defaultValue: T) {
   if (!value) return defaultValue
   return JSON.parse(value) as T
@@ -37,10 +31,6 @@ export interface ProcessEnvProps {
   siteUrl: string
   platform: string
   gaMeasurementId: string
-  darkMode: {
-    defaultMode: appConfig.DarkMode
-    overrideOS: boolean
-  }
   nextImages: {
     feature: boolean
     inline: boolean
@@ -58,7 +48,6 @@ export interface ProcessEnvProps {
     enable: boolean
     ignoreMissing: boolean
   }
-  contactPage: boolean
   toc: {
     enable: boolean
     maxDepth: number
@@ -70,16 +59,13 @@ export interface ProcessEnvProps {
     maxNumberOfPosts: number
     maxNumberOfPages: number
   }
+  customSlugs: string[]
 }
 
 export const processEnv: ProcessEnvProps = {
   siteUrl,
   platform,
   gaMeasurementId: process.env.JAMIFY_GA_MEASUREMENT_ID || appConfig.gaMeasurementId,
-  darkMode: {
-    defaultMode: resolveDarkMode(process.env.JAMIFY_DARK_MODE_DEFAULT, appConfig.defaultMode),
-    overrideOS: resolveBool(process.env.JAMIFY_DARK_MODE_OVERRIDE_OS, appConfig.overrideOS),
-  },
   nextImages: {
     feature: resolveBool(process.env.JAMIFY_NEXT_FEATURE_IMAGES, appConfig.nextFeatureImages),
     inline: resolveBool(process.env.JAMIFY_NEXT_INLINE_IMAGES, appConfig.nextInlineImages),
@@ -97,7 +83,6 @@ export const processEnv: ProcessEnvProps = {
     enable: resolveBool(process.env.JAMIFY_PRISM, appConfig.prism),
     ignoreMissing: resolveBool(process.env.JAMIFY_PRISM_IGNORE_MISSING, appConfig.prismIgnoreMissing),
   },
-  contactPage: resolveBool(process.env.JAMIFY_CONTACT_PAGE, appConfig.contactPage),
   toc: {
     enable: resolveBool(process.env.JAMIFY_TOC, appConfig.toc),
     maxDepth: resolveNumber(process.env.JAMIFY_TOC_MAX_DEPTH, appConfig.maxDepth),
@@ -109,4 +94,5 @@ export const processEnv: ProcessEnvProps = {
     maxNumberOfPosts: resolveNumber(process.env.JAMIFY_NEXT_ISR_MAX_NUMBER_POSTS, appConfig.maxNumberOfPosts),
     maxNumberOfPages: resolveNumber(process.env.JAMIFY_NEXT_ISR_MAX_NUMBER_PAGES, appConfig.maxNumberOfPages),
   },
+  customSlugs: appConfig.customSlugs || []
 }

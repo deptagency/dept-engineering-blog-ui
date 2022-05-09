@@ -22,6 +22,16 @@ const defaultOptions = withBundleAnalyzer({
     ],
   },
   reactStrictMode: true,
+  // Redirects are not supported by `next export`.
+  async redirects() {
+    return [
+      {
+        source: '/contact',
+        destination: 'https://www.deptagency.com/contact/',
+        permanent: true
+      }
+    ]
+  }
 })
 
 /**
