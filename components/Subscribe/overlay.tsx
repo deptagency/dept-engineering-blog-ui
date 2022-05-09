@@ -1,12 +1,21 @@
 /* eslint-disable @next/next/no-img-element */
 import { CSSProperties } from 'react'
 
+import styled from '@emotion/styled';
+
 import { useOverlay } from '@components/contexts/overlayProvider'
 import { GhostSettings } from '@lib/ghost'
 import { getLang, get } from '@utils/use-lang'
 import { siteIcon } from '@meta/siteDefaults'
 
-import { SubscribeForm } from '@components/SubscribeForm'
+import { SubscribeForm } from '@components/Subscribe/form'
+import { SubscribeHeadline } from './components'
+import { spaces } from '@components/common/spaces';
+
+const StyledSubscribeHeadline = styled(SubscribeHeadline)`
+  display: inline-block;
+  margin: 0 0 ${spaces.xs}px;
+`;
 
 export const SubscribeOverlay = ({ settings }: { settings: GhostSettings }) => {
   const text = get(getLang(settings.lang))
@@ -24,9 +33,9 @@ export const SubscribeOverlay = ({ settings }: { settings: GhostSettings }) => {
       <div className="subscribe-overlay-content">
         {siteLogo && <img className="subscribe-overlay-logo" src={siteLogo} alt={title} />}
         <div className="subscribe-form">
-          <h1 className="subscribe-overlay-title">
+          <StyledSubscribeHeadline color="white">
             STAY UP TO DATE
-          </h1>
+          </StyledSubscribeHeadline>
           <p className="subscribe-overlay-description">{text(`SUBSCRIBE_OVERLAY`)}</p>
           <p className="subscribe-overlay-description">See the DEPT® <a href="https://www.deptagency.com/en-us/terms-conditions/" rel="noreferrer" target="_blank">Terms &amp; Conditions</a></p>
           <SubscribeForm {...{ settings }} />

@@ -1,6 +1,5 @@
 import { getLang, get } from '@utils/use-lang'
 import { useOverlay } from '@components/contexts/overlayProvider'
-import { GhostSettings } from '@lib/ghost'
 
 // The actual component
 export const SubscribeButton = ({ lang }: { lang?: string }) => {

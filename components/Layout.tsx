@@ -2,8 +2,8 @@ import { ReactFragment } from 'react'
 import Image from 'next/image'
 
 import { DocumentHead } from '@components/DocumentHead'
-import { SubscribeOverlay } from '@components/SubscribeOverlay'
-import { SubscribeSuccess } from '@components/SubscribeSuccess'
+import { SubscribeOverlay } from '@components/Subscribe/overlay'
+import { SubscribeSuccess } from '@components/Subscribe/success'
 
 import { getLang, get } from '@utils/use-lang'
 import { GhostSettings } from '@lib/ghost'

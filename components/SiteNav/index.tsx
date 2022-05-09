@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 import { Navigation } from '@components/Navigation'
 import { SocialLinks } from '@components/SocialLinks'
-import { SubscribeButton } from '@components/SubscribeButton'
+import { SubscribeButton } from '@components/Subscribe/button'
 import { getLang, get } from '@utils/use-lang'
 import { GhostSettings, NavItem, NextImage } from '@lib/ghost'
 import { NavContainer, NavContent, NavLeft, NavLeftWrapper, NavLogoLink, NavRight, StyledSiteNav } from './components'
