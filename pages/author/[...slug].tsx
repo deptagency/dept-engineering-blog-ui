@@ -14,6 +14,7 @@ import { ISeoImage, seoImage } from '@meta/seoImage'
 import { processEnv } from '@lib/processEnv'
 
 import { BodyClass } from '@helpers/BodyClass'
+import { getPostCollectionDescription } from '@utils/get-collection-description'
 
 /**
  * Author page (/author/:slug)
@@ -43,9 +44,7 @@ const AuthorIndex = ({ cmsData }: AuthorIndexProps) => {
   const { author, posts, settings, seoImage, bodyClass } = cmsData
   const { name, bio } = author
   const sameAs = authorSameAs(author)
-  const text = get(getLang(settings.lang))
-  const numberOfPosts = author.count?.posts
-  const description = `${text(`A_COLLECTION_OF`)} ${(numberOfPosts && numberOfPosts > 0 && (numberOfPosts === 1 ? `1 ${text(`POST`)}` : `${numberOfPosts} ${text(`POSTS`)}`)) || `${text(`POSTS`)}`}`
+  const description = getPostCollectionDescription(author.count?.posts, settings.lang);
 
   return (
     <>
