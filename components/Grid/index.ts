@@ -1,0 +1,1 @@
+export { GridWrapper, Row, Col, FirstPostCol } from './styles'
