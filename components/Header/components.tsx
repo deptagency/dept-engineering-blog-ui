@@ -11,7 +11,7 @@ export const StyledHeaderContent = styled.div<{ isHome?: boolean }>`
 
   ${({ isHome }) => isHome && `
     @media (min-width: 900px) {
-      padding: ${spaces.xl}px 0;
+      padding: ${spaces.xxl}px 0;
     }
   `}
 `;

@@ -3,7 +3,6 @@ import { colors, Colors } from '@components/common/colors';
 import { spaces } from '@components/common/spaces';
 
 /**
- *
  * Subheading1: Primary subheadline (ie. post exerpt)
  * Subheading2: Secondary subheadline
 */

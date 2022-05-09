@@ -3,7 +3,7 @@ import { colors } from '@components/common/colors';
 import { Container } from '@components/helpers/Container';
 import { spaces } from '@components/common/spaces';
 
-export const SITE_NAV_HEIGHT = spaces.xl;
+export const SITE_NAV_HEIGHT = spaces.xxl;
 
 export const NavContainer = styled(Container)`
   position: fixed;
@@ -39,7 +39,7 @@ export const NavLeft = styled.div`
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
   margin-right: ${spaces.xs}px;
-  padding: ${spaces.xs}px 0 ${spaces.xxl}px;
+  padding: ${spaces.xs}px 0 ${spaces.xxxl}px;
   font-weight: 500;
   letter-spacing: 0.2px;
   text-transform: uppercase;
@@ -56,7 +56,7 @@ export const NavLeft = styled.div`
 
 What's happening above is NavLeft is set to overflow-x and allow sideways scrolling, so that when there isn't enough space for all nav items (either due to lots of nav items, or a small viewport), you can still scroll side-to-side to reach them. Also, there is a small gradient on the left and right side covering the menu so that the menu goes offscreen smoothly.
 
-The knock-on effect of this is ugly browser-scroll bars at the bottom, so 128px of padding-bottom and a fixed height parent (StyledSiteNav) hides that entirely. Slightly hacky code. But nice clean end-result.
+The knock-on effect of this is ugly browser-scroll bars at the bottom, so 80px of padding-bottom and a fixed height parent (StyledSiteNav) hides that entirely. Slightly hacky code. But nice clean end-result.
 
 */
 
