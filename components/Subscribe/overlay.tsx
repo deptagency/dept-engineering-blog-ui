@@ -7,13 +7,11 @@ import { GhostSettings } from '@lib/ghost'
 import { getLang, get } from '@utils/use-lang'
 import { siteIcon } from '@meta/siteDefaults'
 
-import { spaces } from '@components/common/spaces';
 import { SubscribeForm } from './form';
-import { SubscribeHeadline } from './components'
+import { SubscribeHeadline1 } from './components'
 
-const StyledSubscribeHeadline = styled(SubscribeHeadline)`
+const StyledSubscribeHeadline = styled(SubscribeHeadline1)`
   display: inline-block;
-  margin: 0 0 ${spaces.xs}px;
 `;
 
 export const SubscribeOverlay = ({ settings }: { settings: GhostSettings }) => {
