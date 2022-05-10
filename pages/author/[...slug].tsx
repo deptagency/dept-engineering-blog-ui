@@ -3,16 +3,18 @@ import { useRouter } from 'next/router'
 
 import { Layout } from '@components/Layout'
 import { PostView } from '@components/PostView'
-import { HeaderAuthor } from '@components/HeaderAuthor'
+import { Header } from '@components/Header'
 
 import { resolveUrl } from '@utils/routing'
 import { SEO, authorSameAs } from '@meta/seo'
+import { getLang, get } from '@utils/use-lang'
 
 import { getAuthorBySlug, getAllAuthors, getAllSettings, getPostsByAuthor, GhostSettings, GhostPostOrPage, GhostPostsOrPages, GhostAuthor } from '@lib/ghost'
 import { ISeoImage, seoImage } from '@meta/seoImage'
 import { processEnv } from '@lib/processEnv'
 
 import { BodyClass } from '@helpers/BodyClass'
+import { getPostCollectionDescription } from '@utils/get-collection-description'
 
 /**
  * Author page (/author/:slug)
@@ -41,13 +43,18 @@ const AuthorIndex = ({ cmsData }: AuthorIndexProps) => {
 
   const { author, posts, settings, seoImage, bodyClass } = cmsData
   const { name, bio } = author
-  const description = bio || undefined
   const sameAs = authorSameAs(author)
+  const description = getPostCollectionDescription(author.count?.posts, settings.lang);
 
   return (
     <>
-      <SEO {...{ settings, description, seoImage, sameAs, title: name }} />
-      <Layout {...{ settings, bodyClass }} header={<HeaderAuthor {...{ settings, author }} />}>
+      <SEO {...{ settings, description: bio || undefined, seoImage, sameAs, title: name }} />
+      <Layout {...{ settings, bodyClass }} header={<Header {...{
+        settings, content: {
+          title: author.name,
+          description: description
+        }
+      }} />}>
         <PostView {...{ settings, posts }} />
       </Layout>
     </>

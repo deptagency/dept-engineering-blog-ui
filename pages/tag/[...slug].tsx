@@ -2,17 +2,19 @@ import { useRouter } from 'next/router'
 
 import { Tag } from '@tryghost/content-api'
 import { GetStaticProps, GetStaticPaths } from 'next'
-import { HeaderTag } from '@components/HeaderTag'
 import { Layout } from '@components/Layout'
 import { PostView } from '@components/PostView'
 import { SEO } from '@meta/seo'
 
 import { getTagBySlug, getAllTags, getAllSettings, getPostsByTag, GhostSettings, GhostPostOrPage, GhostPostsOrPages } from '@lib/ghost'
 import { resolveUrl } from '@utils/routing'
+import { getLang, get } from '@utils/use-lang'
 import { ISeoImage, seoImage } from '@meta/seoImage'
 import { processEnv } from '@lib/processEnv'
 
 import { BodyClass } from '@helpers/BodyClass'
+import { Header } from '@components/Header'
+import { getPostCollectionDescription } from '@utils/get-collection-description'
 
 /**
  * Tag page (/tag/:slug)
@@ -42,11 +44,17 @@ const TagIndex = ({ cmsData }: TagIndexProps) => {
 
   const { tag, posts, settings, seoImage, bodyClass } = cmsData
   const { meta_title, meta_description } = tag
+  const fallbackDescription = getPostCollectionDescription(tag.count?.posts, settings.lang)
 
   return (
     <>
       <SEO {...{ settings, title: meta_title || '', description: meta_description || '', seoImage }} />
-      <Layout {...{ settings, bodyClass }} header={<HeaderTag {...{ settings, tag }} />}>
+      <Layout {...{ settings, bodyClass }} header={<Header {...{
+        settings, content: {
+          title: tag.name,
+          description: tag.description || fallbackDescription
+        }
+      }} />}>
         <PostView {...{ settings, posts }} />
       </Layout>
     </>
