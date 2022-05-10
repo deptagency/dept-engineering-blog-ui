@@ -25,7 +25,7 @@ export const mapHeadingOrderToStyles = ({ order, responsive }: HeadingProps & { 
         font-weight: 300;
 
         ${responsive && `
-          @media (max-width: 900px) {
+          @media (max-width: 800px) {
             font-size: 3.6rem;
             line-height: 4.4rem;
           }
@@ -40,13 +40,19 @@ export const mapHeadingOrderToStyles = ({ order, responsive }: HeadingProps & { 
     case 3:
       return `
         font-size: 3.2rem;
-        line-height: 1.25rem;
+        line-height: 1.25em;
         font-weight: 600;
+
+        ${responsive && `
+          @media (max-width: 800px) {
+            font-size: 2.8rem;
+          }
+      `}
       `
     case 4:
       return `
         font-size: 2.5rem;
-        line-height: 1.3rem;
+        line-height: 1.3em;
         font-weight: 600;
       `
     default:

@@ -21,8 +21,9 @@ import { collections } from '@lib/collections'
 import { ISeoImage } from '@meta/seoImage'
 
 import React from 'react'
-import { Header } from './Header'
-import { Heading1 } from './text/Headings'
+import { Header } from '../Header'
+import { Heading1 } from '../text/Headings'
+import { PostFullContent } from './components'
 
 interface PostProps {
   cmsData: {
@@ -106,11 +107,9 @@ export const Post = ({ cmsData }: PostProps) => {
                   </div>
                 </header>
 
-                <section className="post-full-content post-content">
-                  <div className="post-content load-external-scripts">
-                    <RenderContent htmlAst={htmlAst} />
-                  </div>
-                </section>
+                <PostFullContent>
+                  <RenderContent htmlAst={htmlAst} />
+                </PostFullContent>
 
                 <div className="post-meta">
                   {featImg &&
