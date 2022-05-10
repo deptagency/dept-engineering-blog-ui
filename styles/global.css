@@ -156,10 +156,6 @@ em,
 dfn {
     font-style: italic;
 }
-h1 {
-    margin: 0.67em 0;
-    font-size: 2em;
-}
 small {
     font-size: 80%;
 }
@@ -424,7 +420,10 @@ a:hover {
 }
 
 h1,
-h2,
+h2 {
+  text-rendering: optimizeLegibility;
+}
+
 h3,
 h4,
 h5,
@@ -433,27 +432,6 @@ h6 {
     line-height: 1.15;
     font-weight: 600;
     text-rendering: optimizeLegibility;
-}
-
-h1 {
-    margin: 0 0 0.5em 0;
-    font-size: 5.5rem;
-    font-weight: 600;
-}
-@media (max-width: 500px) {
-    h1 {
-        font-size: 2.2rem;
-    }
-}
-
-h2 {
-    margin: 1.5em 0 0.5em 0;
-    font-size: 2.2rem;
-}
-@media (max-width: 500px) {
-    h2 {
-        font-size: 1.8rem;
-    }
 }
 
 h3 {

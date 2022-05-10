@@ -7,7 +7,6 @@ import { resolveUrl } from '@utils/routing'
 import { getLang, get } from '@utils/use-lang'
 
 import { Layout } from '@components/Layout'
-import { HeaderPost } from '@components/HeaderPost'
 import { PreviewPosts } from '@components/PreviewPosts'
 import { RenderContent } from '@components/RenderContent'
 import { Subscribe } from '@components/Subscribe'
@@ -22,6 +21,8 @@ import { collections } from '@lib/collections'
 import { ISeoImage } from '@meta/seoImage'
 
 import React from 'react'
+import { Header } from './Header'
+import { Heading1 } from './text/Headings'
 
 interface PostProps {
   cmsData: {
@@ -42,7 +43,7 @@ export const Post = ({ cmsData }: PostProps) => {
   const description = meta_description || excerpt
 
   const { processEnv } = settings
-  const { nextImages, toc, memberSubscriptions, commenting } = processEnv
+  const { nextImages, toc, memberSubscriptions } = processEnv
 
   const lang = settings.lang
   const text = get(getLang(lang))
@@ -59,7 +60,7 @@ export const Post = ({ cmsData }: PostProps) => {
       <SEO {...{ description, settings, seoImage, article: post, title }} />
       <Layout
         {...{ bodyClass, settings }}
-        header={<HeaderPost {...{ settings, title }} />}
+        header={<Header {...{ settings }} />}
         previewPosts={<PreviewPosts {...{ settings, primaryTag: post.primary_tag, posts: previewPosts, prev: prevPost, next: nextPost }} />}
       >
         <div className="inner">
@@ -78,9 +79,7 @@ export const Post = ({ cmsData }: PostProps) => {
                     </section>
                   )}
 
-                  <h1 className="post-full-title">
-                    {title}
-                  </h1>
+                  <Heading1>{title}</Heading1>
 
                   {post.custom_excerpt && <p className="post-full-custom-excerpt">{post.custom_excerpt}</p>}
 

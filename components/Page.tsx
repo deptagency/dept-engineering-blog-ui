@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Image from 'next/image'
 
-import { HeaderPage } from '@components/HeaderPage'
 import { Layout } from '@components/Layout'
 import { RenderContent } from '@components/RenderContent'
 
@@ -10,6 +9,8 @@ import { SEO } from '@meta/seo'
 
 import { GhostPostOrPage, GhostSettings } from '@lib/ghost'
 import { ISeoImage } from '@meta/seoImage'
+import { Header } from './Header'
+import { Heading1 } from './text/Headings'
 
 /**
  * Single page (/:slug)
@@ -40,46 +41,48 @@ export const Page = ({ cmsData }: PageProps) => {
   return (
     <>
       <SEO {...{ settings, meta_title, meta_description, seoImage }} />
-      <Layout {...{ settings, bodyClass }} header={<HeaderPage {...{ settings }} />}>
+      <Layout {...{ settings, bodyClass }} header={<Header {...{ settings }} />}>
         <div className="inner">
-          <article className={`post-full ${postClass}`}>
-            <header className="post-full-header">
-              <h1 className="post-full-title">{page.title}</h1>
-            </header>
+          <div className="grid-wrapper">
+            <article className={`post-full grid-inner ${postClass}`}>
+              <header className="post-full-header">
+                <Heading1>{page.title}</Heading1>
+              </header>
 
-            {featImg &&
-              (nextImages.feature && featImg.dimensions ? (
-                <figure className="post-full-image" style={{ display: 'inherit' }}>
-                  <Image
-                    src={featImg.url}
-                    alt={page.title}
-                    quality={nextImages.quality}
-                    layout="responsive"
-                    sizes={`
+              {featImg &&
+                (nextImages.feature && featImg.dimensions ? (
+                  <figure className="post-full-image" style={{ display: 'inherit' }}>
+                    <Image
+                      src={featImg.url}
+                      alt={page.title}
+                      quality={nextImages.quality}
+                      layout="responsive"
+                      sizes={`
                               (max-width: 350px) 350px,
                               (max-width: 530px) 530px,
                               (max-width: 710px) 710px,
                               (max-width: 1170px) 1170px,
                               (max-width: 2110px) 2110px, 2000px
                             `}
-                    {...featImg.dimensions}
-                  />
-                </figure>
-              ) : (
-                page.feature_image && (
-                  <figure className="post-full-image">
-                    <img src={page.feature_image} alt={page.title} />
+                      {...featImg.dimensions}
+                    />
                   </figure>
-                )
-              ))}
+                ) : (
+                  page.feature_image && (
+                    <figure className="post-full-image">
+                      <img src={page.feature_image} alt={page.title} />
+                    </figure>
+                  )
+                ))}
 
-            {/* The main page content */}
-            <section className="post-full-content">
-              <div className="post-content load-external-scripts">
-                <RenderContent htmlAst={htmlAst} />
-              </div>
-            </section>
-          </article>
+              {/* The main page content */}
+              <section className="post-full-content">
+                <div className="post-content load-external-scripts">
+                  <RenderContent htmlAst={htmlAst} />
+                </div>
+              </section>
+            </article>
+          </div>
         </div>
       </Layout>
     </>
