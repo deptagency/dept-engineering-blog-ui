@@ -76,11 +76,7 @@ export const Page = ({ cmsData }: PageProps) => {
                 ))}
 
               {/* The main page content */}
-              <section className="post-full-content">
-                <div className="post-content load-external-scripts">
-                  <RenderContent htmlAst={htmlAst} />
-                </div>
-              </section>
+              <RenderContent htmlAst={htmlAst} />
             </article>
           </div>
         </div>

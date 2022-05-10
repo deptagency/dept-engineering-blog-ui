@@ -2,17 +2,18 @@ import styled from '@emotion/styled';
 
 import { spaces } from '@components/common/spaces';
 import { colors } from '@components/common/colors';
-import { fullBleedImageStyles, iframeStyles, imageCaptionStyles } from './image';
+import { fullBleedImageStyles, imageCaptionStyles } from './image';
 import { blockquoteStyles } from './blockquote';
-import { preformattedTextStyles } from './performattedText';
+import { preformattedTextStyles } from './performatted-text';
 import { linkStyles } from './link';
 import { h1Styles, h2Styles, h3Styles, h4Styles, h5Styles } from './headings';
 import { tableStyles } from './table';
-import { horizontalRuleStyles } from './horizontalrule';
+import { horizontalRuleStyles } from './horizontal-rule';
+import { iframeStyles } from './iframe';
 
 
 /* Using display: flex prevents margin collapse between the components. */
-export const PostFullContent = styled.section`
+export const ContentSection = styled.section`
   display: flex;
   flex-direction: column;
   grid-area: content;
