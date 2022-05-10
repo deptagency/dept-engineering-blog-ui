@@ -1,7 +1,7 @@
 
 import { SiteNav } from '@components/SiteNav'
-import { Heading1 } from '@components/text/Headings'
-import { Subheading2 } from '@components/text/Subheadings'
+import { Heading1 } from '@components/typography/Headings'
+import { Subheading2 } from '@components/typography/Subheadings'
 import { GhostSettings } from '@lib/ghost'
 import { Grid } from '@mui/material'
 import { StyledHeader, StyledHeaderContent } from './components'

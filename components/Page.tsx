@@ -10,7 +10,7 @@ import { SEO } from '@meta/seo'
 import { GhostPostOrPage, GhostSettings } from '@lib/ghost'
 import { ISeoImage } from '@meta/seoImage'
 import { Header } from './Header'
-import { Heading1 } from './text/Headings'
+import { Heading1 } from './typography/Headings'
 
 /**
  * Single page (/:slug)

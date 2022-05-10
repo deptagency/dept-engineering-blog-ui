@@ -22,7 +22,7 @@ import { ISeoImage } from '@meta/seoImage'
 
 import React from 'react'
 import { Header } from '../Header'
-import { Heading1 } from '../text/Headings'
+import { Heading1 } from '../typography/Headings'
 import { PostFullContent } from './components'
 
 interface PostProps {

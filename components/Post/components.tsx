@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 import { spaces } from '@components/common/spaces';
-import { mapHeadingOrderToStyles } from '@components/text/Headings';
+import { mapHeadingOrderToStyles } from '@components/typography/Headings';
 
 export const PostFullContent = styled.section`
   display: block;

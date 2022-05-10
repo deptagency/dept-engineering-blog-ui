@@ -11,7 +11,7 @@ import { getLang, get } from '@utils/use-lang'
 import { PostClass } from '@helpers/PostClass'
 import { collections } from '@lib/collections'
 import { GhostPostOrPage, GhostSettings } from '@lib/ghost'
-import { Heading2 } from '@components/text/Headings'
+import { Heading2 } from '@components/typography/Headings'
 
 interface PostCardProps {
   settings: GhostSettings

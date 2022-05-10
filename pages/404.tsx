@@ -7,7 +7,7 @@ import { getAllSettings, GhostSettings, GhostPostsOrPages } from '@lib/ghost'
 import { getLang, get } from '@utils/use-lang'
 import { BodyClass } from '@helpers/BodyClass'
 import { Header } from '@components/Header'
-import { Heading2 } from '@components/text/Headings'
+import { Heading2 } from '@components/typography/Headings'
 
 export const getStaticProps: GetStaticProps = async () => {
   const settings = await getAllSettings()
