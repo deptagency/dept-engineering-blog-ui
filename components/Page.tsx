@@ -46,7 +46,7 @@ export const Page = ({ cmsData }: PageProps) => {
           <div className="grid-wrapper">
             <article className={`post-full grid-inner ${postClass}`}>
               <header className="post-full-header">
-                <Heading1>{page.title}</Heading1>
+                <Heading1 noSpaces>{page.title}</Heading1>
               </header>
 
               {featImg &&

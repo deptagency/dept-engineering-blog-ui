@@ -1,26 +1,27 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { Heading1, Heading2 } from './Headings';
+import { Heading1, Heading2, Heading3, Heading4, Heading5 } from './Headings';
+
+const OverviewComp = () => (
+  <>
+  <Heading1>First Headline</Heading1>
+  <Heading2>Second Headline</Heading2>
+  <Heading3>Third Headline</Heading3>
+  <Heading4>Fourth Headline</Heading4>
+  <Heading5>Fifth Headline</Heading5>
+</>
+)
 
 export default {
-  title: 'Typography/Headings',
-  component: Heading1,
+  title: 'Typography',
+  component: OverviewComp,
   parameters: {
     layout: 'fullscreen',
   },
 } as ComponentMeta<typeof Heading1>;
 
-const Template: ComponentStory<typeof Heading1> = (args) => <>
-  <Heading1 {...args}>First Headline</Heading1>
-</>;
+const Template: ComponentStory<typeof OverviewComp> = OverviewComp;
 
-export const H1 = Template.bind({});
-H1.args = {};
-
-const TemplateTwo: ComponentStory<typeof Heading2> = (args) => <>
-  <Heading2 {...args}>Second Headline</Heading2>
-</>;
-
-export const H2 = TemplateTwo.bind({});
-H2.args = {};
+export const Overview = Template.bind({});
+Overview.args = {};

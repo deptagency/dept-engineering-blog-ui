@@ -24,7 +24,7 @@ export const Header = ({ settings, isHome, content }: HeaderProps) => (
           <Grid item xs={12} md={10} lg={8}>
             <StyledHeaderContent isHome={isHome}>
               {content.title && (
-                <Heading1 responsive={isHome}>{content.title}</Heading1>
+                <Heading1 responsive={isHome} noSpaces>{content.title}</Heading1>
               )}
               {content.description && (
                 <Subheading2>{content.description}</Subheading2>

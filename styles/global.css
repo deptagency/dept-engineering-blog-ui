@@ -420,45 +420,10 @@ a:hover {
 }
 
 h1,
-h2 {
-  text-rendering: optimizeLegibility;
-}
-
+h2,
 h3,
 h4,
 h5,
 h6 {
-    margin-top: 0;
-    line-height: 1.15;
-    font-weight: 600;
-    text-rendering: optimizeLegibility;
-}
-
-h3 {
-    margin: 1.5em 0 0.5em 0;
-    font-size: 1.8rem;
-    font-weight: 500;
-}
-@media (max-width: 500px) {
-    h3 {
-        font-size: 1.7rem;
-    }
-}
-
-h4 {
-    margin: 1.5em 0 0.5em 0;
-    font-size: 1.6rem;
-    font-weight: 500;
-}
-
-h5 {
-    margin: 1.5em 0 0.5em 0;
-    font-size: 1.4rem;
-    font-weight: 500;
-}
-
-h6 {
-    margin: 1.5em 0 0.5em 0;
-    font-size: 1.4rem;
-    font-weight: 500;
+  text-rendering: optimizeLegibility;
 }

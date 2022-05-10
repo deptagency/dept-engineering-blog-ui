@@ -80,7 +80,7 @@ export const Post = ({ cmsData }: PostProps) => {
                     </section>
                   )}
 
-                  <Heading1>{title}</Heading1>
+                  <Heading1 noSpaces>{title}</Heading1>
 
                   {post.custom_excerpt && <p className="post-full-custom-excerpt">{post.custom_excerpt}</p>}
 
