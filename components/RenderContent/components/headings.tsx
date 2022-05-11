@@ -9,7 +9,8 @@ export const h1Styles = `
 
   p+h1,
   ul+h1,
-  ol+h1 {
+  ol+h1,
+  iframe+h1 {
     margin-top: ${spaces.lg}px;
   }
 `;
@@ -22,7 +23,8 @@ export const h2Styles = `
 
   p+h2,
   ul+h2,
-  ol+h2 {
+  ol+h2,
+  iframe+h2 {
     margin-top: ${spaces.lg}px;
   }
 `;
