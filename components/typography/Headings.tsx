@@ -12,13 +12,13 @@ import { spaces } from '@components/common/spaces';
 */
 export interface HeadingProps {
   responsive?: boolean
-  color?: Colors
+  $color?: Colors
   noSpaces?: boolean
 }
 
 type HeadingOrder = 1 | 2 | 3 | 4 | 5
 
-export const mapHeadingOrderToStyles = ({ order, responsive, noSpaces, color }: HeadingProps & { order: HeadingOrder }) => {
+export const mapHeadingOrderToStyles = ({ order, responsive, noSpaces, $color }: HeadingProps & { order: HeadingOrder }) => {
   switch (order) {
     case 1:
       return `
@@ -34,7 +34,7 @@ export const mapHeadingOrderToStyles = ({ order, responsive, noSpaces, color }: 
         ` : ``}
 
         ${!noSpaces ? `margin: 0 0 ${spaces.sm}px;` : ``}
-        color: ${color ? colors[color] : colors.onyx};
+        color: ${$color ? colors[$color] : colors.onyx};
       `
     case 2:
       return `
@@ -43,7 +43,7 @@ export const mapHeadingOrderToStyles = ({ order, responsive, noSpaces, color }: 
         font-weight: 300;
 
         ${!noSpaces ? `margin: 0 0 ${spaces.sm}px;` : ``}
-        color: ${color ? colors[color] : colors.onyx};
+        color: ${$color ? colors[$color] : colors.onyx};
       `
     case 3:
       return `
@@ -58,7 +58,7 @@ export const mapHeadingOrderToStyles = ({ order, responsive, noSpaces, color }: 
       `: ``}
 
       ${!noSpaces ? `margin: 0 0 ${spaces.xs}px;` : ``}
-      color: ${color ? colors[color] : colors.onyx};
+      color: ${$color ? colors[$color] : colors.onyx};
       `
     case 4:
       return `
@@ -73,7 +73,7 @@ export const mapHeadingOrderToStyles = ({ order, responsive, noSpaces, color }: 
         `: ``}
 
         ${!noSpaces ? `margin: 0 0 ${spaces.xs}px;` : ``}
-        color: ${color ? colors[color] : colors.onyx};
+        color: ${$color ? colors[$color] : colors.onyx};
       `
     case 5:
       return `
@@ -88,7 +88,7 @@ export const mapHeadingOrderToStyles = ({ order, responsive, noSpaces, color }: 
         `: ``}
 
         ${!noSpaces ? `margin: 0 0 ${spaces.xs}px;` : ``}
-        color: ${color ? colors[color] : colors.onyx};
+        color: ${$color ? colors[$color] : colors.onyx};
       `;
     default:
       return ``

@@ -8,7 +8,7 @@ import { spaces } from '@components/common/spaces';
 */
 
 export interface SubheadingProps {
-  color?: Colors
+  $color?: Colors
 }
 
 type SubheadingOrder = 1 | 2
@@ -33,12 +33,12 @@ const mapSubheadingOrderToStyles = ({ order }: SubheadingProps & { order: Subhea
 }
 
 export const Subheading1 = styled.h2<SubheadingProps>`
+  margin-top: ${spaces.xxxs}px;
   ${props => mapSubheadingOrderToStyles({...props, order: 1})}
-  color: ${({ color }) => color ? colors[color] : colors.gray};
 `;
 
 export const Subheading2 = styled.h2<SubheadingProps>`
   margin-top: ${spaces.xxxs}px;
   ${props => mapSubheadingOrderToStyles({...props, order: 2})}
-  color: ${({ color }) => color ? colors[color] : colors.gray};
+  color: ${({ $color }) => $color ? colors[$color] : colors.gray};
 `;

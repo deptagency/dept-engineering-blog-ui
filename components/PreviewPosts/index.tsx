@@ -18,7 +18,7 @@ export const PreviewPosts = ({ settings, prev, next }: PreviewPostsProps) => {
           <div className="grid-wrapper">
             <Grid className="grid-inner" container columnSpacing={{ xs: 0, md: 3 }}>
               <Grid item xs={12} md={4}>
-                <Heading2 color="white">Up next</Heading2>
+                <Heading2 $color="white">Up next</Heading2>
               </Grid>
               <Grid item xs={12} md={4}>
                 {prev && prev.slug && <PostCard {...{ settings, post: prev, isColorInverted: true }} />}

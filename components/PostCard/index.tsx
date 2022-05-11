@@ -66,7 +66,7 @@ export const PostCard = ({ settings, post, num, isColorInverted }: PostCardProps
                 <a className="post-card-content-link">
                   <header className="post-card-header">
                     {post.primary_tag && <div className="post-card-primary-tag">{post.primary_tag.name}</div>}
-                    <Heading2 color={textColor}>{post.title}</Heading2>
+                    <Heading2 $color={textColor}>{post.title}</Heading2>
                   </header>
                   <section className="post-card-excerpt foobar">
                     {/* post.excerpt *is* an excerpt and does not need to be truncated any further */}
@@ -133,7 +133,7 @@ export const PostCard = ({ settings, post, num, isColorInverted }: PostCardProps
         <Link href={url}>
           <a className="post-card-content-link">
             <header className="post-card-header">
-              <Heading2 color={textColor}>{post.title}</Heading2>
+              <Heading2 $color={textColor}>{post.title}</Heading2>
             </header>
             <section className="post-card-excerpt">
               {/* post.excerpt *is* an excerpt and does not need to be truncated any further */}
