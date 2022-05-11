@@ -1,5 +1,6 @@
 /**
-  @TODO delete this eventually
+  @TODO delete this eventually. Unfortunately, moving these to /components/globals.tsx before
+  refactoring references in screen.css causes a build failure.
 */
 
 /* Variables
