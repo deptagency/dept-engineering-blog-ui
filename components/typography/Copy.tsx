@@ -3,7 +3,7 @@ import { colors, Colors } from '@components/common/colors'
 import { spaces } from '@components/common/spaces'
 import { DEFAULT_COPY_STYLES } from '@components/common/typography'
 
-interface CopyProps {
+export interface CopyProps {
   $color?: Colors
 }
 

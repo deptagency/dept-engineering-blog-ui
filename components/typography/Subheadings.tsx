@@ -7,7 +7,7 @@ import { spaces } from '@components/common/spaces';
  * Subheading2: Secondary subheadline
 */
 
-interface SubheadingProps {
+export interface SubheadingProps {
   color?: Colors
 }
 
