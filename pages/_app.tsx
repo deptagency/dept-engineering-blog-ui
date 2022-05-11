@@ -4,6 +4,9 @@ import { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
 import { OverlayProvider } from '@components/contexts/overlayProvider'
 import * as gtag from '../lib/gtag'
+import { Global } from '@emotion/react'
+
+import { fonts } from '@components/common/fonts'
 
 import '@styles/screen.css'
 import '@styles/screen-fixings.css'
@@ -25,17 +28,19 @@ function App({ Component, pageProps }: AppProps) {
   }, [router.events])
 
   return (
-    <OverlayProvider >
-      {/* Global site tag (gtag.js) - Google Analytics */}
-      <Script
-        strategy="afterInteractive"
-        src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
-      />
-      <Script
-        id="gtag-init"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
+    <>
+      <Global styles={fonts} />
+      <OverlayProvider >
+        {/* Global site tag (gtag.js) - Google Analytics */}
+        <Script
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
+        />
+        <Script
+          id="gtag-init"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
@@ -44,10 +49,11 @@ function App({ Component, pageProps }: AppProps) {
                   page_path: window.location.pathname,
                 });
               `,
-        }}
-      />
-      <Component {...pageProps} />
-    </OverlayProvider>
+          }}
+        />
+        <Component {...pageProps} />
+      </OverlayProvider>
+    </>
   )
 }
 

@@ -22,17 +22,15 @@ production stylesheet in assets/built/screen.css
 
 */
 
-
 /* 1. Global - Set up the things
 /* ---------------------------------------------------------- */
-@import "global.css";
-@import "fonts.css";
+@import "global.css"; */
 
 
-html.casper body {
+/* html.casper body {
     background: #fff;
     font-family: 'Maison Neue';
-}
+} */
 
 html.casper .img {
     display: block;
@@ -503,7 +501,6 @@ make sure this only happens on large viewports / desktop-ish devices.
         font-size: 1.6rem;
     }
 }
-
 
 /* 7. Single Post
 /* ---------------------------------------------------------- */
