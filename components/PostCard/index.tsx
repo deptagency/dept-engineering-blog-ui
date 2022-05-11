@@ -12,6 +12,7 @@ import { PostClass } from '@helpers/PostClass'
 import { collections } from '@lib/collections'
 import { GhostPostOrPage, GhostSettings } from '@lib/ghost'
 import { Heading2 } from '@components/typography/Headings'
+import { PostExcerpt } from './components'
 
 interface PostCardProps {
   settings: GhostSettings
@@ -31,7 +32,7 @@ export const PostCard = ({ settings, post, num, isColorInverted }: PostCardProps
   const postClass = PostClass({ tags: post.tags, isFeatured: post.featured, isImage: !!featImg })
   const isFirstPost = (num !== undefined && num < 1)
   const authors = post?.authors?.filter((_, i) => (i < 2 ? true : false))
-  const textColor = isFirstPost || isColorInverted ? "white" : undefined;
+  const textColor = isFirstPost || isColorInverted ? "white" : "onyx";
 
   if (isFirstPost) {
     return (
@@ -67,9 +68,9 @@ export const PostCard = ({ settings, post, num, isColorInverted }: PostCardProps
                     {post.primary_tag && <div className="post-card-primary-tag">{post.primary_tag.name}</div>}
                     <Heading2 color={textColor}>{post.title}</Heading2>
                   </header>
-                  <section className="post-card-excerpt">
+                  <section className="post-card-excerpt foobar">
                     {/* post.excerpt *is* an excerpt and does not need to be truncated any further */}
-                    <p>{post.excerpt}</p>
+                    <PostExcerpt $color={textColor}>{post.excerpt}</PostExcerpt>
                   </section>
                 </a>
               </Link>
@@ -136,7 +137,7 @@ export const PostCard = ({ settings, post, num, isColorInverted }: PostCardProps
             </header>
             <section className="post-card-excerpt">
               {/* post.excerpt *is* an excerpt and does not need to be truncated any further */}
-              <p>{post.excerpt}</p>
+              <PostExcerpt $color={textColor}>{post.excerpt}</PostExcerpt>
             </section>
           </a>
         </Link>
