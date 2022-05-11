@@ -37,7 +37,7 @@ export const PostItems = ({ settings, posts, isHome }: PostItemsProps) => {
     firstRow.push(
       <GridWrapper key="filter-tags">
           <Row>
-            <Col width="100%">
+            <Col>
             <FilterTags currentTag={asPath.split('/').slice(-1)[0] || ''} tags={["Platforms", "Teams", "Process", "People"]} />
             </Col>
           </Row>
@@ -58,7 +58,7 @@ export const PostItems = ({ settings, posts, isHome }: PostItemsProps) => {
     <GridWrapper key={i + 1}>
         <Row>
         {row.map((post, n) => (
-          <Col key={`${i + 1} ${n}`} width={row.length === 1 ? "100%": row.length === 2 ? "50%" : row.length === 3 ? "33.3%" : "100%"}>
+          <Col key={`${i + 1} ${n}`} xs={12} md={row.length === 1 ? 12 : row.length === 3 ? 4 : 6}>
             <PostCard {...{settings, post, isHome, num: parseInt(`${i + 1}${n}`) }} />
           </Col>
         ))}

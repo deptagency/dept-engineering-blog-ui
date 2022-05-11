@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import dayjs from 'dayjs'
-import { GridWrapper, Row, FirstPostCol } from '@components/Grid'
+import { GridWrapper, Row, Col } from '@components/Grid'
 import { readingTime as readingTimeHelper } from '@lib/readingTime'
 import { resolveUrl } from '@utils/routing'
 import { getLang, get } from '@utils/use-lang'
@@ -37,7 +37,7 @@ export const PostCard = ({ settings, post, num, isHome }: PostCardProps) => {
       <article className={`${postClass} ${large}`}>
         <GridWrapper>
           <Row>
-          <FirstPostCol width="40%">
+          <Col xs={12} lg={5}>
           {featImg && (
               <Link href={url}>
                 <a className="post-card-image-link" aria-label={post.title}>
@@ -58,8 +58,8 @@ export const PostCard = ({ settings, post, num, isHome }: PostCardProps) => {
                 </a>
               </Link>
           )}
-          </FirstPostCol>
-          <FirstPostCol width="60%" padding="40px">
+          </Col>
+          <Col xs={12} lg={7}  padding="20px">
             <div className="post-card-content">
               <Link href={url}>
                 <a className="post-card-content-link">
@@ -98,7 +98,7 @@ export const PostCard = ({ settings, post, num, isHome }: PostCardProps) => {
                 <a href={url} className="btn btn-inverted btn-cta">Keep Reading</a>
               </footer>
             </div>    
-            </FirstPostCol>
+            </Col>
             </Row>
             </GridWrapper> 
       </article>

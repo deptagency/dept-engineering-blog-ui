@@ -1,4 +1,5 @@
 import Grid from '@mui/material/Grid';
+import { GridWrapper, Row, Col } from '@components/Grid'
 
 import { PostCard } from '@components/PostCard'
 
@@ -18,19 +19,19 @@ export const PreviewPosts = ({ settings, primaryTag, posts, prev, next }: Previe
     <aside className="read-next outer">
       <div className="inner">
         <div className="read-next-feed">
-          <div className="grid-wrapper">
-            <Grid className="grid-inner" container columnSpacing={{ xs: 0, md: 3 }}>
-              <Grid item xs={12} md={4}>
+          <GridWrapper>
+            <Row>
+              <Col xs={12} md={4}>
                 <h2 className="up-next-header">Up next</h2>
-              </Grid>
-              <Grid item xs={12} md={4}>
+              </Col>
+              <Col xs={12} md={4}>
                 {prev && prev.slug && <PostCard {...{ settings, post: prev }} />}
-              </Grid>
-              <Grid item xs={12} md={4}>
+              </Col>
+              <Col xs={12} md={4}>
                 {next && next.slug && <PostCard {...{ settings, post: next }} />}
-              </Grid>
-            </Grid>
-          </div>
+              </Col>
+              </Row>
+            </GridWrapper>
         </div>
       </div>
     </aside>

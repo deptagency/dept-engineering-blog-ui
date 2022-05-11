@@ -19,3 +19,19 @@ export const spaces = {
   xxxl: 80,
   xxxxl: 120
 };
+
+/**
+ * Grid system constant.
+*/
+export const GRID_SYSTEM = 12;
+
+/**
+ * Breakpoints
+*/
+export const BREAKPOINTS = {
+  xs: 0,
+  sm: 600,
+  md: 900,
+  lg: 1200,
+  xl: 1440
+}
