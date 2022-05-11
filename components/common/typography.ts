@@ -4,7 +4,7 @@ export const DEFAULT_COPY_STYLES = `
   font-size: 1.6rem;
   font-weight: 300;
   line-height: 1.6em;
-  color: ${colors.midgrey};
+  color: ${colors.darkmidgrey};
 `
 
 export const BASE_TYPOGRAPHIC_STYLES = `

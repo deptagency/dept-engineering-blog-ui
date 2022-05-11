@@ -451,16 +451,6 @@ html.casper .subscribe-form {
   text-align: inherit;
 }
 
-html.casper .subscribe-form a {
-  color: var(--onyx);
-  box-shadow: var(--darkgrey) 0 -1px 0 inset;
-  text-decoration: none;
-}
-
-html.capser .subscribe-form a:hover {
-  text-decoration: none;
-}
-
 .subscribe-form .inner {
   padding: 50px 0 90px;
 }
