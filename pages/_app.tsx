@@ -7,6 +7,7 @@ import * as gtag from '../lib/gtag'
 import { Global } from '@emotion/react'
 
 import { fonts } from '@components/common/fonts'
+import { globals } from '@components/common/globals'
 
 import '@styles/screen.css'
 import '@styles/screen-fixings.css'
@@ -30,6 +31,7 @@ function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Global styles={fonts} />
+      <Global styles={globals} />
       <OverlayProvider >
         {/* Global site tag (gtag.js) - Google Analytics */}
         <Script

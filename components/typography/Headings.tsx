@@ -18,7 +18,7 @@ export interface HeadingProps {
 
 type HeadingOrder = 1 | 2 | 3 | 4 | 5
 
-export const mapHeadingOrderToStyles = ({ order, responsive, noSpaces }: HeadingProps & { order: HeadingOrder }) => {
+export const mapHeadingOrderToStyles = ({ order, responsive, noSpaces, color }: HeadingProps & { order: HeadingOrder }) => {
   switch (order) {
     case 1:
       return `
@@ -34,6 +34,7 @@ export const mapHeadingOrderToStyles = ({ order, responsive, noSpaces }: Heading
         ` : ``}
 
         ${!noSpaces ? `margin: 0 0 ${spaces.sm}px;` : ``}
+        color: ${color ? colors[color] : colors.onyx};
       `
     case 2:
       return `
@@ -42,6 +43,7 @@ export const mapHeadingOrderToStyles = ({ order, responsive, noSpaces }: Heading
         font-weight: 300;
 
         ${!noSpaces ? `margin: 0 0 ${spaces.sm}px;` : ``}
+        color: ${color ? colors[color] : colors.onyx};
       `
     case 3:
       return `
@@ -56,6 +58,7 @@ export const mapHeadingOrderToStyles = ({ order, responsive, noSpaces }: Heading
       `: ``}
 
       ${!noSpaces ? `margin: 0 0 ${spaces.xs}px;` : ``}
+      color: ${color ? colors[color] : colors.onyx};
       `
     case 4:
       return `
@@ -70,6 +73,7 @@ export const mapHeadingOrderToStyles = ({ order, responsive, noSpaces }: Heading
         `: ``}
 
         ${!noSpaces ? `margin: 0 0 ${spaces.xs}px;` : ``}
+        color: ${color ? colors[color] : colors.onyx};
       `
     case 5:
       return `
@@ -84,6 +88,7 @@ export const mapHeadingOrderToStyles = ({ order, responsive, noSpaces }: Heading
         `: ``}
 
         ${!noSpaces ? `margin: 0 0 ${spaces.xs}px;` : ``}
+        color: ${color ? colors[color] : colors.onyx};
       `;
     default:
       return ``
@@ -92,25 +97,20 @@ export const mapHeadingOrderToStyles = ({ order, responsive, noSpaces }: Heading
 
 export const Heading1 = styled.h1<HeadingProps>`
   ${props => mapHeadingOrderToStyles({...props, order: 1})};
-  color: ${({ color }) => color ? colors[color] : colors.onyx};
 `;
 
 export const Heading2 = styled.h2<HeadingProps>`
   ${props => mapHeadingOrderToStyles({...props, order: 2})};
-  color: ${({ color }) => color ? colors[color] : colors.onyx};
 `;
 
 export const Heading3 = styled.h3<HeadingProps>`
   ${props => mapHeadingOrderToStyles({...props, order: 3})};
-  color: ${({ color }) => color ? colors[color] : colors.onyx};
 `;
 
 export const Heading4 = styled.h4<HeadingProps>`
   ${props => mapHeadingOrderToStyles({...props, order: 4})};
-  color: ${({ color }) => color ? colors[color] : colors.onyx};
 `;
 
 export const Heading5 = styled.h5<HeadingProps>`
   ${props => mapHeadingOrderToStyles({...props, order: 5})};
-  color: ${({ color }) => color ? colors[color] : colors.onyx};
 `;

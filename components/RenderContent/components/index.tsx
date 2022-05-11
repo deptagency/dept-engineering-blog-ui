@@ -10,6 +10,7 @@ import { h1Styles, h2Styles, h3Styles, h4Styles, h5Styles } from './headings';
 import { tableStyles } from './table';
 import { horizontalRuleStyles } from './horizontal-rule';
 import { iframeStyles } from './iframe';
+import { codeStyles } from './code';
 
 
 /* Using display: flex prevents margin collapse between the components. */
@@ -23,7 +24,10 @@ export const ContentSection = styled.section`
 
   padding: 0;
 
-  p,
+  p {
+    margin: 0 0 ${spaces.md}px;
+  }
+
   ul,
   ol,
   dl,
@@ -98,4 +102,5 @@ export const ContentSection = styled.section`
 
   ${horizontalRuleStyles}
   ${tableStyles}
+  ${codeStyles}
 `;
