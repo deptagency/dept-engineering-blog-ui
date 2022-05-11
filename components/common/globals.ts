@@ -11,23 +11,6 @@ import { BASE_TYPOGRAPHIC_STYLES } from './typography'
 
 export const globals = css`
 
-/* Variables
-/* ---------------------------------------------------------- */
-
-:root {
-  /* Colors */
-  --blue: #0078d0;
-  --green: #a4d037;
-  --yellow: #fecd35;
-  --red: #f05230;
-  --darkgrey: #15171A;
-  --midgrey: #738a94;
-  --lightgrey: #c5d2d9;
-  --whitegrey: #e5eff5;
-  --pink: #fa3a57;
-  --brown: #a3821a;
-}
-
   /* Resets
 /* ---------------------------------------------------------- */
 

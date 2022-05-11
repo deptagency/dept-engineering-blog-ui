@@ -21,6 +21,8 @@ production stylesheet in assets/built/screen.css
 
 */
 
+@import "color-vars.css";
+
 html.casper .img {
     display: block;
     width: 100%;
