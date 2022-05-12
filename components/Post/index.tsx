@@ -21,7 +21,7 @@ import { GhostPostOrPage, GhostPostsOrPages, GhostSettings } from '@lib/ghost'
 import { collections } from '@lib/collections'
 
 import { Header } from '../Header'
-import { Heading1 } from '../typography/Headings'
+import { Heading } from '@components/typography/Headings'
 
 interface PostProps {
   cmsData: {
@@ -78,7 +78,7 @@ export const Post = ({ cmsData }: PostProps) => {
                     </section>
                   )}
 
-                  <Heading1 noSpaces>{title}</Heading1>
+                  <Heading.One noMargin>{title}</Heading.One>
 
                   {post.custom_excerpt && <p className="post-full-custom-excerpt">{post.custom_excerpt}</p>}
 

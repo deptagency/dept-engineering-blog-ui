@@ -3,7 +3,7 @@ import { mapHeadingOrderToStyles } from "@components/typography/Headings";
 
 export const h1Styles = `
   h1 {
-    ${mapHeadingOrderToStyles({ order: 2, responsive: true, noSpaces: true})}
+    ${mapHeadingOrderToStyles({ order: 2, responsive: true, noMargin: true})}
     min-width: 100%;
   }
 

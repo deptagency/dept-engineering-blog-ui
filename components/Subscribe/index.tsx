@@ -5,8 +5,9 @@ import { GhostSettings } from '@lib/ghost'
 import { getLang, get } from '@utils/use-lang'
 import { Copy } from '@components/typography/Copy'
 import { spaces } from '@components/common/spaces'
-import { DescriptionLink, SubscribeHeadline2 } from './components'
+import { DescriptionLink } from './components'
 import { SubscribeForm } from './form'
+import { Heading } from '@components/typography/Headings'
 
 const Description = styled(Copy)`
   margin-bottom: ${spaces.xxs}px;
@@ -21,7 +22,7 @@ export const Subscribe = ({ settings }: { settings: GhostSettings }) => {
         <div className="grid-wrapper">
           <Grid alignItems="center" className="grid-inner" container justifyContent="space-between">
             <Grid item xs={12} md={3}>
-              <SubscribeHeadline2 as="h3">STAY UP TO DATE</SubscribeHeadline2>
+              <Heading.CallToAction2 as="h3">STAY UP TO DATE</Heading.CallToAction2>
               <Description $color={'onyx'}>{text(`SUBSCRIBE_OVERLAY`)}</Description>
               <Description $color={'onyx'}>
                 See the DEPT®{' '}

@@ -8,11 +8,11 @@ import { getLang, get } from '@utils/use-lang'
 import { siteIcon } from '@meta/siteDefaults'
 
 import { SubscribeForm } from './form'
-import { DescriptionLink, SubscribeHeadline1 } from './components'
+import { DescriptionLink } from './components'
 import { CopyLG } from '@components/typography/Copy'
-import { colors } from '@components/common/colors'
+import { Heading } from '@components/typography/Headings'
 
-const StyledSubscribeHeadline = styled(SubscribeHeadline1)`
+const StyledSubscribeHeadline = styled(Heading.CallToAction1)`
   display: inline-block;
 `
 
@@ -36,7 +36,7 @@ export const SubscribeOverlay = ({ settings }: { settings: GhostSettings }) => {
       <div className="subscribe-overlay-content">
         {siteLogo && <img className="subscribe-overlay-logo" src={siteLogo} alt={title} />}
         <div className="subscribe-form">
-          <StyledSubscribeHeadline color="white">STAY UP TO DATE</StyledSubscribeHeadline>
+          <StyledSubscribeHeadline $color="white">STAY UP TO DATE</StyledSubscribeHeadline>
           <Description $color="white">{text(`SUBSCRIBE_OVERLAY`)}</Description>
           <Description $color="white">
             See the DEPT®{' '}
