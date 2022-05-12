@@ -1,21 +1,35 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
 
-import { Copy, CopyS, CopyXS, CopyLG, CopyProps } from '../Copy'
+import { colors } from '@components/common/colors'
+import { Copy, CopyProps } from '../Copy'
 
 export default {
   title: 'Typography',
-  component: Copy,
-} as ComponentMeta<typeof Copy>
+  component: Copy.M,
+  argTypes: {
+    $color: {
+      options:  Object.keys(colors),
+      control: {
+        type: 'select'
+      }
+    },
+    children: {
+      control: 'text'
+    }
+  }
+} as ComponentMeta<typeof Copy.M>
 
-const Template: ComponentStory<typeof Copy> = (args: CopyProps) => (
+const Template: ComponentStory<typeof Copy.M> = (args) => (
   <>
-    <CopyXS {...args}>This is extra small copy.</CopyXS>
-    <CopyS {...args}>This is small copy.</CopyS>
-    <Copy {...args}>This is the default copy component.</Copy>
-    <CopyLG {...args}>This is large copy.</CopyLG>
+    <Copy.XS {...args}>{args.children}</Copy.XS>
+    <Copy.SM {...args}>{args.children}</Copy.SM>
+    <Copy.M {...args}>{args.children}</Copy.M>
+    <Copy.LG {...args}>{args.children}</Copy.LG>
   </>
 )
 
 export const Copys = Template.bind({})
-Copys.args = {}
+Copys.args = {
+  children: "This is some copy text."
+}

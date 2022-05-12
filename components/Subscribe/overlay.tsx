@@ -9,14 +9,14 @@ import { siteIcon } from '@meta/siteDefaults'
 
 import { SubscribeForm } from './form'
 import { DescriptionLink } from './components'
-import { CopyLG } from '@components/typography/Copy'
+import { Copy } from '@components/typography/Copy'
 import { Heading } from '@components/typography/Headings'
 
 const StyledSubscribeHeadline = styled(Heading.CallToAction1)`
   display: inline-block;
 `
 
-const Description = styled(CopyLG)`
+const Description = styled(Copy.LG)`
   max-width: 650px;
 `
 

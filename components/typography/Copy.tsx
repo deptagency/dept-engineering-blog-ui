@@ -40,22 +40,14 @@ const mapCopyOrderToStyles = ({ order, $color }: CopyProps & { order?: CopyOrder
   }
 }
 
-export const Copy = styled.p<CopyProps>`
+const styledCopy = (order?: CopyOrder) => styled.p<CopyProps>`
   margin: 0 0 ${spaces.md}px;
-  ${(props) => mapCopyOrderToStyles({...props})}
+  ${(props) => mapCopyOrderToStyles({ ...props, order })};
 `
 
-export const CopyS = styled.p<CopyProps>`
-  margin: 0 0 ${spaces.md}px;
-  ${(props) => mapCopyOrderToStyles({ ...props, order: 'sm' })}
-`
-
-export const CopyXS = styled.p<CopyProps>`
-  margin: 0 0 ${spaces.md}px;
-  ${(props) => mapCopyOrderToStyles({ ...props, order: 'xs' })}
-`
-
-export const CopyLG = styled.p<CopyProps>`
-  margin: 0 0 ${spaces.md}px;
-  ${(props) => mapCopyOrderToStyles({ ...props, order: 'lg' })}
-`
+export const Copy = {
+  XS: styledCopy("xs"),
+  SM: styledCopy("sm"),
+  M: styledCopy(),
+  LG: styledCopy("lg")
+}

@@ -9,7 +9,7 @@ import { DescriptionLink } from './components'
 import { SubscribeForm } from './form'
 import { Heading } from '@components/typography/Headings'
 
-const Description = styled(Copy)`
+const Description = styled(Copy.M)`
   margin-bottom: ${spaces.xxs}px;
 `
 
