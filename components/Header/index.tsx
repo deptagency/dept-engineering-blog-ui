@@ -1,7 +1,7 @@
 
 import { SiteNav } from '@components/SiteNav'
 import { Heading } from '@components/typography/Headings'
-import { Subheading2 } from '@components/typography/Subheadings'
+import { Subheading } from '@components/typography/Subheadings'
 import { GhostSettings } from '@lib/ghost'
 import { Grid } from '@mui/material'
 import { StyledHeader, StyledHeaderContent } from './components'
@@ -27,7 +27,7 @@ export const Header = ({ settings, isHome, content }: HeaderProps) => (
                 <Heading.One responsive={isHome} noMargin>{content.title}</Heading.One>
               )}
               {content.description && (
-                <Subheading2>{content.description}</Subheading2>
+                <Subheading.Two>{content.description}</Subheading.Two>
               )}
               </StyledHeaderContent>
           </Grid>

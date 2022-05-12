@@ -1,19 +1,34 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { colors } from '@components/common/colors'
+import { Subheading } from '../Subheadings'
 
-import { Subheading1, Subheading2, SubheadingProps } from '../Subheadings'
 
 export default {
   title: 'Typography',
-  component: Subheading1,
-} as ComponentMeta<typeof Subheading1>
+  component: Subheading.One,
+  argTypes: {
+    $color: {
+      options:  Object.keys(colors),
+      control: {
+        type: 'select'
+      }
+    },
+    children: {
+      control: 'text'
+    }
+  }
+} as ComponentMeta<typeof Subheading.One>
 
-const Template: ComponentStory<typeof Subheading1> = (args: SubheadingProps) => (
+const Template: ComponentStory<typeof Subheading.One> = (args) => (
   <>
-    <Subheading1 {...args}>First Subheading</Subheading1>
-    <Subheading2 {...args}>Second Subheading</Subheading2>
+    <Subheading.One {...args}>{args.children}</Subheading.One>
+    <Subheading.Two {...args}>{args.children}</Subheading.Two>
   </>
 )
 
 export const Subheadings = Template.bind({})
-Subheadings.args = {}
+Subheadings.args = {
+  noMargin: false,
+  children: "Change Me"
+}

@@ -22,6 +22,7 @@ import { collections } from '@lib/collections'
 
 import { Header } from '../Header'
 import { Heading } from '@components/typography/Headings'
+import { Subheading } from '@components/typography/Subheadings'
 
 interface PostProps {
   cmsData: {
@@ -80,7 +81,7 @@ export const Post = ({ cmsData }: PostProps) => {
 
                   <Heading.One noMargin>{title}</Heading.One>
 
-                  {post.custom_excerpt && <p className="post-full-custom-excerpt">{post.custom_excerpt}</p>}
+                  {post.custom_excerpt && <Subheading.One as="p" $color={"darkmidgrey"}>{post.custom_excerpt}</Subheading.One>}
 
                   <div className="post-full-byline">
                     <section className="post-full-byline-content">
