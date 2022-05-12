@@ -266,3 +266,5 @@ This project is not affiliated with [NextJS](https://nextjs.org/) or [Ghost](htt
 # Copyright & License
 
 Copyright (c) 2020 - 2021 styxlab - Released under the [MIT license](LICENSE).
+
+Just adding some random stuff...
