@@ -35,15 +35,13 @@ export const Layout = ({
   children,
   previewPosts,
   bodyClass,
-  errorClass
+  errorClass = ``
 }: LayoutProps) => {
   const lang = settings.lang
   const text = get(getLang(lang))
   const site = settings
   const title = text(`SITE_TITLE`, site.title)
   const { siteUrl, memberSubscriptions } = settings.processEnv
-
-  errorClass = errorClass || ``
 
   return (
     <>

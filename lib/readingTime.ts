@@ -12,11 +12,11 @@ const countWords = (text: string) => {
     return 0
   }
 
-  text = text.replace(/<(.|\n)*?>/g, ' ') // strip any HTML tags
+  const strippedText = text.replace(/<(.|\n)*?>/g, ' ') // strip any HTML tags
 
   const pattern =
     /[a-zA-ZÀ-ÿ0-9_\u0392-\u03c9\u0410-\u04F9]+|[\u4E00-\u9FFF\u3400-\u4dbf\uf900-\ufaff\u3040-\u309f\uac00-\ud7af]+/g
-  const match = text.match(pattern)
+  const match = strippedText.match(pattern)
   let count = 0
 
   if (match === null) {

@@ -22,7 +22,8 @@
         }
       }
     ],
-    "no-return-await": "error"
+    "no-return-await": "error",
+    "no-param-reassign": "error"
   },
   "extends": [
     "next/core-web-vitals",

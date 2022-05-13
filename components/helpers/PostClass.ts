@@ -9,15 +9,11 @@ interface PostClassProps {
 
 export const PostClass = ({
   tags,
-  isFeatured,
-  isImage,
-  isPage
+  isFeatured = false,
+  isImage = false,
+  isPage = false
 }: PostClassProps) => {
   let classes = [`post`]
-
-  isFeatured = isFeatured || false
-  isImage = isImage || false
-  isPage = isPage || false
 
   if (tags && tags.length > 0) {
     classes = classes.concat(tags.map((tag) => `tag-` + tag.slug))

@@ -9,8 +9,8 @@ interface BodyClassProps {
 }
 
 export const BodyClass = ({
-  isHome,
-  isPost,
+  isHome = false,
+  isPost = false,
   author,
   tags,
   page
@@ -19,9 +19,6 @@ export const BodyClass = ({
 
   const isAuthor = (author && author.slug) || false
   const isPage = (page && page.slug) || false
-
-  isHome = isHome || false
-  isPost = isPost || false
 
   if (isHome) {
     classes.push(`home-template`)
