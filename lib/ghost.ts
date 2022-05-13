@@ -181,12 +181,12 @@ export async function getAllSettings(): Promise<GhostSettings> {
 
 export async function getAllTags(): Promise<GhostTags> {
   const tags = await api.tags.browse(tagAndAuthorFetchOptions)
-  return await createNextFeatureImages(tags)
+  return createNextFeatureImages(tags)
 }
 
 export async function getAllAuthors() {
   const authors = await api.authors.browse(tagAndAuthorFetchOptions)
-  return await createNextProfileImages(authors)
+  return createNextProfileImages(authors)
 }
 
 export async function getAllPosts(props?: {
@@ -198,7 +198,7 @@ export async function getAllPosts(props?: {
     ...(props && { ...props })
   })
   const results = await createNextProfileImagesFromPosts(posts)
-  return await createNextFeatureImages(results)
+  return createNextFeatureImages(results)
 }
 
 export async function getAllPostSlugs(): Promise<string[]> {
@@ -214,12 +214,12 @@ export async function getAllPages(props?: {
     filter: excludePostOrPageBySlug(),
     ...(props && { ...props })
   })
-  return await createNextFeatureImages(pages)
+  return createNextFeatureImages(pages)
 }
 
 // specific data by slug
 export async function getTagBySlug(slug: string): Promise<Tag> {
-  return await api.tags.read({
+  return api.tags.read({
     ...tagAndAuthorFetchOptions,
     slug
   })
@@ -290,7 +290,7 @@ export async function getPostsByAuthor(
     ...postAndPageFetchOptions,
     filter: `authors.slug:${slug}`
   })
-  return await createNextFeatureImages(posts)
+  return createNextFeatureImages(posts)
 }
 
 export async function getPostsByTag(
@@ -304,7 +304,7 @@ export async function getPostsByTag(
     ...(limit && { limit: `${limit}` }),
     filter: `tags.slug:${slug}${exclude}`
   })
-  return await createNextFeatureImages(posts)
+  return createNextFeatureImages(posts)
 }
 
 // Collections

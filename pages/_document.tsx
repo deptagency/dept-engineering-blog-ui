@@ -10,7 +10,7 @@ import { processEnv } from '@lib/processEnv'
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
-    return await super.getInitialProps(ctx)
+    return super.getInitialProps(ctx)
   }
 
   render() {

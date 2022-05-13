@@ -30,11 +30,11 @@ const maxRetries = 50
 const read_timeout = 3000 // ms
 const response_timeout = 3000 // ms
 
-const calcHash = async (input: ArrayBuffer | string) => await sha1(input)
+const calcHash = async (input: ArrayBuffer | string) => sha1(input)
 
 const genCacheKey = async (url: string, noCache?: boolean) => {
   if (noCache) return null
-  return await calcHash(url)
+  return calcHash(url)
 }
 
 export interface Dimensions {
