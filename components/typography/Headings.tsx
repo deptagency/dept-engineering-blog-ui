@@ -21,7 +21,12 @@ type BaseHeadingOrder = 1 | 2 | 3 | 4 | 5
 type CallToActionHeadingOrder = 11 | 12
 type HeadingOrder = BaseHeadingOrder | CallToActionHeadingOrder
 
-export const mapHeadingOrderToStyles = ({ order, responsive, noMargin, $color }: HeadingProps & { order: HeadingOrder }) => {
+export const mapHeadingOrderToStyles = ({
+  order,
+  responsive,
+  noMargin,
+  $color
+}: HeadingProps & { order: HeadingOrder }) => {
   switch (order) {
     case 1:
       return `
@@ -135,7 +140,8 @@ export const mapHeadingOrderToStyles = ({ order, responsive, noMargin, $color }:
 }
 
 type ValidHTagNumber = 1 | 2 | 3 | 4 | 5 | 6
-const isValidHTagNumber = (n: number): n is ValidHTagNumber => n % 1 === 0 && 0 < n && n < 7
+const isValidHTagNumber = (n: number): n is ValidHTagNumber =>
+  n % 1 === 0 && 0 < n && n < 7
 
 /**
  * Takes a heading order option and returns an integer between 1 and 6,
@@ -150,7 +156,9 @@ const getTagNumber = (order: HeadingOrder) => {
   return 1
 }
 
-const styledHeading = (order: HeadingOrder) => styled(`h${getTagNumber(order)}`)<HeadingProps>`
+const styledHeading = (order: HeadingOrder) => styled(
+  `h${getTagNumber(order)}`
+)<HeadingProps>`
   ${(props) => mapHeadingOrderToStyles({ ...props, order })};
 `
 

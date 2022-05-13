@@ -2,7 +2,14 @@ import { Navigation } from '@components/Navigation'
 import { SocialLinks } from '@components/SocialLinks'
 import { SubscribeButton } from '@components/Subscribe/button'
 import { GhostSettings, NavItem } from '@lib/ghost'
-import { NavContainer, NavContent, NavLeft, NavLeftWrapper, NavRight, StyledSiteNav } from './components'
+import {
+  NavContainer,
+  NavContent,
+  NavLeft,
+  NavLeftWrapper,
+  NavRight,
+  StyledSiteNav
+} from './components'
 import { LogoLink } from './LogoLink'
 
 export interface SiteNavProps {
@@ -29,7 +36,12 @@ export const SiteNav = ({ settings }: SiteNavProps) => {
 
   // overwrite navigation if specified in options
   const labels = navigation?.map((item) => item.label)
-  if (labels && labels.length > 0 && config.overwriteNavigation && config.overwriteNavigation.length > 0) {
+  if (
+    labels &&
+    labels.length > 0 &&
+    config.overwriteNavigation &&
+    config.overwriteNavigation.length > 0
+  ) {
     config.overwriteNavigation.map((item) => {
       const index = (item.label && labels.indexOf(item.label)) || -1
       if (index > -1 && navigation && navigation[index]) {
@@ -41,7 +53,9 @@ export const SiteNav = ({ settings }: SiteNavProps) => {
   // add navigation if specified in options
   const urls = navigation?.map((item) => item.url)
   if (config.addNavigation && config.addNavigation.length > 0) {
-    config.addNavigation.map((item) => urls?.indexOf(item.url) === -1 && navigation?.push(item))
+    config.addNavigation.map(
+      (item) => urls?.indexOf(item.url) === -1 && navigation?.push(item)
+    )
   }
 
   return (

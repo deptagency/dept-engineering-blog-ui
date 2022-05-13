@@ -1,5 +1,8 @@
 import React from 'react'
-import rehypeReact, { ComponentProps, ComponentPropsWithNode } from 'rehype-react'
+import rehypeReact, {
+  ComponentProps,
+  ComponentPropsWithNode
+} from 'rehype-react'
 import unified from 'unified'
 import { Node } from 'unist'
 import ReactGist from 'react-gist'
@@ -20,8 +23,12 @@ const options = {
   Fragment: React.Fragment,
   passNode: true,
   components: {
-    Link: (props: ComponentProps) => <NextLink {...(props as ComponentPropsWithNode)} />,
-    Image: (props: ComponentProps) => <NextImage {...(props as ComponentPropsWithNode)} />,
+    Link: (props: ComponentProps) => (
+      <NextLink {...(props as ComponentPropsWithNode)} />
+    ),
+    Image: (props: ComponentProps) => (
+      <NextImage {...(props as ComponentPropsWithNode)} />
+    ),
     script: (props: ComponentProps) => {
       const properties = props as ScriptNode
       const myRegexp = new RegExp(gist_regex)
@@ -40,6 +47,8 @@ interface RenderContentProps {
   htmlAst: Node | null
 }
 
-export const RenderContent = ({ htmlAst }: RenderContentProps) => <ContentSection>{htmlAst && renderAst.stringify(htmlAst)}</ContentSection>
+export const RenderContent = ({ htmlAst }: RenderContentProps) => (
+  <ContentSection>{htmlAst && renderAst.stringify(htmlAst)}</ContentSection>
+)
 
 //<div className="post-content load-external-scripts">{renderAst.stringify(htmlAst)}</div>

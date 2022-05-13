@@ -42,7 +42,10 @@ export interface Dimensions {
   height: number
 }
 
-export const imageDimensions = async (url: string | undefined | null, noCache?: boolean): Promise<Dimensions | null> => {
+export const imageDimensions = async (
+  url: string | undefined | null,
+  noCache?: boolean
+): Promise<Dimensions | null> => {
   if (!url) return null
 
   const cacheKey = await genCacheKey(url, noCache)
@@ -82,14 +85,20 @@ export const imageDimensions = async (url: string | undefined | null, noCache?: 
       //console.warn(`images.ts: Network error while probing image with url: ${url}.`)
     }
   } while (hasError && retry < maxRetries)
-  if (hasError) throw new Error(`images.ts: Bad network connection. Failed image probe after ${maxRetries} retries for url: ${url}.`)
+  if (hasError)
+    throw new Error(
+      `images.ts: Bad network connection. Failed image probe after ${maxRetries} retries for url: ${url}.`
+    )
   if (0 === width + height) return null
 
   setCache(cacheKey, { width, height })
   return { width, height }
 }
 
-export const imageDimensionsFromFile = async (file: string, noCache?: boolean) => {
+export const imageDimensionsFromFile = async (
+  file: string,
+  noCache?: boolean
+) => {
   if (!file) return null
 
   const cacheKey = await genCacheKey(file, noCache)
@@ -119,7 +128,8 @@ export const normalizedImageUrl = async (url: string) => {
 
     if (!existsSync(filePath)) {
       const response = await fetch(url)
-      if (!response.ok) throw new Error(`images.ts: unexpected response ${response.statusText}`)
+      if (!response.ok)
+        throw new Error(`images.ts: unexpected response ${response.statusText}`)
       await streamPipeline(response.body, createWriteStream(filePath))
     }
     return `${processEnv.siteUrl}/images/${filename}`

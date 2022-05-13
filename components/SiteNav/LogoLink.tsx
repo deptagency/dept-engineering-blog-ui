@@ -45,7 +45,8 @@ interface LogoLinkProps {
   settings: GhostSettings
 }
 
-const calcSiteLogoWidth = (image: NextImage) => (LOGO_HEIGHT * image.dimensions.width) / image.dimensions.height
+const calcSiteLogoWidth = (image: NextImage) =>
+  (LOGO_HEIGHT * image.dimensions.width) / image.dimensions.height
 
 export const LogoLink: React.FC<LogoLinkProps> = ({ settings }) => {
   const {
@@ -64,7 +65,13 @@ export const LogoLink: React.FC<LogoLinkProps> = ({ settings }) => {
       {logoImage && nextImages.feature ? (
         <NavLogoLink>
           <ImageWrapper imageWidth={imageWidth}>
-            <Image src={logoImage.url} alt={siteTitle} layout="responsive" quality={nextImages.quality} {...logoImage.dimensions} />
+            <Image
+              src={logoImage.url}
+              alt={siteTitle}
+              layout="responsive"
+              quality={nextImages.quality}
+              {...logoImage.dimensions}
+            />
           </ImageWrapper>
         </NavLogoLink>
       ) : logo ? (

@@ -30,17 +30,29 @@ export const SubscribeOverlay = ({ settings }: { settings: GhostSettings }) => {
   const closingStyle: CSSProperties = { opacity: 0, pointerEvents: `none` }
 
   return (
-    <div className="subscribe-overlay" style={isOpen ? openingStyle : closingStyle}>
+    <div
+      className="subscribe-overlay"
+      style={isOpen ? openingStyle : closingStyle}
+    >
       <a className="subscribe-close-overlay" onClick={handleClose}></a>
       <a className="subscribe-close-button" onClick={handleClose}></a>
       <div className="subscribe-overlay-content">
-        {siteLogo && <img className="subscribe-overlay-logo" src={siteLogo} alt={title} />}
+        {siteLogo && (
+          <img className="subscribe-overlay-logo" src={siteLogo} alt={title} />
+        )}
         <div className="subscribe-form">
-          <StyledSubscribeHeadline $color="white">STAY UP TO DATE</StyledSubscribeHeadline>
+          <StyledSubscribeHeadline $color="white">
+            STAY UP TO DATE
+          </StyledSubscribeHeadline>
           <Description $color="white">{text(`SUBSCRIBE_OVERLAY`)}</Description>
           <Description $color="white">
             See the DEPT®{' '}
-            <DescriptionLink href="https://www.deptagency.com/en-us/terms-conditions/" rel="noreferrer" target="_blank" $color="white">
+            <DescriptionLink
+              href="https://www.deptagency.com/en-us/terms-conditions/"
+              rel="noreferrer"
+              target="_blank"
+              $color="white"
+            >
               Terms &amp; Conditions
             </DescriptionLink>
           </Description>

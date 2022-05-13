@@ -29,7 +29,14 @@ interface LayoutProps {
   errorClass?: string
 }
 
-export const Layout = ({ settings, header, children, previewPosts, bodyClass, errorClass }: LayoutProps) => {
+export const Layout = ({
+  settings,
+  header,
+  children,
+  previewPosts,
+  bodyClass,
+  errorClass
+}: LayoutProps) => {
   const lang = settings.lang
   const text = get(getLang(lang))
   const site = settings
@@ -58,24 +65,76 @@ export const Layout = ({ settings, header, children, previewPosts, bodyClass, er
         <footer className="site-footer outer">
           <div className="site-footer-content inner">
             <section className="copyright">
-              <a href={resolve(siteUrl, '')}>{title}</a> &copy; {new Date().getFullYear()}
+              <a href={resolve(siteUrl, '')}>{title}</a> &copy;{' '}
+              {new Date().getFullYear()}
             </section>
 
             <nav className="site-footer-nav">
-              <a href="https://github.com/deptagency" target="_blank" title="Github" rel="noopener noreferrer">
-                <Image alt="GitHub Logo" src="/icons/github.svg" height="18" width="18" />
+              <a
+                href="https://github.com/deptagency"
+                target="_blank"
+                title="Github"
+                rel="noopener noreferrer"
+              >
+                <Image
+                  alt="GitHub Logo"
+                  src="/icons/github.svg"
+                  height="18"
+                  width="18"
+                />
               </a>
-              <a href="https://www.instagram.com/deptagency" target="_blank" title="Instagram" rel="noopener noreferrer">
-                <Image alt="Instagram Logo" src="/icons/instagram.svg" height="18" width="18" />
+              <a
+                href="https://www.instagram.com/deptagency"
+                target="_blank"
+                title="Instagram"
+                rel="noopener noreferrer"
+              >
+                <Image
+                  alt="Instagram Logo"
+                  src="/icons/instagram.svg"
+                  height="18"
+                  width="18"
+                />
               </a>
-              <a className="twitter" href="https://twitter.com/DeptAgency" target="_blank" title="Twitter" rel="noopener noreferrer">
-                <Image alt="Twitter Logo" src="/icons/twitter.svg" height="15" width="18" />
+              <a
+                className="twitter"
+                href="https://twitter.com/DeptAgency"
+                target="_blank"
+                title="Twitter"
+                rel="noopener noreferrer"
+              >
+                <Image
+                  alt="Twitter Logo"
+                  src="/icons/twitter.svg"
+                  height="15"
+                  width="18"
+                />
               </a>
-              <a href="https://www.facebook.com/DeptAgency" target="_blank" title="Facebook" rel="noopener noreferrer">
-                <Image alt="Facebook Logo" src="/icons/facebook.svg" height="18" width="18" />
+              <a
+                href="https://www.facebook.com/DeptAgency"
+                target="_blank"
+                title="Facebook"
+                rel="noopener noreferrer"
+              >
+                <Image
+                  alt="Facebook Logo"
+                  src="/icons/facebook.svg"
+                  height="18"
+                  width="18"
+                />
               </a>
-              <a href="https://www.linkedin.com/company/deptagency" target="_blank" title="LinkedIn" rel="noopener noreferrer">
-                <Image alt="LinkedIn Logo" src="/icons/linkedin.svg" height="18" width="18" />
+              <a
+                href="https://www.linkedin.com/company/deptagency"
+                target="_blank"
+                title="LinkedIn"
+                rel="noopener noreferrer"
+              >
+                <Image
+                  alt="LinkedIn Logo"
+                  src="/icons/linkedin.svg"
+                  height="18"
+                  width="18"
+                />
               </a>
             </nav>
           </div>

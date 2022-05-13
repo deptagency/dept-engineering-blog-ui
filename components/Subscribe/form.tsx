@@ -9,7 +9,11 @@ export const SubscribeForm = ({ settings }: { settings: GhostSettings }) => {
   const { message, handleSubmit, email, handleChange } = useOverlay()
 
   return (
-    <form className={message} data-members-form="subscribe" onSubmit={(ev) => handleSubmit(ev, settings.url)}>
+    <form
+      className={message}
+      data-members-form="subscribe"
+      onSubmit={(ev) => handleSubmit(ev, settings.url)}
+    >
       <div className="form-group">
         <label htmlFor="email">
           {text(`EMAIL`)}

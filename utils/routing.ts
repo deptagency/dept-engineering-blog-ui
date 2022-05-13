@@ -1,5 +1,6 @@
 // higher order function
-const withPrefixPath = (prefixPath: string) => (path: string) => normalizePath(`/${prefixPath}/${path}/`)
+const withPrefixPath = (prefixPath: string) => (path: string) =>
+  normalizePath(`/${prefixPath}/${path}/`)
 
 const trimSlash = (text: string) => text.replace(/^\//, '').replace(/\/$/, '')
 
@@ -24,7 +25,12 @@ interface ResolveUrlProps {
   url?: string
 }
 
-export const resolveUrl = ({ cmsUrl, collectionPath = `/`, slug, url }: ResolveUrlProps) => {
+export const resolveUrl = ({
+  cmsUrl,
+  collectionPath = `/`,
+  slug,
+  url
+}: ResolveUrlProps) => {
   const resolvePath = withPrefixPath(collectionPath)
 
   if (!slug || slug.length === 0) return normalizePath(resolvePath(`/`))

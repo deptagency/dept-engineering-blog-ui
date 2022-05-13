@@ -24,8 +24,12 @@ export class HoverOnAvatar extends Component<HoverOnAvatarProps> {
   }
 
   componentDidMount() {
-    this.anchorRef?.current?.addEventListener(`mouseout`, this.onHoverOut, { passive: true })
-    this.anchorRef?.current?.addEventListener(`mouseover`, this.onHoverIn, { passive: true })
+    this.anchorRef?.current?.addEventListener(`mouseout`, this.onHoverOut, {
+      passive: true
+    })
+    this.anchorRef?.current?.addEventListener(`mouseover`, this.onHoverIn, {
+      passive: true
+    })
   }
 
   componentWillUnmount() {

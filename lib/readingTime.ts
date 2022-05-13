@@ -14,7 +14,8 @@ const countWords = (text: string) => {
 
   text = text.replace(/<(.|\n)*?>/g, ' ') // strip any HTML tags
 
-  const pattern = /[a-zA-ZÀ-ÿ0-9_\u0392-\u03c9\u0410-\u04F9]+|[\u4E00-\u9FFF\u3400-\u4dbf\uf900-\ufaff\u3040-\u309f\uac00-\ud7af]+/g
+  const pattern =
+    /[a-zA-ZÀ-ÿ0-9_\u0392-\u03c9\u0410-\u04F9]+|[\u4E00-\u9FFF\u3400-\u4dbf\uf900-\ufaff\u3040-\u309f\uac00-\ud7af]+/g
   const match = text.match(pattern)
   let count = 0
 
@@ -38,7 +39,10 @@ interface readingTimeProps {
   imageCount: number
 }
 
-const estimatedReadingTimeInMinutes = ({ wordCount, imageCount }: readingTimeProps) => {
+const estimatedReadingTimeInMinutes = ({
+  wordCount,
+  imageCount
+}: readingTimeProps) => {
   const wordsPerMinute = 275
   const wordsPerSecond = wordsPerMinute / 60
   let readingTimeSeconds = wordCount / wordsPerSecond
@@ -69,9 +73,14 @@ interface ReadingTimeOptions {
   minutes?: string
 }
 
-export const readingTime = (post: PostOrPage, options: ReadingTimeOptions = {}) => {
-  const minuteStr = typeof options.minute === 'string' ? options.minute : '1 min read'
-  const minutesStr = typeof options.minutes === 'string' ? options.minutes : '% min read'
+export const readingTime = (
+  post: PostOrPage,
+  options: ReadingTimeOptions = {}
+) => {
+  const minuteStr =
+    typeof options.minute === 'string' ? options.minute : '1 min read'
+  const minutesStr =
+    typeof options.minutes === 'string' ? options.minutes : '% min read'
 
   if (!post.html && !post.reading_time) return ''
 

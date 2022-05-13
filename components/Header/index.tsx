@@ -27,7 +27,9 @@ export const Header = ({ settings, isHome, content }: HeaderProps) => (
                   {content.title}
                 </Heading.One>
               )}
-              {content.description && <Subheading.Two>{content.description}</Subheading.Two>}
+              {content.description && (
+                <Subheading.Two>{content.description}</Subheading.Two>
+              )}
             </StyledHeaderContent>
           </Grid>
         </Grid>

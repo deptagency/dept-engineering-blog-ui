@@ -5,7 +5,8 @@ import { generateRSSFeed } from '@utils/rss'
 
 const RSS = () => null
 
-export const getServerSideProps: GetServerSideProps | undefined = process.env.IS_EXPORT
+export const getServerSideProps: GetServerSideProps | undefined = process.env
+  .IS_EXPORT
   ? undefined
   : async ({ res }) => {
       let settings

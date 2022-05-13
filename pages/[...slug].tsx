@@ -64,7 +64,8 @@ const PostOrPageIndex = ({ cmsData }: PostOrPageProps) => {
 export default PostOrPageIndex
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  if (!(params && params.slug && Array.isArray(params.slug))) throw Error('getStaticProps: wrong parameters.')
+  if (!(params && params.slug && Array.isArray(params.slug)))
+    throw Error('getStaticProps: wrong parameters.')
   const [slug] = params.slug.reverse()
 
   console.time('Post - getStaticProps')
@@ -95,7 +96,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   if (isPost && post?.id && post?.slug) {
     const tagSlug = post?.primary_tag?.slug
-    previewPosts = (tagSlug && (await getPostsByTag(tagSlug, 3, post?.id))) || []
+    previewPosts =
+      (tagSlug && (await getPostsByTag(tagSlug, 3, post?.id))) || []
 
     const postSlugs = await getAllPostSlugs()
     const index = postSlugs.indexOf(post?.slug)
@@ -147,7 +149,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
     return resolveUrl({ cmsUrl, collectionPath, slug, url })
   })
 
-  const pageRoutes = (pages as GhostPostsOrPages).map(({ slug, url }) => resolveUrl({ cmsUrl, slug, url }))
+  const pageRoutes = (pages as GhostPostsOrPages).map(({ slug, url }) =>
+    resolveUrl({ cmsUrl, slug, url })
+  )
   const paths = [...postRoutes, ...pageRoutes]
 
   return {

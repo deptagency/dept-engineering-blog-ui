@@ -4,7 +4,12 @@ import { useActiveHash } from '@components/effects/UseActiveHash'
 import { IToC } from '@lib/toc'
 import { getLang, get } from '@utils/use-lang'
 
-const getHeadingIds = (toc: IToC[], traverseFullDepth = true, maxDepth: number, recursionDepth = 1): string[] => {
+const getHeadingIds = (
+  toc: IToC[],
+  traverseFullDepth = true,
+  maxDepth: number,
+  recursionDepth = 1
+): string[] => {
   const idList = []
 
   if (toc) {
@@ -12,16 +17,26 @@ const getHeadingIds = (toc: IToC[], traverseFullDepth = true, maxDepth: number, 
       item.id && idList.push(item.id)
 
       if (item.items && traverseFullDepth && recursionDepth < (maxDepth || 6)) {
-        idList.push(...getHeadingIds(item.items, true, maxDepth, recursionDepth + 1))
+        idList.push(
+          ...getHeadingIds(item.items, true, maxDepth, recursionDepth + 1)
+        )
       }
     }
   }
   return idList
 }
 
-const isUnderDepthLimit = (depth: number, maxDepth: number) => (maxDepth === null ? true : depth < maxDepth)
+const isUnderDepthLimit = (depth: number, maxDepth: number) =>
+  maxDepth === null ? true : depth < maxDepth
 
-const createItems = (toc: IToC[], url: string, depth: number, maxDepth: number, activeHash: string, isDesktop: boolean) =>
+const createItems = (
+  toc: IToC[],
+  url: string,
+  depth: number,
+  maxDepth: number,
+  activeHash: string,
+  isDesktop: boolean
+) =>
   toc.map((head, index) => {
     const isActive = isDesktop && head.id === `${activeHash}`
     return (
@@ -31,7 +46,18 @@ const createItems = (toc: IToC[], url: string, depth: number, maxDepth: number, 
             <a className={isActive ? 'link active' : 'link'}>{head.heading}</a>
           </Link>
         )}
-        {head.items && isUnderDepthLimit(depth, maxDepth) && <ul className="sub">{createItems(head.items, url, depth + 1, maxDepth, activeHash, isDesktop)}</ul>}
+        {head.items && isUnderDepthLimit(depth, maxDepth) && (
+          <ul className="sub">
+            {createItems(
+              head.items,
+              url,
+              depth + 1,
+              maxDepth,
+              activeHash,
+              isDesktop
+            )}
+          </ul>
+        )}
       </li>
     )
   })
@@ -43,7 +69,12 @@ interface TableOfContentsProps {
   lang?: string
 }
 
-export const TableOfContents = ({ toc, url, maxDepth = 2, lang }: TableOfContentsProps) => {
+export const TableOfContents = ({
+  toc,
+  url,
+  maxDepth = 2,
+  lang
+}: TableOfContentsProps) => {
   const text = get(getLang(lang))
 
   const [isDesktop, setIsDesktop] = useState(false)
@@ -64,7 +95,9 @@ export const TableOfContents = ({ toc, url, maxDepth = 2, lang }: TableOfContent
         <aside className="toc">
           <nav>
             <h2>{text(`TABLE_OF_CONTENTS`)}</h2>
-            <ul className="list">{createItems(toc, url, 1, maxDepth, activeHash, isDesktop)}</ul>
+            <ul className="list">
+              {createItems(toc, url, 1, maxDepth, activeHash, isDesktop)}
+            </ul>
           </nav>
         </aside>
       ) : null}

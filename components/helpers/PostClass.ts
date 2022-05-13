@@ -7,7 +7,12 @@ interface PostClassProps {
   isPage?: boolean
 }
 
-export const PostClass = ({ tags, isFeatured, isImage, isPage }: PostClassProps) => {
+export const PostClass = ({
+  tags,
+  isFeatured,
+  isImage,
+  isPage
+}: PostClassProps) => {
   let classes = [`post`]
 
   isFeatured = isFeatured || false

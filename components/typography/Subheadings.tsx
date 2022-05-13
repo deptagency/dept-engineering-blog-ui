@@ -14,7 +14,11 @@ export interface SubheadingProps {
 
 type SubheadingOrder = 1 | 2
 
-const mapSubheadingOrderToStyles = ({ order, noMargin, $color }: SubheadingProps & { order: SubheadingOrder }) => {
+const mapSubheadingOrderToStyles = ({
+  order,
+  noMargin,
+  $color
+}: SubheadingProps & { order: SubheadingOrder }) => {
   switch (order) {
     case 1:
       return `

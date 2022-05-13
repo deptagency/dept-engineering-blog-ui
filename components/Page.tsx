@@ -34,14 +34,21 @@ export const Page = ({ cmsData }: PageProps) => {
   const { nextImages } = settings.processEnv
 
   const featImg = page.featureImage
-  const postClass = PostClass({ tags: page.tags, isPage: page && true, isImage: !!featImg })
+  const postClass = PostClass({
+    tags: page.tags,
+    isPage: page && true,
+    isImage: !!featImg
+  })
   const htmlAst = page.htmlAst
   if (htmlAst === undefined) throw Error('Page.tsx: htmlAst must be defined.')
 
   return (
     <>
       <SEO {...{ settings, meta_title, meta_description, seoImage }} />
-      <Layout {...{ settings, bodyClass }} header={<Header {...{ settings }} />}>
+      <Layout
+        {...{ settings, bodyClass }}
+        header={<Header {...{ settings }} />}
+      >
         <div className="inner">
           <div className="grid-wrapper">
             <article className={`post-full grid-inner ${postClass}`}>
@@ -51,7 +58,10 @@ export const Page = ({ cmsData }: PageProps) => {
 
               {featImg &&
                 (nextImages.feature && featImg.dimensions ? (
-                  <figure className="post-full-image" style={{ display: 'inherit' }}>
+                  <figure
+                    className="post-full-image"
+                    style={{ display: 'inherit' }}
+                  >
                     <Image
                       src={featImg.url}
                       alt={page.title}

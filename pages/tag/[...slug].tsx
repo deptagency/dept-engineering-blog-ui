@@ -6,7 +6,15 @@ import { Layout } from '@components/Layout'
 import { PostView } from '@components/PostView'
 import { SEO } from '@meta/seo'
 
-import { getTagBySlug, getAllTags, getAllSettings, getPostsByTag, GhostSettings, GhostPostOrPage, GhostPostsOrPages } from '@lib/ghost'
+import {
+  getTagBySlug,
+  getAllTags,
+  getAllSettings,
+  getPostsByTag,
+  GhostSettings,
+  GhostPostOrPage,
+  GhostPostsOrPages
+} from '@lib/ghost'
 import { resolveUrl } from '@utils/routing'
 import { ISeoImage, seoImage } from '@meta/seoImage'
 import { processEnv } from '@lib/processEnv'
@@ -43,11 +51,21 @@ const TagIndex = ({ cmsData }: TagIndexProps) => {
 
   const { tag, posts, settings, seoImage, bodyClass } = cmsData
   const { meta_title, meta_description } = tag
-  const fallbackDescription = getPostCollectionDescription(tag.count?.posts, settings.lang)
+  const fallbackDescription = getPostCollectionDescription(
+    tag.count?.posts,
+    settings.lang
+  )
 
   return (
     <>
-      <SEO {...{ settings, title: meta_title || '', description: meta_description || '', seoImage }} />
+      <SEO
+        {...{
+          settings,
+          title: meta_title || '',
+          description: meta_description || '',
+          seoImage
+        }}
+      />
       <Layout
         {...{ settings, bodyClass }}
         header={
@@ -71,7 +89,8 @@ const TagIndex = ({ cmsData }: TagIndexProps) => {
 export default TagIndex
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  if (!(params && params.slug && Array.isArray(params.slug))) throw Error('getStaticProps: wrong parameters.')
+  if (!(params && params.slug && Array.isArray(params.slug)))
+    throw Error('getStaticProps: wrong parameters.')
   const [slug] = params.slug.reverse()
 
   const tag = await getTagBySlug(slug)
@@ -97,7 +116,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const settings = await getAllSettings()
   const { url: cmsUrl } = settings
 
-  const paths = tags.map(({ slug, url }) => resolveUrl({ cmsUrl, slug, url })).filter((path) => path.startsWith(`/tag/`))
+  const paths = tags
+    .map(({ slug, url }) => resolveUrl({ cmsUrl, slug, url }))
+    .filter((path) => path.startsWith(`/tag/`))
 
   return {
     paths,

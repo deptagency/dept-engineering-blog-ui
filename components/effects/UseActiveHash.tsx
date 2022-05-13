@@ -6,7 +6,10 @@
 
 import { useEffect, useState } from 'react'
 
-export const useActiveHash = (itemIds: string[], rootMargin: string | undefined = undefined) => {
+export const useActiveHash = (
+  itemIds: string[],
+  rootMargin: string | undefined = undefined
+) => {
   const [activeHash, setActiveHash] = useState(``)
 
   useEffect(() => {

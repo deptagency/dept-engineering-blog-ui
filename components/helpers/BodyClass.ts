@@ -8,7 +8,13 @@ interface BodyClassProps {
   page?: PostOrPage
 }
 
-export const BodyClass = ({ isHome, isPost, author, tags, page }: BodyClassProps) => {
+export const BodyClass = ({
+  isHome,
+  isPost,
+  author,
+  tags,
+  page
+}: BodyClassProps) => {
   let classes = []
 
   const isAuthor = (author && author.slug) || false

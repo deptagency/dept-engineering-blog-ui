@@ -37,14 +37,19 @@ export const PostItems = ({ settings, posts, isHome }: PostItemsProps) => {
     return null
   }
 
-  firstRow.push(<FirstPost key={0} {...{ settings, post: posts[0], isHome, num: 0 }} />)
+  firstRow.push(
+    <FirstPost key={0} {...{ settings, post: posts[0], isHome, num: 0 }} />
+  )
 
   if (isHome || asPath.indexOf('/tag') >= 0) {
     firstRow.push(
       <div className="grid-wrapper" key="filter-tags">
         <Grid className="grid-inner" container>
           <Grid item xs={12}>
-            <FilterTags currentTag={asPath.split('/').slice(-1)[0] || ''} tags={['Platforms', 'Teams', 'Process', 'People']} />
+            <FilterTags
+              currentTag={asPath.split('/').slice(-1)[0] || ''}
+              tags={['Platforms', 'Teams', 'Process', 'People']}
+            />
           </Grid>
         </Grid>
       </div>
@@ -64,7 +69,12 @@ export const PostItems = ({ settings, posts, isHome }: PostItemsProps) => {
     <div className="grid-wrapper" key={i + 1}>
       <Grid className="grid-inner" columnSpacing={{ xs: 0, md: 3 }} container>
         {row.map((post, n) => (
-          <Grid key={`${i + 1} ${n}`} item xs={12} md={row.length === 1 ? 12 : row.length === 3 ? 4 : 6}>
+          <Grid
+            key={`${i + 1} ${n}`}
+            item
+            xs={12}
+            md={row.length === 1 ? 12 : row.length === 3 ? 4 : 6}
+          >
             <PostCard {...{ settings, post, num: parseInt(`${i + 1}${n}`) }} />
           </Grid>
         ))}

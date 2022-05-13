@@ -18,7 +18,9 @@ const postPreviewFetchOptions: Params = {
   order: ['featured DESC', 'published_at DESC']
 }
 
-export async function getPostPreviewById(id: string): Promise<GhostPostOrPage | null> {
+export async function getPostPreviewById(
+  id: string
+): Promise<GhostPostOrPage | null> {
   let result: GhostPostOrPage
 
   try {

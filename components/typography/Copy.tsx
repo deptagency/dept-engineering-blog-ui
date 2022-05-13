@@ -9,7 +9,10 @@ export interface CopyProps {
 
 type CopyOrder = 'sm' | 'xs' | 'lg'
 
-const mapCopyOrderToStyles = ({ order, $color }: CopyProps & { order?: CopyOrder }) => {
+const mapCopyOrderToStyles = ({
+  order,
+  $color
+}: CopyProps & { order?: CopyOrder }) => {
   switch (order) {
     case 'xs':
       return `

@@ -34,6 +34,9 @@ export function setCache(key: string | null, object: unknown): void {
   try {
     fs.writeFileSync(filePath, JSON.stringify(object as JSON))
   } catch (error) {
-    console.warn('Could not write to file cache. This is expected during ISR, but not during deploy.', error)
+    console.warn(
+      'Could not write to file cache. This is expected during ISR, but not during deploy.',
+      error
+    )
   }
 }

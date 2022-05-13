@@ -14,11 +14,21 @@ interface AddActionClassProps extends ClassProps {
   success?: string | string[]
 }
 
-const addActionClass = ({ className, action = `ssr`, success }: AddActionClassProps) => {
+const addActionClass = ({
+  className,
+  action = `ssr`,
+  success
+}: AddActionClassProps) => {
   if (!success || Array.isArray(action) || Array.isArray(success)) {
     return className
   }
-  return `${className} ${action === `subscribe` ? (success === `true` ? ` subscribe-success` : ` subscribe-failure`) : ``}`
+  return `${className} ${
+    action === `subscribe`
+      ? success === `true`
+        ? ` subscribe-success`
+        : ` subscribe-failure`
+      : ``
+  }`
 }
 
 export const DocumentHead = ({ className }: DocumentHeadProps) => {

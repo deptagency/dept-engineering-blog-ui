@@ -5,7 +5,11 @@ import url from 'url'
 import { GhostSettings } from '@lib/ghost'
 import { Author, PostOrPage, Tag } from '@tryghost/content-api'
 import { ISeoImage } from '@meta/seoImage'
-import { siteTitleMeta, siteDescriptionMeta, siteIcon } from '@meta/siteDefaults'
+import {
+  siteTitleMeta,
+  siteDescriptionMeta,
+  siteIcon
+} from '@meta/siteDefaults'
 
 interface SEOProps {
   title?: string
@@ -17,12 +21,22 @@ interface SEOProps {
   article?: PostOrPage
 }
 
-const getPublicTags = (tags: Tag[] | undefined) => (tags ? tags.filter((tag) => tag.name?.substr(0, 5) !== 'hash-') : [])
+const getPublicTags = (tags: Tag[] | undefined) =>
+  tags ? tags.filter((tag) => tag.name?.substr(0, 5) !== 'hash-') : []
 
 export const SEO = (props: SEOProps) => {
   const { title: t, description: d, seoImage, settings, article } = props
 
-  const { og_title, og_description, published_at, updated_at, primary_author, primary_tag, twitter_title, twitter_description } = article || {}
+  const {
+    og_title,
+    og_description,
+    published_at,
+    updated_at,
+    primary_author,
+    primary_tag,
+    twitter_title,
+    twitter_description
+  } = article || {}
   const type = article ? 'article' : 'website'
   const facebook = primary_author?.facebook
 
@@ -30,9 +44,16 @@ export const SEO = (props: SEOProps) => {
   const siteUrl = settings.processEnv.siteUrl
   const canonical = url.resolve(siteUrl, `${router.basePath}${router.asPath}`)
 
-  const { twitter, title: settingsTitle, description: settingsDescription, meta_title, meta_description } = settings
+  const {
+    twitter,
+    title: settingsTitle,
+    description: settingsDescription,
+    meta_title,
+    meta_description
+  } = settings
   const title = t || meta_title || settingsTitle || siteTitleMeta
-  const description = d || meta_description || settingsDescription || siteDescriptionMeta
+  const description =
+    d || meta_description || settingsDescription || siteDescriptionMeta
 
   const jsonLd = getJsonLd({ ...props, title, description, seoImage })
 
@@ -46,27 +67,63 @@ export const SEO = (props: SEOProps) => {
       <meta property="og:description" content={og_description || description} />
       <meta property="og:site_name" content={title} />
       <meta property="og:url" content={canonical} />
-      {published_at && <meta property="article:published_time" content={published_at} />}
-      {updated_at && <meta property="article:modified_time" content={updated_at} />}
+      {published_at && (
+        <meta property="article:published_time" content={published_at} />
+      )}
+      {updated_at && (
+        <meta property="article:modified_time" content={updated_at} />
+      )}
       {getPublicTags(article?.tags).map(({ name: keyword }, i) => (
         <meta property="article:tag" content={keyword} key={i} />
       ))}
-      {facebook && <meta property="article:author" content={`https://www.facebook.com/${facebook.replace(/^\//, ``)}/`} />}
+      {facebook && (
+        <meta
+          property="article:author"
+          content={`https://www.facebook.com/${facebook.replace(/^\//, ``)}/`}
+        />
+      )}
       <meta property="twitter:title" content={twitter_title || title} />
-      <meta property="twitter:description" content={twitter_description || description} />
+      <meta
+        property="twitter:description"
+        content={twitter_description || description}
+      />
       <meta property="twitter:url" content={canonical} />
-      {primary_author && <meta property="twitter:label1" content="Written by" />}
-      {primary_author && <meta property="twitter:data1" content={primary_author?.name} />}
+      {primary_author && (
+        <meta property="twitter:label1" content="Written by" />
+      )}
+      {primary_author && (
+        <meta property="twitter:data1" content={primary_author?.name} />
+      )}
       {primary_tag && <meta property="twitter:label2" content="Filed under" />}
-      {primary_tag && <meta property="twitter:data2" content={primary_tag?.name} />}
+      {primary_tag && (
+        <meta property="twitter:data2" content={primary_tag?.name} />
+      )}
       <meta property="twitter:card" content="summary_large_image" />
       {twitter && <meta property="twitter:creator" content={twitter} />}
-      {twitter && <meta property="twitter:site" content={`https://twitter.com/${twitter.replace(/^@/, ``)}/`} />}
+      {twitter && (
+        <meta
+          property="twitter:site"
+          content={`https://twitter.com/${twitter.replace(/^@/, ``)}/`}
+        />
+      )}
       {seoImage && <meta name="twitter:image" content={seoImage.url} />}
       {seoImage && <meta property="og:image" content={seoImage.url} />}
-      {seoImage && <meta property="og:image:width" content={`${seoImage.dimensions.width}`} />}
-      {seoImage && <meta property="og:image:height" content={`${seoImage.dimensions.height}`} />}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}></script>
+      {seoImage && (
+        <meta
+          property="og:image:width"
+          content={`${seoImage.dimensions.width}`}
+        />
+      )}
+      {seoImage && (
+        <meta
+          property="og:image:height"
+          content={`${seoImage.dimensions.height}`}
+        />
+      )}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      ></script>
     </Head>
   )
 }
@@ -74,14 +131,27 @@ export const SEO = (props: SEOProps) => {
 export const authorSameAs = (author: Author) => {
   const { website, twitter, facebook } = author
 
-  const authorProfiles = [website, twitter && `https://twitter.com/${twitter.replace(/^@/, ``)}/`, facebook && `https://www.facebook.com/${facebook.replace(/^\//, ``)}/`].filter(
-    (element) => !!element
-  )
+  const authorProfiles = [
+    website,
+    twitter && `https://twitter.com/${twitter.replace(/^@/, ``)}/`,
+    facebook && `https://www.facebook.com/${facebook.replace(/^\//, ``)}/`
+  ].filter((element) => !!element)
 
-  return (authorProfiles.length > 0 && `["${authorProfiles.join(`", "`)}"]`) || undefined
+  return (
+    (authorProfiles.length > 0 && `["${authorProfiles.join(`", "`)}"]`) ||
+    undefined
+  )
 }
 
-const getJsonLd = ({ title, description, canonical, seoImage, settings, sameAs, article }: SEOProps) => {
+const getJsonLd = ({
+  title,
+  description,
+  canonical,
+  seoImage,
+  settings,
+  sameAs,
+  article
+}: SEOProps) => {
   const siteUrl = settings.processEnv.siteUrl
   const pubLogoUrl = settings.logo || url.resolve(siteUrl, siteIcon)
   const type = article ? 'Article' : 'WebSite'
@@ -118,7 +188,8 @@ const getJsonLd = ({ title, description, canonical, seoImage, settings, sameAs, 
 }
 
 const getArticleJsonLd = (article: PostOrPage) => {
-  const { published_at, updated_at, primary_author, tags, meta_title, title } = article
+  const { published_at, updated_at, primary_author, tags, meta_title, title } =
+    article
   const name = primary_author?.name
   const image = primary_author?.profile_image
   const sameAs = (primary_author && authorSameAs(primary_author)) || undefined

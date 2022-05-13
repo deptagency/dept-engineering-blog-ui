@@ -8,7 +8,16 @@ import { Header } from '@components/Header'
 import { resolveUrl } from '@utils/routing'
 import { SEO, authorSameAs } from '@meta/seo'
 
-import { getAuthorBySlug, getAllAuthors, getAllSettings, getPostsByAuthor, GhostSettings, GhostPostOrPage, GhostPostsOrPages, GhostAuthor } from '@lib/ghost'
+import {
+  getAuthorBySlug,
+  getAllAuthors,
+  getAllSettings,
+  getPostsByAuthor,
+  GhostSettings,
+  GhostPostOrPage,
+  GhostPostsOrPages,
+  GhostAuthor
+} from '@lib/ghost'
 import { ISeoImage, seoImage } from '@meta/seoImage'
 import { processEnv } from '@lib/processEnv'
 
@@ -43,11 +52,22 @@ const AuthorIndex = ({ cmsData }: AuthorIndexProps) => {
   const { author, posts, settings, seoImage, bodyClass } = cmsData
   const { name, bio } = author
   const sameAs = authorSameAs(author)
-  const description = getPostCollectionDescription(author.count?.posts, settings.lang)
+  const description = getPostCollectionDescription(
+    author.count?.posts,
+    settings.lang
+  )
 
   return (
     <>
-      <SEO {...{ settings, description: bio || undefined, seoImage, sameAs, title: name }} />
+      <SEO
+        {...{
+          settings,
+          description: bio || undefined,
+          seoImage,
+          sameAs,
+          title: name
+        }}
+      />
       <Layout
         {...{ settings, bodyClass }}
         header={
@@ -71,7 +91,8 @@ const AuthorIndex = ({ cmsData }: AuthorIndexProps) => {
 export default AuthorIndex
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  if (!(params && params.slug && Array.isArray(params.slug))) throw Error('getStaticProps: wrong parameters.')
+  if (!(params && params.slug && Array.isArray(params.slug)))
+    throw Error('getStaticProps: wrong parameters.')
   const [slug] = params.slug.reverse()
 
   const author = await getAuthorBySlug(slug)
@@ -102,7 +123,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const settings = await getAllSettings()
   const { url: cmsUrl } = settings
 
-  const paths = authors.map(({ slug, url }) => resolveUrl({ cmsUrl, slug, url: url || undefined })).filter((path) => path.startsWith(`/author/`))
+  const paths = authors
+    .map(({ slug, url }) => resolveUrl({ cmsUrl, slug, url: url || undefined }))
+    .filter((path) => path.startsWith(`/author/`))
 
   return {
     paths,

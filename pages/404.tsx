@@ -30,7 +30,11 @@ export default function Custom404({ settings, bodyClass }: Custom404Props) {
   const text = get(getLang(settings.lang))
 
   return (
-    <Layout {...{ settings, bodyClass }} header={<Header {...{ settings }} />} errorClass="error-content">
+    <Layout
+      {...{ settings, bodyClass }}
+      header={<Header {...{ settings }} />}
+      errorClass="error-content"
+    >
       <div className="inner error-content-inner">
         <div className="error-code-wrap">
           <Heading.Two as="h1">404</Heading.Two>
@@ -38,7 +42,9 @@ export default function Custom404({ settings, bodyClass }: Custom404Props) {
         <section className="error-message">
           <p className="error-description">{text(`PAGE_NOT_FOUND`)}</p>
           <Link href="/">
-            <a className="btn btn-inverted error-link">{text(`GOTO_FRONT_PAGE`)}</a>
+            <a className="btn btn-inverted error-link">
+              {text(`GOTO_FRONT_PAGE`)}
+            </a>
           </Link>
         </section>
       </div>

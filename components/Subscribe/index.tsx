@@ -20,13 +20,27 @@ export const Subscribe = ({ settings }: { settings: GhostSettings }) => {
     <div className="subscribe-form">
       <section className="inner">
         <div className="grid-wrapper">
-          <Grid alignItems="center" className="grid-inner" container justifyContent="space-between">
+          <Grid
+            alignItems="center"
+            className="grid-inner"
+            container
+            justifyContent="space-between"
+          >
             <Grid item xs={12} md={3}>
-              <Heading.CallToAction2 as="h3">STAY UP TO DATE</Heading.CallToAction2>
-              <Description $color={'onyx'}>{text(`SUBSCRIBE_OVERLAY`)}</Description>
+              <Heading.CallToAction2 as="h3">
+                STAY UP TO DATE
+              </Heading.CallToAction2>
+              <Description $color={'onyx'}>
+                {text(`SUBSCRIBE_OVERLAY`)}
+              </Description>
               <Description $color={'onyx'}>
                 See the DEPT®{' '}
-                <DescriptionLink $color="onyx" href="https://www.deptagency.com/en-us/terms-conditions/" rel="noreferrer" target="_blank">
+                <DescriptionLink
+                  $color="onyx"
+                  href="https://www.deptagency.com/en-us/terms-conditions/"
+                  rel="noreferrer"
+                  target="_blank"
+                >
                   Terms &amp; Conditions
                 </DescriptionLink>
               </Description>

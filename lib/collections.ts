@@ -13,7 +13,9 @@ export class Collections<T> {
   }
 
   getCollectionByNode(node: T) {
-    const { path } = this.collections.find((collection) => collection.selector(node)) || { path: '/' }
+    const { path } = this.collections.find((collection) =>
+      collection.selector(node)
+    ) || { path: '/' }
     return path
   }
 }

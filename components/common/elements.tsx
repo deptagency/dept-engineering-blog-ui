@@ -7,14 +7,18 @@ import { useState, useCallback } from 'react'
 export interface useInputProps {
   value: string
   error?: string
-  onChange: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void
+  onChange: (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void
 }
 
 export interface useInputError {
   (status: string): void
 }
 
-export const useInput = (initialValue: string): [useInputProps, useInputError, () => void] => {
+export const useInput = (
+  initialValue: string
+): [useInputProps, useInputError, () => void] => {
   const [value, setValue] = useState(initialValue)
   const [error, setError] = useState<string | undefined>(undefined)
 
@@ -48,7 +52,10 @@ interface useSelectSet {
   (values: string[]): void
 }
 
-export const useSelect = (initialIndex: number, initialValues: string[]): [useSelectProps, useSelectError, () => void, useSelectSet] => {
+export const useSelect = (
+  initialIndex: number,
+  initialValues: string[]
+): [useSelectProps, useSelectError, () => void, useSelectSet] => {
   const [index, setIndex] = useState(initialIndex)
   const [values, setValues] = useState(initialValues)
   const [error, setError] = useState<string | undefined>(undefined)

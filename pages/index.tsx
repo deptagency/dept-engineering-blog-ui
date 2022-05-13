@@ -7,7 +7,13 @@ import { Header } from '@components/Header'
 import { SEO } from '@meta/seo'
 
 import { processEnv } from '@lib/processEnv'
-import { getAllPosts, getAllSettings, GhostPostOrPage, GhostPostsOrPages, GhostSettings } from '@lib/ghost'
+import {
+  getAllPosts,
+  getAllSettings,
+  GhostPostOrPage,
+  GhostPostsOrPages,
+  GhostSettings
+} from '@lib/ghost'
 import { seoImage, ISeoImage } from '@meta/seoImage'
 
 import { BodyClass } from '@helpers/BodyClass'
