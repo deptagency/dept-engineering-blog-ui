@@ -85,10 +85,11 @@ export const imageDimensions = async (
       //console.warn(`images.ts: Network error while probing image with url: ${url}.`)
     }
   } while (hasError && retry < maxRetries)
-  if (hasError)
+  if (hasError) {
     throw new Error(
       `images.ts: Bad network connection. Failed image probe after ${maxRetries} retries for url: ${url}.`
     )
+  }
   if (0 === width + height) return null
 
   setCache(cacheKey, { width, height })
@@ -128,8 +129,9 @@ export const normalizedImageUrl = async (url: string) => {
 
     if (!existsSync(filePath)) {
       const response = await fetch(url)
-      if (!response.ok)
+      if (!response.ok) {
         throw new Error(`images.ts: unexpected response ${response.statusText}`)
+      }
       await streamPipeline(response.body, createWriteStream(filePath))
     }
     return `${processEnv.siteUrl}/images/${filename}`

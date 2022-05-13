@@ -24,7 +24,8 @@
     ],
     "no-return-await": "error",
     "no-param-reassign": "error",
-    "consistent-return": "error"
+    "consistent-return": "error",
+    "curly": ["error", "multi-line"]
   },
   "extends": [
     "next/core-web-vitals",

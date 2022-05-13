@@ -91,8 +91,9 @@ const AuthorIndex = ({ cmsData }: AuthorIndexProps) => {
 export default AuthorIndex
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  if (!(params && params.slug && Array.isArray(params.slug)))
+  if (!(params && params.slug && Array.isArray(params.slug))) {
     throw Error('getStaticProps: wrong parameters.')
+  }
   const [slug] = params.slug.reverse()
 
   const author = await getAuthorBySlug(slug)

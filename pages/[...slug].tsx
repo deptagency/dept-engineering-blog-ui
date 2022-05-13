@@ -64,8 +64,9 @@ const PostOrPageIndex = ({ cmsData }: PostOrPageProps) => {
 export default PostOrPageIndex
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  if (!(params && params.slug && Array.isArray(params.slug)))
+  if (!(params && params.slug && Array.isArray(params.slug))) {
     throw Error('getStaticProps: wrong parameters.')
+  }
   const [slug] = params.slug.reverse()
 
   console.time('Post - getStaticProps')

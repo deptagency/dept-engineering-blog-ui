@@ -89,8 +89,9 @@ const TagIndex = ({ cmsData }: TagIndexProps) => {
 export default TagIndex
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  if (!(params && params.slug && Array.isArray(params.slug)))
+  if (!(params && params.slug && Array.isArray(params.slug))) {
     throw Error('getStaticProps: wrong parameters.')
+  }
   const [slug] = params.slug.reverse()
 
   const tag = await getTagBySlug(slug)
