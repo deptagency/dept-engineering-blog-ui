@@ -38,6 +38,7 @@
     "prefer-destructuring": "error",
     "no-implicit-globals": "error",
     "no-invalid-this": "error",
+    "array-callback-return": "error",
     "ordered-imports/ordered-imports": [
       "error",
       {

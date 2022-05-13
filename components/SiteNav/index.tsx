@@ -44,6 +44,8 @@ export const SiteNav = ({ settings }: SiteNavProps) => {
     config.overwriteNavigation &&
     config.overwriteNavigation.length > 0
   ) {
+    // @todo refactor to remove reassignment and improper use of Array.map
+    // eslint-disable-next-line array-callback-return
     config.overwriteNavigation.map((item) => {
       const index = (item.label && labels.indexOf(item.label)) || -1
       if (index > -1 && navigation && navigation[index]) {
