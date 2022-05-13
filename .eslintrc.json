@@ -39,6 +39,8 @@
     "no-implicit-globals": "error",
     "no-invalid-this": "error",
     "array-callback-return": "error",
+    "no-duplicate-imports": "error",
+    "no-unmodified-loop-condition": "error",
     "ordered-imports/ordered-imports": [
       "error",
       {
