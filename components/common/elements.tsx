@@ -5,8 +5,8 @@ import { useState, useCallback } from 'react'
  */
 
 export interface useInputProps {
-  value: string,
-  error?: string,
+  value: string
+  error?: string
   onChange: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void
 }
 
@@ -14,9 +14,7 @@ export interface useInputError {
   (status: string): void
 }
 
-export const useInput = (
-  initialValue: string
-): [useInputProps, useInputError, () => void] => {
+export const useInput = (initialValue: string): [useInputProps, useInputError, () => void] => {
   const [value, setValue] = useState(initialValue)
   const [error, setError] = useState<string | undefined>(undefined)
 
@@ -24,9 +22,9 @@ export const useInput = (
     {
       value,
       error,
-      onChange: e => setValue(e.target.value)
+      onChange: (e) => setValue(e.target.value),
     },
-    status => setError(status),
+    (status) => setError(status),
     () => setValue(initialValue),
   ]
 }
@@ -38,7 +36,7 @@ export const useInput = (
 export interface useSelectProps {
   index: number
   values: string[]
-  error?: string,
+  error?: string
   onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void
 }
 
@@ -50,18 +48,15 @@ interface useSelectSet {
   (values: string[]): void
 }
 
-export const useSelect = (
-  initialIndex: number,
-  initialValues: string[]
-): [useSelectProps, useSelectError, () => void, useSelectSet] => {
+export const useSelect = (initialIndex: number, initialValues: string[]): [useSelectProps, useSelectError, () => void, useSelectSet] => {
   const [index, setIndex] = useState(initialIndex)
   const [values, setValues] = useState(initialValues)
   const [error, setError] = useState<string | undefined>(undefined)
 
   return [
     { index, values, error, onChange: (e) => setIndex(e.target.selectedIndex) },
-    status => setError(status),
+    (status) => setError(status),
     () => setIndex(0),
-    useCallback(values => setValues(values), []),
+    useCallback((values) => setValues(values), []),
   ]
 }

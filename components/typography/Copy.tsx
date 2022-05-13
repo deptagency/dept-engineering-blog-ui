@@ -46,8 +46,8 @@ const styledCopy = (order?: CopyOrder) => styled.p<CopyProps>`
 `
 
 export const Copy = {
-  XS: styledCopy("xs"),
-  SM: styledCopy("sm"),
+  XS: styledCopy('xs'),
+  SM: styledCopy('sm'),
   M: styledCopy(),
-  LG: styledCopy("lg")
+  LG: styledCopy('lg'),
 }

@@ -28,10 +28,10 @@ const defaultOptions = withBundleAnalyzer({
       {
         source: '/contact',
         destination: 'https://www.deptagency.com/contact/',
-        permanent: true
-      }
+        permanent: true,
+      },
     ]
-  }
+  },
 })
 
 /**

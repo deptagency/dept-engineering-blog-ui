@@ -15,9 +15,14 @@ interface SiteNavConfig {
 }
 
 export const SiteNav = ({ settings }: SiteNavProps) => {
-  const { processEnv: { customNavigation, memberSubscriptions, siteUrl }, secondary_navigation, navigation, lang } = settings
+  const {
+    processEnv: { customNavigation, memberSubscriptions, siteUrl },
+    secondary_navigation,
+    navigation,
+    lang,
+  } = settings
 
-  const config: SiteNavConfig  = {
+  const config: SiteNavConfig = {
     overwriteNavigation: customNavigation || [],
     addNavigation: customNavigation || [],
   }
@@ -45,13 +50,11 @@ export const SiteNav = ({ settings }: SiteNavProps) => {
         <NavLeftWrapper>
           <NavLeft>
             <LogoLink settings={settings} />
-            {
-              navigation && navigation.length > 0 && (
-                <NavContent>
-                  <Navigation data={navigation} />
-                </NavContent>
-              )
-            }
+            {navigation && navigation.length > 0 && (
+              <NavContent>
+                <Navigation data={navigation} />
+              </NavContent>
+            )}
           </NavLeft>
         </NavLeftWrapper>
         <NavRight>

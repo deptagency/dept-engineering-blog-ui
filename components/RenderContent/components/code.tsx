@@ -1,6 +1,5 @@
-import { colors } from "@components/common/colors";
-import { spaces } from "@components/common/spaces";
-
+import { colors } from '@components/common/colors'
+import { spaces } from '@components/common/spaces'
 
 export const codeStyles = `
   code {
@@ -11,4 +10,4 @@ export const codeStyles = `
     background: ${colors.whitegrey};
     border-radius: ${spaces.xxxs}px;
   }
-`;
+`

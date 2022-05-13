@@ -25,14 +25,14 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const settings = await getAllSettings()
 
   let post: GhostPostOrPage | null = null
-  post = await getPostPreviewById(pid);
+  post = await getPostPreviewById(pid)
 
-  let previewPosts: GhostPostsOrPages | never[] = []
-  let prevPost: GhostPostOrPage | null = null
-  let nextPost: GhostPostOrPage | null = null
+  const previewPosts: GhostPostsOrPages | never[] = []
+  const prevPost: GhostPostOrPage | null = null
+  const nextPost: GhostPostOrPage | null = null
 
   const siteUrl = settings.processEnv.siteUrl
-  const imageUrl = (post)?.feature_image || undefined
+  const imageUrl = post?.feature_image || undefined
   const image = await seoImage({ siteUrl, imageUrl })
 
   console.timeEnd('Post Preview - getStaticProps')
@@ -53,4 +53,3 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     },
   }
 }
-

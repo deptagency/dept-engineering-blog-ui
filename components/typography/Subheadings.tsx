@@ -1,11 +1,11 @@
-import styled from '@emotion/styled';
-import { colors, Colors } from '@components/common/colors';
-import { spaces } from '@components/common/spaces';
+import styled from '@emotion/styled'
+import { colors, Colors } from '@components/common/colors'
+import { spaces } from '@components/common/spaces'
 
 /**
  * Subheading1: Primary subheading (ie. post exerpt)
  * Subheading2: Secondary subheading
-*/
+ */
 
 export interface SubheadingProps {
   $color?: Colors

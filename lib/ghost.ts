@@ -47,11 +47,11 @@ export interface GhostPostOrPage extends PostOrPage {
   toc?: IToC[] | null
 }
 
-export interface GhostPostsOrPages extends BrowseResults<GhostPostOrPage> {}
+export type GhostPostsOrPages = BrowseResults<GhostPostOrPage>
 
-export interface GhostTags extends BrowseResults<GhostTag> {}
+export type GhostTags = BrowseResults<GhostTag>
 
-export interface GhostAuthors extends BrowseResults<GhostAuthor> {}
+export type GhostAuthors = BrowseResults<GhostAuthor>
 
 const api = new GhostContentAPI({
   url: ghostAPIUrl,
@@ -77,7 +77,7 @@ const postAndPageSlugOptions: Params = {
 
 const excludePostOrPageBySlug = () => {
   if (customSlugs.length === 0) return ''
-  return customSlugs.map(slug => `slug:-${slug}`)
+  return customSlugs.map((slug) => `slug:-${slug}`)
 }
 
 // helpers

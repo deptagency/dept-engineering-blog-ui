@@ -3,13 +3,13 @@
  * Super neat trick courtesy of @JoelDrapper
  * Usage (In Ghost edtior):
  * ![img](/some/image.jpg#full)
-*/
+ */
 export const fullBleedImageStyles = `
   img[src$="#full"] {
     max-width: none;
     width: 100vw;
   }
-`;
+`
 
 /**
  * Image captions
@@ -24,4 +24,4 @@ export const imageCaptionStyles = `
     margin-bottom: 1.5em;
     text-align: center;
   }
-`;
+`

@@ -1,4 +1,4 @@
-import { Tag } from "@tryghost/content-api"
+import { Tag } from '@tryghost/content-api'
 
 interface PostClassProps {
   tags: Tag[] | undefined
@@ -15,7 +15,7 @@ export const PostClass = ({ tags, isFeatured, isImage, isPage }: PostClassProps)
   isPage = isPage || false
 
   if (tags && tags.length > 0) {
-    classes = classes.concat(tags.map((tag) => (`tag-` + tag.slug)))
+    classes = classes.concat(tags.map((tag) => `tag-` + tag.slug))
   }
 
   if (isFeatured) {
@@ -30,7 +30,7 @@ export const PostClass = ({ tags, isFeatured, isImage, isPage }: PostClassProps)
     classes.push(`page`)
   }
 
-  const result = classes.reduce((memo, item) => (memo + ` ` + item), ``)
+  const result = classes.reduce((memo, item) => memo + ` ` + item, ``)
 
   return result.trim()
 }

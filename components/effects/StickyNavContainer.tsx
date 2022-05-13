@@ -28,13 +28,13 @@ export class StickyNavContainer extends Component<StickyNavContainerProps> {
     this.state = {
       ticking: false,
       lastScrollY: 0,
-      currentClass: ''
+      currentClass: '',
     }
   }
 
-  scrollHandler = () => { }
+  scrollHandler = () => {}
 
-  resizeHandler = () => { }
+  resizeHandler = () => {}
 
   componentDidMount() {
     this.scrollHandler = throttle(this.onScroll, this.props.throttle)
@@ -63,12 +63,12 @@ export class StickyNavContainer extends Component<StickyNavContainerProps> {
 
   update = () => {
     const current = this.anchorRef && this.anchorRef.current
-    var top = current && current.getBoundingClientRect().top || 0
-    var trigger = top + window.scrollY
-    var triggerOffset = -20
+    const top = (current && current.getBoundingClientRect().top) || 0
+    const trigger = top + window.scrollY
+    let triggerOffset = -20
 
     if (this.isPost) {
-      triggerOffset = current && current.offsetHeight + 35 || 0
+      triggerOffset = (current && current.offsetHeight + 35) || 0
     }
 
     if (this.state.lastScrollY >= trigger + triggerOffset) {

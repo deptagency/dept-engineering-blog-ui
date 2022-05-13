@@ -47,7 +47,7 @@ export const OverlayProvider = ({ children }: OverlayProviderProps): ReactElemen
     setEmail(event.target.value)
   }
 
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>, cmsUrl: string = '') => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>, cmsUrl = '') => {
     event.preventDefault()
     const postURL = `${cmsUrl}/members/api/send-magic-link/`
 

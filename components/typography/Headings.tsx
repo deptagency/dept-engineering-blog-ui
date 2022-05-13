@@ -140,11 +140,11 @@ const isValidHTagNumber = (n: number): n is ValidHTagNumber => n % 1 === 0 && 0 
 /**
  * Takes a heading order option and returns an integer between 1 and 6,
  * corresponding to the valid h1-h6 element tags.
-*/
+ */
 const getTagNumber = (order: HeadingOrder) => {
   if (0 < order && order < 99) return 1
 
-  const remainder = order % 10;
+  const remainder = order % 10
   if (isValidHTagNumber(remainder)) return remainder
 
   return 1

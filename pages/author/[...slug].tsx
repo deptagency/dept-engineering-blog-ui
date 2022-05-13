@@ -44,17 +44,25 @@ const AuthorIndex = ({ cmsData }: AuthorIndexProps) => {
   const { author, posts, settings, seoImage, bodyClass } = cmsData
   const { name, bio } = author
   const sameAs = authorSameAs(author)
-  const description = getPostCollectionDescription(author.count?.posts, settings.lang);
+  const description = getPostCollectionDescription(author.count?.posts, settings.lang)
 
   return (
     <>
       <SEO {...{ settings, description: bio || undefined, seoImage, sameAs, title: name }} />
-      <Layout {...{ settings, bodyClass }} header={<Header {...{
-        settings, content: {
-          title: author.name,
-          description: description
+      <Layout
+        {...{ settings, bodyClass }}
+        header={
+          <Header
+            {...{
+              settings,
+              content: {
+                title: author.name,
+                description: description,
+              },
+            }}
+          />
         }
-      }} />}>
+      >
         <PostView {...{ settings, posts }} />
       </Layout>
     </>

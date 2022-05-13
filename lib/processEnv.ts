@@ -94,5 +94,5 @@ export const processEnv: ProcessEnvProps = {
     maxNumberOfPosts: resolveNumber(process.env.JAMIFY_NEXT_ISR_MAX_NUMBER_POSTS, appConfig.maxNumberOfPosts),
     maxNumberOfPages: resolveNumber(process.env.JAMIFY_NEXT_ISR_MAX_NUMBER_PAGES, appConfig.maxNumberOfPages),
   },
-  customSlugs: appConfig.customSlugs || []
+  customSlugs: appConfig.customSlugs || [],
 }

@@ -30,9 +30,9 @@ export const PostCard = ({ settings, post, num, isColorInverted }: PostCardProps
   const featImg = post.featureImage
   const readingTime = readingTimeHelper(post).replace(`min read`, text(`MIN_READ`))
   const postClass = PostClass({ tags: post.tags, isFeatured: post.featured, isImage: !!featImg })
-  const isFirstPost = (num !== undefined && num < 1)
+  const isFirstPost = num !== undefined && num < 1
   const authors = post?.authors?.filter((_, i) => (i < 2 ? true : false))
-  const textColor = isFirstPost || isColorInverted ? "white" : "onyx";
+  const textColor = isFirstPost || isColorInverted ? 'white' : 'onyx'
 
   if (isFirstPost) {
     return (
@@ -95,7 +95,9 @@ export const PostCard = ({ settings, post, num, isColorInverted }: PostCardProps
                     <span className="bull">&bull; </span> {readingTime}
                   </span>
                 </div>
-                <a href={url} className="btn btn-inverted btn-cta">Keep Reading</a>
+                <a href={url} className="btn btn-inverted btn-cta">
+                  Keep Reading
+                </a>
               </footer>
             </div>
           </Grid>
@@ -127,7 +129,11 @@ export const PostCard = ({ settings, post, num, isColorInverted }: PostCardProps
         </Link>
       )}
 
-      {post.primary_tag && <div><div className="post-card-primary-tag">{post.primary_tag.name}</div></div>}
+      {post.primary_tag && (
+        <div>
+          <div className="post-card-primary-tag">{post.primary_tag.name}</div>
+        </div>
+      )}
 
       <div className="post-card-content">
         <Link href={url}>
@@ -162,7 +168,9 @@ export const PostCard = ({ settings, post, num, isColorInverted }: PostCardProps
               <span className="bull">&bull; </span> {readingTime}
             </span>
           </div>
-          <a href={url} className="btn btn-cta">Keep Reading</a>
+          <a href={url} className="btn btn-cta">
+            Keep Reading
+          </a>
         </footer>
       </div>
     </article>

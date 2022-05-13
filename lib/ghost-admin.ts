@@ -2,7 +2,7 @@ import { parse as urlParse } from 'url'
 import { Params } from '@tryghost/content-api'
 import GhostAdminAPI from '@tryghost/admin-api'
 import { normalizePost } from '@lib/ghost-normalize'
-import { getAllSettings, GhostPostOrPage } from '@lib/ghost';
+import { getAllSettings, GhostPostOrPage } from '@lib/ghost'
 
 import { ghostAdminAPIKey, ghostAPIUrl } from '@lib/processEnv'
 
@@ -22,11 +22,13 @@ export async function getPostPreviewById(id: string): Promise<GhostPostOrPage | 
   let result: GhostPostOrPage
 
   try {
-    const post = (await adminApi.posts.browse({
-      ...postPreviewFetchOptions,
-      filter: `uuid:${id}`,
-      formats: `html`,
-    }))[0]
+    const post = (
+      await adminApi.posts.browse({
+        ...postPreviewFetchOptions,
+        filter: `uuid:${id}`,
+        formats: `html`,
+      })
+    )[0]
 
     // older Ghost versions do not throw error on 404
     if (!post) return null

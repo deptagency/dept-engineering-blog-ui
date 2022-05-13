@@ -33,7 +33,7 @@ export const Navigation = ({ data, isRightNav }: NavigationProps) => {
       items.push(
         <NavListItem key={i} role="menuitem" isRightNav={isRightNav}>
           <div>
-            <Link href={navItem.url} >
+            <Link href={navItem.url}>
               <a>{navItem.label}</a>
             </Link>
           </div>

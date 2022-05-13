@@ -45,7 +45,6 @@ export const Layout = ({ settings, header, children, isHome, sticky, previewPost
       <DocumentHead className={bodyClass} />
 
       <div className="site-wrapper">
-
         {/* The main header section on top of the screen */}
         {header}
 

@@ -81,7 +81,11 @@ export const Post = ({ cmsData }: PostProps) => {
 
                   <Heading.One noMargin>{title}</Heading.One>
 
-                  {post.custom_excerpt && <Subheading.One as="p" $color={"darkmidgrey"}>{post.custom_excerpt}</Subheading.One>}
+                  {post.custom_excerpt && (
+                    <Subheading.One as="p" $color={'darkmidgrey'}>
+                      {post.custom_excerpt}
+                    </Subheading.One>
+                  )}
 
                   <div className="post-full-byline">
                     <section className="post-full-byline-content">

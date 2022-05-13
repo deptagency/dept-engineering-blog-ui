@@ -1,9 +1,9 @@
-import { spaces } from "@components/common/spaces";
-import { mapHeadingOrderToStyles } from "@components/typography/Headings";
+import { spaces } from '@components/common/spaces'
+import { mapHeadingOrderToStyles } from '@components/typography/Headings'
 
 export const h1Styles = `
   h1 {
-    ${mapHeadingOrderToStyles({ order: 2, responsive: true, noMargin: true})}
+    ${mapHeadingOrderToStyles({ order: 2, responsive: true, noMargin: true })}
     min-width: 100%;
   }
 
@@ -13,7 +13,7 @@ export const h1Styles = `
   iframe+h1 {
     margin-top: ${spaces.lg}px;
   }
-`;
+`
 
 export const h2Styles = `
   h2 {
@@ -27,7 +27,7 @@ export const h2Styles = `
   iframe+h2 {
     margin-top: ${spaces.lg}px;
   }
-`;
+`
 
 export const h3Styles = `
   h3 {
@@ -38,7 +38,7 @@ export const h3Styles = `
   h2+h3 {
     margin-top: ${spaces.md}px;
   }
-`;
+`
 
 export const h4Styles = `
   h4 {
@@ -53,7 +53,7 @@ export const h4Styles = `
   h3+h4 {
     margin-top: 0;
   }
-`;
+`
 
 export const h5Styles = `
   h5,
@@ -61,4 +61,4 @@ export const h5Styles = `
     ${mapHeadingOrderToStyles({ order: 5, responsive: true })}
     min-width: 100%;
   }
-`;
+`

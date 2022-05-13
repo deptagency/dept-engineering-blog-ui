@@ -19,7 +19,7 @@ export class HoverOnAvatar extends Component<HoverOnAvatarProps> {
     this.activeClass = this.props.activeClass
     this.hoverTimeout = undefined
     this.state = {
-      currentClass: ''
+      currentClass: '',
     }
   }
 

@@ -1,6 +1,5 @@
-import { colors } from "@components/common/colors";
-import { spaces } from "@components/common/spaces";
-
+import { colors } from '@components/common/colors'
+import { spaces } from '@components/common/spaces'
 
 // @todo refactor out font-sizes etc.
 export const preformattedTextStyles = `
@@ -24,4 +23,4 @@ export const preformattedTextStyles = `
       background: transparent;
     }
   }
-`;
+`

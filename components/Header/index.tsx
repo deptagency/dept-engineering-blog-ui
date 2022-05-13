@@ -1,4 +1,3 @@
-
 import { SiteNav } from '@components/SiteNav'
 import { Heading } from '@components/typography/Headings'
 import { Subheading } from '@components/typography/Subheadings'
@@ -7,10 +6,10 @@ import { Grid } from '@mui/material'
 import { StyledHeader, StyledHeaderContent } from './components'
 
 interface HeaderProps {
-  settings: GhostSettings,
-  isHome?: boolean,
+  settings: GhostSettings
+  isHome?: boolean
   content?: {
-    title?: string,
+    title?: string
     description?: string
   }
 }
@@ -24,16 +23,15 @@ export const Header = ({ settings, isHome, content }: HeaderProps) => (
           <Grid item xs={12} md={10} lg={8}>
             <StyledHeaderContent isHome={isHome}>
               {content.title && (
-                <Heading.One responsive={isHome} noMargin>{content.title}</Heading.One>
+                <Heading.One responsive={isHome} noMargin>
+                  {content.title}
+                </Heading.One>
               )}
-              {content.description && (
-                <Subheading.Two>{content.description}</Subheading.Two>
-              )}
-              </StyledHeaderContent>
+              {content.description && <Subheading.Two>{content.description}</Subheading.Two>}
+            </StyledHeaderContent>
           </Grid>
         </Grid>
       </div>
     )}
   </StyledHeader>
 )
-
