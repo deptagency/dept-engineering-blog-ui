@@ -53,7 +53,7 @@
     "disqus-react": "^1.1.2",
     "fs": "^0.0.1-security",
     "lodash.throttle": "^4.1.1",
-    "next": "^12.0.10",
+    "next": "^12.1.6",
     "probe-image-size": "^7.2.3",
     "react": "17.0.2",
     "react-dom": "17.0.2",
