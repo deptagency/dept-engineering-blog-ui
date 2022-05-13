@@ -26,7 +26,9 @@
     "no-param-reassign": "error",
     "consistent-return": "error",
     "curly": ["error", "multi-line"],
-    "default-case": ["error", { "commentPattern": "^no default$" }]
+    "default-case": ["error", { "commentPattern": "^no default$" }],
+    "default-case-last": "error",
+    "default-param-last": "error"
   },
   "extends": [
     "next/core-web-vitals",

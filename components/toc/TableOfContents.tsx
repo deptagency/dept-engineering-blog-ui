@@ -6,9 +6,9 @@ import { getLang, get } from '@utils/use-lang'
 
 const getHeadingIds = (
   toc: IToC[],
-  traverseFullDepth = true,
   maxDepth: number,
-  recursionDepth = 1
+  recursionDepth = 1,
+  traverseFullDepth = true
 ): string[] => {
   const idList = []
 
@@ -18,7 +18,7 @@ const getHeadingIds = (
 
       if (item.items && traverseFullDepth && recursionDepth < (maxDepth || 6)) {
         idList.push(
-          ...getHeadingIds(item.items, true, maxDepth, recursionDepth + 1)
+          ...getHeadingIds(item.items, maxDepth, recursionDepth + 1, true)
         )
       }
     }
