@@ -56,8 +56,8 @@ const AuthorIndex = ({ cmsData }: AuthorIndexProps) => {
               settings,
               content: {
                 title: author.name,
-                description: description,
-              },
+                description: description
+              }
             }}
           />
         }
@@ -90,10 +90,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         posts,
         settings,
         seoImage: authorImage,
-        bodyClass: BodyClass({ author }),
-      },
+        bodyClass: BodyClass({ author })
+      }
     },
-    ...(processEnv.isr.enable && { revalidate: processEnv.isr.revalidate }), // re-generate at most once every revalidate second
+    ...(processEnv.isr.enable && { revalidate: processEnv.isr.revalidate }) // re-generate at most once every revalidate second
   }
 }
 
@@ -106,6 +106,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: processEnv.isr.enable,
+    fallback: processEnv.isr.enable
   }
 }

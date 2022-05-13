@@ -30,7 +30,7 @@ export const getServerSideProps: GetServerSideProps | undefined = process.env.IS
       }
 
       return {
-        props: {},
+        props: {}
       }
     }
 

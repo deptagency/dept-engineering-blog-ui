@@ -96,8 +96,8 @@ const getJsonLd = ({ title, description, canonical, seoImage, settings, sameAs, 
       ...(seoImage && {
         '@type': `ImageObject`,
         url: seoImage.url,
-        ...seoImage.dimensions,
-      }),
+        ...seoImage.dimensions
+      })
     },
     publisher: {
       '@type': `Organization`,
@@ -106,14 +106,14 @@ const getJsonLd = ({ title, description, canonical, seoImage, settings, sameAs, 
         '@type': `ImageObject`,
         url: pubLogoUrl,
         width: 60,
-        height: 60,
-      },
+        height: 60
+      }
     },
     mainEntityOfPage: {
       '@type': `WebPage`,
-      '@id': siteUrl,
+      '@id': siteUrl
     },
-    description,
+    description
   }
 }
 
@@ -133,9 +133,9 @@ const getArticleJsonLd = (article: PostOrPage) => {
       '@type': 'Article',
       name,
       image,
-      sameAs,
+      sameAs
     },
     keywords,
-    headline,
+    headline
   }
 }

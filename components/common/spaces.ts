@@ -17,5 +17,5 @@ export const spaces = {
   xl: 48,
   xxl: 64,
   xxxl: 80,
-  xxxxl: 120,
+  xxxxl: 120
 }

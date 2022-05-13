@@ -23,8 +23,8 @@ export const generateRSSFeed = ({ posts, settings }: FeedProps) => {
     ttl: 60,
     custom_namespaces: {
       content: `http://purl.org/rss/1.0/modules/content/`,
-      media: `http://search.yahoo.com/mrss/`,
-    },
+      media: `http://search.yahoo.com/mrss/`
+    }
   }
   const feed = new RSS(feedOptions)
 
@@ -62,7 +62,7 @@ const generateItem = ({ post, settings }: ItemProps) => {
     date: (!!date && date) || '',
     categories: (tags && tagsFilter(tags)) || [],
     author: (author && author.name) || '',
-    custom_elements: [{}],
+    custom_elements: [{}]
   }
 
   if (imageUrl) {
@@ -71,9 +71,9 @@ const generateItem = ({ post, settings }: ItemProps) => {
       'media:content': {
         _attr: {
           url: imageUrl,
-          medium: `image`,
-        },
-      },
+          medium: `image`
+        }
+      }
     })
     // Also add the image to the content, because not all readers support media:content
     htmlContent(`p`)
@@ -84,8 +84,8 @@ const generateItem = ({ post, settings }: ItemProps) => {
 
   item.custom_elements.push({
     'content:encoded': {
-      _cdata: htmlContent.html(),
-    },
+      _cdata: htmlContent.html()
+    }
   })
   return item
 }

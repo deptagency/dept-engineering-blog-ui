@@ -50,8 +50,8 @@ export default function Index({ cmsData }: IndexProps) {
               settings,
               isHome: true,
               content: {
-                title: settings.description,
-              },
+                title: settings.description
+              }
             }}
           />
         }
@@ -79,15 +79,15 @@ export const getStaticProps: GetStaticProps = async () => {
     settings,
     posts,
     seoImage: await seoImage({ siteUrl: settings.processEnv.siteUrl }),
-    bodyClass: BodyClass({ isHome: true }),
+    bodyClass: BodyClass({ isHome: true })
   }
 
   console.timeEnd('Index - getStaticProps')
 
   return {
     props: {
-      cmsData,
+      cmsData
     },
-    ...(processEnv.isr.enable && { revalidate: processEnv.isr.revalidate }), // re-generate at most once every revalidate second
+    ...(processEnv.isr.enable && { revalidate: processEnv.isr.revalidate }) // re-generate at most once every revalidate second
   }
 }

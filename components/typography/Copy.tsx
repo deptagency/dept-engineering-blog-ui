@@ -49,5 +49,5 @@ export const Copy = {
   XS: styledCopy('xs'),
   SM: styledCopy('sm'),
   M: styledCopy(),
-  LG: styledCopy('lg'),
+  LG: styledCopy('lg')
 }

@@ -17,7 +17,7 @@ const defaultValues = {
   handleChange: () => null,
   handleSubmit: () => null,
   email: '',
-  message: '',
+  message: ''
 }
 
 const OverlayContext = createContext<OverlayProviderValues>(defaultValues)
@@ -54,7 +54,7 @@ export const OverlayProvider = ({ children }: OverlayProviderProps): ReactElemen
     const values = {
       email,
       emailType: `subscribe`,
-      labels: [],
+      labels: []
     }
 
     try {
@@ -62,7 +62,7 @@ export const OverlayProvider = ({ children }: OverlayProviderProps): ReactElemen
         method: `POST`,
         mode: `cors`,
         headers: { 'Content-Type': `application/json` },
-        body: JSON.stringify(values),
+        body: JSON.stringify(values)
       })
     } catch {
       setMessage(`error`)

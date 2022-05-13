@@ -9,13 +9,13 @@ import { ghostAdminAPIKey, ghostAPIUrl } from '@lib/processEnv'
 const adminApi = new GhostAdminAPI({
   url: ghostAPIUrl,
   key: ghostAdminAPIKey,
-  version: 'v3',
+  version: 'v3'
 })
 
 const postPreviewFetchOptions: Params = {
   limit: 'all',
   include: ['tags', 'authors', 'count.posts'],
-  order: ['featured DESC', 'published_at DESC'],
+  order: ['featured DESC', 'published_at DESC']
 }
 
 export async function getPostPreviewById(id: string): Promise<GhostPostOrPage | null> {
@@ -26,7 +26,7 @@ export async function getPostPreviewById(id: string): Promise<GhostPostOrPage | 
       await adminApi.posts.browse({
         ...postPreviewFetchOptions,
         filter: `uuid:${id}`,
-        formats: `html`,
+        formats: `html`
       })
     )[0]
 

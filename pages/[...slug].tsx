@@ -14,7 +14,7 @@ import {
   getAllPosts,
   getAllPages,
   getAllSettings,
-  getAllPostSlugs,
+  getAllPostSlugs
 } from '@lib/ghost'
 
 import { resolveUrl } from '@utils/routing'
@@ -85,7 +85,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   if (!post && !page) {
     return {
-      notFound: true,
+      notFound: true
     }
   }
 
@@ -125,10 +125,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         previewPosts,
         prevPost,
         nextPost,
-        bodyClass: BodyClass({ isPost, page: page || undefined, tags }),
-      },
+        bodyClass: BodyClass({ isPost, page: page || undefined, tags })
+      }
     },
-    ...(processEnv.isr.enable && { revalidate: processEnv.isr.revalidate }), // re-generate at most once every revalidate second
+    ...(processEnv.isr.enable && { revalidate: processEnv.isr.revalidate }) // re-generate at most once every revalidate second
   }
 }
 
@@ -152,6 +152,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: enable && 'blocking',
+    fallback: enable && 'blocking'
   }
 }

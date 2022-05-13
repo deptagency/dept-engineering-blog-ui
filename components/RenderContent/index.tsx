@@ -30,8 +30,8 @@ const options = {
         return <ReactGist id={match[1]} />
       }
       return null
-    },
-  },
+    }
+  }
 }
 
 const renderAst = unified().use(rehypeReact, options)

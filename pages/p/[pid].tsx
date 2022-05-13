@@ -46,9 +46,9 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
         seoImage: image,
         previewPosts,
         prevPost,
-        nextPost,
+        nextPost
         // bodyClass: BodyClass({ isPost, page: contactPage || page || undefined, tags }),
-      },
-    },
+      }
+    }
   }
 }

@@ -59,7 +59,7 @@ export const imageDimensions = async (url: string | undefined | null, noCache?: 
     try {
       const { width: w, height: h } = await probe(url, {
         read_timeout,
-        response_timeout,
+        response_timeout
       })
       width = w
       height = h

@@ -19,12 +19,12 @@ export const SiteNav = ({ settings }: SiteNavProps) => {
     processEnv: { customNavigation, memberSubscriptions, siteUrl },
     secondary_navigation,
     navigation,
-    lang,
+    lang
   } = settings
 
   const config: SiteNavConfig = {
     overwriteNavigation: customNavigation || [],
-    addNavigation: customNavigation || [],
+    addNavigation: customNavigation || []
   }
 
   // overwrite navigation if specified in options

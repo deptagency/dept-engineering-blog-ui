@@ -53,7 +53,7 @@ export const LogoLink: React.FC<LogoLinkProps> = ({ settings }) => {
     logo,
     logoImage,
     lang,
-    title,
+    title
   } = settings
   const siteTitle = get(getLang(lang))(`SITE_TITLE`, title)
 

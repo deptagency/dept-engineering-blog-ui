@@ -11,13 +11,13 @@ export default {
     $color: {
       options: Object.keys(colors),
       control: {
-        type: 'select',
-      },
+        type: 'select'
+      }
     },
     children: {
-      control: 'text',
-    },
-  },
+      control: 'text'
+    }
+  }
 } as ComponentMeta<typeof Copy.M>
 
 const Template: ComponentStory<typeof Copy.M> = (args) => (
@@ -31,5 +31,5 @@ const Template: ComponentStory<typeof Copy.M> = (args) => (
 
 export const Copys = Template.bind({})
 Copys.args = {
-  children: 'This is some copy text.',
+  children: 'This is some copy text.'
 }

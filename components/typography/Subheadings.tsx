@@ -43,5 +43,5 @@ const styledSubheading = (order: SubheadingOrder) => styled.h2<SubheadingProps>`
 
 export const Subheading = {
   One: styledSubheading(1),
-  Two: styledSubheading(2),
+  Two: styledSubheading(2)
 }

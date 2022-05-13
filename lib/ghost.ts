@@ -56,23 +56,23 @@ export type GhostAuthors = BrowseResults<GhostAuthor>
 const api = new GhostContentAPI({
   url: ghostAPIUrl,
   key: ghostAPIKey,
-  version: 'v3',
+  version: 'v3'
 })
 
 const postAndPageFetchOptions: Params = {
   limit: 'all',
   include: ['tags', 'authors', 'count.posts'],
-  order: ['featured DESC', 'published_at DESC'],
+  order: ['featured DESC', 'published_at DESC']
 }
 
 const tagAndAuthorFetchOptions: Params = {
   limit: 'all',
-  include: 'count.posts',
+  include: 'count.posts'
 }
 
 const postAndPageSlugOptions: Params = {
   limit: 'all',
-  fields: 'slug',
+  fields: 'slug'
 }
 
 const excludePostOrPageBySlug = () => {
@@ -130,7 +130,7 @@ export async function getAllSettings(): Promise<GhostSettings> {
     ...settings,
     ...(iconImage && { iconImage }),
     ...(logoImage && { logoImage }),
-    ...(coverImage && { coverImage }),
+    ...(coverImage && { coverImage })
   }
   //setCache('settings', result)
   return result
@@ -150,7 +150,7 @@ export async function getAllPosts(props?: { limit: number }): Promise<GhostPosts
   const posts = await api.posts.browse({
     ...postAndPageFetchOptions,
     filter: excludePostOrPageBySlug(),
-    ...(props && { ...props }),
+    ...(props && { ...props })
   })
   const results = await createNextProfileImagesFromPosts(posts)
   return await createNextFeatureImages(results)
@@ -165,7 +165,7 @@ export async function getAllPages(props?: { limit: number }): Promise<GhostPosts
   const pages = await api.pages.browse({
     ...postAndPageFetchOptions,
     filter: excludePostOrPageBySlug(),
-    ...(props && { ...props }),
+    ...(props && { ...props })
   })
   return await createNextFeatureImages(pages)
 }
@@ -174,18 +174,18 @@ export async function getAllPages(props?: { limit: number }): Promise<GhostPosts
 export async function getTagBySlug(slug: string): Promise<Tag> {
   return await api.tags.read({
     ...tagAndAuthorFetchOptions,
-    slug,
+    slug
   })
 }
 export async function getAuthorBySlug(slug: string): Promise<GhostAuthor> {
   const author = await api.authors.read({
     ...tagAndAuthorFetchOptions,
-    slug,
+    slug
   })
   const profileImage = await createNextImage(author.profile_image)
   const result = {
     ...author,
-    ...(profileImage && { profileImage }),
+    ...(profileImage && { profileImage })
   }
   return result
 }
@@ -195,7 +195,7 @@ export async function getPostBySlug(slug: string): Promise<GhostPostOrPage | nul
   try {
     const post = await api.posts.read({
       ...postAndPageFetchOptions,
-      slug,
+      slug
     })
     // older Ghost versions do not throw error on 404
     if (!post) return null
@@ -215,7 +215,7 @@ export async function getPageBySlug(slug: string): Promise<GhostPostOrPage | nul
   try {
     const page = await api.pages.read({
       ...postAndPageFetchOptions,
-      slug,
+      slug
     })
 
     // older Ghost versions do not throw error on 404
@@ -235,7 +235,7 @@ export async function getPageBySlug(slug: string): Promise<GhostPostOrPage | nul
 export async function getPostsByAuthor(slug: string): Promise<GhostPostsOrPages> {
   const posts = await api.posts.browse({
     ...postAndPageFetchOptions,
-    filter: `authors.slug:${slug}`,
+    filter: `authors.slug:${slug}`
   })
   return await createNextFeatureImages(posts)
 }
@@ -245,7 +245,7 @@ export async function getPostsByTag(slug: string, limit?: number, excludeId?: st
   const posts = await api.posts.browse({
     ...postAndPageFetchOptions,
     ...(limit && { limit: `${limit}` }),
-    filter: `tags.slug:${slug}${exclude}`,
+    filter: `tags.slug:${slug}${exclude}`
   })
   return await createNextFeatureImages(posts)
 }

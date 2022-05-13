@@ -26,7 +26,7 @@ export interface EventType {
 export const pageview = (url: string): void => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, prettier/prettier
   (window as any).gtag('config', GA_TRACKING_ID, {
-    page_path: url,
+    page_path: url
   })
 }
 
@@ -41,6 +41,6 @@ export const event = ({ action, category, label, value }: EventType): void => {
   (window as any).gtag('event', action, {
     event_category: category,
     event_label: label,
-    value: value,
+    value: value
   })
 }

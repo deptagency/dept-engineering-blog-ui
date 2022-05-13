@@ -11,13 +11,13 @@ export default {
     $color: {
       options: Object.keys(colors),
       control: {
-        type: 'select',
-      },
+        type: 'select'
+      }
     },
     children: {
-      control: 'text',
-    },
-  },
+      control: 'text'
+    }
+  }
 } as ComponentMeta<typeof Heading.One>
 
 const Template: ComponentStory<typeof Heading.One> = (args) => (
@@ -36,5 +36,5 @@ export const Headings = Template.bind({})
 Headings.args = {
   responsive: false,
   noMargin: false,
-  children: 'Change Me',
+  children: 'Change Me'
 }

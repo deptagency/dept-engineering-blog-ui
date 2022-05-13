@@ -22,7 +22,7 @@ export const colors = {
   onyx: '#121212',
   platinum: '#F2F2F2',
   purple: '#5115F7',
-  bluedark: '#011627',
+  bluedark: '#011627'
 }
 
 export type Colors = keyof typeof colors

@@ -22,10 +22,10 @@ export const useInput = (initialValue: string): [useInputProps, useInputError, (
     {
       value,
       error,
-      onChange: (e) => setValue(e.target.value),
+      onChange: (e) => setValue(e.target.value)
     },
     (status) => setError(status),
-    () => setValue(initialValue),
+    () => setValue(initialValue)
   ]
 }
 
@@ -57,6 +57,6 @@ export const useSelect = (initialIndex: number, initialValues: string[]): [useSe
     { index, values, error, onChange: (e) => setIndex(e.target.selectedIndex) },
     (status) => setError(status),
     () => setIndex(0),
-    useCallback((values) => setValues(values), []),
+    useCallback((values) => setValues(values), [])
   ]
 }

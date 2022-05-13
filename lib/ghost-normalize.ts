@@ -40,7 +40,7 @@ export const normalizePost = async (post: PostOrPage, cmsUrl: UrlWithStringQuery
     authors,
     htmlAst,
     featureImage: (url && dimensions && { url, dimensions }) || null,
-    toc,
+    toc
   }
 }
 

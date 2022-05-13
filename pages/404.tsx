@@ -15,8 +15,8 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       settings,
-      bodyClass: BodyClass({}),
-    },
+      bodyClass: BodyClass({})
+    }
   }
 }
 

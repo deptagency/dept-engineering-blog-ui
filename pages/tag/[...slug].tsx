@@ -56,8 +56,8 @@ const TagIndex = ({ cmsData }: TagIndexProps) => {
               settings,
               content: {
                 title: tag.name,
-                description: tag.description || fallbackDescription,
-              },
+                description: tag.description || fallbackDescription
+              }
             }}
           />
         }
@@ -85,10 +85,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         posts,
         settings,
         seoImage: await seoImage({ siteUrl: settings.processEnv.siteUrl }),
-        bodyClass: BodyClass({ tags: [tag] }),
-      },
+        bodyClass: BodyClass({ tags: [tag] })
+      }
     },
-    ...(processEnv.isr.enable && { revalidate: processEnv.isr.revalidate }), // re-generate at most once every revalidate second
+    ...(processEnv.isr.enable && { revalidate: processEnv.isr.revalidate }) // re-generate at most once every revalidate second
   }
 }
 
@@ -101,6 +101,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: processEnv.isr.enable,
+    fallback: processEnv.isr.enable
   }
 }

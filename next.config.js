@@ -2,7 +2,7 @@
 const withImageLoader = require('next-image-loader')
 const { PHASE_EXPORT } = require('next/constants')
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
+  enabled: process.env.ANALYZE === 'true'
 })
 
 const defaultOptions = withBundleAnalyzer({
@@ -19,8 +19,8 @@ const defaultOptions = withBundleAnalyzer({
       'repository-images.githubusercontent.com',
       'www.gravatar.com',
       'github.githubassets.com',
-      ...(process.env.IMAGE_DOMAINS || '').split(','),
-    ],
+      ...(process.env.IMAGE_DOMAINS || '').split(',')
+    ]
   },
   reactStrictMode: true,
   // Redirects are not supported by `next export`.
@@ -29,10 +29,10 @@ const defaultOptions = withBundleAnalyzer({
       {
         source: '/contact',
         destination: 'https://www.deptagency.com/contact/',
-        permanent: true,
-      },
+        permanent: true
+      }
     ]
-  },
+  }
 })
 
 /**
@@ -45,10 +45,10 @@ const customImageLoaderOptions = withBundleAnalyzer(
     ...(process.env.NETLIFY === 'true' && { target: 'serverless' }),
     // https://nextjs.org/docs/api-reference/next/image#loader
     images: {
-      loader: 'custom',
+      loader: 'custom'
     },
     reactStrictMode: true,
-    experimental: { esmExternals: true },
+    experimental: { esmExternals: true }
   })
 )
 

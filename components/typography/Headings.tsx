@@ -161,5 +161,5 @@ export const Heading = {
   Four: styledHeading(4),
   Five: styledHeading(5),
   CallToAction1: styledHeading(11),
-  CallToAction2: styledHeading(12),
+  CallToAction2: styledHeading(12)
 }
