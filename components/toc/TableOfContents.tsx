@@ -80,7 +80,7 @@ export const TableOfContents = ({
   const text = get(getLang(lang))
 
   const [isDesktop, setIsDesktop] = useState(false)
-  const activeHash = useActiveHash(getHeadingIds(toc, true, maxDepth))
+  const activeHash = useActiveHash(getHeadingIds(toc, maxDepth, 1, true))
 
   useEffect(() => {
     const isDesktopQuery = window.matchMedia(`(min-width: 1170px)`)

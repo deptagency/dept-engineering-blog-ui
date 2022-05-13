@@ -24,13 +24,11 @@ export async function getPostPreviewById(
   let result: GhostPostOrPage
 
   try {
-    const post = (
-      await adminApi.posts.browse({
-        ...postPreviewFetchOptions,
-        filter: `uuid:${id}`,
-        formats: `html`
-      })
-    )[0]
+    const [post] = await adminApi.posts.browse({
+      ...postPreviewFetchOptions,
+      filter: `uuid:${id}`,
+      formats: `html`
+    })
 
     // older Ghost versions do not throw error on 404
     if (!post) return null

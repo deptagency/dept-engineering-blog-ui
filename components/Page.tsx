@@ -39,7 +39,7 @@ export const Page = ({ cmsData }: PageProps) => {
     isPage: page && true,
     isImage: !!featImg
   })
-  const htmlAst = page.htmlAst
+  const { htmlAst } = page
   if (htmlAst === undefined) throw Error('Page.tsx: htmlAst must be defined.')
 
   return (

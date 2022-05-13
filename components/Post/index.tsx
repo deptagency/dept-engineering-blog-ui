@@ -50,7 +50,7 @@ export const Post = ({ cmsData }: PostProps) => {
   const { processEnv } = settings
   const { nextImages, toc, memberSubscriptions } = processEnv
 
-  const lang = settings.lang
+  const { lang } = settings
   const featImg = post.featureImage
   const postClass = PostClass({
     tags: post.tags,
@@ -58,7 +58,7 @@ export const Post = ({ cmsData }: PostProps) => {
     isImage: !!featImg
   })
 
-  const htmlAst = post.htmlAst
+  const { htmlAst } = post
   if (htmlAst === undefined) throw Error('Post.tsx: htmlAst must be defined.')
 
   const collectionPath = collections.getCollectionByNode(post)

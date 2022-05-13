@@ -36,7 +36,7 @@ export const Layout = ({
   bodyClass,
   errorClass = ``
 }: LayoutProps) => {
-  const lang = settings.lang
+  const { lang } = settings
   const text = get(getLang(lang))
   const site = settings
   const title = text(`SITE_TITLE`, site.title)

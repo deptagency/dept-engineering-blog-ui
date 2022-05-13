@@ -42,7 +42,7 @@ export const SEO = (props: SEOProps) => {
   const facebook = primary_author?.facebook
 
   const router = useRouter()
-  const siteUrl = settings.processEnv.siteUrl
+  const { siteUrl } = settings.processEnv
   const canonical = url.resolve(siteUrl, `${router.basePath}${router.asPath}`)
 
   const {
@@ -153,7 +153,7 @@ const getJsonLd = ({
   sameAs,
   article
 }: SEOProps) => {
-  const siteUrl = settings.processEnv.siteUrl
+  const { siteUrl } = settings.processEnv
   const pubLogoUrl = settings.logo || url.resolve(siteUrl, siteIcon)
   const type = article ? 'Article' : 'WebSite'
 

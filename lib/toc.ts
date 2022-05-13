@@ -66,6 +66,7 @@ export const generateTableOfContents = (htmlAst: Node) => {
   // Walk up the list to find matching parent
   const findParent = (toc: TOC[], parentIndex: number, level: string) => {
     while (parentIndex >= 0 && level < toc[parentIndex].level) {
+      // eslint-disable-next-line prefer-destructuring
       parentIndex = toc[parentIndex].parentIndex
     }
     return parentIndex >= 0 ? toc[parentIndex].parentIndex : -1

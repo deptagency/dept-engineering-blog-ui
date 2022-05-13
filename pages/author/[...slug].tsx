@@ -99,7 +99,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const settings = await getAllSettings()
 
   const { cover_image, profile_image } = author
-  const siteUrl = settings.processEnv.siteUrl
+  const { siteUrl } = settings.processEnv
   const imageUrl = cover_image || profile_image || undefined
   const authorImage = await seoImage({ siteUrl, imageUrl })
 

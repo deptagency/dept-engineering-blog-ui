@@ -108,7 +108,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     nextPost = (nextSlug && (await getPostBySlug(nextSlug))) || null
   }
 
-  const siteUrl = settings.processEnv.siteUrl
+  const { siteUrl } = settings.processEnv
   const imageUrl = (post || page)?.feature_image || undefined
   const image = await seoImage({ siteUrl, imageUrl })
 

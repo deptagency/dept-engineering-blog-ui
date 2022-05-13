@@ -30,6 +30,14 @@
     "default-case": ["error", { "commentPattern": "^no default$" }],
     "default-case-last": "error",
     "default-param-last": "error",
+    "no-console": "warn",
+    "no-mixed-operators": "error",
+    "no-var": "error",
+    "no-void": "error",
+    "prefer-const": "error",
+    "prefer-destructuring": "error",
+    "no-implicit-globals": "error",
+    "no-invalid-this": "error",
     "ordered-imports/ordered-imports": [
       "error",
       {

@@ -20,7 +20,7 @@ export const NextImage = (props: ComponentPropsWithNode) => {
   const { node } = props
   if (!node) return null
   const imageNode = node as ImageNode
-  const imageDimensions = imageNode.imageDimensions
+  const { imageDimensions } = imageNode
   const { src, className: classArray } = imageNode.properties
   const className = classArray?.join(' ')
 

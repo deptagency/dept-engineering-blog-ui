@@ -29,7 +29,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const prevPost: GhostPostOrPage | null = null
   const nextPost: GhostPostOrPage | null = null
 
-  const siteUrl = settings.processEnv.siteUrl
+  const { siteUrl } = settings.processEnv
   const imageUrl = post?.feature_image || undefined
   const image = await seoImage({ siteUrl, imageUrl })
 
