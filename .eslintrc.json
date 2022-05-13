@@ -23,7 +23,8 @@
       }
     ],
     "no-return-await": "error",
-    "no-param-reassign": "error"
+    "no-param-reassign": "error",
+    "consistent-return": "error"
   },
   "extends": [
     "next/core-web-vitals",

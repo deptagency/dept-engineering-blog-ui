@@ -27,6 +27,7 @@ export async function verifySlug(postSlug: string): Promise<string | null> {
 const Preview = async (
   req: NextApiRequest,
   res: NextApiResponse
+  // eslint-disable-next-line consistent-return
 ): Promise<NextApiResponse | void> => {
   if (
     req.query.secret !== process.env.JAMIFY_PREVIEW_TOKEN ||
