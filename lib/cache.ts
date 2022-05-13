@@ -35,6 +35,7 @@ export function setCache(key: string | null, object: unknown): void {
   try {
     fs.writeFileSync(filePath, JSON.stringify(object as JSON))
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.warn(
       'Could not write to file cache. This is expected during ISR, but not during deploy.',
       error

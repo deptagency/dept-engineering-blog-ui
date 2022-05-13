@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { GetServerSideProps } from 'next'
 
 import { GhostPostOrPage, GhostPostsOrPages, getAllSettings } from '@lib/ghost'

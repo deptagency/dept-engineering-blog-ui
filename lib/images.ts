@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import probe from 'probe-image-size'
 import { createReadStream, createWriteStream, existsSync } from 'fs'
 import { join } from 'path'

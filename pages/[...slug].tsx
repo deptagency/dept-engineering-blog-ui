@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 
