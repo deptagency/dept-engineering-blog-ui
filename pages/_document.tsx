@@ -23,8 +23,6 @@ export default class MyDocument extends Document {
     }
     const { lang } = settings || cmsSettings || { lang: 'en' }
 
-    console.log("this is just a test")
-
     return (
       <Html {...{ lang, className: 'casper' }}>
         <Head>
