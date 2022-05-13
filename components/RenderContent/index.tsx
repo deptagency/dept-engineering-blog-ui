@@ -6,6 +6,7 @@ import ReactGist from 'react-gist'
 
 import { NextLink } from '@components/NextLink'
 import { NextImage } from '@components/NextImage'
+import { ContentSection } from './components'
 
 const gist_regex = /https:\/\/gist.github.com\/\S+\/([a-f0-9]+)\.js/g
 
@@ -39,9 +40,6 @@ interface RenderContentProps {
   htmlAst: Node | null
 }
 
-export const RenderContent = ({ htmlAst }: RenderContentProps) => {
-  if (!htmlAst) return null
-  return <>{renderAst.stringify(htmlAst)}</>
-}
+export const RenderContent = ({ htmlAst }: RenderContentProps) => <ContentSection>{htmlAst && renderAst.stringify(htmlAst)}</ContentSection>
 
 //<div className="post-content load-external-scripts">{renderAst.stringify(htmlAst)}</div>

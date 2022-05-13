@@ -8,19 +8,20 @@ import { readingTime as readingTimeHelper } from '@lib/readingTime'
 import { resolveUrl } from '@utils/routing'
 import { getLang, get } from '@utils/use-lang'
 
-// import { AuthorList } from '@components/AuthorList'
 import { PostClass } from '@helpers/PostClass'
 import { collections } from '@lib/collections'
 import { GhostPostOrPage, GhostSettings } from '@lib/ghost'
+import { Heading } from '@components/typography/Headings'
+import { PostExcerpt } from './components'
 
 interface PostCardProps {
   settings: GhostSettings
   post: GhostPostOrPage
   num?: number
-  isHome?: boolean
+  isColorInverted?: boolean
 }
 
-export const PostCard = ({ settings, post, num, isHome }: PostCardProps) => {
+export const PostCard = ({ settings, post, num, isColorInverted }: PostCardProps) => {
   const { nextImages } = settings.processEnv
   const text = get(getLang(settings.lang))
   const cmsUrl = settings.url
@@ -29,13 +30,13 @@ export const PostCard = ({ settings, post, num, isHome }: PostCardProps) => {
   const featImg = post.featureImage
   const readingTime = readingTimeHelper(post).replace(`min read`, text(`MIN_READ`))
   const postClass = PostClass({ tags: post.tags, isFeatured: post.featured, isImage: !!featImg })
-  const large = (num !== undefined && num < 1 && `post-card-large`) || ``
   const isFirstPost = (num !== undefined && num < 1)
   const authors = post?.authors?.filter((_, i) => (i < 2 ? true : false))
+  const textColor = isFirstPost || isColorInverted ? "white" : "onyx";
 
   if (isFirstPost) {
     return (
-      <article className={`post-card ${postClass} ${large}`}>
+      <article className={`post-card ${postClass} post-card-large`}>
         <Grid alignItems="center" container spacing={{ xs: 2, md: 5 }}>
           {featImg && (
             <Grid item xs={12} lg={5}>
@@ -65,17 +66,16 @@ export const PostCard = ({ settings, post, num, isHome }: PostCardProps) => {
                 <a className="post-card-content-link">
                   <header className="post-card-header">
                     {post.primary_tag && <div className="post-card-primary-tag">{post.primary_tag.name}</div>}
-                    <h2 className="post-card-title">{post.title}</h2>
+                    <Heading.Two $color={textColor}>{post.title}</Heading.Two>
                   </header>
-                  <section className="post-card-excerpt">
+                  <section className="post-card-excerpt foobar">
                     {/* post.excerpt *is* an excerpt and does not need to be truncated any further */}
-                    <p>{post.excerpt}</p>
+                    <PostExcerpt $color={textColor}>{post.excerpt}</PostExcerpt>
                   </section>
                 </a>
               </Link>
 
               <footer className="post-card-meta">
-                {/* <AuthorList {...{ settings, authors: post.authors }} /> */}
                 <div className="post-card-byline-content">
                   {post.authors && post.authors.length > 2 && <span>{text(`MULTIPLE_AUTHORS`)}</span>}
                   {post.authors && post.authors.length < 3 && (
@@ -100,13 +100,12 @@ export const PostCard = ({ settings, post, num, isHome }: PostCardProps) => {
             </div>
           </Grid>
         </Grid>
-
       </article>
     )
   }
 
   return (
-    <article className={`post-card ${postClass} ${large}`}>
+    <article className={`post-card ${postClass}`}>
       {featImg && (
         <Link href={url}>
           <a className="post-card-image-link" aria-label={post.title}>
@@ -134,17 +133,16 @@ export const PostCard = ({ settings, post, num, isHome }: PostCardProps) => {
         <Link href={url}>
           <a className="post-card-content-link">
             <header className="post-card-header">
-              <h2 className="post-card-title">{post.title}</h2>
+              <Heading.Two $color={textColor}>{post.title}</Heading.Two>
             </header>
             <section className="post-card-excerpt">
               {/* post.excerpt *is* an excerpt and does not need to be truncated any further */}
-              <p>{post.excerpt}</p>
+              <PostExcerpt $color={textColor}>{post.excerpt}</PostExcerpt>
             </section>
           </a>
         </Link>
 
         <footer className="post-card-meta">
-          {/* <AuthorList {...{ settings, authors: post.authors }} /> */}
           <div className="post-card-byline-content">
             {post.authors && post.authors.length > 2 && <span>{text(`MULTIPLE_AUTHORS`)}</span>}
             {post.authors && post.authors.length < 3 && (

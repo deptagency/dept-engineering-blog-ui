@@ -7,7 +7,7 @@ import { getAllSettings, GhostSettings, GhostPostsOrPages } from '@lib/ghost'
 import { getLang, get } from '@utils/use-lang'
 import { BodyClass } from '@helpers/BodyClass'
 import { Header } from '@components/Header'
-import { Heading2 } from '@components/text/Headings'
+import { Heading } from '@components/typography/Headings'
 
 export const getStaticProps: GetStaticProps = async () => {
   const settings = await getAllSettings()
@@ -33,7 +33,7 @@ export default function Custom404({ settings, bodyClass }: Custom404Props) {
     <Layout {...{ settings, bodyClass }} header={<Header {...{ settings }} />} errorClass="error-content">
       <div className="inner error-content-inner">
       <div className="error-code-wrap">
-        <Heading2 as="h1">404</Heading2>
+        <Heading.Two as="h1">404</Heading.Two>
       </div>
       <section className="error-message">
         <p className="error-description">{text(`PAGE_NOT_FOUND`)}</p>

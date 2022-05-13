@@ -10,7 +10,7 @@ import { SEO } from '@meta/seo'
 import { GhostPostOrPage, GhostSettings } from '@lib/ghost'
 import { ISeoImage } from '@meta/seoImage'
 import { Header } from './Header'
-import { Heading1 } from './text/Headings'
+import { Heading } from './typography/Headings'
 
 /**
  * Single page (/:slug)
@@ -46,7 +46,7 @@ export const Page = ({ cmsData }: PageProps) => {
           <div className="grid-wrapper">
             <article className={`post-full grid-inner ${postClass}`}>
               <header className="post-full-header">
-                <Heading1>{page.title}</Heading1>
+                <Heading.One noMargin>{page.title}</Heading.One>
               </header>
 
               {featImg &&
@@ -76,11 +76,7 @@ export const Page = ({ cmsData }: PageProps) => {
                 ))}
 
               {/* The main page content */}
-              <section className="post-full-content">
-                <div className="post-content load-external-scripts">
-                  <RenderContent htmlAst={htmlAst} />
-                </div>
-              </section>
+              <RenderContent htmlAst={htmlAst} />
             </article>
           </div>
         </div>

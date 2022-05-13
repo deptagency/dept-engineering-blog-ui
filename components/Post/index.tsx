@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import dayjs from 'dayjs'
@@ -13,16 +14,15 @@ import { Subscribe } from '@components/Subscribe'
 import { TableOfContents } from '@components/toc/TableOfContents'
 
 import { SEO } from '@meta/seo'
+import { ISeoImage } from '@meta/seoImage'
 
 import { PostClass } from '@helpers/PostClass'
 import { GhostPostOrPage, GhostPostsOrPages, GhostSettings } from '@lib/ghost'
 import { collections } from '@lib/collections'
 
-import { ISeoImage } from '@meta/seoImage'
-
-import React from 'react'
-import { Header } from './Header'
-import { Heading1 } from './text/Headings'
+import { Header } from '../Header'
+import { Heading } from '@components/typography/Headings'
+import { Subheading } from '@components/typography/Subheadings'
 
 interface PostProps {
   cmsData: {
@@ -79,9 +79,9 @@ export const Post = ({ cmsData }: PostProps) => {
                     </section>
                   )}
 
-                  <Heading1>{title}</Heading1>
+                  <Heading.One noMargin>{title}</Heading.One>
 
-                  {post.custom_excerpt && <p className="post-full-custom-excerpt">{post.custom_excerpt}</p>}
+                  {post.custom_excerpt && <Subheading.One as="p" $color={"darkmidgrey"}>{post.custom_excerpt}</Subheading.One>}
 
                   <div className="post-full-byline">
                     <section className="post-full-byline-content">
@@ -106,11 +106,7 @@ export const Post = ({ cmsData }: PostProps) => {
                   </div>
                 </header>
 
-                <section className="post-full-content post-content">
-                  <div className="post-content load-external-scripts">
-                    <RenderContent htmlAst={htmlAst} />
-                  </div>
-                </section>
+                <RenderContent htmlAst={htmlAst} />
 
                 <div className="post-meta">
                   {featImg &&
