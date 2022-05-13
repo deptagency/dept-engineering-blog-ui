@@ -8,7 +8,6 @@ import { SubscribeSuccess } from '@components/Subscribe/success'
 import { getLang, get } from '@utils/use-lang'
 import { GhostSettings } from '@lib/ghost'
 
-import { StickyNavContainer } from '@effects/StickyNavContainer'
 import { resolve } from 'url'
 
 /**
@@ -25,13 +24,12 @@ interface LayoutProps {
   header: ReactFragment
   children: ReactFragment
   isHome?: boolean
-  sticky?: StickyNavContainer
   previewPosts?: ReactFragment
   bodyClass: string
   errorClass?: string
 }
 
-export const Layout = ({ settings, header, children, isHome, sticky, previewPosts, bodyClass, errorClass }: LayoutProps) => {
+export const Layout = ({ settings, header, children, previewPosts, bodyClass, errorClass }: LayoutProps) => {
   const lang = settings.lang
   const text = get(getLang(lang))
   const site = settings
@@ -49,7 +47,7 @@ export const Layout = ({ settings, header, children, isHome, sticky, previewPost
         {header}
 
         {/* The main content area */}
-        <main ref={(isHome && sticky && sticky.anchorRef) || null} id="site-main" className={`site-main ${errorClass}`}>
+        <main id="site-main" className={`site-main ${errorClass}`}>
           {children}
         </main>
 
