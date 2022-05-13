@@ -1,5 +1,6 @@
-import { RssIcon } from '@icons/RssIcon'
 import { resolve } from 'url'
+
+import { RssIcon } from '@icons/RssIcon'
 
 interface SocialRssProps {
   siteUrl: string

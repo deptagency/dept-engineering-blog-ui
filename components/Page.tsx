@@ -1,14 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
 import Image from 'next/image'
 
-import { Layout } from '@components/Layout'
-import { RenderContent } from '@components/RenderContent'
-
-import { PostClass } from '@helpers/PostClass'
-import { SEO } from '@meta/seo'
-
 import { GhostPostOrPage, GhostSettings } from '@lib/ghost'
+
+import { Layout } from '@components/Layout'
+import { SEO } from '@meta/seo'
 import { ISeoImage } from '@meta/seoImage'
+import { RenderContent } from '@components/RenderContent'
+import { PostClass } from '@helpers/PostClass'
+
 import { Header } from './Header'
 import { Heading } from './typography/Headings'
 

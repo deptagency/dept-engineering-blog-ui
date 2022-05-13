@@ -1,7 +1,9 @@
+import { GhostSettings, NavItem } from '@lib/ghost'
+
 import { Navigation } from '@components/Navigation'
 import { SocialLinks } from '@components/SocialLinks'
 import { SubscribeButton } from '@components/Subscribe/button'
-import { GhostSettings, NavItem } from '@lib/ghost'
+
 import {
   NavContainer,
   NavContent,

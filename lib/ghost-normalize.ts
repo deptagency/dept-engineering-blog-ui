@@ -1,16 +1,18 @@
 import Rehype from 'rehype'
-import { Node as UnistNode, Parent } from 'unist'
-import visit from 'unist-util-visit'
-import { cloneDeep } from 'lodash'
 import refractor from 'refractor'
+import visit from 'unist-util-visit'
+import { Node as UnistNode, Parent } from 'unist'
+import { cloneDeep } from 'lodash'
 import { PostOrPage } from '@tryghost/content-api'
+import { UrlWithStringQuery, parse as urlParse } from 'url'
+
 import { Dimensions, imageDimensions } from '@lib/images'
 import { generateTableOfContents } from '@lib/toc'
+import { processEnv } from '@lib/processEnv'
+
 import { GhostPostOrPage, createNextProfileImagesFromAuthors } from './ghost'
-import { parse as urlParse, UrlWithStringQuery } from 'url'
 import { toString as nodeToString } from './nodeToString'
 
-import { processEnv } from '@lib/processEnv'
 const { prism, toc, nextImages } = processEnv
 
 const rehype = Rehype().use({

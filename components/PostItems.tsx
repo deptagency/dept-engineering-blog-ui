@@ -1,9 +1,10 @@
+import Grid from '@mui/material/Grid'
 import { useRouter } from 'next/router'
+
+import { GhostPostOrPage, GhostPostsOrPages, GhostSettings } from '@lib/ghost'
 
 import { FilterTags } from '@components/FilterTags'
 import { PostCard } from '@components/PostCard'
-import { GhostPostOrPage, GhostPostsOrPages, GhostSettings } from '@lib/ghost'
-import Grid from '@mui/material/Grid'
 interface PostItemsProps {
   settings: GhostSettings
   posts: GhostPostsOrPages

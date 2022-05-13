@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
-import { Node } from 'unist'
 import visit from 'unist-util-visit'
+import { Node } from 'unist'
 
 interface NodeProperties {
   id?: string

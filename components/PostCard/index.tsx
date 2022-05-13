@@ -1,17 +1,19 @@
 /* eslint-disable @next/next/no-img-element */
+import Grid from '@mui/material/Grid'
 import Image from 'next/image'
 import Link from 'next/link'
 import dayjs from 'dayjs'
-import Grid from '@mui/material/Grid'
 
 import { readingTime as readingTimeHelper } from '@lib/readingTime'
 import { resolveUrl } from '@utils/routing'
-import { getLang, get } from '@utils/use-lang'
-
-import { PostClass } from '@helpers/PostClass'
+import { get, getLang } from '@utils/use-lang'
 import { collections } from '@lib/collections'
 import { GhostPostOrPage, GhostSettings } from '@lib/ghost'
-import { Heading } from '@components/typography/Headings'
+
+import { PostClass } from '@helpers/PostClass'
+
+import { Heading } from '../typography/Headings'
+
 import { PostExcerpt } from './components'
 
 interface PostCardProps {

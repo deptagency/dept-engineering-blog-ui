@@ -1,8 +1,10 @@
-import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { useActiveHash } from '@components/effects/UseActiveHash'
+import { useEffect, useState } from 'react'
+
 import { IToC } from '@lib/toc'
-import { getLang, get } from '@utils/use-lang'
+import { get, getLang } from '@utils/use-lang'
+
+import { useActiveHash } from '@components/effects/UseActiveHash'
 
 const getHeadingIds = (
   toc: IToC[],

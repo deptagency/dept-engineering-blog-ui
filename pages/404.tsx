@@ -1,11 +1,11 @@
 import Link from 'next/link'
 import { GetStaticProps } from 'next'
 
-import { Layout } from '@components/Layout'
+import { GhostPostsOrPages, GhostSettings, getAllSettings } from '@lib/ghost'
+import { get, getLang } from '@utils/use-lang'
 
-import { getAllSettings, GhostSettings, GhostPostsOrPages } from '@lib/ghost'
-import { getLang, get } from '@utils/use-lang'
 import { BodyClass } from '@helpers/BodyClass'
+import { Layout } from '@components/Layout'
 import { Header } from '@components/Header'
 import { Heading } from '@components/typography/Headings'
 

@@ -1,22 +1,21 @@
 import { GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 
+import { processEnv } from '@lib/processEnv'
+import {
+  GhostPostOrPage,
+  GhostPostsOrPages,
+  GhostSettings,
+  getAllPosts,
+  getAllSettings
+} from '@lib/ghost'
+
+import { ISeoImage, seoImage } from '@meta/seoImage'
+import { BodyClass } from '@helpers/BodyClass'
+import { SEO } from '@meta/seo'
 import { Layout } from '@components/Layout'
 import { PostView } from '@components/PostView'
 import { Header } from '@components/Header'
-import { SEO } from '@meta/seo'
-
-import { processEnv } from '@lib/processEnv'
-import {
-  getAllPosts,
-  getAllSettings,
-  GhostPostOrPage,
-  GhostPostsOrPages,
-  GhostSettings
-} from '@lib/ghost'
-import { seoImage, ISeoImage } from '@meta/seoImage'
-
-import { BodyClass } from '@helpers/BodyClass'
 
 /**
  * Main index page (home page)

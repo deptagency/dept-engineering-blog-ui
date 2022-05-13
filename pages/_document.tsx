@@ -1,11 +1,12 @@
 import Document, {
-  Html,
+  DocumentContext,
   Head,
+  Html,
   Main,
-  NextScript,
-  DocumentContext
+  NextScript
 } from 'next/document'
 import { resolve } from 'url'
+
 import { processEnv } from '@lib/processEnv'
 
 export default class MyDocument extends Document {

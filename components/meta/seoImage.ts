@@ -2,12 +2,13 @@ import path from 'path'
 import { resolve } from 'url'
 import { existsSync } from 'fs'
 
-import { siteImage } from '@meta/siteDefaults'
 import {
+  Dimensions,
   imageDimensions,
-  imageDimensionsFromFile,
-  Dimensions
+  imageDimensionsFromFile
 } from '@lib/images'
+
+import { siteImage } from '@meta/siteDefaults'
 
 export interface ISeoImage {
   url: string

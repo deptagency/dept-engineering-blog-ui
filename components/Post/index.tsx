@@ -1,27 +1,25 @@
 /* eslint-disable @next/next/no-img-element */
-import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import React from 'react'
 import dayjs from 'dayjs'
 
 import { resolveUrl } from '@utils/routing'
+import { GhostPostOrPage, GhostPostsOrPages, GhostSettings } from '@lib/ghost'
+import { collections } from '@lib/collections'
 
 import { Layout } from '@components/Layout'
 import { PreviewPosts } from '@components/PreviewPosts'
 import { RenderContent } from '@components/RenderContent'
 import { Subscribe } from '@components/Subscribe'
 import { TableOfContents } from '@components/toc/TableOfContents'
-
-import { SEO } from '@meta/seo'
-import { ISeoImage } from '@meta/seoImage'
-
-import { PostClass } from '@helpers/PostClass'
-import { GhostPostOrPage, GhostPostsOrPages, GhostSettings } from '@lib/ghost'
-import { collections } from '@lib/collections'
-
-import { Header } from '../Header'
 import { Heading } from '@components/typography/Headings'
 import { Subheading } from '@components/typography/Subheadings'
+import { SEO } from '@meta/seo'
+import { ISeoImage } from '@meta/seoImage'
+import { PostClass } from '@helpers/PostClass'
+
+import { Header } from '../Header'
 
 interface PostProps {
   cmsData: {

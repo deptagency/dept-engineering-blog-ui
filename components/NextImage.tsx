@@ -1,9 +1,10 @@
+import 'react-medium-image-zoom/dist/styles.css'
 import Image from 'next/image'
+import Zoom from 'react-medium-image-zoom'
 import { ComponentPropsWithNode } from 'rehype-react'
 import { Node } from 'unist'
+
 import { Dimensions } from '@lib/images'
-import Zoom from 'react-medium-image-zoom'
-import 'react-medium-image-zoom/dist/styles.css'
 
 interface PropertyProps {
   src: string

@@ -1,4 +1,4 @@
-import { PostOrPage, Author, Tag } from '@tryghost/content-api'
+import { Author, PostOrPage, Tag } from '@tryghost/content-api'
 
 interface BodyClassProps {
   isPost?: boolean

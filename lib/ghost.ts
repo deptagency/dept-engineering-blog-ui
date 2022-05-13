@@ -1,28 +1,27 @@
-import { parse as urlParse } from 'url'
 import GhostContentAPI, {
+  Author,
+  Pagination,
   Params,
   PostOrPage,
-  SettingsResponse,
-  Pagination,
   PostsOrPages,
-  Tag,
-  Author
+  SettingsResponse,
+  Tag
 } from '@tryghost/content-api'
-import { normalizePost } from '@lib/ghost-normalize'
+import { parse as urlParse } from 'url'
 import { Node } from 'unist'
-import { collections as config } from '@routesConfig'
-import { Collections } from '@lib/collections'
-
-import {
-  ghostAPIUrl,
-  ghostAPIKey,
-  processEnv,
-  ProcessEnvProps
-} from '@lib/processEnv'
-import { imageDimensions, normalizedImageUrl, Dimensions } from '@lib/images'
-import { IToC } from '@lib/toc'
 
 import { customSlugs } from '@appConfig'
+import { normalizePost } from '@lib/ghost-normalize'
+import { Collections } from '@lib/collections'
+import { IToC } from '@lib/toc'
+import {
+  ProcessEnvProps,
+  ghostAPIKey,
+  ghostAPIUrl,
+  processEnv
+} from '@lib/processEnv'
+import { Dimensions, imageDimensions, normalizedImageUrl } from '@lib/images'
+import { collections as config } from '@routesConfig'
 
 export interface NextImage {
   url: string

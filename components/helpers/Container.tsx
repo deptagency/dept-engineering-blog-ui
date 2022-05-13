@@ -1,5 +1,6 @@
-import { MAX_WIDTH, spaces } from '@components/common/spaces'
 import styled from '@emotion/styled'
+
+import { MAX_WIDTH, spaces } from '@components/common/spaces'
 
 const Outer = styled.div`
   padding: 0 ${spaces.md}px;

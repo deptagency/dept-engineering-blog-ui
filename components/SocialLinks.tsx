@@ -1,8 +1,8 @@
-import { TwitterIcon } from '@icons/TwitterIcon'
-import { FacebookIcon } from '@icons/FacebookIcon'
+import { GhostSettings } from '@lib/ghost'
 
 import { SocialRss } from '@components/SocialRss'
-import { GhostSettings } from '@lib/ghost'
+import { TwitterIcon } from '@icons/TwitterIcon'
+import { FacebookIcon } from '@icons/FacebookIcon'
 
 interface SocialLinkProps {
   siteUrl: string

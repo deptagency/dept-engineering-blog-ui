@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react'
-import { getLang, get } from '@utils/use-lang'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+
+import { get, getLang } from '@utils/use-lang'
 
 export const SubscribeSuccess = ({
   title,

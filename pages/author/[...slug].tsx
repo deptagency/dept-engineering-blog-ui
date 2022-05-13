@@ -1,28 +1,26 @@
-import { GetStaticProps, GetStaticPaths } from 'next'
+import { GetStaticPaths, GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 
+import { resolveUrl } from '@utils/routing'
+import { processEnv } from '@lib/processEnv'
+import { getPostCollectionDescription } from '@utils/get-collection-description'
+import {
+  GhostAuthor,
+  GhostPostOrPage,
+  GhostPostsOrPages,
+  GhostSettings,
+  getAllAuthors,
+  getAllSettings,
+  getAuthorBySlug,
+  getPostsByAuthor
+} from '@lib/ghost'
+
+import { BodyClass } from '@helpers/BodyClass'
+import { SEO, authorSameAs } from '@meta/seo'
+import { ISeoImage, seoImage } from '@meta/seoImage'
 import { Layout } from '@components/Layout'
 import { PostView } from '@components/PostView'
 import { Header } from '@components/Header'
-
-import { resolveUrl } from '@utils/routing'
-import { SEO, authorSameAs } from '@meta/seo'
-
-import {
-  getAuthorBySlug,
-  getAllAuthors,
-  getAllSettings,
-  getPostsByAuthor,
-  GhostSettings,
-  GhostPostOrPage,
-  GhostPostsOrPages,
-  GhostAuthor
-} from '@lib/ghost'
-import { ISeoImage, seoImage } from '@meta/seoImage'
-import { processEnv } from '@lib/processEnv'
-
-import { BodyClass } from '@helpers/BodyClass'
-import { getPostCollectionDescription } from '@utils/get-collection-description'
 
 /**
  * Author page (/author/:slug)

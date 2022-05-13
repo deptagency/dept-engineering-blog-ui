@@ -1,14 +1,15 @@
-import cheerio from 'cheerio'
 import RSS from 'rss'
-
-import { GhostPostOrPage, GhostPostsOrPages, GhostSettings } from '@lib/ghost'
-import {
-  siteTitleMeta,
-  siteDescriptionMeta,
-  siteIcon
-} from '@meta/siteDefaults'
+import cheerio from 'cheerio'
 import { resolve } from 'url'
 import { Tag } from '@tryghost/content-api'
+
+import { GhostPostOrPage, GhostPostsOrPages, GhostSettings } from '@lib/ghost'
+
+import {
+  siteDescriptionMeta,
+  siteIcon,
+  siteTitleMeta
+} from '@meta/siteDefaults'
 
 interface FeedProps {
   settings: GhostSettings

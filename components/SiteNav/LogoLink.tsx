@@ -1,13 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
-import React from 'react'
-import styled from '@emotion/styled'
 import Image from 'next/image'
 import Link from 'next/link'
+import React from 'react'
+import styled from '@emotion/styled'
+
 import { GhostSettings, NextImage } from '@lib/ghost'
+import { get, getLang } from '@utils/use-lang'
 
 import { colors } from '@components/common/colors'
 import { spaces } from '@components/common/spaces'
-import { getLang, get } from '@utils/use-lang'
 
 const LOGO_HEIGHT = 21
 

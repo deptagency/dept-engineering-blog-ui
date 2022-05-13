@@ -1,7 +1,8 @@
 {
   "plugins": [
     "@typescript-eslint",
-    "prettier"
+    "prettier",
+    "ordered-imports"
   ],
   "rules": {
     "@typescript-eslint/no-empty-function": "error",
@@ -28,12 +29,32 @@
     "curly": ["error", "multi-line"],
     "default-case": ["error", { "commentPattern": "^no default$" }],
     "default-case-last": "error",
-    "default-param-last": "error"
+    "default-param-last": "error",
+    "ordered-imports/ordered-imports": [
+      "error",
+      {
+        "symbols-first": true,
+        "declaration-ordering": ["type", {
+          "ordering": ["side-effect", "default", "namespace", "destructured"],
+          "secondaryOrdering": ["name", "lowercase-last"]
+        }],
+        "specifier-ordering": "lowercase-last",
+        "group-ordering": [
+          { "name": "project paths", "match": "^@(lib|appConfig|routesConfig|dashboard|pages|mediaConfig|siteConfig|siteOptions|utils)", "order": 20 },
+          { "name": "stylesheets path", "match": "^@styles", "order": 20 },
+          { "name": "components paths", "match": "^@(components|meta|common|icons|effects|helpers)", "order": 30 },
+          { "name": "parent directories", "match": "^\\.\\.", "order": 40 },
+          { "name": "current directory", "match": "^\\.", "order": 50 },
+          { "name": "third-party", "match": ".*", "order": 10 }
+        ]
+      }
+    ]
   },
   "extends": [
     "next/core-web-vitals",
     "prettier",
     "plugin:prettier/recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:ordered-imports/recommended"
   ]
 }

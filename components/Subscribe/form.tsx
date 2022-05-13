@@ -1,7 +1,7 @@
 import { GhostSettings } from '@lib/ghost'
-import { getLang, get } from '@utils/use-lang'
-import { useOverlay } from '@components/contexts/overlayProvider'
+import { get, getLang } from '@utils/use-lang'
 
+import { useOverlay } from '@components/contexts/overlayProvider'
 import { LoaderIcon } from '@icons/LoaderIcon'
 
 export const SubscribeForm = ({ settings }: { settings: GhostSettings }) => {

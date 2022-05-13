@@ -2,12 +2,14 @@ import Grid from '@mui/material/Grid'
 import styled from '@emotion/styled'
 
 import { GhostSettings } from '@lib/ghost'
-import { getLang, get } from '@utils/use-lang'
+import { get, getLang } from '@utils/use-lang'
+
 import { Copy } from '@components/typography/Copy'
 import { spaces } from '@components/common/spaces'
+import { Heading } from '@components/typography/Headings'
+
 import { DescriptionLink } from './components'
 import { SubscribeForm } from './form'
-import { Heading } from '@components/typography/Headings'
 
 const Description = styled(Copy.M)`
   margin-bottom: ${spaces.xxs}px;

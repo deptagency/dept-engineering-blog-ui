@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
-import { colors, Colors } from '@components/common/colors'
+
+import { Colors, colors } from '@components/common/colors'
 import { spaces } from '@components/common/spaces'
 import { DEFAULT_COPY_STYLES } from '@components/common/typography'
 

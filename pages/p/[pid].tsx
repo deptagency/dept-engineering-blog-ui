@@ -1,11 +1,10 @@
 import { GetServerSideProps } from 'next'
 
-import { Post } from '@components/Post'
-
-import { GhostPostOrPage, getAllSettings, GhostPostsOrPages } from '@lib/ghost'
+import { GhostPostOrPage, GhostPostsOrPages, getAllSettings } from '@lib/ghost'
 import { getPostPreviewById } from '@lib/ghost-admin'
 
 import { seoImage } from '@meta/seoImage'
+import { Post } from '@components/Post'
 
 import { PostOrPageProps } from '../[...slug]'
 

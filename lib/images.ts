@@ -1,12 +1,11 @@
 import probe from 'probe-image-size'
-import { getCache, setCache } from '@lib/cache'
-
 import { createReadStream, createWriteStream, existsSync } from 'fs'
 import { join } from 'path'
-import { processEnv } from '@lib/processEnv'
 import { promisify } from 'util'
-
 import { sha1 } from 'crypto-hash'
+
+import { getCache, setCache } from '@lib/cache'
+import { processEnv } from '@lib/processEnv'
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const streamPipeline = promisify(require('stream').pipeline)

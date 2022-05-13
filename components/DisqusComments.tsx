@@ -1,4 +1,5 @@
 import { DiscussionEmbed } from 'disqus-react'
+
 import { GhostPostOrPage } from '@lib/ghost'
 import { resolvePostFullPath } from '@utils/routing'
 

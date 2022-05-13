@@ -1,14 +1,15 @@
 import React from 'react'
+import ReactGist from 'react-gist'
 import rehypeReact, {
   ComponentProps,
   ComponentPropsWithNode
 } from 'rehype-react'
 import unified from 'unified'
 import { Node } from 'unist'
-import ReactGist from 'react-gist'
 
 import { NextLink } from '@components/NextLink'
 import { NextImage } from '@components/NextImage'
+
 import { ContentSection } from './components'
 
 const gist_regex = /https:\/\/gist.github.com\/\S+\/([a-f0-9]+)\.js/g

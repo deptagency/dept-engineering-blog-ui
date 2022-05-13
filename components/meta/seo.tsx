@@ -1,14 +1,15 @@
-import { useRouter } from 'next/router'
 import Head from 'next/head'
 import url from 'url'
+import { useRouter } from 'next/router'
+import { Author, PostOrPage, Tag } from '@tryghost/content-api'
 
 import { GhostSettings } from '@lib/ghost'
-import { Author, PostOrPage, Tag } from '@tryghost/content-api'
+
 import { ISeoImage } from '@meta/seoImage'
 import {
-  siteTitleMeta,
   siteDescriptionMeta,
-  siteIcon
+  siteIcon,
+  siteTitleMeta
 } from '@meta/siteDefaults'
 
 interface SEOProps {

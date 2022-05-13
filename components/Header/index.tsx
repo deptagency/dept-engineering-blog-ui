@@ -1,8 +1,11 @@
+import { Grid } from '@mui/material'
+
+import { GhostSettings } from '@lib/ghost'
+
 import { SiteNav } from '@components/SiteNav'
 import { Heading } from '@components/typography/Headings'
 import { Subheading } from '@components/typography/Subheadings'
-import { GhostSettings } from '@lib/ghost'
-import { Grid } from '@mui/material'
+
 import { StyledHeader, StyledHeaderContent } from './components'
 
 interface HeaderProps {

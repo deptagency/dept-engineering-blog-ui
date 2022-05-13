@@ -2,6 +2,7 @@ import styled from '@emotion/styled'
 
 import { spaces } from '@components/common/spaces'
 import { colors } from '@components/common/colors'
+
 import { fullBleedImageStyles, imageCaptionStyles } from './image'
 import { blockquoteStyles } from './blockquote'
 import { preformattedTextStyles } from './performatted-text'

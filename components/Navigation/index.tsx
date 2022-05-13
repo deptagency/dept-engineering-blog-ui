@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import { ReactFragment } from 'react'
+
 import { NavItem } from '@lib/ghost'
+
 import { NavList, NavListItem } from './components'
 
 /**

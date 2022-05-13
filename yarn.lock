@@ -5966,6 +5966,11 @@ eslint-plugin-jsx-a11y@^6.5.1:
     language-tags "^1.0.5"
     minimatch "^3.0.4"
 
+eslint-plugin-ordered-imports@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-ordered-imports/-/eslint-plugin-ordered-imports-0.6.0.tgz#027a5deecfe918c451ee2d705a44cd61be2273e5"
+  integrity sha512-jTzJw7ZbXFwmY1FNrPQRs9nUU17hpHnkN92tYsdBETFP9imNxAGz9TCmCc4Cz4CAyJrCBdlpMCHVRiZ1eGa7og==
+
 eslint-plugin-prettier@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-prettier/-/eslint-plugin-prettier-4.0.0.tgz#8b99d1e4b8b24a762472b4567992023619cb98e0"

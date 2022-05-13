@@ -1,6 +1,8 @@
 import React from 'react'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
+
 import { colors } from '@components/common/colors'
+
 import { Subheading } from '../Subheadings'
 
 export default {

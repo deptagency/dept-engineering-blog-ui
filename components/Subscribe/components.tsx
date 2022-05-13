@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
-import { colors, Colors } from '@components/common/colors'
+
+import { Colors, colors } from '@components/common/colors'
 
 export const DescriptionLink = styled.a<{ $color?: Colors }>`
   font-size: inherit;

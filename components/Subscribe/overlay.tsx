@@ -1,16 +1,17 @@
 /* eslint-disable @next/next/no-img-element */
-import { CSSProperties } from 'react'
 import styled from '@emotion/styled'
+import { CSSProperties } from 'react'
 
-import { useOverlay } from '@components/contexts/overlayProvider'
 import { GhostSettings } from '@lib/ghost'
-import { getLang, get } from '@utils/use-lang'
+import { get, getLang } from '@utils/use-lang'
+
 import { siteIcon } from '@meta/siteDefaults'
+import { useOverlay } from '@components/contexts/overlayProvider'
+import { Copy } from '@components/typography/Copy'
+import { Heading } from '@components/typography/Headings'
 
 import { SubscribeForm } from './form'
 import { DescriptionLink } from './components'
-import { Copy } from '@components/typography/Copy'
-import { Heading } from '@components/typography/Headings'
 
 const StyledSubscribeHeadline = styled(Heading.CallToAction1)`
   display: inline-block;

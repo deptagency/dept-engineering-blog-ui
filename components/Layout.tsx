@@ -1,14 +1,13 @@
-import { ReactFragment } from 'react'
 import Image from 'next/image'
+import { ReactFragment } from 'react'
+import { resolve } from 'url'
+
+import { get, getLang } from '@utils/use-lang'
+import { GhostSettings } from '@lib/ghost'
 
 import { DocumentHead } from '@components/DocumentHead'
 import { SubscribeOverlay } from '@components/Subscribe/overlay'
 import { SubscribeSuccess } from '@components/Subscribe/success'
-
-import { getLang, get } from '@utils/use-lang'
-import { GhostSettings } from '@lib/ghost'
-
-import { resolve } from 'url'
 
 /**
  * Main layout component
