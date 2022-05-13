@@ -8,7 +8,6 @@ import { SEO } from '@meta/seo'
 
 import { getTagBySlug, getAllTags, getAllSettings, getPostsByTag, GhostSettings, GhostPostOrPage, GhostPostsOrPages } from '@lib/ghost'
 import { resolveUrl } from '@utils/routing'
-import { getLang, get } from '@utils/use-lang'
 import { ISeoImage, seoImage } from '@meta/seoImage'
 import { processEnv } from '@lib/processEnv'
 

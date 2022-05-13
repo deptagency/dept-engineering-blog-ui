@@ -24,6 +24,7 @@ export interface EventType {
  * @param {string} url The URL to save the page view event with.
  */
 export const pageview = (url: string): void => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, prettier/prettier
   (window as any).gtag('config', GA_TRACKING_ID, {
     page_path: url,
   })
@@ -36,6 +37,7 @@ export const pageview = (url: string): void => {
  * @param {EventType} parameters The event parameters.
  */
 export const event = ({ action, category, label, value }: EventType): void => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, prettier/prettier
   (window as any).gtag('event', action, {
     event_category: category,
     event_label: label,

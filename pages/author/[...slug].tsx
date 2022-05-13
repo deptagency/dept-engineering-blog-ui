@@ -7,7 +7,6 @@ import { Header } from '@components/Header'
 
 import { resolveUrl } from '@utils/routing'
 import { SEO, authorSameAs } from '@meta/seo'
-import { getLang, get } from '@utils/use-lang'
 
 import { getAuthorBySlug, getAllAuthors, getAllSettings, getPostsByAuthor, GhostSettings, GhostPostOrPage, GhostPostsOrPages, GhostAuthor } from '@lib/ghost'
 import { ISeoImage, seoImage } from '@meta/seoImage'

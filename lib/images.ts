@@ -8,6 +8,7 @@ import { promisify } from 'util'
 
 import { sha1 } from 'crypto-hash'
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const streamPipeline = promisify(require('stream').pipeline)
 
 /**

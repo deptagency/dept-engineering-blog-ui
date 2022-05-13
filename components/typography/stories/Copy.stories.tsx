@@ -2,7 +2,7 @@ import React from 'react'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 
 import { colors } from '@components/common/colors'
-import { Copy, CopyProps } from '../Copy'
+import { Copy } from '../Copy'
 
 export default {
   title: 'Typography',

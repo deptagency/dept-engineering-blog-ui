@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const withImageLoader = require('next-image-loader')
 const { PHASE_EXPORT } = require('next/constants')
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
@@ -51,6 +52,7 @@ const customImageLoaderOptions = withBundleAnalyzer(
   })
 )
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 module.exports = (phase, { _defaultConfig }) => {
   const isExport = process.env.IS_EXPORT || phase === PHASE_EXPORT
   return isExport ? customImageLoaderOptions : defaultOptions

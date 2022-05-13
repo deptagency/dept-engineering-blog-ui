@@ -5,7 +5,6 @@ import Link from 'next/link'
 import dayjs from 'dayjs'
 
 import { resolveUrl } from '@utils/routing'
-import { getLang, get } from '@utils/use-lang'
 
 import { Layout } from '@components/Layout'
 import { PreviewPosts } from '@components/PreviewPosts'
@@ -46,7 +45,6 @@ export const Post = ({ cmsData }: PostProps) => {
   const { nextImages, toc, memberSubscriptions } = processEnv
 
   const lang = settings.lang
-  const text = get(getLang(lang))
   const featImg = post.featureImage
   const postClass = PostClass({ tags: post.tags, isFeatured: !!featImg, isImage: !!featImg })
 

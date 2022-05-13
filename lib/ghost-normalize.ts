@@ -137,6 +137,7 @@ const syntaxHighlightWithPrismJS = (htmlAst: Node) => {
 
     let result
     try {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       className = (className || []).concat('language-' + lang)
       result = refractor.highlight(nodeToString(node), lang)
     } catch (err) {

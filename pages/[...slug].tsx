@@ -3,9 +3,20 @@ import { useRouter } from 'next/router'
 import { Post } from '@components/Post'
 import { Page } from '@components/Page'
 
-import { getPostsByTag, getTagBySlug, GhostPostOrPage, GhostPostsOrPages, GhostSettings } from '@lib/ghost'
+import {
+  getPostsByTag,
+  getTagBySlug,
+  GhostPostOrPage,
+  GhostPostsOrPages,
+  GhostSettings,
+  getPostBySlug,
+  getPageBySlug,
+  getAllPosts,
+  getAllPages,
+  getAllSettings,
+  getAllPostSlugs,
+} from '@lib/ghost'
 
-import { getPostBySlug, getPageBySlug, getAllPosts, getAllPages, getAllSettings, getAllPostSlugs } from '@lib/ghost'
 import { resolveUrl } from '@utils/routing'
 import { collections } from '@lib/collections'
 

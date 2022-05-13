@@ -76,6 +76,7 @@ export const readingTime = (post: PostOrPage, options: ReadingTimeOptions = {}) 
   if (!post.html && !post.reading_time) return ''
 
   const imageCount = post.feature_image ? 1 : 0
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const time = post.reading_time || readingMinutes(post.html!, imageCount)
 
   let readingTime = ''
