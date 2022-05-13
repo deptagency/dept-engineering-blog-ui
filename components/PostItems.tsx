@@ -58,7 +58,7 @@ export const PostItems = ({ settings, posts, isHome }: PostItemsProps) => {
   }
 
   let newPosts: GhostPostOrPage[] = posts.slice(1)
-  let breakOn = 2
+  let breakOn: number = 2
 
   while (newPosts.length) {
     rows.push(newPosts.slice(0, breakOn))

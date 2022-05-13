@@ -2,19 +2,21 @@ import * as appConfig from '@appConfig'
 import { NavItem } from '@lib/ghost'
 
 // siteUrl, platform, ghostAPIUrl, ghostAPIKey must be defined here
-export const ghostAPIUrl =
+export const ghostAPIUrl: string =
   process.env.CMS_GHOST_API_URL || 'https://cms.gotsby.org'
-export const ghostAPIKey =
+export const ghostAPIKey: string =
   process.env.CMS_GHOST_API_KEY || '387f956eaa95345f7bb484d0b8'
-export const ghostAdminAPIKey = process.env.CMS_GHOST_ADMIN_API_KEY
+export const ghostAdminAPIKey: string | undefined =
+  process.env.CMS_GHOST_ADMIN_API_KEY
 
-const siteUrl =
+const siteUrl: string =
   process.env.SITE_URL ||
   (process.env.VERCEL_URL && `https://${process.env.VERCEL_URL}`) ||
   process.env.URL ||
   'http://localhost:3000'
 
-const platform = (process.env.NETLIFY === 'true' && 'netlify') || 'vercel'
+const platform: string =
+  (process.env.NETLIFY === 'true' && 'netlify') || 'vercel'
 
 // Environment variables that can be used to override the defaults in appconfig.js
 const resolveBool = (value: string | undefined, defaultValue: boolean) => {

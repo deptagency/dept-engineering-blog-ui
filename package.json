@@ -14,7 +14,8 @@
     "postbuild": "next-sitemap",
     "serve": "serve out",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "compile": "tsc"
   },
   "dependencies": {
     "@emotion/react": "^11.8.2",
