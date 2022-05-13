@@ -25,7 +25,8 @@
     "no-return-await": "error",
     "no-param-reassign": "error",
     "consistent-return": "error",
-    "curly": ["error", "multi-line"]
+    "curly": ["error", "multi-line"],
+    "default-case": ["error", { "commentPattern": "^no default$" }]
   },
   "extends": [
     "next/core-web-vitals",
