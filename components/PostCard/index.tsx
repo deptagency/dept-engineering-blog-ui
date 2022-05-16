@@ -180,7 +180,7 @@ export const PostCard = ({ settings, post, num, isColorInverted }: PostCardProps
             </span>
           </div>
           <Link href={url} passHref>
-            <Button.Cta as="a">{text(`READ`)}</Button.Cta>
+            <Button.Cta as="a" inverted={isColorInverted}>{text(`READ`)}</Button.Cta>
           </Link>
         </footer>
       </div>
