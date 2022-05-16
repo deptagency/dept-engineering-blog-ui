@@ -32,60 +32,6 @@ html.casper .inner {
   }
 }
 
-/* Buttons
-.btn {
-  background: var(--onyx);
-  border: 1px solid var(--onyx);
-  color: #fff;
-  display: inline-block;
-  font-family: 'Maison Neue';
-  font-size: 1.4rem;
-  font-weight: 700;
-  line-height: 2rem;
-  text-transform: uppercase;
-  padding: 8px 16px;
-}
-
-.btn:hover {
-  background: #fff;
-  border: 1px solid var(--onyx);
-  color: var(--onyx);
-  text-decoration: none;
-}
-
-.btn-cta {
-  border-radius: 100rem;
-}
-
-.btn-white {
-  background: #fff;
-  border-color: var(--onyx);
-  color: var(--onyx);
-}
-
-.btn-white:hover {
-  background: var(--onyx);
-  color: #fff;
-}
-
-.btn-small {
-  font-size: 1.2rem;
-  line-height: 1.2rem;
-  padding: 6px 8px;
-}
-
-.btn-filter-selected:hover {
-  background: var(--onyx);
-  border: 1px solid var(--onyx);
-  color: #fff;
-}
-
-.btn-inverted {
-  border: 1px solid #fff;
-  background: var(--onyx);
-  color: #fff;
-} */
-
 /* Homepage Post Feed */
 html.casper .post-feed {
   margin: 0;
@@ -201,12 +147,6 @@ html.casper .grid-wrapper .post-card {
 html.casper .no-image .post-card-primary-tag {
   margin-top: 0;
   margin-bottom: 15px;
-}
-
-/* Filter Tags */
-.filter-tags {
-  display: flex;
-  margin-bottom: 75px;
 }
 
 /* Single Post Page */
