@@ -13,6 +13,7 @@ import { collections } from '@lib/collections'
 import { GhostPostOrPage, GhostSettings } from '@lib/ghost'
 import { Heading } from '@components/typography/Headings'
 import { PostExcerpt } from './components'
+import { Button } from '@components/Button'
 
 interface PostCardProps {
   settings: GhostSettings
@@ -95,7 +96,9 @@ export const PostCard = ({ settings, post, num, isColorInverted }: PostCardProps
                     <span className="bull">&bull; </span> {readingTime}
                   </span>
                 </div>
-                <a href={url} className="btn btn-inverted btn-cta">Keep Reading</a>
+                <Link href={url} passHref>
+                  <Button.Cta inverted as="a">{text(`READ`)}</Button.Cta>
+                </Link>
               </footer>
             </div>
           </Grid>
@@ -162,7 +165,9 @@ export const PostCard = ({ settings, post, num, isColorInverted }: PostCardProps
               <span className="bull">&bull; </span> {readingTime}
             </span>
           </div>
-          <a href={url} className="btn btn-cta">Keep Reading</a>
+          <Link href={url} passHref>
+            <Button.Cta as="a">{text(`READ`)}</Button.Cta>
+          </Link>
         </footer>
       </div>
     </article>

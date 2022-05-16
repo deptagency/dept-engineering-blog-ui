@@ -108,6 +108,7 @@ const mapVariantToStyles = ({
 const COMMON_STYLES = `
   display: inline-block;
   padding: ${spaces.xxs}px ${spaces.sm}px;
+  font-size: 1.4rem;
   font-weight: 700;
   line-height: 2rem;
   text-transform: uppercase;
