@@ -35,6 +35,7 @@ const mapVariantToStyles = ({
   switch (variant) {
     case 'tag':
       return `
+        font-weight: 500;
         background: ${colors.platinum};
         border: 1px solid ${colors.platinum};
         color: ${colors.onyx};
@@ -46,6 +47,7 @@ const mapVariantToStyles = ({
         `: ``}
 
         ${white ? `
+          font-weight: 700;
           background: ${colors.white};
           border: 1px solid ${colors.onyx};
           color: ${colors.onyx};

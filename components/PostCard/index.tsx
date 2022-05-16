@@ -12,7 +12,7 @@ import { PostClass } from '@helpers/PostClass'
 import { collections } from '@lib/collections'
 import { GhostPostOrPage, GhostSettings } from '@lib/ghost'
 import { Heading } from '@components/typography/Headings'
-import { PostExcerpt } from './components'
+import { PostCardTag, PostCardImageLink, PostExcerpt } from './components'
 import { Button } from '@components/Button'
 
 interface PostCardProps {
@@ -31,9 +31,9 @@ export const PostCard = ({ settings, post, num, isColorInverted }: PostCardProps
   const featImg = post.featureImage
   const readingTime = readingTimeHelper(post).replace(`min read`, text(`MIN_READ`))
   const postClass = PostClass({ tags: post.tags, isFeatured: post.featured, isImage: !!featImg })
-  const isFirstPost = (num !== undefined && num < 1)
+  const isFirstPost = num !== undefined && num < 1
   const authors = post?.authors?.filter((_, i) => (i < 2 ? true : false))
-  const textColor = isFirstPost || isColorInverted ? "white" : "onyx";
+  const textColor = isFirstPost || isColorInverted ? 'white' : 'onyx'
 
   if (isFirstPost) {
     return (
@@ -41,8 +41,8 @@ export const PostCard = ({ settings, post, num, isColorInverted }: PostCardProps
         <Grid alignItems="center" container spacing={{ xs: 2, md: 5 }}>
           {featImg && (
             <Grid item xs={12} lg={5}>
-              <Link href={url}>
-                <a className="post-card-image-link" aria-label={post.title}>
+              <Link href={url} passHref>
+                <PostCardImageLink className="post-card-image-link" aria-label={post.title}>
                   {nextImages.feature ? (
                     <div className="post-card-image">
                       <Image
@@ -57,7 +57,7 @@ export const PostCard = ({ settings, post, num, isColorInverted }: PostCardProps
                   ) : (
                     post.feature_image && <img className="post-card-image" src={post.feature_image} alt={post.title} />
                   )}
-                </a>
+                </PostCardImageLink>
               </Link>
             </Grid>
           )}
@@ -65,13 +65,19 @@ export const PostCard = ({ settings, post, num, isColorInverted }: PostCardProps
             <div className="post-card-content">
               <Link href={url}>
                 <a className="post-card-content-link">
-                  <header className="post-card-header">
-                    {post.primary_tag && <div className="post-card-primary-tag">{post.primary_tag.name}</div>}
+                  <header>
+                    {post.primary_tag && (
+                      <PostCardTag small as="span">
+                        {post.primary_tag.name}
+                      </PostCardTag>
+                    )}
                     <Heading.Two $color={textColor}>{post.title}</Heading.Two>
                   </header>
-                  <section className="post-card-excerpt foobar">
+                  <section>
                     {/* post.excerpt *is* an excerpt and does not need to be truncated any further */}
-                    <PostExcerpt $color={textColor}>{post.excerpt}</PostExcerpt>
+                    <PostExcerpt isPostCardLarge $color={textColor}>
+                      {post.excerpt}
+                    </PostExcerpt>
                   </section>
                 </a>
               </Link>
@@ -97,7 +103,9 @@ export const PostCard = ({ settings, post, num, isColorInverted }: PostCardProps
                   </span>
                 </div>
                 <Link href={url} passHref>
-                  <Button.Cta inverted as="a">{text(`READ`)}</Button.Cta>
+                  <Button.Cta inverted as="a">
+                    {text(`READ`)}
+                  </Button.Cta>
                 </Link>
               </footer>
             </div>
@@ -110,8 +118,8 @@ export const PostCard = ({ settings, post, num, isColorInverted }: PostCardProps
   return (
     <article className={`post-card ${postClass}`}>
       {featImg && (
-        <Link href={url}>
-          <a className="post-card-image-link" aria-label={post.title}>
+        <Link href={url} passHref>
+          <PostCardImageLink className="post-card-image-link" aria-label={post.title}>
             {nextImages.feature ? (
               <div className="post-card-image">
                 <Image
@@ -126,19 +134,25 @@ export const PostCard = ({ settings, post, num, isColorInverted }: PostCardProps
             ) : (
               post.feature_image && <img className="post-card-image" src={post.feature_image} alt={post.title} />
             )}
-          </a>
+          </PostCardImageLink>
         </Link>
       )}
 
-      {post.primary_tag && <div><div className="post-card-primary-tag">{post.primary_tag.name}</div></div>}
+      {post.primary_tag && (
+        <div>
+          <PostCardTag small as="span">
+            {post.primary_tag.name}
+          </PostCardTag>
+        </div>
+      )}
 
       <div className="post-card-content">
         <Link href={url}>
           <a className="post-card-content-link">
-            <header className="post-card-header">
+            <header>
               <Heading.Two $color={textColor}>{post.title}</Heading.Two>
             </header>
-            <section className="post-card-excerpt">
+            <section>
               {/* post.excerpt *is* an excerpt and does not need to be truncated any further */}
               <PostExcerpt $color={textColor}>{post.excerpt}</PostExcerpt>
             </section>
