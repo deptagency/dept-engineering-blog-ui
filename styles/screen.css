@@ -1940,41 +1940,8 @@ html.casper .subscribe-email:focus {
     border-color: color-mod(var(--lightgrey) l(-2%));
 }
 
-html.casper .subscribe-overlay button {
-    display: inline-block;
-    margin: 0 0 0 15px;
-    padding: 0 25px;
-    height: 52px;
-    outline: none;
-    color: #fff;
-    font-size: 1.7rem;
-    line-height: 38px;
-    font-weight: 400;
-    text-align: center;
-    background: linear-gradient(
-    color-mod(var(--blue) whiteness(+7%)),
-    color-mod(var(--blue) lightness(-7%) saturation(-10%)) 60%,
-    color-mod(var(--blue) lightness(-7%) saturation(-10%)) 90%,
-    color-mod(var(--blue) lightness(-4%) saturation(-10%))
-    );
-    border-radius: 8px;
-
-    -webkit-font-smoothing: subpixel-antialiased;
-}
-
-html.casper .subscribe-overlay button:active,
-html.casper .subscribe-overlay button:focus {
-    background: color-mod(var(--blue) lightness(-9%) saturation(-10%));
-}
-
 html.casper .subscribe-overlay .loading .button-loader {
     top: 5px;
-}
-
-@media (max-width: 500px) {
-    html.casper .subscribe-overlay button {
-        margin: 12px 0 0;
-    }
 }
 
 
