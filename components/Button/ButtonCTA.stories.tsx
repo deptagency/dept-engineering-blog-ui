@@ -5,7 +5,7 @@ import { Button } from '.'
 import styled from '@emotion/styled';
 
 export default {
-  title: 'Button/Call To Action',
+  title: 'Buttons/Call To Action',
   component: Button.Cta,
   argTypes: {
     children: {

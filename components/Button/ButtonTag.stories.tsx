@@ -4,7 +4,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { Button } from '.'
 
 export default {
-  title: 'Button/Tag',
+  title: 'Buttons/Tag',
   component: Button.Tag,
   argTypes: {
     children: {
