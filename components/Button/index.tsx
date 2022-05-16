@@ -15,6 +15,7 @@ interface ButtonCtaProps extends ButtonProps {
 
 interface ButtonTagProps extends ButtonProps {
   white?: boolean
+  selected?: boolean
 }
 
 type ButtonVariant = 'cta' | 'tag'
@@ -25,7 +26,8 @@ const mapVariantToStyles = ({
   white,
   small,
   as,
-  disabled
+  disabled,
+  selected
 }: ButtonCtaProps &
   ButtonTagProps & { variant?: ButtonVariant } & { as?: ElementType<any> }) => {
   const hasHoverState = (as === 'button' || as === 'a' || as === undefined) && !disabled
@@ -47,6 +49,11 @@ const mapVariantToStyles = ({
           background: ${colors.white};
           border: 1px solid ${colors.onyx};
           color: ${colors.onyx};
+
+          ${selected ? `
+            background: ${colors.onyx};
+            color: ${colors.white};
+          `:``}
         `: ``}
 
         ${disabled ? `
@@ -61,6 +68,11 @@ const mapVariantToStyles = ({
             ${white ? `
               background: ${colors.onyx};
               color: ${colors.white};
+
+              ${selected ? `
+                background: ${colors.white};
+                color: ${colors.onyx};
+              `:``}
             ` : ``}
           }
         `: ``}

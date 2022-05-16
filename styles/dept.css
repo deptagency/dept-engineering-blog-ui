@@ -208,24 +208,6 @@ html.casper .no-image .post-card-primary-tag {
   display: flex;
   margin-bottom: 75px;
 }
-.filter-tags-label {
-  color: var(--onyx);
-  font-weight: 300;
-  line-height: 2.4rem;
-  padding-right: 28px;
-  margin-right: 34px;
-  border-right: 1px solid var(--onyx);
-}
-.filter-tags .btn {
-  margin-right: 16px;
-}
-.filter-tags .remove-filter-link {
-  color:#fff;
-  font-size: 1.5rem;
-  vertical-align: middle;
-  margin-left: 5px;
-}
-
 
 /* Single Post Page */
 html.casper .post-template .site-main {

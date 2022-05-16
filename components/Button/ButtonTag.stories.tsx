@@ -29,7 +29,8 @@ Default.args = {
   as: 'button',
   small: false,
   white: false,
-  disabled: false
+  disabled: false,
+  selected: false
 }
 
 /* White */
@@ -45,7 +46,8 @@ White.args = {
   as: 'button',
   small: false,
   white: true,
-  disabled: false
+  disabled: false,
+  selected: false
 }
 
 /* Small */
@@ -61,5 +63,6 @@ Small.args = {
   as: 'button',
   small: true,
   white: false,
-  disabled: false
+  disabled: false,
+  selected: false
 }
