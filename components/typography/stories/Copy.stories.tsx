@@ -2,34 +2,36 @@ import React from 'react'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 
 import { colors } from '@components/common/colors'
-import { Copy, CopyProps } from '../Copy'
+import { Copy } from '../Copy'
 
 export default {
-  title: 'Typography',
+  title: 'Typography/Copy',
   component: Copy.M,
   argTypes: {
     $color: {
-      options:  Object.keys(colors),
+      options: Object.keys(colors),
       control: {
-        type: 'select'
-      }
+        type: 'select',
+      },
     },
     children: {
-      control: 'text'
-    }
-  }
+      control: 'text',
+      defaultValue: 'This is some copy text.',
+    },
+  },
 } as ComponentMeta<typeof Copy.M>
 
-const Template: ComponentStory<typeof Copy.M> = (args) => (
-  <>
-    <Copy.XS {...args}>{args.children}</Copy.XS>
-    <Copy.SM {...args}>{args.children}</Copy.SM>
-    <Copy.M {...args}>{args.children}</Copy.M>
-    <Copy.LG {...args}>{args.children}</Copy.LG>
-  </>
-)
+const TemplateOne: ComponentStory<typeof Copy.M> = (args) => <Copy.XS {...args}>{args.children}</Copy.XS>
+export const CopyExtraSmall = TemplateOne.bind({})
 
-export const Copys = Template.bind({})
-Copys.args = {
-  children: "This is some copy text."
-}
+const TemplateTwo: ComponentStory<typeof Copy.M> = (args) => <Copy.SM {...args}>{args.children}</Copy.SM>
+export const CopySmall = TemplateTwo.bind({})
+
+const TemplateThree: ComponentStory<typeof Copy.M> = (args) => <Copy.M {...args}>{args.children}</Copy.M>
+export const CopyMedium = TemplateThree.bind({})
+
+const Template4: ComponentStory<typeof Copy.M> = (args) => <Copy.LG {...args}>{args.children}</Copy.LG>
+export const CopyLarge = Template4.bind({})
+
+const Template5: ComponentStory<typeof Copy.M> = (args) => <Copy.XL {...args}>{args.children}</Copy.XL>
+export const CopyExtraLarge = Template5.bind({})

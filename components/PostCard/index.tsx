@@ -14,6 +14,7 @@ import { GhostPostOrPage, GhostSettings } from '@lib/ghost'
 import { Heading } from '@components/typography/Headings'
 import { PostCardTag, PostCardImageLink, PostExcerpt } from './components'
 import { Button } from '@components/Button'
+import { Copy } from '@components/typography/Copy'
 
 interface PostCardProps {
   settings: GhostSettings
@@ -75,9 +76,9 @@ export const PostCard = ({ settings, post, num, isColorInverted }: PostCardProps
                   </header>
                   <section>
                     {/* post.excerpt *is* an excerpt and does not need to be truncated any further */}
-                    <PostExcerpt isPostCardLarge $color={textColor}>
+                    <Copy.LG  $color={textColor}>
                       {post.excerpt}
-                    </PostExcerpt>
+                    </Copy.LG>
                   </section>
                 </a>
               </Link>

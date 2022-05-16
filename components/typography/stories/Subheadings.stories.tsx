@@ -5,7 +5,7 @@ import { Subheading } from '../Subheadings'
 
 
 export default {
-  title: 'Typography',
+  title: 'Typography/Subheadings',
   component: Subheading.One,
   argTypes: {
     $color: {
@@ -15,20 +15,18 @@ export default {
       }
     },
     children: {
-      control: 'text'
+      control: 'text',
+      defaultValue: 'Change Me'
+    },
+    noMargin: {
+      control: 'boolean',
+      defaultValue: false
     }
   }
 } as ComponentMeta<typeof Subheading.One>
 
-const Template: ComponentStory<typeof Subheading.One> = (args) => (
-  <>
-    <Subheading.One {...args}>{args.children}</Subheading.One>
-    <Subheading.Two {...args}>{args.children}</Subheading.Two>
-  </>
-)
+const Template1: ComponentStory<typeof Subheading.One> = (args) =>  <Subheading.One {...args}>{args.children}</Subheading.One>
+export const Subheading1 = Template1.bind({})
 
-export const Subheadings = Template.bind({})
-Subheadings.args = {
-  noMargin: false,
-  children: "Change Me"
-}
+const Template2: ComponentStory<typeof Subheading.One> = (args) => <Subheading.Two {...args}>{args.children}</Subheading.Two>
+export const Subheading2 = Template2.bind({})
