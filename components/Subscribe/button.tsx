@@ -1,5 +1,6 @@
 import { getLang, get } from '@utils/use-lang'
 import { useOverlay } from '@components/contexts/overlayProvider'
+import { Button } from '@components/Button'
 
 // The actual component
 export const SubscribeButton = ({ lang }: { lang?: string }) => {
@@ -7,15 +8,8 @@ export const SubscribeButton = ({ lang }: { lang?: string }) => {
   const { handleOpen } = useOverlay()
 
   return (
-    <a className="subscribe-btn btn btn-cta" onClick={handleOpen}>
+    <Button.Cta onClick={handleOpen}>
       {text(`SUBSCRIBE`)}
-      <style jsx>{`
-        a:hover {
-          text-decoration: none;
-          opacity: 1;
-          cursor: pointer;
-        }
-      `}</style>
-    </a>
+    </Button.Cta>
   )
 }

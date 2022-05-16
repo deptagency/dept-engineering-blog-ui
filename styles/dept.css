@@ -32,7 +32,7 @@ html.casper .inner {
   }
 }
 
-/* Buttons */
+/* Buttons
 .btn {
   background: var(--onyx);
   border: 1px solid var(--onyx);
@@ -84,7 +84,7 @@ html.casper .inner {
   border: 1px solid #fff;
   background: var(--onyx);
   color: #fff;
-}
+} */
 
 /* Homepage Post Feed */
 html.casper .post-feed {

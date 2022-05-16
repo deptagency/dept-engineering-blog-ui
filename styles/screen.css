@@ -934,34 +934,6 @@ html.casper .subscribe-email:focus {
     border-color: color-mod(var(--lightgrey) l(-2%));
 }
 
-html.casper .subscribe-form button {
-    position: relative;
-    display: inline-block;
-    margin: 0 0 0 10px;
-    padding: 0 20px;
-    height: 43px;
-    outline: none;
-    color: #fff;
-    font-size: 1.5rem;
-    line-height: 39px;
-    font-weight: 400;
-    text-align: center;
-    background: linear-gradient(
-    color-mod(var(--blue) whiteness(+7%)),
-    color-mod(var(--blue) lightness(-7%) saturation(-10%)) 60%,
-    color-mod(var(--blue) lightness(-7%) saturation(-10%)) 90%,
-    color-mod(var(--blue) lightness(-4%) saturation(-10%))
-    );
-    border-radius: 5px;
-
-    -webkit-font-smoothing: subpixel-antialiased;
-}
-
-html.casper .subscribe-form button:active,
-html.casper .subscribe-form button:focus {
-    background: color-mod(var(--blue) lightness(-9%) saturation(-10%));
-}
-
 html.casper .subscribe-form .button-loader,
 html.casper .subscribe-form .message-success,
 html.casper .subscribe-form .message-error {
@@ -1028,10 +1000,10 @@ html.casper .subscribe-form .error .message-error {
         width: 100%;
     }
 
-    html.casper .subscribe-form button {
+    /* html.casper .subscribe-form button {
         margin: 10px 0 0 0;
         width: 100%;
-    }
+    } */
 }
 
 

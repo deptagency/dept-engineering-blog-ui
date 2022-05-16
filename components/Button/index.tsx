@@ -28,7 +28,7 @@ const mapVariantToStyles = ({
   disabled
 }: ButtonCtaProps &
   ButtonTagProps & { variant?: ButtonVariant } & { as?: ElementType<any> }) => {
-  const hasHoverState = (as === 'button' || as === 'a') && !disabled
+  const hasHoverState = (as === 'button' || as === 'a' || as === undefined) && !disabled
 
   switch (variant) {
     case 'tag':

@@ -3,7 +3,7 @@ import { createContext, useContext, ReactElement, useState, useEffect, ChangeEve
 export interface OverlayProviderValues {
   isOpen: boolean
   handleClose: () => void
-  handleOpen: (event: MouseEvent<HTMLAnchorElement>) => void
+  handleOpen: (event: MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => void
   handleChange: (event: ChangeEvent<HTMLInputElement>) => void
   handleSubmit: (event: FormEvent<HTMLFormElement>, cmsUrl: string | undefined) => void
   email: string
@@ -38,7 +38,7 @@ export const OverlayProvider = ({ children }: OverlayProviderProps): ReactElemen
     setIsOpen(false)
   }
 
-  const handleOpen = (event: MouseEvent<HTMLAnchorElement>) => {
+  const handleOpen = (event: MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
     event.preventDefault()
     setIsOpen(true)
   }
@@ -57,6 +57,11 @@ export const OverlayProvider = ({ children }: OverlayProviderProps): ReactElemen
       labels: [],
     }
 
+    /**
+     * @todo this code is not working properly. The site is always displaying success, regardless
+     * of the response from the API. Loading state is never shown. Little validation (empty strings
+     * can be submitted as email value).
+     * */
     try {
       fetch(postURL, {
         method: `POST`,

@@ -3,6 +3,7 @@ import { getLang, get } from '@utils/use-lang'
 import { useOverlay } from '@components/contexts/overlayProvider'
 
 import { LoaderIcon } from '@icons/LoaderIcon'
+import { Button } from '@components/Button'
 
 export const SubscribeForm = ({ settings }: { settings: GhostSettings }) => {
   const text = get(getLang(settings.lang))
@@ -35,14 +36,14 @@ export const SubscribeForm = ({ settings }: { settings: GhostSettings }) => {
           placeholder={text(`YOUR_EMAIL`)}
           autoComplete="false"
         />
-        <button className="button primary" type="submit" value="Submit">
+        <Button.Cta type="submit" value="Submit">
           <span className="button-content">
             {text(`SUBSCRIBE`)}
           </span>
           <span className="button-loader">
             <LoaderIcon />
           </span>
-        </button>
+        </Button.Cta>
       </div>
       <div className="message-success">
         <strong>{`${text(`GREAT`)}!`}</strong> {text(`CHECK_YOUR_INBOX`)}.
