@@ -1,28 +1,25 @@
 /* eslint-disable @next/next/no-img-element */
-import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import React from 'react'
 import dayjs from 'dayjs'
 
 import { resolveUrl } from '@utils/routing'
-import { getLang, get } from '@utils/use-lang'
+import { GhostPostOrPage, GhostPostsOrPages, GhostSettings } from '@lib/ghost'
+import { collections } from '@lib/collections'
 
 import { Layout } from '@components/Layout'
 import { PreviewPosts } from '@components/PreviewPosts'
 import { RenderContent } from '@components/RenderContent'
 import { Subscribe } from '@components/Subscribe'
 import { TableOfContents } from '@components/toc/TableOfContents'
-
-import { SEO } from '@meta/seo'
-import { ISeoImage } from '@meta/seoImage'
-
-import { PostClass } from '@helpers/PostClass'
-import { GhostPostOrPage, GhostPostsOrPages, GhostSettings } from '@lib/ghost'
-import { collections } from '@lib/collections'
-
-import { Header } from '../Header'
 import { Heading } from '@components/typography/Headings'
 import { Subheading } from '@components/typography/Subheadings'
+import { SEO } from '@meta/seo'
+import { ISeoImage } from '@meta/seoImage'
+import { PostClass } from '@helpers/PostClass'
+
+import { Header } from '../Header'
 
 interface PostProps {
   cmsData: {
@@ -37,7 +34,15 @@ interface PostProps {
 }
 
 export const Post = ({ cmsData }: PostProps) => {
-  const { post, settings, seoImage, previewPosts, prevPost, nextPost, bodyClass } = cmsData
+  const {
+    post,
+    settings,
+    seoImage,
+    previewPosts,
+    prevPost,
+    nextPost,
+    bodyClass
+  } = cmsData
   const { slug, url, meta_description, excerpt, title } = post
   const { url: cmsUrl } = settings
   const description = meta_description || excerpt
@@ -45,12 +50,15 @@ export const Post = ({ cmsData }: PostProps) => {
   const { processEnv } = settings
   const { nextImages, toc, memberSubscriptions } = processEnv
 
-  const lang = settings.lang
-  const text = get(getLang(lang))
+  const { lang } = settings
   const featImg = post.featureImage
-  const postClass = PostClass({ tags: post.tags, isFeatured: !!featImg, isImage: !!featImg })
+  const postClass = PostClass({
+    tags: post.tags,
+    isFeatured: !!featImg,
+    isImage: !!featImg
+  })
 
-  const htmlAst = post.htmlAst
+  const { htmlAst } = post
   if (htmlAst === undefined) throw Error('Post.tsx: htmlAst must be defined.')
 
   const collectionPath = collections.getCollectionByNode(post)
@@ -61,7 +69,17 @@ export const Post = ({ cmsData }: PostProps) => {
       <Layout
         {...{ bodyClass, settings }}
         header={<Header {...{ settings }} />}
-        previewPosts={<PreviewPosts {...{ settings, primaryTag: post.primary_tag, posts: previewPosts, prev: prevPost, next: nextPost }} />}
+        previewPosts={
+          <PreviewPosts
+            {...{
+              settings,
+              primaryTag: post.primary_tag,
+              posts: previewPosts,
+              prev: prevPost,
+              next: nextPost
+            }}
+          />
+        }
       >
         <div className="inner">
           <div className="grid-wrapper">
@@ -71,9 +89,17 @@ export const Post = ({ cmsData }: PostProps) => {
                   {post.primary_tag && (
                     <section className="post-full-tags">
                       <Link href="/">
-                        <a className="breadcrumb-home">DEPT® Engineering Blog</a>
+                        <a className="breadcrumb-home">
+                          DEPT® Engineering Blog
+                        </a>
                       </Link>
-                      <Link href={resolveUrl({ cmsUrl, slug: post.primary_tag.slug, url: post.primary_tag.url })}>
+                      <Link
+                        href={resolveUrl({
+                          cmsUrl,
+                          slug: post.primary_tag.slug,
+                          url: post.primary_tag.url
+                        })}
+                      >
                         <a>{post.primary_tag.name}</a>
                       </Link>
                     </section>
@@ -81,7 +107,11 @@ export const Post = ({ cmsData }: PostProps) => {
 
                   <Heading.One noMargin>{title}</Heading.One>
 
-                  {post.custom_excerpt && <Subheading.One as="p" $color={"darkmidgrey"}>{post.custom_excerpt}</Subheading.One>}
+                  {post.custom_excerpt && (
+                    <Subheading.One as="p" $color={'darkmidgrey'}>
+                      {post.custom_excerpt}
+                    </Subheading.One>
+                  )}
 
                   <div className="post-full-byline">
                     <section className="post-full-byline-content">
@@ -90,15 +120,27 @@ export const Post = ({ cmsData }: PostProps) => {
                           {post.authors?.map((author, i) => (
                             <div key={i}>
                               {i > 0 ? `, ` : ``}
-                              <Link href={resolveUrl({ cmsUrl, slug: author.slug, url: author.url || undefined })}>
+                              <Link
+                                href={resolveUrl({
+                                  cmsUrl,
+                                  slug: author.slug,
+                                  url: author.url || undefined
+                                })}
+                              >
                                 <a>{author.name}</a>
                               </Link>
                             </div>
                           ))}
                         </h4>
                         <div className="byline-meta-content">
-                          <time className="byline-meta-date" dateTime={post.published_at || ''}>
-                            {dayjs(post.published_at || '').format('D MMMM, YYYY')}&nbsp;
+                          <time
+                            className="byline-meta-date"
+                            dateTime={post.published_at || ''}
+                          >
+                            {dayjs(post.published_at || '').format(
+                              'D MMMM, YYYY'
+                            )}
+                            &nbsp;
                           </time>
                         </div>
                       </section>
@@ -111,7 +153,10 @@ export const Post = ({ cmsData }: PostProps) => {
                 <div className="post-meta">
                   {featImg &&
                     (nextImages.feature && featImg.dimensions ? (
-                      <figure className="post-full-image" style={{ display: 'inherit' }}>
+                      <figure
+                        className="post-full-image"
+                        style={{ display: 'inherit' }}
+                      >
                         <Image
                           src={featImg.url}
                           alt={title}
@@ -134,7 +179,16 @@ export const Post = ({ cmsData }: PostProps) => {
                         </figure>
                       )
                     ))}
-                  {toc.enable && !!post.toc && <TableOfContents {...{ toc: post.toc, url: resolveUrl({ cmsUrl, collectionPath, slug, url }), maxDepth: toc.maxDepth, lang }} />}
+                  {toc.enable && !!post.toc && (
+                    <TableOfContents
+                      {...{
+                        toc: post.toc,
+                        url: resolveUrl({ cmsUrl, collectionPath, slug, url }),
+                        maxDepth: toc.maxDepth,
+                        lang
+                      }}
+                    />
+                  )}
                 </div>
               </div>
             </article>

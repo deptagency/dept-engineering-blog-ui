@@ -1,16 +1,16 @@
-
 /* eslint-disable @next/next/no-img-element */
-import React from 'react';
-import styled from '@emotion/styled';
 import Image from 'next/image'
 import Link from 'next/link'
-import { GhostSettings, NextImage } from '@lib/ghost';
+import React from 'react'
+import styled from '@emotion/styled'
 
-import { colors } from '@components/common/colors';
-import { spaces } from '@components/common/spaces';
-import { getLang, get } from '@utils/use-lang'
+import { GhostSettings, NextImage } from '@lib/ghost'
+import { get, getLang } from '@utils/use-lang'
 
-const LOGO_HEIGHT = 21;
+import { colors } from '@components/common/colors'
+import { spaces } from '@components/common/spaces'
+
+const LOGO_HEIGHT = 21
 
 const NavLogoLink = styled.a`
   position: relative;
@@ -36,30 +36,43 @@ const NavLogoLink = styled.a`
     width: auto;
     height: ${LOGO_HEIGHT}px;
   }
-`;
+`
 
 const ImageWrapper = styled.div<{ imageWidth?: number }>`
-  width: ${({imageWidth}) => imageWidth ? `${imageWidth}px` : "auto"};
-`;
+  width: ${({ imageWidth }) => (imageWidth ? `${imageWidth}px` : 'auto')};
+`
 
 interface LogoLinkProps {
   settings: GhostSettings
 }
 
-const calcSiteLogoWidth = (image: NextImage) => (LOGO_HEIGHT * image.dimensions.width) / image.dimensions.height
+const calcSiteLogoWidth = (image: NextImage) =>
+  (LOGO_HEIGHT * image.dimensions.width) / image.dimensions.height
 
 export const LogoLink: React.FC<LogoLinkProps> = ({ settings }) => {
-  const { processEnv: { nextImages }, logo, logoImage, lang, title } = settings
+  const {
+    processEnv: { nextImages },
+    logo,
+    logoImage,
+    lang,
+    title
+  } = settings
   const siteTitle = get(getLang(lang))(`SITE_TITLE`, title)
 
-  const imageWidth = logoImage ? calcSiteLogoWidth(logoImage) : undefined;
+  const imageWidth = logoImage ? calcSiteLogoWidth(logoImage) : undefined
 
   return (
     <Link href="/">
       {logoImage && nextImages.feature ? (
         <NavLogoLink>
           <ImageWrapper imageWidth={imageWidth}>
-            <Image src={logoImage.url} alt={siteTitle} layout="responsive" quality={nextImages.quality} {...logoImage.dimensions} />
+            <Image
+              src={logoImage.url}
+              alt={siteTitle}
+              layout="responsive"
+              quality={nextImages.quality}
+              {...logoImage.dimensions}
+            />
           </ImageWrapper>
         </NavLogoLink>
       ) : logo ? (

@@ -1,4 +1,4 @@
-import { colors } from "./colors";
+import { colors } from './colors'
 
 export const DEFAULT_COPY_STYLES = `
   font-size: 1.6rem;
@@ -13,4 +13,4 @@ export const BASE_TYPOGRAPHIC_STYLES = `
   font-style: normal;
   letter-spacing: 0;
   text-rendering: optimizeLegibility;
-`;
+`

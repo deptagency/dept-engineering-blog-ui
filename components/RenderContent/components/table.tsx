@@ -1,4 +1,3 @@
-
 export const tableStyles = `
   table {
       display: inline-block;
@@ -50,4 +49,4 @@ export const tableStyles = `
       padding: 6px 12px;
       border: color-mod(var(--whitegrey) l(-1%) s(-5%)) 1px solid;
   }
-`;
+`

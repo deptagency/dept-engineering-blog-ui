@@ -1,5 +1,5 @@
-import { colors } from "@components/common/colors";
-import { spaces } from "@components/common/spaces";
+import { colors } from '@components/common/colors'
+import { spaces } from '@components/common/spaces'
 
 export const horizontalRuleStyles = `
   hr {
@@ -23,4 +23,4 @@ export const horizontalRuleStyles = `
       margin-top: ${spaces.md}px;
     }
   }
-`;
+`

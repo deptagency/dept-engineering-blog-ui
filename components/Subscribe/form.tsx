@@ -1,7 +1,7 @@
 import { GhostSettings } from '@lib/ghost'
-import { getLang, get } from '@utils/use-lang'
-import { useOverlay } from '@components/contexts/overlayProvider'
+import { get, getLang } from '@utils/use-lang'
 
+import { useOverlay } from '@components/contexts/overlayProvider'
 import { LoaderIcon } from '@icons/LoaderIcon'
 
 export const SubscribeForm = ({ settings }: { settings: GhostSettings }) => {
@@ -9,7 +9,11 @@ export const SubscribeForm = ({ settings }: { settings: GhostSettings }) => {
   const { message, handleSubmit, email, handleChange } = useOverlay()
 
   return (
-    <form className={message} data-members-form="subscribe" onSubmit={(ev) => handleSubmit(ev, settings.url)}>
+    <form
+      className={message}
+      data-members-form="subscribe"
+      onSubmit={(ev) => handleSubmit(ev, settings.url)}
+    >
       <div className="form-group">
         <label htmlFor="email">
           {text(`EMAIL`)}
@@ -36,9 +40,7 @@ export const SubscribeForm = ({ settings }: { settings: GhostSettings }) => {
           autoComplete="false"
         />
         <button className="button primary" type="submit" value="Submit">
-          <span className="button-content">
-            {text(`SUBSCRIBE`)}
-          </span>
+          <span className="button-content">{text(`SUBSCRIBE`)}</span>
           <span className="button-loader">
             <LoaderIcon />
           </span>

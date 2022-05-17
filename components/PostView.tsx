@@ -1,6 +1,6 @@
-import { PostItems } from '@components/PostItems'
 import { GhostPostsOrPages, GhostSettings } from '@lib/ghost'
 
+import { PostItems } from '@components/PostItems'
 interface PostViewProps {
   settings: GhostSettings
   posts: GhostPostsOrPages

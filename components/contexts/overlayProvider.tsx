@@ -1,11 +1,23 @@
-import { createContext, useContext, ReactElement, useState, useEffect, ChangeEvent, FormEvent, MouseEvent } from 'react'
+import {
+  ChangeEvent,
+  FormEvent,
+  MouseEvent,
+  ReactElement,
+  createContext,
+  useContext,
+  useEffect,
+  useState
+} from 'react'
 
 export interface OverlayProviderValues {
   isOpen: boolean
   handleClose: () => void
   handleOpen: (event: MouseEvent<HTMLAnchorElement>) => void
   handleChange: (event: ChangeEvent<HTMLInputElement>) => void
-  handleSubmit: (event: FormEvent<HTMLFormElement>, cmsUrl: string | undefined) => void
+  handleSubmit: (
+    event: FormEvent<HTMLFormElement>,
+    cmsUrl: string | undefined
+  ) => void
   email: string
   message: string
 }
@@ -17,11 +29,12 @@ const defaultValues = {
   handleChange: () => null,
   handleSubmit: () => null,
   email: '',
-  message: '',
+  message: ''
 }
 
 const OverlayContext = createContext<OverlayProviderValues>(defaultValues)
-export const useOverlay = (): OverlayProviderValues => useContext(OverlayContext)
+export const useOverlay = (): OverlayProviderValues =>
+  useContext(OverlayContext)
 
 export interface DefaultModeProps {}
 
@@ -29,7 +42,9 @@ interface OverlayProviderProps extends DefaultModeProps {
   children: React.ReactNode
 }
 
-export const OverlayProvider = ({ children }: OverlayProviderProps): ReactElement => {
+export const OverlayProvider = ({
+  children
+}: OverlayProviderProps): ReactElement => {
   const [isOpen, setIsOpen] = useState(false)
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
@@ -47,14 +62,17 @@ export const OverlayProvider = ({ children }: OverlayProviderProps): ReactElemen
     setEmail(event.target.value)
   }
 
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>, cmsUrl: string = '') => {
+  const handleSubmit = async (
+    event: FormEvent<HTMLFormElement>,
+    cmsUrl = ''
+  ) => {
     event.preventDefault()
     const postURL = `${cmsUrl}/members/api/send-magic-link/`
 
     const values = {
       email,
       emailType: `subscribe`,
-      labels: [],
+      labels: []
     }
 
     try {
@@ -62,7 +80,7 @@ export const OverlayProvider = ({ children }: OverlayProviderProps): ReactElemen
         method: `POST`,
         mode: `cors`,
         headers: { 'Content-Type': `application/json` },
-        body: JSON.stringify(values),
+        body: JSON.stringify(values)
       })
     } catch {
       setMessage(`error`)
@@ -82,5 +100,19 @@ export const OverlayProvider = ({ children }: OverlayProviderProps): ReactElemen
     }
   }, [])
 
-  return <OverlayContext.Provider value={{ isOpen, handleOpen, handleClose, handleSubmit, handleChange, email, message }}>{children}</OverlayContext.Provider>
+  return (
+    <OverlayContext.Provider
+      value={{
+        isOpen,
+        handleOpen,
+        handleClose,
+        handleSubmit,
+        handleChange,
+        email,
+        message
+      }}
+    >
+      {children}
+    </OverlayContext.Provider>
+  )
 }

@@ -1,19 +1,20 @@
-import { useEffect } from 'react'
 import Script from 'next/script'
+import { useEffect } from 'react'
 import { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
-import { OverlayProvider } from '@components/contexts/overlayProvider'
-import * as gtag from '../lib/gtag'
 import { Global } from '@emotion/react'
 
-import { fonts } from '@components/common/fonts'
-import { globals } from '@components/common/globals'
+import * as gtag from '@lib/gtag'
 
 import '@styles/screen.css'
 import '@styles/screen-fixings.css'
 import '@styles/prism.css'
 import '@styles/toc.css'
 import '@styles/dept.css'
+
+import { fonts } from '@components/common/fonts'
+import { globals } from '@components/common/globals'
+import { OverlayProvider } from '@components/contexts/overlayProvider'
 
 function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
@@ -32,7 +33,7 @@ function App({ Component, pageProps }: AppProps) {
     <>
       <Global styles={fonts} />
       <Global styles={globals} />
-      <OverlayProvider >
+      <OverlayProvider>
         {/* Global site tag (gtag.js) - Google Analytics */}
         <Script
           strategy="afterInteractive"
@@ -50,7 +51,7 @@ function App({ Component, pageProps }: AppProps) {
                 gtag('config', '${gtag.GA_TRACKING_ID}', {
                   page_path: window.location.pathname,
                 });
-              `,
+              `
           }}
         />
         <Component {...pageProps} />

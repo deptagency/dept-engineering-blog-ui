@@ -1,10 +1,10 @@
+import 'react-medium-image-zoom/dist/styles.css'
 import Image from 'next/image'
+import Zoom from 'react-medium-image-zoom'
 import { ComponentPropsWithNode } from 'rehype-react'
 import { Node } from 'unist'
-import { Dimensions } from '@lib/images'
-import Zoom from 'react-medium-image-zoom'
-import 'react-medium-image-zoom/dist/styles.css'
 
+import { Dimensions } from '@lib/images'
 
 interface PropertyProps {
   src: string
@@ -20,7 +20,7 @@ export const NextImage = (props: ComponentPropsWithNode) => {
   const { node } = props
   if (!node) return null
   const imageNode = node as ImageNode
-  const imageDimensions = imageNode.imageDimensions
+  const { imageDimensions } = imageNode
   const { src, className: classArray } = imageNode.properties
   const className = classArray?.join(' ')
 

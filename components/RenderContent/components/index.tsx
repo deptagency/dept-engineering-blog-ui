@@ -1,17 +1,17 @@
-import styled from '@emotion/styled';
+import styled from '@emotion/styled'
 
-import { spaces } from '@components/common/spaces';
-import { colors } from '@components/common/colors';
-import { fullBleedImageStyles, imageCaptionStyles } from './image';
-import { blockquoteStyles } from './blockquote';
-import { preformattedTextStyles } from './performatted-text';
-import { linkStyles } from './link';
-import { h1Styles, h2Styles, h3Styles, h4Styles, h5Styles } from './headings';
-import { tableStyles } from './table';
-import { horizontalRuleStyles } from './horizontal-rule';
-import { iframeStyles } from './iframe';
-import { codeStyles } from './code';
+import { spaces } from '@components/common/spaces'
+import { colors } from '@components/common/colors'
 
+import { fullBleedImageStyles, imageCaptionStyles } from './image'
+import { blockquoteStyles } from './blockquote'
+import { preformattedTextStyles } from './performatted-text'
+import { linkStyles } from './link'
+import { h1Styles, h2Styles, h3Styles, h4Styles, h5Styles } from './headings'
+import { tableStyles } from './table'
+import { horizontalRuleStyles } from './horizontal-rule'
+import { iframeStyles } from './iframe'
+import { codeStyles } from './code'
 
 /* Using display: flex prevents margin collapse between the components. */
 export const ContentSection = styled.section`
@@ -59,7 +59,7 @@ export const ContentSection = styled.section`
     }
 
     &:first-child {
-       margin-top: 0;
+      margin-top: 0;
     }
   }
 
@@ -103,4 +103,4 @@ export const ContentSection = styled.section`
   ${horizontalRuleStyles}
   ${tableStyles}
   ${codeStyles}
-`;
+`

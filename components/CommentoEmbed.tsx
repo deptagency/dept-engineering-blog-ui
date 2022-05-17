@@ -37,6 +37,7 @@ export const CommentoEmbed = ({ id, url }: CommentoEmbedProps) => {
       //url: <your comment url>
       insertScript(`${url}/js/commento.js`, `commento-script`, document.body)
     }
+    // eslint-disable-next-line consistent-return
     return () => removeScript(`commento-script`, document.body)
   }, [id, url])
 

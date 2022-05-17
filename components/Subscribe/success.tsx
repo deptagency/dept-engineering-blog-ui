@@ -1,8 +1,15 @@
-import { useState, useEffect } from 'react'
-import { getLang, get } from '@utils/use-lang'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
-export const SubscribeSuccess = ({ title, lang }: { title: string; lang?: string }) => {
+import { get, getLang } from '@utils/use-lang'
+
+export const SubscribeSuccess = ({
+  title,
+  lang
+}: {
+  title: string
+  lang?: string
+}) => {
   const text = get(getLang(lang))
   const router = useRouter()
   const { action, success } = router.query
@@ -11,7 +18,10 @@ export const SubscribeSuccess = ({ title, lang }: { title: string; lang?: string
   const [closeState, setCloseState] = useState('')
   const [closeButtonOpacity, setCloseButtonOpacity] = useState(0)
   const showBanner = action && action === `subscribe` && success !== undefined
-  const message = success === `true` ? `${text(`SUBSCRIBED_TO`)} ${title}!` : `${text(`SUBSCRIBED_FAILED`)}`
+  const message =
+    success === `true`
+      ? `${text(`SUBSCRIBED_TO`)} ${title}!`
+      : `${text(`SUBSCRIBED_FAILED`)}`
 
   useEffect(() => {
     const timer = setTimeout(() => setCloseButtonOpacity(1), 1000)
@@ -20,7 +30,10 @@ export const SubscribeSuccess = ({ title, lang }: { title: string; lang?: string
   }, [setType, setCloseButtonOpacity, action, success])
 
   return (
-    <div className={`subscribe-notification subscribe-${type}-message${closeState}`} style={{ opacity: `${showBanner ? 1 : 0}` }}>
+    <div
+      className={`subscribe-notification subscribe-${type}-message${closeState}`}
+      style={{ opacity: `${showBanner ? 1 : 0}` }}
+    >
       <style jsx>{`
         @media (max-width: 368px) {
           a {
