@@ -1,15 +1,27 @@
+import GhostContentAPI, {
+  Author,
+  Pagination,
+  Params,
+  PostOrPage,
+  PostsOrPages,
+  SettingsResponse,
+  Tag
+} from '@tryghost/content-api'
 import { parse as urlParse } from 'url'
-import GhostContentAPI, { Params, PostOrPage, SettingsResponse, Pagination, PostsOrPages, Tag, Author } from '@tryghost/content-api'
-import { normalizePost } from '@lib/ghost-normalize'
 import { Node } from 'unist'
-import { collections as config } from '@routesConfig'
-import { Collections } from '@lib/collections'
-
-import { ghostAPIUrl, ghostAPIKey, processEnv, ProcessEnvProps } from '@lib/processEnv'
-import { imageDimensions, normalizedImageUrl, Dimensions } from '@lib/images'
-import { IToC } from '@lib/toc'
 
 import { customSlugs } from '@appConfig'
+import { normalizePost } from '@lib/ghost-normalize'
+import { Collections } from '@lib/collections'
+import { IToC } from '@lib/toc'
+import {
+  ProcessEnvProps,
+  ghostAPIKey,
+  ghostAPIUrl,
+  processEnv
+} from '@lib/processEnv'
+import { Dimensions, imageDimensions, normalizedImageUrl } from '@lib/images'
+import { collections as config } from '@routesConfig'
 
 export interface NextImage {
   url: string
@@ -47,71 +59,101 @@ export interface GhostPostOrPage extends PostOrPage {
   toc?: IToC[] | null
 }
 
-export interface GhostPostsOrPages extends BrowseResults<GhostPostOrPage> {}
+export type GhostPostsOrPages = BrowseResults<GhostPostOrPage>
 
-export interface GhostTags extends BrowseResults<GhostTag> {}
+export type GhostTags = BrowseResults<GhostTag>
 
-export interface GhostAuthors extends BrowseResults<GhostAuthor> {}
+export type GhostAuthors = BrowseResults<GhostAuthor>
 
 const api = new GhostContentAPI({
   url: ghostAPIUrl,
   key: ghostAPIKey,
-  version: 'v3',
+  version: 'v3'
 })
 
 const postAndPageFetchOptions: Params = {
   limit: 'all',
   include: ['tags', 'authors', 'count.posts'],
-  order: ['featured DESC', 'published_at DESC'],
+  order: ['featured DESC', 'published_at DESC']
 }
 
 const tagAndAuthorFetchOptions: Params = {
   limit: 'all',
-  include: 'count.posts',
+  include: 'count.posts'
 }
 
 const postAndPageSlugOptions: Params = {
   limit: 'all',
-  fields: 'slug',
+  fields: 'slug'
 }
 
 const excludePostOrPageBySlug = () => {
   if (customSlugs.length === 0) return ''
-  return customSlugs.map(slug => `slug:-${slug}`)
+  return customSlugs.map((slug) => `slug:-${slug}`)
 }
 
 // helpers
-export const createNextImage = async (url?: string | null): Promise<NextImage | undefined> => {
+export const createNextImage = async (
+  url?: string | null
+): Promise<NextImage | undefined> => {
   if (!url) return undefined
   const normalizedUrl = await normalizedImageUrl(url)
   const dimensions = await imageDimensions(normalizedUrl)
   return (dimensions && { url: normalizedUrl, dimensions }) || undefined
 }
 
-async function createNextFeatureImages(nodes: BrowseResults<Tag | PostOrPage>): Promise<GhostTags | PostsOrPages> {
+async function createNextFeatureImages(
+  nodes: BrowseResults<Tag | PostOrPage>
+): Promise<GhostTags | PostsOrPages> {
   const { meta } = nodes
-  const images = await Promise.all(nodes.map((node) => createNextImage(node.feature_image)))
-  const results = nodes.map((node, i) => ({ ...node, ...(images[i] && { featureImage: images[i] }) }))
+  const images = await Promise.all(
+    nodes.map((node) => createNextImage(node.feature_image))
+  )
+  const results = nodes.map((node, i) => ({
+    ...node,
+    ...(images[i] && { featureImage: images[i] })
+  }))
   return Object.assign(results, { meta })
 }
 
-async function createNextProfileImages(nodes: BrowseResults<Author>): Promise<GhostAuthors> {
+async function createNextProfileImages(
+  nodes: BrowseResults<Author>
+): Promise<GhostAuthors> {
   const { meta } = nodes
-  const images = await Promise.all(nodes.map((node) => createNextImage(node.profile_image)))
-  const results = nodes.map((node, i) => ({ ...node, ...(images[i] && { profileImage: images[i] }) }))
+  const images = await Promise.all(
+    nodes.map((node) => createNextImage(node.profile_image))
+  )
+  const results = nodes.map((node, i) => ({
+    ...node,
+    ...(images[i] && { profileImage: images[i] })
+  }))
   return Object.assign(results, { meta })
 }
 
-export async function createNextProfileImagesFromAuthors(nodes: Author[] | undefined): Promise<Author[] | undefined> {
+export async function createNextProfileImagesFromAuthors(
+  nodes: Author[] | undefined
+): Promise<Author[] | undefined> {
   if (!nodes) return undefined
-  const images = await Promise.all(nodes.map((node) => createNextImage(node.profile_image)))
-  return nodes.map((node, i) => ({ ...node, ...(images[i] && { profileImage: images[i] }) }))
+  const images = await Promise.all(
+    nodes.map((node) => createNextImage(node.profile_image))
+  )
+  return nodes.map((node, i) => ({
+    ...node,
+    ...(images[i] && { profileImage: images[i] })
+  }))
 }
 
-async function createNextProfileImagesFromPosts(nodes: BrowseResults<PostOrPage>): Promise<PostsOrPages> {
+async function createNextProfileImagesFromPosts(
+  nodes: BrowseResults<PostOrPage>
+): Promise<PostsOrPages> {
   const { meta } = nodes
-  const authors = await Promise.all(nodes.map((node) => createNextProfileImagesFromAuthors(node.authors)))
-  const results = nodes.map((node, i) => ({ ...node, ...(authors[i] && { authors: authors[i] }) }))
+  const authors = await Promise.all(
+    nodes.map((node) => createNextProfileImagesFromAuthors(node.authors))
+  )
+  const results = nodes.map((node, i) => ({
+    ...node,
+    ...(authors[i] && { authors: authors[i] })
+  }))
   return Object.assign(results, { meta })
 }
 
@@ -130,7 +172,7 @@ export async function getAllSettings(): Promise<GhostSettings> {
     ...settings,
     ...(iconImage && { iconImage }),
     ...(logoImage && { logoImage }),
-    ...(coverImage && { coverImage }),
+    ...(coverImage && { coverImage })
   }
   //setCache('settings', result)
   return result
@@ -138,22 +180,24 @@ export async function getAllSettings(): Promise<GhostSettings> {
 
 export async function getAllTags(): Promise<GhostTags> {
   const tags = await api.tags.browse(tagAndAuthorFetchOptions)
-  return await createNextFeatureImages(tags)
+  return createNextFeatureImages(tags)
 }
 
 export async function getAllAuthors() {
   const authors = await api.authors.browse(tagAndAuthorFetchOptions)
-  return await createNextProfileImages(authors)
+  return createNextProfileImages(authors)
 }
 
-export async function getAllPosts(props?: { limit: number }): Promise<GhostPostsOrPages> {
+export async function getAllPosts(props?: {
+  limit: number
+}): Promise<GhostPostsOrPages> {
   const posts = await api.posts.browse({
     ...postAndPageFetchOptions,
     filter: excludePostOrPageBySlug(),
-    ...(props && { ...props }),
+    ...(props && { ...props })
   })
   const results = await createNextProfileImagesFromPosts(posts)
-  return await createNextFeatureImages(results)
+  return createNextFeatureImages(results)
 }
 
 export async function getAllPostSlugs(): Promise<string[]> {
@@ -161,41 +205,45 @@ export async function getAllPostSlugs(): Promise<string[]> {
   return posts.map((p) => p.slug)
 }
 
-export async function getAllPages(props?: { limit: number }): Promise<GhostPostsOrPages> {
+export async function getAllPages(props?: {
+  limit: number
+}): Promise<GhostPostsOrPages> {
   const pages = await api.pages.browse({
     ...postAndPageFetchOptions,
     filter: excludePostOrPageBySlug(),
-    ...(props && { ...props }),
+    ...(props && { ...props })
   })
-  return await createNextFeatureImages(pages)
+  return createNextFeatureImages(pages)
 }
 
 // specific data by slug
 export async function getTagBySlug(slug: string): Promise<Tag> {
-  return await api.tags.read({
+  return api.tags.read({
     ...tagAndAuthorFetchOptions,
-    slug,
+    slug
   })
 }
 export async function getAuthorBySlug(slug: string): Promise<GhostAuthor> {
   const author = await api.authors.read({
     ...tagAndAuthorFetchOptions,
-    slug,
+    slug
   })
   const profileImage = await createNextImage(author.profile_image)
   const result = {
     ...author,
-    ...(profileImage && { profileImage }),
+    ...(profileImage && { profileImage })
   }
   return result
 }
 
-export async function getPostBySlug(slug: string): Promise<GhostPostOrPage | null> {
+export async function getPostBySlug(
+  slug: string
+): Promise<GhostPostOrPage | null> {
   let result: GhostPostOrPage
   try {
     const post = await api.posts.read({
       ...postAndPageFetchOptions,
-      slug,
+      slug
     })
     // older Ghost versions do not throw error on 404
     if (!post) return null
@@ -210,12 +258,14 @@ export async function getPostBySlug(slug: string): Promise<GhostPostOrPage | nul
   return result
 }
 
-export async function getPageBySlug(slug: string): Promise<GhostPostOrPage | null> {
+export async function getPageBySlug(
+  slug: string
+): Promise<GhostPostOrPage | null> {
   let result: GhostPostOrPage
   try {
     const page = await api.pages.read({
       ...postAndPageFetchOptions,
-      slug,
+      slug
     })
 
     // older Ghost versions do not throw error on 404
@@ -232,22 +282,28 @@ export async function getPageBySlug(slug: string): Promise<GhostPostOrPage | nul
 }
 
 // specific data by author/tag slug
-export async function getPostsByAuthor(slug: string): Promise<GhostPostsOrPages> {
+export async function getPostsByAuthor(
+  slug: string
+): Promise<GhostPostsOrPages> {
   const posts = await api.posts.browse({
     ...postAndPageFetchOptions,
-    filter: `authors.slug:${slug}`,
+    filter: `authors.slug:${slug}`
   })
-  return await createNextFeatureImages(posts)
+  return createNextFeatureImages(posts)
 }
 
-export async function getPostsByTag(slug: string, limit?: number, excludeId?: string): Promise<GhostPostsOrPages> {
+export async function getPostsByTag(
+  slug: string,
+  limit?: number,
+  excludeId?: string
+): Promise<GhostPostsOrPages> {
   const exclude = (excludeId && `+id:-${excludeId}`) || ``
   const posts = await api.posts.browse({
     ...postAndPageFetchOptions,
     ...(limit && { limit: `${limit}` }),
-    filter: `tags.slug:${slug}${exclude}`,
+    filter: `tags.slug:${slug}${exclude}`
   })
-  return await createNextFeatureImages(posts)
+  return createNextFeatureImages(posts)
 }
 
 // Collections

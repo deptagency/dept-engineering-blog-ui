@@ -1,15 +1,14 @@
-import styled from '@emotion/styled';
-import { colors } from '@components/common/colors';
-import { spaces } from '@components/common/spaces';
+import styled from '@emotion/styled'
+
+import { colors } from '@components/common/colors'
+import { spaces } from '@components/common/spaces'
 
 interface NavProps {
-  isRightNav?: boolean;
+  isRightNav?: boolean
 }
 
 export const NavList = styled.ul<NavProps>(
-  ({
-    isRightNav = false
-  }) => `
+  ({ isRightNav = false }) => `
   position: absolute;
   z-index: 1000;
   display: flex;
@@ -18,16 +17,18 @@ export const NavList = styled.ul<NavProps>(
   list-style: none;
   transition: all 1.0s cubic-bezier(0.19, 1, 0.22, 1);
 
-  ${isRightNav && `
+  ${
+    isRightNav &&
+    `
     position: relative;
     margin: 0;
-  `}
-`);
+  `
+  }
+`
+)
 
 export const NavListItem = styled.li<NavProps>(
-  ({
-    isRightNav = false
-  }) => `
+  ({ isRightNav = false }) => `
     display: block;
     margin: 0;
     padding: 0;
@@ -51,7 +52,9 @@ export const NavListItem = styled.li<NavProps>(
       }
     }
 
-    ${isRightNav && `
+    ${
+      isRightNav &&
+      `
       &:last-of-type {
         padding-right: inherit;
       }
@@ -60,5 +63,7 @@ export const NavListItem = styled.li<NavProps>(
         white-space: inherit;
         text-transform: none;
       }
-    `}
-  `)
+    `
+    }
+  `
+)

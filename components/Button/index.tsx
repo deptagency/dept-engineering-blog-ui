@@ -29,8 +29,10 @@ const mapVariantToStyles = ({
   disabled,
   selected
 }: ButtonCtaProps &
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ButtonTagProps & { variant?: ButtonVariant } & { as?: ElementType<any> }) => {
-  const hasHoverState = (as === 'button' || as === 'a' || as === undefined) && !disabled
+  const hasHoverState =
+    (as === 'button' || as === 'a' || as === undefined) && !disabled
 
   switch (variant) {
     case 'tag':
@@ -40,44 +42,72 @@ const mapVariantToStyles = ({
         border: 1px solid ${colors.platinum};
         color: ${colors.onyx};
 
-        ${small ? `
+        ${
+          small
+            ? `
           font-size: 1.2rem;
           line-height: 1.2rem;
           padding: ${spaces.xxs - 2}px ${spaces.xxs}px;
-        `: ``}
+        `
+            : ``
+        }
 
-        ${white ? `
+        ${
+          white
+            ? `
           font-weight: 700;
           background: ${colors.white};
           border: 1px solid ${colors.onyx};
           color: ${colors.onyx};
 
-          ${selected ? `
+          ${
+            selected
+              ? `
             background: ${colors.onyx};
             color: ${colors.white};
-          `:``}
-        `: ``}
+          `
+              : ``
+          }
+        `
+            : ``
+        }
 
-        ${disabled ? `
+        ${
+          disabled
+            ? `
           cursor: default;
           opacity: 0.5;
-        `: ``}
+        `
+            : ``
+        }
 
-        ${hasHoverState ? `
+        ${
+          hasHoverState
+            ? `
           &:hover {
             cursor: pointer;
 
-            ${white ? `
+            ${
+              white
+                ? `
               background: ${colors.onyx};
               color: ${colors.white};
 
-              ${selected ? `
+              ${
+                selected
+                  ? `
                 background: ${colors.white};
                 color: ${colors.onyx};
-              `:``}
-            ` : ``}
+              `
+                  : ``
+              }
+            `
+                : ``
+            }
           }
-        `: ``}
+        `
+            : ``
+        }
       `
     default:
       return `
@@ -86,35 +116,55 @@ const mapVariantToStyles = ({
         background: ${colors.onyx};
         color: ${colors.white};
 
-        ${small ? `
+        ${
+          small
+            ? `
           font-size: 1.2rem;
           line-height: 1.2rem;
           padding: ${spaces.xxs - 2}px ${spaces.xxs}px;
-        `: ``}
+        `
+            : ``
+        }
 
-        ${inverted ? `
+        ${
+          inverted
+            ? `
           border: 1px solid ${colors.white};
           background: ${colors.onyx};
           color: ${colors.white};
-        `: ``}
+        `
+            : ``
+        }
 
-        ${disabled ? `
+        ${
+          disabled
+            ? `
           cursor: default;
           opacity: 0.5;
-        `: ``}
+        `
+            : ``
+        }
 
-        ${hasHoverState ? `
+        ${
+          hasHoverState
+            ? `
           &:hover {
             background: ${colors.white};
             color: ${colors.onyx};
             cursor: pointer;
 
-            ${inverted ? `
+            ${
+              inverted
+                ? `
               background: ${colors.white};
               color: ${colors.onyx};
-            `: ``}
+            `
+                : ``
+            }
           }
-        ` : ``}
+        `
+            : ``
+        }
       `
   }
 }

@@ -1,10 +1,15 @@
-import cheerio from 'cheerio'
 import RSS from 'rss'
-
-import { GhostPostOrPage, GhostPostsOrPages, GhostSettings } from "@lib/ghost"
-import { siteTitleMeta, siteDescriptionMeta, siteIcon } from '@meta/siteDefaults'
+import cheerio from 'cheerio'
 import { resolve } from 'url'
 import { Tag } from '@tryghost/content-api'
+
+import { GhostPostOrPage, GhostPostsOrPages, GhostSettings } from '@lib/ghost'
+
+import {
+  siteDescriptionMeta,
+  siteIcon,
+  siteTitleMeta
+} from '@meta/siteDefaults'
 
 interface FeedProps {
   settings: GhostSettings
@@ -23,14 +28,14 @@ export const generateRSSFeed = ({ posts, settings }: FeedProps) => {
     ttl: 60,
     custom_namespaces: {
       content: `http://purl.org/rss/1.0/modules/content/`,
-      media: `http://search.yahoo.com/mrss/`,
-    },
+      media: `http://search.yahoo.com/mrss/`
+    }
   }
   const feed = new RSS(feedOptions)
 
-  const feedItems = posts.map(post => generateItem({ post, settings }))
+  const feedItems = posts.map((post) => generateItem({ post, settings }))
 
-  feedItems.forEach(item => feed.item(item))
+  feedItems.forEach((item) => feed.item(item))
 
   return feed.xml({ indent: false })
 }
@@ -52,7 +57,6 @@ const generateItem = ({ post, settings }: ItemProps) => {
     published_at: date,
     tags,
     primary_author: author
-
   } = post
   const cmsUrl = settings.url || ''
   const postUrl = canonical_url || url
@@ -60,22 +64,26 @@ const generateItem = ({ post, settings }: ItemProps) => {
 
   // ToDo:
   // const transformedHtml = post.htmlAst
-  const htmlContent = cheerio.load(html || '', { decodeEntities: false, xmlMode: true })
+  const htmlContent = cheerio.load(html || '', {
+    decodeEntities: false,
+    xmlMode: true
+  })
   const imageUrl = post.feature_image
 
-  const tagsFilter = (tags: Tag[]) => tags
-    .filter(({ name }) => !!name && name.substr(0, 5) !== 'hash-')
-    .map(({ name }) => name || '')
+  const tagsFilter = (tags: Tag[]) =>
+    tags
+      .filter(({ name }) => !!name && name.substr(0, 5) !== 'hash-')
+      .map(({ name }) => name || '')
 
   const item = {
     title,
     description,
     guid,
     url: itemUrl,
-    date: !!date && date || '',
-    categories: tags && tagsFilter(tags) || [],
-    author: author && author.name || '',
-    custom_elements: [{}],
+    date: (!!date && date) || '',
+    categories: (tags && tagsFilter(tags)) || [],
+    author: (author && author.name) || '',
+    custom_elements: [{}]
   }
 
   if (imageUrl) {
@@ -84,19 +92,21 @@ const generateItem = ({ post, settings }: ItemProps) => {
       'media:content': {
         _attr: {
           url: imageUrl,
-          medium: `image`,
-        },
-      },
+          medium: `image`
+        }
+      }
     })
     // Also add the image to the content, because not all readers support media:content
-    htmlContent(`p`).first().before(`<img src="` + imageUrl + `" />`)
+    htmlContent(`p`)
+      .first()
+      .before(`<img src="` + imageUrl + `" />`)
     htmlContent(`img`).attr(`alt`, title || '')
   }
 
   item.custom_elements.push({
     'content:encoded': {
-      _cdata: htmlContent.html(),
-    },
+      _cdata: htmlContent.html()
+    }
   })
   return item
 }

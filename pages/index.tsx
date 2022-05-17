@@ -1,16 +1,22 @@
+/* eslint-disable no-console */
 import { GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 
+import { processEnv } from '@lib/processEnv'
+import {
+  GhostPostOrPage,
+  GhostPostsOrPages,
+  GhostSettings,
+  getAllPosts,
+  getAllSettings
+} from '@lib/ghost'
+
+import { ISeoImage, seoImage } from '@meta/seoImage'
+import { BodyClass } from '@helpers/BodyClass'
+import { SEO } from '@meta/seo'
 import { Layout } from '@components/Layout'
 import { PostView } from '@components/PostView'
 import { Header } from '@components/Header'
-import { SEO } from '@meta/seo'
-
-import { processEnv } from '@lib/processEnv'
-import { getAllPosts, getAllSettings, GhostPostOrPage, GhostPostsOrPages, GhostSettings } from '@lib/ghost'
-import { seoImage, ISeoImage } from '@meta/seoImage'
-
-import { BodyClass } from '@helpers/BodyClass'
 
 /**
  * Main index page (home page)
@@ -42,9 +48,20 @@ export default function Index({ cmsData }: IndexProps) {
   return (
     <>
       <SEO {...{ settings, seoImage }} />
-      <Layout {...{ bodyClass, settings, isHome: true }} header={<Header {...{ settings, isHome: true, content: {
-        title: settings.description
-      }}} />}>
+      <Layout
+        {...{ bodyClass, settings, isHome: true }}
+        header={
+          <Header
+            {...{
+              settings,
+              isHome: true,
+              content: {
+                title: settings.description
+              }
+            }}
+          />
+        }
+      >
         <PostView {...{ settings, posts, isHome: true }} />
       </Layout>
     </>
@@ -68,15 +85,15 @@ export const getStaticProps: GetStaticProps = async () => {
     settings,
     posts,
     seoImage: await seoImage({ siteUrl: settings.processEnv.siteUrl }),
-    bodyClass: BodyClass({ isHome: true }),
+    bodyClass: BodyClass({ isHome: true })
   }
 
   console.timeEnd('Index - getStaticProps')
 
   return {
     props: {
-      cmsData,
+      cmsData
     },
-    ...(processEnv.isr.enable && { revalidate: processEnv.isr.revalidate }), // re-generate at most once every revalidate second
+    ...(processEnv.isr.enable && { revalidate: processEnv.isr.revalidate }) // re-generate at most once every revalidate second
   }
 }

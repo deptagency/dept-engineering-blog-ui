@@ -1,6 +1,14 @@
 import Link from 'next/link'
-import { Button } from '../Button'
-import { FilterLabel, Filters, FilterTagWrapper, StyledTag, StyledX } from './components'
+
+import { Button } from '@components/Button'
+
+import {
+  FilterLabel,
+  FilterTagWrapper,
+  Filters,
+  StyledTag,
+  StyledX
+} from './components'
 
 interface FilterTagsProps {
   tags: string[]
@@ -11,10 +19,12 @@ export const FilterTags = ({ currentTag, tags }: FilterTagsProps) => (
   <Filters>
     <FilterLabel>Filter by</FilterLabel>
     <FilterTagWrapper>
-      {tags.map((tag, i) => (
+      {tags.map((tag, i) =>
         tag.toLowerCase() === currentTag ? (
           <Link href="/" passHref key={currentTag} title="Remove Filter">
-            <StyledTag small white selected as="a"> {tag}
+            <StyledTag small white selected as="a">
+              {' '}
+              {tag}
               <StyledX>&times;</StyledX>
             </StyledTag>
           </Link>
@@ -25,7 +35,7 @@ export const FilterTags = ({ currentTag, tags }: FilterTagsProps) => (
             </Button.Tag>
           </Link>
         )
-      ))}
+      )}
     </FilterTagWrapper>
   </Filters>
 )

@@ -16,7 +16,6 @@ export default {
   }
 } as ComponentMeta<typeof Button.Tag>
 
-
 const Template: ComponentStory<typeof Button.Tag> = (args) => (
   <>
     <Button.Tag {...args}>{args.children}</Button.Tag>
@@ -25,7 +24,7 @@ const Template: ComponentStory<typeof Button.Tag> = (args) => (
 
 export const Default = Template.bind({})
 Default.args = {
-  children: "Platform",
+  children: 'Platform',
   as: 'button',
   small: false,
   white: false,
@@ -42,7 +41,7 @@ const TemplateWhite: ComponentStory<typeof Button.Tag> = (args) => (
 
 export const White = TemplateWhite.bind({})
 White.args = {
-  children: "Platform",
+  children: 'Platform',
   as: 'button',
   small: false,
   white: true,
@@ -59,7 +58,7 @@ const TemplateSmall: ComponentStory<typeof Button.Tag> = (args) => (
 
 export const Small = TemplateSmall.bind({})
 Small.args = {
-  children: "Platform",
+  children: 'Platform',
   as: 'button',
   small: true,
   white: false,

@@ -1,4 +1,4 @@
-import { colors } from "@components/common/colors";
+import { colors } from '@components/common/colors'
 
 // @todo refactor into own component
 export const linkStyles = `
@@ -19,4 +19,4 @@ export const linkStyles = `
       font-weight: inherit;
     }
   }
-`;
+`

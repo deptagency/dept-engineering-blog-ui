@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
-import { colors, Colors } from '@components/common/colors'
+
+import { Colors, colors } from '@components/common/colors'
 import { spaces } from '@components/common/spaces'
 import { DEFAULT_COPY_STYLES } from '@components/common/typography'
 
@@ -9,7 +10,10 @@ export interface CopyProps {
 
 type CopyOrder = 'sm' | 'xs' | 'lg' | 'xl'
 
-const mapCopyOrderToStyles = ({ order, $color }: CopyProps & { order?: CopyOrder }) => {
+const mapCopyOrderToStyles = ({
+  order,
+  $color
+}: CopyProps & { order?: CopyOrder }) => {
   switch (order) {
     case 'xs':
       return `
@@ -53,9 +57,9 @@ const styledCopy = (order?: CopyOrder) => styled.p<CopyProps>`
 `
 
 export const Copy = {
-  XS: styledCopy("xs"),
-  SM: styledCopy("sm"),
+  XS: styledCopy('xs'),
+  SM: styledCopy('sm'),
   M: styledCopy(),
   LG: styledCopy('lg'),
-  XL: styledCopy("xl")
+  XL: styledCopy('xl')
 }

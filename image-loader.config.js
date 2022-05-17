@@ -6,6 +6,7 @@ import { imageLoader } from 'next-image-loader/build/image-loader'
  * When using 'next export', the plugin next-image-loader(https://github.com/aiji42/next-image-loader) will automatically use the custom image loader defined below
  * without the need to add a loader prop to <Image> tags
  */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 imageLoader.loader = ({ src, width, quality }) => {
   /**
    * Customize your image loader here

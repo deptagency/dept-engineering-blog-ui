@@ -1,11 +1,12 @@
 import { GetServerSideProps } from 'next'
 
-import { getAllPosts, getAllSettings, GhostPostsOrPages } from '@lib/ghost'
+import { GhostPostsOrPages, getAllPosts, getAllSettings } from '@lib/ghost'
 import { generateRSSFeed } from '@utils/rss'
 
 const RSS = () => null
 
-export const getServerSideProps: GetServerSideProps | undefined = process.env.IS_EXPORT
+export const getServerSideProps: GetServerSideProps | undefined = process.env
+  .IS_EXPORT
   ? undefined
   : async ({ res }) => {
       let settings
@@ -30,7 +31,7 @@ export const getServerSideProps: GetServerSideProps | undefined = process.env.IS
       }
 
       return {
-        props: {},
+        props: {}
       }
     }
 

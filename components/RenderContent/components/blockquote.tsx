@@ -1,6 +1,6 @@
-import { blockquoteBorder } from "@components/common/borders";
-import { colors } from "@components/common/colors";
-import { spaces } from "@components/common/spaces";
+import { blockquoteBorder } from '@components/common/borders'
+import { colors } from '@components/common/colors'
+import { spaces } from '@components/common/spaces'
 
 export const blockquoteStyles = `
   blockquote {
@@ -26,4 +26,4 @@ export const blockquoteStyles = `
       padding: 0 ${spaces.md}px;
     }
   }
-`;
+`
