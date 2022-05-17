@@ -54,9 +54,9 @@ export const SiteNav = ({ settings }: SiteNavProps) => {
           </NavLeft>
         </NavLeftWrapper>
         <NavRight>
-          {secondary_navigation && secondary_navigation.length > 0 ? (
+          {secondary_navigation && secondary_navigation.length > 0 && (
             <Navigation data={secondary_navigation} isRightNav />
-          ) : undefined}
+          )}
           {memberSubscriptions && <SubscribeButton {...{ lang }} />}
         </NavRight>
       </StyledSiteNav>
