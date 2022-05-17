@@ -24,7 +24,7 @@ interface SiteNavConfig {
 
 export const SiteNav = ({ settings }: SiteNavProps) => {
   const {
-    processEnv: { customNavigation, memberSubscriptions, siteUrl },
+    processEnv: { customNavigation, memberSubscriptions },
     secondary_navigation,
     navigation,
     lang
