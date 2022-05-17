@@ -2,14 +2,15 @@ import React from 'react'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 
 import { colors } from '@components/common/colors'
-import { Copy, CopyProps } from '../Copy'
+
+import { Copy } from '../Copy'
 
 export default {
   title: 'Typography',
   component: Copy.M,
   argTypes: {
     $color: {
-      options:  Object.keys(colors),
+      options: Object.keys(colors),
       control: {
         type: 'select'
       }
@@ -31,5 +32,5 @@ const Template: ComponentStory<typeof Copy.M> = (args) => (
 
 export const Copys = Template.bind({})
 Copys.args = {
-  children: "This is some copy text."
+  children: 'This is some copy text.'
 }

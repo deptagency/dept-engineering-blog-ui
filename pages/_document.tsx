@@ -1,22 +1,30 @@
-
-import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document'
+import Document, {
+  DocumentContext,
+  Head,
+  Html,
+  Main,
+  NextScript
+} from 'next/document'
 import { resolve } from 'url'
+
 import { processEnv } from '@lib/processEnv'
 
 export default class MyDocument extends Document {
-
   static async getInitialProps(ctx: DocumentContext) {
-    return await super.getInitialProps(ctx)
+    return super.getInitialProps(ctx)
   }
 
   render() {
     const { pageProps } = this.props.__NEXT_DATA__.props
-    const { cmsData, settings }  = pageProps || { cmsData: null, settings: null }
-    const { settings: cmsSettings , bodyClass } = cmsData || { settings: null, bodyClass: '' }
+    const { cmsData, settings } = pageProps || { cmsData: null, settings: null }
+    const { settings: cmsSettings, bodyClass } = cmsData || {
+      settings: null,
+      bodyClass: ''
+    }
     const { lang } = settings || cmsSettings || { lang: 'en' }
 
     return (
-      <Html {...{lang, className: 'casper' }}>
+      <Html {...{ lang, className: 'casper' }}>
         <Head>
           <link
             rel="alternate"
@@ -53,7 +61,7 @@ export default class MyDocument extends Document {
             crossOrigin="anonymous"
           />
         </Head>
-        <body {...{className: bodyClass}}>
+        <body {...{ className: bodyClass }}>
           <Main />
           <NextScript />
         </body>

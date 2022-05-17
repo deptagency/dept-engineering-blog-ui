@@ -1,7 +1,8 @@
 import React from 'react'
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react'
 
 import { colors } from '@components/common/colors'
+
 import { Heading } from '../Headings'
 
 export default {
@@ -9,7 +10,7 @@ export default {
   component: Heading.One,
   argTypes: {
     $color: {
-      options:  Object.keys(colors),
+      options: Object.keys(colors),
       control: {
         type: 'select'
       }
@@ -18,7 +19,7 @@ export default {
       control: 'text'
     }
   }
-} as ComponentMeta<typeof Heading.One>;
+} as ComponentMeta<typeof Heading.One>
 
 const Template: ComponentStory<typeof Heading.One> = (args) => (
   <>
@@ -36,5 +37,5 @@ export const Headings = Template.bind({})
 Headings.args = {
   responsive: false,
   noMargin: false,
-  children: "Change Me"
+  children: 'Change Me'
 }

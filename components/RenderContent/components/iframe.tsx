@@ -1,4 +1,4 @@
-import { spaces } from "@components/common/spaces";
+import { spaces } from '@components/common/spaces'
 
 /* Override third party iframe styles */
 export const iframeStyles = `

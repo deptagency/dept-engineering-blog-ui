@@ -1,15 +1,16 @@
 import React from 'react'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import { colors } from '@components/common/colors'
-import { Subheading } from '../Subheadings'
 
+import { colors } from '@components/common/colors'
+
+import { Subheading } from '../Subheadings'
 
 export default {
   title: 'Typography',
   component: Subheading.One,
   argTypes: {
     $color: {
-      options:  Object.keys(colors),
+      options: Object.keys(colors),
       control: {
         type: 'select'
       }
@@ -30,5 +31,5 @@ const Template: ComponentStory<typeof Subheading.One> = (args) => (
 export const Subheadings = Template.bind({})
 Subheadings.args = {
   noMargin: false,
-  children: "Change Me"
+  children: 'Change Me'
 }

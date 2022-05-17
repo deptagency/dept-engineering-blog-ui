@@ -1,9 +1,10 @@
-import styled from '@emotion/styled';
-import { colors } from '@components/common/colors';
-import { Container } from '@components/helpers/Container';
-import { spaces } from '@components/common/spaces';
+import styled from '@emotion/styled'
 
-export const SITE_NAV_HEIGHT = spaces.xxl;
+import { colors } from '@components/common/colors'
+import { Container } from '@components/helpers/Container'
+import { spaces } from '@components/common/spaces'
+
+export const SITE_NAV_HEIGHT = spaces.xxl
 
 export const NavContainer = styled(Container)`
   position: fixed;
@@ -12,7 +13,7 @@ export const NavContainer = styled(Container)`
   left: 0;
   z-index: 1000;
   background: ${colors.white};
-`;
+`
 
 export const StyledSiteNav = styled.nav`
   position: relative;
@@ -23,13 +24,13 @@ export const StyledSiteNav = styled.nav`
   overflow: hidden;
   height: ${SITE_NAV_HEIGHT}px;
   font-size: 1.3rem;
-`;
+`
 
 export const NavLeftWrapper = styled.div`
   position: relative;
   flex: 1 0 auto;
   display: flex;
-`;
+`
 
 export const NavLeft = styled.div`
   flex: 1 0 auto;
@@ -50,7 +51,7 @@ export const NavLeft = styled.div`
   @media (max-width: 700px) {
     padding-left: inherit;
   }
-`;
+`
 
 /* Site Nav Hack Explanation (above):
 
@@ -63,7 +64,7 @@ The knock-on effect of this is ugly browser-scroll bars at the bottom, so 80px o
 export const NavContent = styled.div`
   position: relative;
   align-self: flex-start;
-`;
+`
 
 export const NavRight = styled.div`
   flex: 0 1 auto;
@@ -74,6 +75,6 @@ export const NavRight = styled.div`
   height: ${SITE_NAV_HEIGHT}px;
 
   @media (max-width: 700px) {
-    display: inherit
+    display: inherit;
   }
-`;
+`

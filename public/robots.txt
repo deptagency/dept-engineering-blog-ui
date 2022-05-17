@@ -7,4 +7,3 @@ Host: https://engineering.deptagency.com
 
 # Sitemaps
 Sitemap: https://engineering.deptagency.com/sitemap.xml
-Sitemap: https://engineering.deptagency.com/sitemap-0.xml

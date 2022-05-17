@@ -1,13 +1,14 @@
+/* eslint-disable no-console */
 import probe from 'probe-image-size'
-import { getCache, setCache } from '@lib/cache'
-
 import { createReadStream, createWriteStream, existsSync } from 'fs'
 import { join } from 'path'
-import { processEnv } from '@lib/processEnv'
 import { promisify } from 'util'
-
 import { sha1 } from 'crypto-hash'
 
+import { getCache, setCache } from '@lib/cache'
+import { processEnv } from '@lib/processEnv'
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const streamPipeline = promisify(require('stream').pipeline)
 
 /**
@@ -29,11 +30,11 @@ const maxRetries = 50
 const read_timeout = 3000 // ms
 const response_timeout = 3000 // ms
 
-const calcHash = async (input: ArrayBuffer | string) => await sha1(input)
+const calcHash = async (input: ArrayBuffer | string) => sha1(input)
 
 const genCacheKey = async (url: string, noCache?: boolean) => {
   if (noCache) return null
-  return await calcHash(url)
+  return calcHash(url)
 }
 
 export interface Dimensions {
@@ -41,7 +42,10 @@ export interface Dimensions {
   height: number
 }
 
-export const imageDimensions = async (url: string | undefined | null, noCache?: boolean): Promise<Dimensions | null> => {
+export const imageDimensions = async (
+  url: string | undefined | null,
+  noCache?: boolean
+): Promise<Dimensions | null> => {
   if (!url) return null
 
   const cacheKey = await genCacheKey(url, noCache)
@@ -58,7 +62,7 @@ export const imageDimensions = async (url: string | undefined | null, noCache?: 
     try {
       const { width: w, height: h } = await probe(url, {
         read_timeout,
-        response_timeout,
+        response_timeout
       })
       width = w
       height = h
@@ -81,14 +85,21 @@ export const imageDimensions = async (url: string | undefined | null, noCache?: 
       //console.warn(`images.ts: Network error while probing image with url: ${url}.`)
     }
   } while (hasError && retry < maxRetries)
-  if (hasError) throw new Error(`images.ts: Bad network connection. Failed image probe after ${maxRetries} retries for url: ${url}.`)
+  if (hasError) {
+    throw new Error(
+      `images.ts: Bad network connection. Failed image probe after ${maxRetries} retries for url: ${url}.`
+    )
+  }
   if (0 === width + height) return null
 
   setCache(cacheKey, { width, height })
   return { width, height }
 }
 
-export const imageDimensionsFromFile = async (file: string, noCache?: boolean) => {
+export const imageDimensionsFromFile = async (
+  file: string,
+  noCache?: boolean
+) => {
   if (!file) return null
 
   const cacheKey = await genCacheKey(file, noCache)
@@ -118,7 +129,9 @@ export const normalizedImageUrl = async (url: string) => {
 
     if (!existsSync(filePath)) {
       const response = await fetch(url)
-      if (!response.ok) throw new Error(`images.ts: unexpected response ${response.statusText}`)
+      if (!response.ok) {
+        throw new Error(`images.ts: unexpected response ${response.statusText}`)
+      }
       await streamPipeline(response.body, createWriteStream(filePath))
     }
     return `${processEnv.siteUrl}/images/${filename}`

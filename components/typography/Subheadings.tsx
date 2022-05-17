@@ -1,11 +1,12 @@
-import styled from '@emotion/styled';
-import { colors, Colors } from '@components/common/colors';
-import { spaces } from '@components/common/spaces';
+import styled from '@emotion/styled'
+
+import { Colors, colors } from '@components/common/colors'
+import { spaces } from '@components/common/spaces'
 
 /**
  * Subheading1: Primary subheading (ie. post exerpt)
  * Subheading2: Secondary subheading
-*/
+ */
 
 export interface SubheadingProps {
   $color?: Colors
@@ -14,7 +15,11 @@ export interface SubheadingProps {
 
 type SubheadingOrder = 1 | 2
 
-const mapSubheadingOrderToStyles = ({ order, noMargin, $color }: SubheadingProps & { order: SubheadingOrder }) => {
+const mapSubheadingOrderToStyles = ({
+  order,
+  noMargin,
+  $color
+}: SubheadingProps & { order: SubheadingOrder }) => {
   switch (order) {
     case 1:
       return `
@@ -43,5 +48,5 @@ const styledSubheading = (order: SubheadingOrder) => styled.h2<SubheadingProps>`
 
 export const Subheading = {
   One: styledSubheading(1),
-  Two: styledSubheading(2),
+  Two: styledSubheading(2)
 }

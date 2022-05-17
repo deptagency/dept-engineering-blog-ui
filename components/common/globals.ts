@@ -1,4 +1,5 @@
 import { css } from '@emotion/react'
+
 import { colors } from './colors'
 import { spaces } from './spaces'
 import { BASE_TYPOGRAPHIC_STYLES } from './typography'
@@ -10,7 +11,6 @@ import { BASE_TYPOGRAPHIC_STYLES } from './typography'
  */
 
 export const globals = css`
-
   /* Resets
 /* ---------------------------------------------------------- */
 
@@ -321,7 +321,6 @@ export const globals = css`
   dl,
   blockquote {
     margin: 0 0 ${spaces.md}px;
-
   }
 
   ol,

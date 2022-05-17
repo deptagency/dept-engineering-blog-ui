@@ -1,4 +1,5 @@
-import { getLang, get } from '@utils/use-lang'
+import { get, getLang } from '@utils/use-lang'
+
 import { useOverlay } from '@components/contexts/overlayProvider'
 
 // The actual component

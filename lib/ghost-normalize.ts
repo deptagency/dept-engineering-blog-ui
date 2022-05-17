@@ -1,25 +1,43 @@
 import Rehype from 'rehype'
-import { Node as UnistNode, Parent } from 'unist'
-import visit from 'unist-util-visit'
-import { cloneDeep } from 'lodash'
 import refractor from 'refractor'
+import visit from 'unist-util-visit'
+import { Node as UnistNode, Parent } from 'unist'
+import { cloneDeep } from 'lodash'
 import { PostOrPage } from '@tryghost/content-api'
+import { UrlWithStringQuery, parse as urlParse } from 'url'
+
 import { Dimensions, imageDimensions } from '@lib/images'
 import { generateTableOfContents } from '@lib/toc'
+import { processEnv } from '@lib/processEnv'
+
 import { GhostPostOrPage, createNextProfileImagesFromAuthors } from './ghost'
-import { parse as urlParse, UrlWithStringQuery } from 'url'
 import { toString as nodeToString } from './nodeToString'
 
-import { processEnv } from '@lib/processEnv'
 const { prism, toc, nextImages } = processEnv
 
-const rehype = Rehype().use({ settings: { fragment: true, space: `html`, emitParseErrors: false, verbose: false } })
+const rehype = Rehype().use({
+  settings: {
+    fragment: true,
+    space: `html`,
+    emitParseErrors: false,
+    verbose: false
+  }
+})
 
-export const normalizePost = async (post: PostOrPage, cmsUrl: UrlWithStringQuery | undefined, basePath?: string): Promise<GhostPostOrPage> => {
+export const normalizePost = async (
+  post: PostOrPage,
+  cmsUrl: UrlWithStringQuery | undefined,
+  basePath?: string
+): Promise<GhostPostOrPage> => {
   if (!cmsUrl) throw Error('ghost-normalize.ts: cmsUrl expected.')
   const rewriteGhostLinks = withRewriteGhostLinks(cmsUrl, basePath)
 
-  const processors = [rewriteGhostLinks, rewriteRelativeLinks, syntaxHighlightWithPrismJS, rewriteInlineImages]
+  const processors = [
+    rewriteGhostLinks,
+    rewriteRelativeLinks,
+    syntaxHighlightWithPrismJS,
+    rewriteInlineImages
+  ]
 
   let htmlAst = rehype.parse(post.html || '')
   for (const process of processors) {
@@ -40,7 +58,7 @@ export const normalizePost = async (post: PostOrPage, cmsUrl: UrlWithStringQuery
     authors,
     htmlAst,
     featureImage: (url && dimensions && { url, dimensions }) || null,
-    toc,
+    toc
   }
 }
 
@@ -125,28 +143,40 @@ const syntaxHighlightWithPrismJS = (htmlAst: Node) => {
     return null
   }
 
-  visit(htmlAst, 'element', (node: PropertiesElement, _index: number, parent: PropertiesParent | undefined) => {
-    if (!parent || parent.tagName !== 'pre' || node.tagName !== 'code') {
-      return
-    }
-
-    const lang = getLanguage(node)
-    if (lang === null) return
-
-    let className = node.properties?.className
-
-    let result
-    try {
-      className = (className || []).concat('language-' + lang)
-      result = refractor.highlight(nodeToString(node), lang)
-    } catch (err) {
-      if (prism.ignoreMissing && /Unknown language/.test((err as Error).message)) {
+  visit(
+    htmlAst,
+    'element',
+    (
+      node: PropertiesElement,
+      _index: number,
+      parent: PropertiesParent | undefined
+    ) => {
+      if (!parent || parent.tagName !== 'pre' || node.tagName !== 'code') {
         return
       }
-      throw err
+
+      const lang = getLanguage(node)
+      if (lang === null) return
+
+      let className = node.properties?.className
+
+      let result
+      try {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        className = (className || []).concat('language-' + lang)
+        result = refractor.highlight(nodeToString(node), lang)
+      } catch (err) {
+        if (
+          prism.ignoreMissing &&
+          /Unknown language/.test((err as Error).message)
+        ) {
+          return
+        }
+        throw err
+      }
+      node.children = result
     }
-    node.children = result
-  })
+  )
 
   return htmlAst
 }
@@ -176,19 +206,25 @@ interface ImageParent extends Parent {
 }
 
 const rewriteInlineImages = async (htmlAst: Node) => {
-  let nodes: { node: ImageElement; parent: ImageParent | undefined }[] = []
+  const nodes: { node: ImageElement; parent: ImageParent | undefined }[] = []
 
-  visit(htmlAst, { tagName: `img` }, (node: ImageElement, _index: number, parent: ImageParent | undefined) => {
-    if (nextImages.inline) {
-      node.tagName = `Image`
+  visit(
+    htmlAst,
+    { tagName: `img` },
+    (node: ImageElement, _index: number, parent: ImageParent | undefined) => {
+      if (nextImages.inline) {
+        node.tagName = `Image`
+      }
+
+      const { src } = node.properties
+      node.imageDimensions = imageDimensions(src)
+      nodes.push({ node, parent })
     }
+  )
 
-    const { src } = node.properties
-    node.imageDimensions = imageDimensions(src)
-    nodes.push({ node, parent })
-  })
-
-  const dimensions = await Promise.all(nodes.map(({ node }) => node.imageDimensions))
+  const dimensions = await Promise.all(
+    nodes.map(({ node }) => node.imageDimensions)
+  )
 
   nodes.forEach(({ node, parent }, i) => {
     if (dimensions[i] === null) return
