@@ -1,5 +1,4 @@
 import { Navigation } from '@components/Navigation'
-import { SocialLinks } from '@components/SocialLinks'
 import { SubscribeButton } from '@components/Subscribe/button'
 import { GhostSettings, NavItem } from '@lib/ghost'
 import { NavContainer, NavContent, NavLeft, NavLeftWrapper, NavRight, StyledSiteNav } from './components'
@@ -57,11 +56,7 @@ export const SiteNav = ({ settings }: SiteNavProps) => {
         <NavRight>
           {secondary_navigation && secondary_navigation.length > 0 ? (
             <Navigation data={secondary_navigation} isRightNav />
-          ) : (
-            <div className="social-links">
-              <SocialLinks {...{ siteUrl, site: settings }} />
-            </div>
-          )}
+          ) : undefined}
           {memberSubscriptions && <SubscribeButton {...{ lang }} />}
         </NavRight>
       </StyledSiteNav>
