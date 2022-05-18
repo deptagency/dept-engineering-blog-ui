@@ -45,4 +45,4 @@ yarn-error.log*
 /.vscode/settings.json
 
 # ts
-/.tsconfig.tsbuildinfo
+/tsconfig.tsbuildinfo

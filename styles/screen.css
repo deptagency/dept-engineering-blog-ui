@@ -219,35 +219,14 @@ html.casper .post-card-content-link:hover {
     text-decoration: none;
 }
 
-html.casper .post-card-header {
-    margin: 15px 0 0;
-}
-
 html.casper .post-feed .no-image .post-card-content-link {
     padding: 0;
-}
-
-html.casper .no-image .post-card-header {
-    margin-top: 0;
-}
-
-html.casper .post-card-primary-tag {
-    margin: 0 0 0.2em;
-    color: var(--blue);
-    font-size: 1.2rem;
-    font-weight: 500;
-    letter-spacing: 0.2px;
-    text-transform: uppercase;
 }
 
 html.casper .post-card-title {
     margin: 0 0 0.4em;
     line-height: 1.15em;
     transition: color 0.2s ease-in-out;
-}
-
-html.casper .no-image .post-card-title {
-    margin-top: 0;
 }
 
 html.casper .post-card-content {
@@ -419,10 +398,6 @@ make sure this only happens on large viewports / desktop-ish devices.
         border-bottom-color: color-mod(var(--lightgrey) l(+10%));
     }
 
-    html.casper .post-card-large:not(.no-image) .post-card-header {
-        margin-top: 0;
-    }
-
     html.casper .post-card-large .post-card-image-link {
         position: relative;
         flex: 1 1 auto;
@@ -452,12 +427,6 @@ make sure this only happens on large viewports / desktop-ish devices.
 
     html.casper .post-card-large .post-card-meta {
         padding: 0 0 0 40px;
-    }
-
-    html.casper .post-card-large .post-card-excerpt p {
-        margin-bottom: 1.5em;
-        font-size: 1.8rem;
-        line-height: 1.5em;
     }
 }
 
@@ -934,34 +903,6 @@ html.casper .subscribe-email:focus {
     border-color: color-mod(var(--lightgrey) l(-2%));
 }
 
-html.casper .subscribe-form button {
-    position: relative;
-    display: inline-block;
-    margin: 0 0 0 10px;
-    padding: 0 20px;
-    height: 43px;
-    outline: none;
-    color: #fff;
-    font-size: 1.5rem;
-    line-height: 39px;
-    font-weight: 400;
-    text-align: center;
-    background: linear-gradient(
-    color-mod(var(--blue) whiteness(+7%)),
-    color-mod(var(--blue) lightness(-7%) saturation(-10%)) 60%,
-    color-mod(var(--blue) lightness(-7%) saturation(-10%)) 90%,
-    color-mod(var(--blue) lightness(-4%) saturation(-10%))
-    );
-    border-radius: 5px;
-
-    -webkit-font-smoothing: subpixel-antialiased;
-}
-
-html.casper .subscribe-form button:active,
-html.casper .subscribe-form button:focus {
-    background: color-mod(var(--blue) lightness(-9%) saturation(-10%));
-}
-
 html.casper .subscribe-form .button-loader,
 html.casper .subscribe-form .message-success,
 html.casper .subscribe-form .message-error {
@@ -1028,10 +969,10 @@ html.casper .subscribe-form .error .message-error {
         width: 100%;
     }
 
-    html.casper .subscribe-form button {
+    /* html.casper .subscribe-form button {
         margin: 10px 0 0 0;
         width: 100%;
-    }
+    } */
 }
 
 
@@ -1066,11 +1007,6 @@ html.casper .read-next .post-card {
 
 html.casper .read-next .post-card:after {
     display: none;
-}
-
-html.casper .read-next .post-card-primary-tag {
-    color: #fff;
-    opacity: 0.6;
 }
 
 html.casper .read-next .post-card-title {
@@ -1968,41 +1904,8 @@ html.casper .subscribe-email:focus {
     border-color: color-mod(var(--lightgrey) l(-2%));
 }
 
-html.casper .subscribe-overlay button {
-    display: inline-block;
-    margin: 0 0 0 15px;
-    padding: 0 25px;
-    height: 52px;
-    outline: none;
-    color: #fff;
-    font-size: 1.7rem;
-    line-height: 38px;
-    font-weight: 400;
-    text-align: center;
-    background: linear-gradient(
-    color-mod(var(--blue) whiteness(+7%)),
-    color-mod(var(--blue) lightness(-7%) saturation(-10%)) 60%,
-    color-mod(var(--blue) lightness(-7%) saturation(-10%)) 90%,
-    color-mod(var(--blue) lightness(-4%) saturation(-10%))
-    );
-    border-radius: 8px;
-
-    -webkit-font-smoothing: subpixel-antialiased;
-}
-
-html.casper .subscribe-overlay button:active,
-html.casper .subscribe-overlay button:focus {
-    background: color-mod(var(--blue) lightness(-9%) saturation(-10%));
-}
-
 html.casper .subscribe-overlay .loading .button-loader {
     top: 5px;
-}
-
-@media (max-width: 500px) {
-    html.casper .subscribe-overlay button {
-        margin: 12px 0 0;
-    }
 }
 
 

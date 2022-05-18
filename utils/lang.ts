@@ -24,7 +24,7 @@ export const lang: KeyObjectMap = {
     POST: `post`,
     POSTS: `posts`,
     PREVIOUS: `Previous`,
-    READ: `Read`,
+    READ: `Keep Reading`,
     SEE_ALL: `See all`,
     SUBSCRIBED_TO: `You've successfully subscribed to`,
     WEBSITE: `Website`,

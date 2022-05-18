@@ -10,11 +10,12 @@ import { get, getLang } from '@utils/use-lang'
 import { collections } from '@lib/collections'
 import { GhostPostOrPage, GhostSettings } from '@lib/ghost'
 
-import { PostClass } from '@helpers/PostClass'
+import { Heading } from '@components/typography/Headings'
+import { Button } from '@components/Button'
+import { Copy } from '@components/typography/Copy'
+import { PostClass } from '@components/helpers/PostClass'
 
-import { Heading } from '../typography/Headings'
-
-import { PostExcerpt } from './components'
+import { PostCardImageLink, PostCardTag, PostExcerpt } from './components'
 
 interface PostCardProps {
   settings: GhostSettings
@@ -59,8 +60,11 @@ export const PostCard = ({
         <Grid alignItems="center" container spacing={{ xs: 2, md: 5 }}>
           {featImg && (
             <Grid item xs={12} lg={5}>
-              <Link href={url}>
-                <a className="post-card-image-link" aria-label={post.title}>
+              <Link href={url} passHref>
+                <PostCardImageLink
+                  className="post-card-image-link"
+                  aria-label={post.title}
+                >
                   {nextImages.feature ? (
                     <div className="post-card-image">
                       <Image
@@ -81,7 +85,7 @@ export const PostCard = ({
                       />
                     )
                   )}
-                </a>
+                </PostCardImageLink>
               </Link>
             </Grid>
           )}
@@ -89,17 +93,17 @@ export const PostCard = ({
             <div className="post-card-content">
               <Link href={url}>
                 <a className="post-card-content-link">
-                  <header className="post-card-header">
+                  <header>
                     {post.primary_tag && (
-                      <div className="post-card-primary-tag">
+                      <PostCardTag small as="span">
                         {post.primary_tag.name}
-                      </div>
+                      </PostCardTag>
                     )}
                     <Heading.Two $color={textColor}>{post.title}</Heading.Two>
                   </header>
-                  <section className="post-card-excerpt foobar">
+                  <section>
                     {/* post.excerpt *is* an excerpt and does not need to be truncated any further */}
-                    <PostExcerpt $color={textColor}>{post.excerpt}</PostExcerpt>
+                    <Copy.LG $color={textColor}>{post.excerpt}</Copy.LG>
                   </section>
                 </a>
               </Link>
@@ -135,9 +139,11 @@ export const PostCard = ({
                     <span className="bull">&bull; </span> {readingTime}
                   </span>
                 </div>
-                <a href={url} className="btn btn-inverted btn-cta">
-                  Keep Reading
-                </a>
+                <Link href={url} passHref>
+                  <Button.Cta inverted as="a">
+                    {text(`READ`)}
+                  </Button.Cta>
+                </Link>
               </footer>
             </div>
           </Grid>
@@ -149,8 +155,11 @@ export const PostCard = ({
   return (
     <article className={`post-card ${postClass}`}>
       {featImg && (
-        <Link href={url}>
-          <a className="post-card-image-link" aria-label={post.title}>
+        <Link href={url} passHref>
+          <PostCardImageLink
+            className="post-card-image-link"
+            aria-label={post.title}
+          >
             {nextImages.feature ? (
               <div className="post-card-image">
                 <Image
@@ -171,23 +180,25 @@ export const PostCard = ({
                 />
               )
             )}
-          </a>
+          </PostCardImageLink>
         </Link>
       )}
 
       {post.primary_tag && (
         <div>
-          <div className="post-card-primary-tag">{post.primary_tag.name}</div>
+          <PostCardTag small as="span">
+            {post.primary_tag.name}
+          </PostCardTag>
         </div>
       )}
 
       <div className="post-card-content">
         <Link href={url}>
           <a className="post-card-content-link">
-            <header className="post-card-header">
+            <header>
               <Heading.Two $color={textColor}>{post.title}</Heading.Two>
             </header>
-            <section className="post-card-excerpt">
+            <section>
               {/* post.excerpt *is* an excerpt and does not need to be truncated any further */}
               <PostExcerpt $color={textColor}>{post.excerpt}</PostExcerpt>
             </section>
@@ -224,9 +235,11 @@ export const PostCard = ({
               <span className="bull">&bull; </span> {readingTime}
             </span>
           </div>
-          <a href={url} className="btn btn-cta">
-            Keep Reading
-          </a>
+          <Link href={url} passHref>
+            <Button.Cta as="a" inverted={isColorInverted}>
+              {text(`READ`)}
+            </Button.Cta>
+          </Link>
         </footer>
       </div>
     </article>

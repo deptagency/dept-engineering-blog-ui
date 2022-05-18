@@ -8,7 +8,7 @@ export interface CopyProps {
   $color?: Colors
 }
 
-type CopyOrder = 'sm' | 'xs' | 'lg'
+type CopyOrder = 'sm' | 'xs' | 'lg' | 'xl'
 
 const mapCopyOrderToStyles = ({
   order,
@@ -30,6 +30,13 @@ const mapCopyOrderToStyles = ({
         color: ${$color ? colors[$color] : colors.darkmidgrey};
       `
     case 'lg':
+      return `
+        font-size: 1.8rem;
+        line-height: 1.5em;
+        font-weight: 300;
+        color: ${$color ? colors[$color] : colors.darkmidgrey};
+      `
+    case 'xl':
       return `
         font-size: 2.4rem;
         line-height: 1.3em;
@@ -53,5 +60,6 @@ export const Copy = {
   XS: styledCopy('xs'),
   SM: styledCopy('sm'),
   M: styledCopy(),
-  LG: styledCopy('lg')
+  LG: styledCopy('lg'),
+  XL: styledCopy('xl')
 }

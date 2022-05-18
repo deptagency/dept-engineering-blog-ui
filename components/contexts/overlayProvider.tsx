@@ -12,7 +12,7 @@ import {
 export interface OverlayProviderValues {
   isOpen: boolean
   handleClose: () => void
-  handleOpen: (event: MouseEvent<HTMLAnchorElement>) => void
+  handleOpen: (event: MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => void
   handleChange: (event: ChangeEvent<HTMLInputElement>) => void
   handleSubmit: (
     event: FormEvent<HTMLFormElement>,
@@ -53,7 +53,9 @@ export const OverlayProvider = ({
     setIsOpen(false)
   }
 
-  const handleOpen = (event: MouseEvent<HTMLAnchorElement>) => {
+  const handleOpen = (
+    event: MouseEvent<HTMLAnchorElement | HTMLButtonElement>
+  ) => {
     event.preventDefault()
     setIsOpen(true)
   }
@@ -75,6 +77,11 @@ export const OverlayProvider = ({
       labels: []
     }
 
+    /**
+     * @todo this code is not working properly. The site is always displaying success, regardless
+     * of the response from the API. Loading state is never shown. Little validation (empty strings
+     * can be submitted as email value).
+     * */
     try {
       fetch(postURL, {
         method: `POST`,

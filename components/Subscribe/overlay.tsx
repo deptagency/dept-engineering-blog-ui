@@ -17,7 +17,7 @@ const StyledSubscribeHeadline = styled(Heading.CallToAction1)`
   display: inline-block;
 `
 
-const Description = styled(Copy.LG)`
+const Description = styled(Copy.XL)`
   max-width: 650px;
 `
 
