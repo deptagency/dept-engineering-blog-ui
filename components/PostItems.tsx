@@ -4,7 +4,8 @@ import { useRouter } from 'next/router'
 import { GhostPostOrPage, GhostPostsOrPages, GhostSettings } from '@lib/ghost'
 
 import { FilterTags } from '@components/FilterTags'
-import { PostCard } from '@components/PostCard'
+
+import { PostCardNeo } from './PostCard/PostCardNeo'
 interface PostItemsProps {
   settings: GhostSettings
   posts: GhostPostsOrPages
@@ -14,15 +15,17 @@ interface FirstPostItemProps {
   settings: GhostSettings
   post: GhostPostOrPage
   isHome?: boolean
-  num: number
 }
 
-const FirstPost = ({ settings, post, num }: FirstPostItemProps) => (
+const FirstPost = ({ settings, post }: FirstPostItemProps) => (
   <div className="first-post-wrapper">
     <div className="grid-wrapper">
       <Grid className="grid-inner" container>
         <Grid item xs={12}>
-          <PostCard key={1} {...{ settings, post, num }} />
+          <PostCardNeo
+            key={1}
+            {...{ settings, post, isFirstPost: true, isColorInverted: true }}
+          />
         </Grid>
       </Grid>
     </div>
@@ -38,9 +41,7 @@ export const PostItems = ({ settings, posts, isHome }: PostItemsProps) => {
     return null
   }
 
-  firstRow.push(
-    <FirstPost key={0} {...{ settings, post: posts[0], isHome, num: 0 }} />
-  )
+  firstRow.push(<FirstPost key={0} {...{ settings, post: posts[0], isHome }} />)
 
   if (isHome || asPath.indexOf('/tag') >= 0) {
     firstRow.push(
@@ -76,7 +77,7 @@ export const PostItems = ({ settings, posts, isHome }: PostItemsProps) => {
             xs={12}
             md={row.length === 1 ? 12 : row.length === 3 ? 4 : 6}
           >
-            <PostCard {...{ settings, post, num: parseInt(`${i + 1}${n}`) }} />
+            <PostCardNeo {...{ settings, post, isFirstPost: false }} />
           </Grid>
         ))}
       </Grid>
