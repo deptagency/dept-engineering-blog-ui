@@ -1,6 +1,7 @@
-import { Global } from '@emotion/react';
-import { fonts } from '@components/common/fonts';
-import { globals } from '@components/common/globals';
+import { Global } from '@emotion/react'
+import { fonts } from '@components/common/fonts'
+import { globals } from '@components/common/globals'
+
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },

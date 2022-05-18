@@ -34,17 +34,17 @@ function reolveJSON<T>(value: string | undefined, defaultValue: T) {
   if (!value) return defaultValue
   return JSON.parse(value) as T
 }
-
+export interface NextImages {
+  feature: boolean
+  inline: boolean
+  quality: number
+  source: boolean
+}
 export interface ProcessEnvProps {
   siteUrl: string
   platform: string
   gaMeasurementId: string
-  nextImages: {
-    feature: boolean
-    inline: boolean
-    quality: number
-    source: boolean
-  }
+  nextImages: NextImages
   rssFeed: boolean
   memberSubscriptions: boolean
   commenting: {

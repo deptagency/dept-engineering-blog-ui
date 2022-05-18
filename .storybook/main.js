@@ -15,7 +15,18 @@ module.exports = {
     "builder": "@storybook/builder-webpack5"
   },
   webpackFinal: async (config) => {
-    config.resolve.plugins = [new TsconfigPathsPlugin({ extensions: config.resolve.extensions })]
+    config.resolve.plugins = [
+      new TsconfigPathsPlugin({ extensions: config.resolve.extensions }),
+      // new webpack.DefinePlugin({
+      //   VERSION: JSON.stringify(packageJson.version), // !!! JSON.stringify()
+      // })
+    ]
+    config.resolve.alias["next/image"] = require.resolve("./NextImage.js")
+    config.resolve.fallback.fs = false;
+    config.resolve.fallback.stream = false;
+    config.resolve.fallback.http = false;
+    config.resolve.fallback.https = false;
+
     return config
   },
   staticDirs: ['../styles', '../public']
