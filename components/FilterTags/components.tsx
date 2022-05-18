@@ -18,8 +18,8 @@ export const StyledX = styled.span`
 
 export const FilterLabel = styled(Copy.M)`
   line-height: 2.4rem;
-  padding-right: ${spaces.lg}px;
-  margin: 0 ${spaces.xl}px 0 0;
+  padding-right: ${spaces.md}px;
+  margin: 0 ${spaces.lg}px 0 0;
   border-right: 1px solid ${colors.onyx};
 `
 
