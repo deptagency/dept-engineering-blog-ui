@@ -75,6 +75,7 @@ export const PostCard = ({
                   layout="fill"
                   objectFit="cover"
                   quality={nextImages.quality}
+                  priority={isFirstPost}
                 />
               </PostCardImage>
             ) : (

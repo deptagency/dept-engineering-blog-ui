@@ -17,6 +17,7 @@ export const PostCardImageLink = styled.a`
 `
 
 export const PostCardImage = styled.div`
+  position: relative;
   width: 100%;
   height: 200px;
   background: ${colors.lightgrey} no-repeat center center;
@@ -70,9 +71,9 @@ export const PostCardArticle = styled.article<{ isFirstPost?: boolean }>`
               min-height: 380px;
             }
 
+            ${PostCardImage},
             ${PostCardFallbackImage} {
               height: 100%;
-              position: absolute;
             }
           }
 
