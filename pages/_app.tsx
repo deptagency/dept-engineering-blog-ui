@@ -1,8 +1,9 @@
 import Script from 'next/script'
+import createCache from '@emotion/cache'
 import { useEffect } from 'react'
 import { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
-import { Global } from '@emotion/react'
+import { CacheProvider, Global } from '@emotion/react'
 
 import * as gtag from '@lib/gtag'
 
@@ -19,6 +20,11 @@ import { OverlayProvider } from '@components/contexts/overlayProvider'
 function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
 
+  /**
+   * Fix duplicate CSS declarations
+   */
+  const EmotionCache = createCache({ key: 'emotion' })
+
   useEffect(() => {
     const handleRouteChange = (url: string) => {
       gtag.pageview(url)
@@ -30,7 +36,7 @@ function App({ Component, pageProps }: AppProps) {
   }, [router.events])
 
   return (
-    <>
+    <CacheProvider value={EmotionCache}>
       <Global styles={fonts} />
       <Global styles={globals} />
       <OverlayProvider>
@@ -56,7 +62,7 @@ function App({ Component, pageProps }: AppProps) {
         />
         <Component {...pageProps} />
       </OverlayProvider>
-    </>
+    </CacheProvider>
   )
 }
 
