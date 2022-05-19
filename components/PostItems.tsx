@@ -5,7 +5,7 @@ import { GhostPostOrPage, GhostPostsOrPages, GhostSettings } from '@lib/ghost'
 
 import { FilterTags } from '@components/FilterTags'
 
-import { PostCardNeo } from './PostCard/PostCardNeo'
+import { PostCard } from './PostCard'
 interface PostItemsProps {
   settings: GhostSettings
   posts: GhostPostsOrPages
@@ -22,7 +22,7 @@ const FirstPost = ({ settings, post }: FirstPostItemProps) => (
     <div className="grid-wrapper">
       <Grid className="grid-inner" container>
         <Grid item xs={12}>
-          <PostCardNeo
+          <PostCard
             key={1}
             {...{ settings, post, isFirstPost: true, isColorInverted: true }}
           />
@@ -77,7 +77,7 @@ export const PostItems = ({ settings, posts, isHome }: PostItemsProps) => {
             xs={12}
             md={row.length === 1 ? 12 : row.length === 3 ? 4 : 6}
           >
-            <PostCardNeo {...{ settings, post, isFirstPost: false }} />
+            <PostCard {...{ settings, post }} />
           </Grid>
         ))}
       </Grid>

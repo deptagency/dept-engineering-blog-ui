@@ -42,7 +42,7 @@ export const PostCardLinkAnchor = styled.a`
   }
 `
 
-export const PostCard = styled.article<{ isFirstPost?: boolean }>`
+export const PostCardArticle = styled.article<{ isFirstPost?: boolean }>`
   position: relative;
   flex: 1 1 301px;
   display: grid;
