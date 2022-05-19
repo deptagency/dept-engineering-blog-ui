@@ -29,20 +29,23 @@ const StyledBull = styled.span`
 const StyledCopy = styled(Copy.SM)`
   text-transform: uppercase;
 `
-
 const BylineAuthor = styled(Copy.SM)`
   margin: 0;
   text-transform: uppercase;
   font-weight: 700;
-  line-height: 1.2em;
+  line-height: inherit;
 
   &:hover {
     cursor: pointer;
   }
 `
-
-const AuthorsList = styled.span`
+const AuthorsList = styled(Copy.SM)`
   display: flex;
+  margin: 0;
+`
+const AuthorListItem = styled.span`
+  line-height: 1.2em;
+  color: inherit;
 `
 
 const resolveAuthors = (
@@ -87,16 +90,16 @@ export const PostByline: React.FC<PostBylineProps> = ({
         </Copy.SM>
       )}
       {authors && (
-        <AuthorsList>
+        <AuthorsList as="span" $color={textColor}>
           {authors.map((author, i) => (
-            <Link href={author.url} passHref key={i}>
-              <>
-                {i > 0 && `, `}
+            <AuthorListItem key={i}>
+              {i > 0 && `, `}
+              <Link href={author.url} passHref>
                 <BylineAuthor as="a" $color={textColor}>
                   {author.name}
                 </BylineAuthor>
-              </>
-            </Link>
+              </Link>
+            </AuthorListItem>
           ))}
         </AuthorsList>
       )}

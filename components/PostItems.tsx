@@ -4,33 +4,13 @@ import { useRouter } from 'next/router'
 import { GhostPostOrPage, GhostPostsOrPages, GhostSettings } from '@lib/ghost'
 
 import { FilterTags } from '@components/FilterTags'
-
-import { PostCard } from './PostCard'
+import { PostCard } from '@components/PostCard'
+import { FirstPost } from '@components/FirstPost'
 interface PostItemsProps {
   settings: GhostSettings
   posts: GhostPostsOrPages
   isHome?: boolean
 }
-interface FirstPostItemProps {
-  settings: GhostSettings
-  post: GhostPostOrPage
-  isHome?: boolean
-}
-
-const FirstPost = ({ settings, post }: FirstPostItemProps) => (
-  <div className="first-post-wrapper">
-    <div className="grid-wrapper">
-      <Grid className="grid-inner" container>
-        <Grid item xs={12}>
-          <PostCard
-            key={1}
-            {...{ settings, post, isFirstPost: true, isColorInverted: true }}
-          />
-        </Grid>
-      </Grid>
-    </div>
-  </div>
-)
 
 export const PostItems = ({ settings, posts, isHome }: PostItemsProps) => {
   const firstRow: React.ReactNode[] = []
