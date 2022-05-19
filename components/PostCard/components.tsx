@@ -40,6 +40,13 @@ export const PostCardContent = styled.div`
   flex-direction: column;
 `
 
+export const PostCardLinkAnchor = styled.a`
+  &:hover {
+    text-decoration: none;
+    cursor: pointer;
+  }
+`
+
 export const PostCard = styled.article<{ isFirstPost?: boolean }>`
   position: relative;
   flex: 1 1 301px;

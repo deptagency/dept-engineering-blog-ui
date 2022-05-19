@@ -16,6 +16,7 @@ import {
   PostCardFooter,
   PostCardImage,
   PostCardImageLink,
+  PostCardLinkAnchor,
   PostCardTag,
   PostExcerpt
 } from './components'
@@ -97,14 +98,14 @@ export const PostCardNeo = ({
           </div>
         )}
         <Link href={postUrl} passHref>
-          <a>
+          <PostCardLinkAnchor>
             <header>
               <Heading.Two $color={textColor}>{title}</Heading.Two>
             </header>
             <section>
               <PostExcerpt $color={textColor}>{excerpt}</PostExcerpt>
             </section>
-          </a>
+          </PostCardLinkAnchor>
         </Link>
 
         <PostCardFooter>
