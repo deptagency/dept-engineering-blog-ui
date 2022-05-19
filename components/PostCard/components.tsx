@@ -23,6 +23,13 @@ export const PostCardImage = styled.div`
   object-fit: cover;
 `
 
+export const PostCardFallbackImage = styled.img`
+  width: 100%;
+  height: 200px;
+  background: ${colors.lightgrey} no-repeat center center;
+  object-fit: cover;
+`
+
 export const PostCardFooter = styled.footer`
   display: flex;
   align-items: flex-start;
@@ -61,6 +68,11 @@ export const PostCardArticle = styled.article<{ isFirstPost?: boolean }>`
           @media (min-width: 800px) {
             ${PostCardImageLink} {
               min-height: 380px;
+            }
+
+            ${PostCardFallbackImage} {
+              height: 100%;
+              position: absolute;
             }
           }
 

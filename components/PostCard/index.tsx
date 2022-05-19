@@ -14,6 +14,7 @@ import { Copy } from '@components/typography/Copy'
 import {
   PostCardArticle,
   PostCardContent,
+  PostCardFallbackImage,
   PostCardFooter,
   PostCardImage,
   PostCardImageLink,
@@ -78,11 +79,7 @@ export const PostCard = ({
               </PostCardImage>
             ) : (
               feature_image && (
-                <img
-                  className="post-card-image"
-                  src={feature_image}
-                  alt={title}
-                />
+                <PostCardFallbackImage src={feature_image} alt={title} />
               )
             )}
           </PostCardImageLink>
