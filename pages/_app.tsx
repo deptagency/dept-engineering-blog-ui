@@ -20,9 +20,7 @@ import { OverlayProvider } from '@components/contexts/overlayProvider'
 /**
  * Fix duplicate CSS declarations
  */
-const RootEmotionComponent = styled.div`
-  margin: 0;
-`
+const RootEmotionComponent = styled.div``
 
 function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
