@@ -1,9 +1,9 @@
 import Script from 'next/script'
-import createCache from '@emotion/cache'
+import styled from '@emotion/styled'
 import { useEffect } from 'react'
 import { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
-import { CacheProvider, Global } from '@emotion/react'
+import { Global } from '@emotion/react'
 
 import * as gtag from '@lib/gtag'
 
@@ -17,13 +17,15 @@ import { fonts } from '@components/common/fonts'
 import { globals } from '@components/common/globals'
 import { OverlayProvider } from '@components/contexts/overlayProvider'
 
+/**
+ * Fix duplicate CSS declarations
+ */
+const RootEmotionComponent = styled.div`
+  margin: 0;
+`
+
 function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
-
-  /**
-   * Fix duplicate CSS declarations
-   */
-  const EmotionCache = createCache({ key: 'emotion' })
 
   useEffect(() => {
     const handleRouteChange = (url: string) => {
@@ -36,7 +38,7 @@ function App({ Component, pageProps }: AppProps) {
   }, [router.events])
 
   return (
-    <CacheProvider value={EmotionCache}>
+    <RootEmotionComponent>
       <Global styles={fonts} />
       <Global styles={globals} />
       <OverlayProvider>
@@ -62,7 +64,7 @@ function App({ Component, pageProps }: AppProps) {
         />
         <Component {...pageProps} />
       </OverlayProvider>
-    </CacheProvider>
+    </RootEmotionComponent>
   )
 }
 
