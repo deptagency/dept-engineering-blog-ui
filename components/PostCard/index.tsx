@@ -15,7 +15,7 @@ import { Button } from '@components/Button'
 import { Copy } from '@components/typography/Copy'
 import { PostClass } from '@components/helpers/PostClass'
 
-import { PostCardImageLink, PostCardTag, PostExcerpt } from './components'
+import { PostCardImageLink, PostCardTag } from './components'
 
 interface PostCardProps {
   settings: GhostSettings
@@ -200,7 +200,7 @@ export const PostCard = ({
             </header>
             <section>
               {/* post.excerpt *is* an excerpt and does not need to be truncated any further */}
-              <PostExcerpt $color={textColor}>{post.excerpt}</PostExcerpt>
+              <Copy.M $color={textColor}>{post.excerpt}</Copy.M>
             </section>
           </a>
         </Link>

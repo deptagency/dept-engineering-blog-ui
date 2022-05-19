@@ -9,6 +9,7 @@ import { GhostPostOrPage, GhostSettings } from '@lib/ghost'
 
 import { Heading } from '@components/typography/Headings'
 import { Button } from '@components/Button'
+import { Copy } from '@components/typography/Copy'
 
 import {
   PostCard,
@@ -17,8 +18,7 @@ import {
   PostCardImage,
   PostCardImageLink,
   PostCardLinkAnchor,
-  PostCardTag,
-  PostExcerpt
+  PostCardTag
 } from './components'
 import { PostByline } from './PostByline'
 
@@ -103,7 +103,11 @@ export const PostCardNeo = ({
               <Heading.Two $color={textColor}>{title}</Heading.Two>
             </header>
             <section>
-              <PostExcerpt $color={textColor}>{excerpt}</PostExcerpt>
+              {isFirstPost ? (
+                <Copy.LG $color={textColor}>{excerpt}</Copy.LG>
+              ) : (
+                <Copy.M $color={textColor}>{excerpt}</Copy.M>
+              )}
             </section>
           </PostCardLinkAnchor>
         </Link>

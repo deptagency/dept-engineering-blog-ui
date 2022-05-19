@@ -34,6 +34,11 @@ const BylineAuthor = styled(Copy.SM)`
   margin: 0;
   text-transform: uppercase;
   font-weight: 700;
+  line-height: 1.2em;
+
+  &:hover {
+    cursor: pointer;
+  }
 `
 
 const AuthorsList = styled.span`
@@ -84,14 +89,14 @@ export const PostByline: React.FC<PostBylineProps> = ({
       {authors && (
         <AuthorsList>
           {authors.map((author, i) => (
-            <div key={i}>
-              {i > 0 && `, `}
-              <Link href={author.url} passHref>
+            <Link href={author.url} passHref key={i}>
+              <>
+                {i > 0 && `, `}
                 <BylineAuthor as="a" $color={textColor}>
                   {author.name}
                 </BylineAuthor>
-              </Link>
-            </div>
+              </>
+            </Link>
           ))}
         </AuthorsList>
       )}

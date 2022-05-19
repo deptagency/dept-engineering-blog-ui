@@ -2,13 +2,8 @@ import styled from '@emotion/styled'
 import { css } from '@emotion/react'
 
 import { Button } from '@components/Button'
-import { Copy } from '@components/typography/Copy'
 import { spaces } from '@components/common/spaces'
 import { colors } from '@components/common/colors'
-
-export const PostExcerpt = styled(Copy.LG)`
-  line-height: 2.4rem;
-`
 
 export const PostCardTag = styled(Button.Tag)`
   margin-bottom: ${spaces.sm}px;
@@ -60,7 +55,7 @@ export const PostCard = styled.article<{ isFirstPost?: boolean }>`
   ${({ isFirstPost }) =>
     isFirstPost
       ? css`
-          padding: 52px 0;
+          padding: ${spaces.xxl}px 0;
           margin: 0;
 
           @media (min-width: 800px) {
@@ -70,8 +65,8 @@ export const PostCard = styled.article<{ isFirstPost?: boolean }>`
           }
 
           @media (min-width: 900px) {
-            grid-template-columns: 40% auto;
-            grid-gap: ${spaces.lg}px;
+            grid-template-columns: 45% auto;
+            grid-gap: ${spaces.xl}px;
 
             ${PostCardImageLink} {
               margin-bottom: 0;
@@ -79,6 +74,8 @@ export const PostCard = styled.article<{ isFirstPost?: boolean }>`
 
             ${PostCardContent} {
               padding: ${spaces.xl}px 0;
+              height: 100%;
+              justify-content: center;
             }
           }
         `
