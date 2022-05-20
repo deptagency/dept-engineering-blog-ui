@@ -77,6 +77,7 @@ export const PostCardArticle = styled.article<{ isFirstPost?: boolean }>`
             }
           }
 
+          // @todo use homemade grid
           @media (min-width: 900px) {
             grid-template-columns: 45% auto;
             grid-gap: ${spaces.xl}px;
