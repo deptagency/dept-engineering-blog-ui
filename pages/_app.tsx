@@ -1,4 +1,5 @@
 import Script from 'next/script'
+import styled from '@emotion/styled'
 import { useEffect } from 'react'
 import { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
@@ -16,6 +17,11 @@ import { fonts } from '@components/common/fonts'
 import { globals } from '@components/common/globals'
 import { OverlayProvider } from '@components/contexts/overlayProvider'
 
+/**
+ * Fix duplicate CSS declarations
+ */
+const RootEmotionComponent = styled.div``
+
 function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
 
@@ -30,7 +36,7 @@ function App({ Component, pageProps }: AppProps) {
   }, [router.events])
 
   return (
-    <>
+    <RootEmotionComponent>
       <Global styles={fonts} />
       <Global styles={globals} />
       <OverlayProvider>
@@ -56,7 +62,7 @@ function App({ Component, pageProps }: AppProps) {
         />
         <Component {...pageProps} />
       </OverlayProvider>
-    </>
+    </RootEmotionComponent>
   )
 }
 

@@ -1,10 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
-import Grid from '@mui/material/Grid'
 import Image from 'next/image'
 import Link from 'next/link'
-import dayjs from 'dayjs'
 
-import { readingTime as readingTimeHelper } from '@lib/readingTime'
 import { resolveUrl } from '@utils/routing'
 import { get, getLang } from '@utils/use-lang'
 import { collections } from '@lib/collections'
@@ -13,235 +10,119 @@ import { GhostPostOrPage, GhostSettings } from '@lib/ghost'
 import { Heading } from '@components/typography/Headings'
 import { Button } from '@components/Button'
 import { Copy } from '@components/typography/Copy'
-import { PostClass } from '@components/helpers/PostClass'
 
-import { PostCardImageLink, PostCardTag, PostExcerpt } from './components'
+import {
+  PostCardArticle,
+  PostCardContent,
+  PostCardFallbackImage,
+  PostCardFooter,
+  PostCardImage,
+  PostCardImageLink,
+  PostCardLinkAnchor,
+  PostCardTag
+} from './components'
+import { PostByline } from './PostByline'
 
 interface PostCardProps {
   settings: GhostSettings
   post: GhostPostOrPage
-  num?: number
   isColorInverted?: boolean
+  isFirstPost?: boolean
 }
 
 export const PostCard = ({
   settings,
   post,
-  num,
+  isFirstPost,
   isColorInverted
 }: PostCardProps) => {
-  const { nextImages } = settings.processEnv
-  const text = get(getLang(settings.lang))
-  const cmsUrl = settings.url
+  const {
+    lang,
+    processEnv: { nextImages }
+  } = settings
+  const {
+    featureImage,
+    slug,
+    url,
+    feature_image,
+    title,
+    primary_tag,
+    excerpt
+  } = post
+  const text = get(getLang(lang))
+
   const collectionPath = collections.getCollectionByNode(post)
-  const url = resolveUrl({
-    cmsUrl,
+  const postUrl = resolveUrl({
+    cmsUrl: settings.url,
     collectionPath,
-    slug: post.slug,
-    url: post.url
+    slug,
+    url
   })
-  const featImg = post.featureImage
-  const readingTime = readingTimeHelper(post).replace(
-    `min read`,
-    text(`MIN_READ`)
-  )
-  const postClass = PostClass({
-    tags: post.tags,
-    isFeatured: post.featured,
-    isImage: !!featImg
-  })
-  const isFirstPost = num !== undefined && num < 1
-  const authors = post?.authors?.filter((_, i) => (i < 2 ? true : false))
-  const textColor = isFirstPost || isColorInverted ? 'white' : 'onyx'
 
-  if (isFirstPost) {
-    return (
-      <article className={`post-card ${postClass} post-card-large`}>
-        <Grid alignItems="center" container spacing={{ xs: 2, md: 5 }}>
-          {featImg && (
-            <Grid item xs={12} lg={5}>
-              <Link href={url} passHref>
-                <PostCardImageLink
-                  className="post-card-image-link"
-                  aria-label={post.title}
-                >
-                  {nextImages.feature ? (
-                    <div className="post-card-image">
-                      <Image
-                        src={featImg.url}
-                        alt={post.title}
-                        sizes="(max-width: 640px) 320px, (max-width: 1000px) 500px, 680px"
-                        layout="fill"
-                        objectFit="cover"
-                        quality={nextImages.quality}
-                      />
-                    </div>
-                  ) : (
-                    post.feature_image && (
-                      <img
-                        className="post-card-image"
-                        src={post.feature_image}
-                        alt={post.title}
-                      />
-                    )
-                  )}
-                </PostCardImageLink>
-              </Link>
-            </Grid>
-          )}
-          <Grid item xs={12} lg={7}>
-            <div className="post-card-content">
-              <Link href={url}>
-                <a className="post-card-content-link">
-                  <header>
-                    {post.primary_tag && (
-                      <PostCardTag small as="span">
-                        {post.primary_tag.name}
-                      </PostCardTag>
-                    )}
-                    <Heading.Two $color={textColor}>{post.title}</Heading.Two>
-                  </header>
-                  <section>
-                    {/* post.excerpt *is* an excerpt and does not need to be truncated any further */}
-                    <Copy.LG $color={textColor}>{post.excerpt}</Copy.LG>
-                  </section>
-                </a>
-              </Link>
-
-              <footer className="post-card-meta">
-                <div className="post-card-byline-content">
-                  {post.authors && post.authors.length > 2 && (
-                    <span>{text(`MULTIPLE_AUTHORS`)}</span>
-                  )}
-                  {post.authors && post.authors.length < 3 && (
-                    <span>
-                      {authors?.map((author, i) => (
-                        <div key={i}>
-                          {i > 0 ? `, ` : ``}
-                          <Link
-                            href={resolveUrl({
-                              cmsUrl,
-                              slug: author.slug,
-                              url: author.url || undefined
-                            })}
-                          >
-                            <a>{author.name}</a>
-                          </Link>
-                        </div>
-                      ))}
-                    </span>
-                  )}
-                  <span className="post-card-byline-date">
-                    <time dateTime={post.published_at || ''}>
-                      {dayjs(post.published_at || '').format('D MMM YYYY')}
-                      &nbsp;
-                    </time>
-                    <span className="bull">&bull; </span> {readingTime}
-                  </span>
-                </div>
-                <Link href={url} passHref>
-                  <Button.Cta inverted as="a">
-                    {text(`READ`)}
-                  </Button.Cta>
-                </Link>
-              </footer>
-            </div>
-          </Grid>
-        </Grid>
-      </article>
-    )
-  }
+  const textColor = isColorInverted ? 'white' : 'onyx'
 
   return (
-    <article className={`post-card ${postClass}`}>
-      {featImg && (
-        <Link href={url} passHref>
-          <PostCardImageLink
-            className="post-card-image-link"
-            aria-label={post.title}
-          >
+    <PostCardArticle isFirstPost={isFirstPost}>
+      {featureImage && (
+        <Link href={postUrl} passHref>
+          <PostCardImageLink aria-label={title}>
             {nextImages.feature ? (
-              <div className="post-card-image">
+              <PostCardImage>
                 <Image
-                  src={featImg.url}
-                  alt={post.title}
+                  src={featureImage.url}
+                  alt={title}
                   sizes="(max-width: 640px) 320px, (max-width: 1000px) 500px, 680px"
                   layout="fill"
                   objectFit="cover"
                   quality={nextImages.quality}
+                  priority={isFirstPost}
                 />
-              </div>
+              </PostCardImage>
             ) : (
-              post.feature_image && (
-                <img
-                  className="post-card-image"
-                  src={post.feature_image}
-                  alt={post.title}
-                />
+              feature_image && (
+                <PostCardFallbackImage src={feature_image} alt={title} />
               )
             )}
           </PostCardImageLink>
         </Link>
       )}
 
-      {post.primary_tag && (
-        <div>
-          <PostCardTag small as="span">
-            {post.primary_tag.name}
-          </PostCardTag>
-        </div>
-      )}
-
-      <div className="post-card-content">
-        <Link href={url}>
-          <a className="post-card-content-link">
+      <PostCardContent>
+        {primary_tag && (
+          <div>
+            <PostCardTag small as="span">
+              {primary_tag.name}
+            </PostCardTag>
+          </div>
+        )}
+        <Link href={postUrl} passHref>
+          <PostCardLinkAnchor>
             <header>
-              <Heading.Two $color={textColor}>{post.title}</Heading.Two>
+              <Heading.Two $color={textColor}>{title}</Heading.Two>
             </header>
             <section>
-              {/* post.excerpt *is* an excerpt and does not need to be truncated any further */}
-              <PostExcerpt $color={textColor}>{post.excerpt}</PostExcerpt>
+              {isFirstPost ? (
+                <Copy.LG $color={textColor}>{excerpt}</Copy.LG>
+              ) : (
+                <Copy.M $color={textColor}>{excerpt}</Copy.M>
+              )}
             </section>
-          </a>
+          </PostCardLinkAnchor>
         </Link>
 
-        <footer className="post-card-meta">
-          <div className="post-card-byline-content">
-            {post.authors && post.authors.length > 2 && (
-              <span>{text(`MULTIPLE_AUTHORS`)}</span>
-            )}
-            {post.authors && post.authors.length < 3 && (
-              <span>
-                {authors?.map((author, i) => (
-                  <div key={i}>
-                    {i > 0 ? `, ` : ``}
-                    <Link
-                      href={resolveUrl({
-                        cmsUrl,
-                        slug: author.slug,
-                        url: author.url || undefined
-                      })}
-                    >
-                      <a>{author.name}</a>
-                    </Link>
-                  </div>
-                ))}
-              </span>
-            )}
-            <span className="post-card-byline-date">
-              <time dateTime={post.published_at || ''}>
-                {dayjs(post.published_at || '').format('D MMM YYYY')}&nbsp;
-              </time>
-              <span className="bull">&bull; </span> {readingTime}
-            </span>
-          </div>
-          <Link href={url} passHref>
+        <PostCardFooter>
+          <PostByline
+            post={post}
+            settings={settings}
+            isColorInverted={isColorInverted}
+          />
+          <Link href={postUrl} passHref>
             <Button.Cta as="a" inverted={isColorInverted}>
               {text(`READ`)}
             </Button.Cta>
           </Link>
-        </footer>
-      </div>
-    </article>
+        </PostCardFooter>
+      </PostCardContent>
+    </PostCardArticle>
   )
 }
