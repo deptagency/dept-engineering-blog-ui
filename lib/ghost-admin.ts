@@ -1,32 +1,34 @@
-import { parse as urlParse } from 'url'
-import { Params } from '@tryghost/content-api'
 import GhostAdminAPI from '@tryghost/admin-api'
-import { normalizePost } from '@lib/ghost-normalize'
-import { getAllSettings, GhostPostOrPage } from '@lib/ghost';
+import { Params } from '@tryghost/content-api'
+import { parse as urlParse } from 'url'
 
-import { ghostAdminAPIKey, ghostAPIUrl } from '@lib/processEnv'
+import { normalizePost } from '@lib/ghost-normalize'
+import { GhostPostOrPage, getAllSettings } from '@lib/ghost'
+import { ghostAPIUrl, ghostAdminAPIKey } from '@lib/processEnv'
 
 const adminApi = new GhostAdminAPI({
   url: ghostAPIUrl,
   key: ghostAdminAPIKey,
-  version: 'v3',
+  version: 'v3'
 })
 
 const postPreviewFetchOptions: Params = {
   limit: 'all',
   include: ['tags', 'authors', 'count.posts'],
-  order: ['featured DESC', 'published_at DESC'],
+  order: ['featured DESC', 'published_at DESC']
 }
 
-export async function getPostPreviewById(id: string): Promise<GhostPostOrPage | null> {
+export async function getPostPreviewById(
+  id: string
+): Promise<GhostPostOrPage | null> {
   let result: GhostPostOrPage
 
   try {
-    const post = (await adminApi.posts.browse({
+    const [post] = await adminApi.posts.browse({
       ...postPreviewFetchOptions,
       filter: `uuid:${id}`,
-      formats: `html`,
-    }))[0]
+      formats: `html`
+    })
 
     // older Ghost versions do not throw error on 404
     if (!post) return null

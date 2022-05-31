@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import { ReactFragment } from 'react'
+
 import { NavItem } from '@lib/ghost'
+
 import { NavList, NavListItem } from './components'
 
 /**
@@ -18,28 +20,26 @@ interface NavigationProps {
 }
 
 export const Navigation = ({ data, isRightNav }: NavigationProps) => {
-  const items: ReactFragment[] = []
-
-  data?.map((navItem, i) => {
+  const items: ReactFragment[] = (data || []).map((navItem, i) => {
     if (navItem.url.match(/^\s?http(s?)/gi)) {
-      items.push(
+      return (
         <NavListItem key={i} role="menuitem" isRightNav={isRightNav}>
           <a href={navItem.url} target="_blank" rel="noopener noreferrer">
             {navItem.label}
           </a>
         </NavListItem>
       )
-    } else {
-      items.push(
-        <NavListItem key={i} role="menuitem" isRightNav={isRightNav}>
-          <div>
-            <Link href={navItem.url} >
-              <a>{navItem.label}</a>
-            </Link>
-          </div>
-        </NavListItem>
-      )
     }
+
+    return (
+      <NavListItem key={i} role="menuitem" isRightNav={isRightNav}>
+        <div>
+          <Link href={navItem.url}>
+            <a>{navItem.label}</a>
+          </Link>
+        </div>
+      </NavListItem>
+    )
   })
 
   return (

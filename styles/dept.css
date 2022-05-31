@@ -6,9 +6,6 @@
 }
 
 
-html.casper body {
-  font-weight: 300;
-}
 html.casper .outer {
   padding: 0 24px;
 }
@@ -32,226 +29,11 @@ html.casper .inner {
   }
 }
 
-/* Buttons */
-.btn {
-  background: var(--onyx);
-  border: 1px solid var(--onyx);
-  color: #fff;
-  display: inline-block;
-  font-family: 'Maison Neue';
-  font-size: 1.4rem;
-  font-weight: 700;
-  line-height: 2rem;
-  text-transform: uppercase;
-  padding: 8px 16px;
-}
-
-.btn:hover {
-  background: #fff;
-  border: 1px solid var(--onyx);
-  color: var(--onyx);
-  text-decoration: none;
-}
-
-.btn-cta {
-  border-radius: 100rem;
-}
-
-.btn-white {
-  background: #fff;
-  border-color: var(--onyx);
-  color: var(--onyx);
-}
-
-.btn-white:hover {
-  background: var(--onyx);
-  color: #fff;
-}
-
-.btn-small {
-  font-size: 1.2rem;
-  line-height: 1.2rem;
-  padding: 6px 8px;
-}
-
-.btn-filter-selected:hover {
-  background: var(--onyx);
-  border: 1px solid var(--onyx);
-  color: #fff;
-}
-
-.btn-inverted {
-  border: 1px solid #fff;
-  background: var(--onyx);
-  color: #fff;
-}
-
-
-/* Headers */
-.header-tagline {
-  padding: 98px 0 31px;
-}
-@media (min-width: 900px) {
-  html.casper .site-home-header .header-tagline {
-    padding: 150px 0 85px;
-  }
-}
-
-html.casper .site-home-header .site-description {
-  color: var(--onyx);
-  font-size: 3.6rem;
-  line-height: 4.4rem;
-  font-weight: 300;
-  text-align: left;
-  padding: 0;
-}
-@media (min-width: 900px) {
-  html.casper .site-home-header .site-description {
-    font-size: 6rem;
-    line-height: 6.8rem;
-  }
-}
-
 /* Homepage Post Feed */
 html.casper .post-feed {
   margin: 0;
   padding: 0;
 }
-
-html.casper .post-card-image-link {
-  border-radius: 0;
-}
-
-html.casper .post-card-large .post-card-image {
-  margin-bottom: 16px;
-}
-
-@media (min-width: 795px) {
-  html.casper .post-card-large .post-card-content-link,
-  html.casper .post-card-large .post-card-meta {
-    padding-left: inherit;
-  }
-}
-
-/* Post Cards */
-html.casper .post-card-primary-tag {
-  background: var(--platinum);
-  display:inline-block;
-  line-height: 1.2rem;
-  padding: 6px 8px;
-  color: var(--onyx);
-  font-size: 1.2rem;
-  margin: 24px 0 0;
-}
-
-html.casper .post-card-title {
-  font-size: 3.6rem;
-  line-height: 4.4rem;
-  font-weight: 300;
-}
-
-html.casper .post-card-excerpt {
-  color: #000;
-  line-height: 2.4rem;
-  font-family: 'Maison Neue';
-  font-size: 1.6rem;
-  max-width: none;
-}
-
-html.casper .post-card-meta {
-  flex-direction: column;
-}
-
-html.casper .post-card-byline-content {
-  margin-left: 0;
-  line-height: 2rem;
-  margin-bottom: 16px;
-}
-
-html.casper .post-card-byline-content a {
-  color: #000;
-  font-size: 1.4rem;
-  font-weight: 400;
-}
-html.casper .post-card-byline-date {
-  color: #000;
-  font-size: 1.4rem;
-  font-weight: 300;
-}
-html.casper .post-card-byline-date .bull {
-  margin: 0 1px;
-  opacity: 1;
-}
-
-
-/* Homepage Featured Post */
-.first-post-wrapper {
-  background: var(--onyx);
-  margin-bottom: 76px;
-  width: 100%;
-}
-
-html.casper .post-card-large .post-card-primary-tag {
-  background: #fff;
-  margin: 0 0 16px;
-}
-html.casper .post-card-large .post-card-title {
-  color: #fff;
-  margin-bottom: 2.4rem;
-}
-html.casper .post-card-large .post-card-content-link
-html.casper .post-card-large .post-card-excerpt {
-  color: #fff;
-}
-
-html.casper .post-card-large .post-card-excerpt {
-  color: #fff;
-}
-
-html.casper .post-card-large {
-  padding: 52px 0;
-  margin: 0;
-}
-
-
-html.casper .post-card-large .post-card-byline-date,
-html.casper .post-card-large .post-card-byline-content a {
-  color: #fff;
-}
-
-html.casper .grid-wrapper .post-card {
-  padding-left: 0;
-  padding-right: 0;
-}
-
-html.casper .no-image .post-card-primary-tag {
-  margin-top: 0;
-  margin-bottom: 15px;
-}
-
-/* Filter Tags */
-.filter-tags {
-  display: flex;
-  margin-bottom: 75px;
-}
-.filter-tags-label {
-  color: var(--onyx);
-  font-weight: 300;
-  line-height: 2.4rem;
-  padding-right: 28px;
-  margin-right: 34px;
-  border-right: 1px solid var(--onyx);
-}
-.filter-tags .btn {
-  margin-right: 16px;
-}
-.filter-tags .remove-filter-link {
-  color:#fff;
-  font-size: 1.5rem;
-  vertical-align: middle;
-  margin-left: 5px;
-}
-
 
 /* Single Post Page */
 html.casper .post-template .site-main {
@@ -286,7 +68,6 @@ html.casper .post-template .site-main {
     grid-template-columns: repeat(12, 1fr);
   }
 }
-
 
 .post-full {
   margin-top: 50px;
@@ -351,13 +132,6 @@ html.casper .post-full-header {
   padding: 0 0 32px;
 }
 
-html.casper .post-full-content {
-  font-family: inherit;
-  font-size: 1.6rem;
-  padding-left: 0;
-  padding-right: 0;
-}
-
 html.casper .post-full-custom-excerpt {
   color: var(--gray);
   font-family: inherit;
@@ -417,35 +191,6 @@ html.casper .read-next {
   border-bottom: 4px solid #fff;
 }
 
-html.casper .read-next .post-card {
-  padding: 0 0 50px;
-}
-
-html.casper .up-next-header {
-  color: #fff;
-  font-size: 3.6rem;
-  font-weight: 300;
-  margin: 0;
-}
-html.casper .read-next .post-card-primary-tag {
-  color: var(--onyx);
-  opacity: 1;
-}
-
-html.casper .read-next .post-card-title {
-  opacity: 1;
-}
-
-html.casper .read-next .post-card-excerpt,
-html.casper .read-next .post-card-byline-content {
-  display: none;
-}
-
-html.casper .read-next .btn {
-  border-color: #fff;
-}
-
-
 /* Footer */
 html.casper .site-footer {
   padding-top: 20px;
@@ -483,16 +228,6 @@ html.casper .subscribe-form {
   padding: 0;
   border: none;
   text-align: inherit;
-}
-
-html.casper .subscribe-form a {
-  color: var(--onyx);
-  box-shadow: var(--darkgrey) 0 -1px 0 inset;
-  text-decoration: none;
-}
-
-html.capser .subscribe-form a:hover {
-  text-decoration: none;
 }
 
 .subscribe-form .inner {

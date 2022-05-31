@@ -11,34 +11,36 @@ export const GA_TRACKING_ID = processEnv.gaMeasurementId
  * The action field is required.
  */
 export interface EventType {
-  action: string,
-  category?: string,
-  label?: string,
+  action: string
+  category?: string
+  label?: string
   value?: string
 }
 
 /**
  * Triggers a GA page view event.
  * @link https://developers.google.com/analytics/devguides/collection/gtagjs/pages
- * 
+ *
  * @param {string} url The URL to save the page view event with.
  */
 export const pageview = (url: string): void => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, prettier/prettier
   (window as any).gtag('config', GA_TRACKING_ID, {
-    page_path: url,
+    page_path: url
   })
 }
 
 /**
  * Pushes a custom GA event.
  * @link https://developers.google.com/analytics/devguides/collection/gtagjs/events
- * 
+ *
  * @param {EventType} parameters The event parameters.
  */
 export const event = ({ action, category, label, value }: EventType): void => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, prettier/prettier
   (window as any).gtag('event', action, {
     event_category: category,
     event_label: label,
-    value: value,
+    value: value
   })
 }

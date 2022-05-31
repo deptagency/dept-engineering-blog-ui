@@ -24,7 +24,7 @@ export const lang: KeyObjectMap = {
     POST: `post`,
     POSTS: `posts`,
     PREVIOUS: `Previous`,
-    READ: `Read`,
+    READ: `Keep Reading`,
     SEE_ALL: `See all`,
     SUBSCRIBED_TO: `You've successfully subscribed to`,
     WEBSITE: `Website`,
@@ -57,7 +57,7 @@ export const lang: KeyObjectMap = {
     PLEASE_SELECT_SUBJECT: `Please select one subject`,
     SUBMIT: `Submit`,
     YOUR_MESSAGE: `Your message`,
-    TABLE_OF_CONTENTS: `Table of Contents`,
+    TABLE_OF_CONTENTS: `Table of Contents`
   },
   de: {
     A_COLLECTION_OF: `Zu diesem Thema gibt es`,
@@ -109,7 +109,7 @@ export const lang: KeyObjectMap = {
     PLEASE_SELECT_SUBJECT: `Bitte ein Thema wählen`,
     SUBMIT: `Abschicken`,
     YOUR_MESSAGE: `Deine Nachricht`,
-    TABLE_OF_CONTENTS: `Inhaltsverzeichnis`,
+    TABLE_OF_CONTENTS: `Inhaltsverzeichnis`
   },
   es: {
     A_COLLECTION_OF: `Una colección de`,
@@ -161,7 +161,7 @@ export const lang: KeyObjectMap = {
     PLEASE_SELECT_SUBJECT: `Por favor, introduzca un asunto`,
     SUBMIT: `Enviar`,
     YOUR_MESSAGE: `Tu mensaje`,
-    TABLE_OF_CONTENTS: `Tabla de contenidos`,
+    TABLE_OF_CONTENTS: `Tabla de contenidos`
   },
   ru: {
     A_COLLECTION_OF: `В коллекции`,
@@ -213,6 +213,6 @@ export const lang: KeyObjectMap = {
     PLEASE_SELECT_SUBJECT: `Пожалуйста, выберите одну тему`,
     SUBMIT: `Отправить`,
     YOUR_MESSAGE: `Ваше сообщение`,
-    TABLE_OF_CONTENTS: `Содержание`,
-  },
+    TABLE_OF_CONTENTS: `Содержание`
+  }
 }

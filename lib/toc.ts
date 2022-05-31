@@ -1,5 +1,6 @@
-import { Node } from 'unist'
+/* eslint-disable no-param-reassign */
 import visit from 'unist-util-visit'
+import { Node } from 'unist'
 
 interface NodeProperties {
   id?: string
@@ -46,19 +47,26 @@ export const generateTableOfContents = (htmlAst: Node) => {
     return text
   }
 
-  let toc: TOC[] = []
+  const toc: TOC[] = []
   visit(htmlAst, headings, (node: TocElement) => {
     const text = walk(node.children || [])
     if (text.length > 0) {
       const id = (node.properties as NodeProperties).id || `error-missing-id`
       const level = (node.tagName as string).substr(1, 1)
-      toc.push({ level: level, id: id, heading: text, parentIndex: -1, items: [] })
+      toc.push({
+        level: level,
+        id: id,
+        heading: text,
+        parentIndex: -1,
+        items: []
+      })
     }
   })
 
   // Walk up the list to find matching parent
   const findParent = (toc: TOC[], parentIndex: number, level: string) => {
     while (parentIndex >= 0 && level < toc[parentIndex].level) {
+      // eslint-disable-next-line prefer-destructuring
       parentIndex = toc[parentIndex].parentIndex
     }
     return parentIndex >= 0 ? toc[parentIndex].parentIndex : -1
@@ -67,17 +75,33 @@ export const generateTableOfContents = (htmlAst: Node) => {
   // determine parents
   toc.forEach((node, index) => {
     const prev = toc[index > 0 ? index - 1 : 0]
-    node.parentIndex = node.level > prev.level ? (node.parentIndex = index - 1) : prev.parentIndex
-    node.parentIndex = node.level < prev.level ? findParent(toc, node.parentIndex, node.level) : node.parentIndex
+    node.parentIndex =
+      node.level > prev.level
+        ? (node.parentIndex = index - 1)
+        : prev.parentIndex
+    node.parentIndex =
+      node.level < prev.level
+        ? findParent(toc, node.parentIndex, node.level)
+        : node.parentIndex
   })
 
   // add children to their parent
-  toc.forEach((node: TOC) => node.parentIndex >= 0 && (toc[node.parentIndex].items as TOC[]).push(node))
+  toc.forEach(
+    (node: TOC) =>
+      node.parentIndex >= 0 && (toc[node.parentIndex].items as TOC[]).push(node)
+  )
 
   // make final tree
-  let tocTree = toc.filter(({ parentIndex }) => parentIndex === -1)
+  const tocTree = toc.filter(({ parentIndex }) => parentIndex === -1)
 
-  const removeProps = ({ id, heading, items }: TOC): IToC => (items.length > 0 ? { id, heading, items: (items as TOC[]).map((item) => removeProps(item)) } : { id, heading })
+  const removeProps = ({ id, heading, items }: TOC): IToC =>
+    items.length > 0
+      ? {
+          id,
+          heading,
+          items: (items as TOC[]).map((item) => removeProps(item))
+        }
+      : { id, heading }
 
   return tocTree.map((node) => removeProps(node))
 }

@@ -40,3 +40,9 @@ yarn-error.log*
 
 # cache
 /.cache
+
+# vscode
+/.vscode/settings.json
+
+# ts
+/tsconfig.tsbuildinfo
