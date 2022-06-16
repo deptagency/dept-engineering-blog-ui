@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -66,6 +67,11 @@ export const Post = ({ cmsData }: PostProps) => {
   return (
     <>
       <SEO {...{ description, settings, seoImage, article: post, title }} />
+      {post.codeinjection_head && (
+        <Head>
+          <div dangerouslySetInnerHTML={{ __html: post.codeinjection_head }} />
+        </Head>
+      )}
       <Layout
         {...{ bodyClass, settings }}
         header={<Header {...{ settings }} />}
