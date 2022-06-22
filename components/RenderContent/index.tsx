@@ -49,13 +49,16 @@ interface RenderContentProps {
   isLink?: boolean
 }
 
-export const RenderContent = ({ htmlAst, isLink=false }: RenderContentProps) => {
-  if(isLink) {
+export const RenderContent = ({
+  htmlAst,
+  isLink = false
+}: RenderContentProps) => {
+  if (isLink) {
     return <>{htmlAst && renderAst.stringify(htmlAst)}</>
   } else {
-  return (
-    <ContentSection>{htmlAst && renderAst.stringify(htmlAst)}</ContentSection>
-  )
+    return (
+      <ContentSection>{htmlAst && renderAst.stringify(htmlAst)}</ContentSection>
+    )
   }
 }
 
