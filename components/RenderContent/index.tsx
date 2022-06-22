@@ -46,10 +46,17 @@ const renderAst = unified().use(rehypeReact, options)
 
 interface RenderContentProps {
   htmlAst: Node | null
+  isLink?: boolean
 }
 
-export const RenderContent = ({ htmlAst }: RenderContentProps) => (
-  <ContentSection>{htmlAst && renderAst.stringify(htmlAst)}</ContentSection>
-)
+export const RenderContent = ({ htmlAst, isLink=false }: RenderContentProps) => {
+  if(isLink) {
+    return <>{htmlAst && renderAst.stringify(htmlAst)}</>
+  } else {
+  return (
+    <ContentSection>{htmlAst && renderAst.stringify(htmlAst)}</ContentSection>
+  )
+  }
+}
 
 //<div className="post-content load-external-scripts">{renderAst.stringify(htmlAst)}</div>
