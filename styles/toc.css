@@ -45,15 +45,6 @@ html.casper .kg-width-full {
   align-items: center;
 }
 
-html.casper .kg-gallery-card > *,
-html.casper .kg-width-wide > *,
-html.casper .kg-width-full > *,
-html.casper figure.kg-width-full:not(.fluid-image) {
-  margin-left: -50vw;
-  margin-right: -50vw;
-  z-index: 1;
-}
-
 /* Page styles */
 html.casper aside.toc {
   order: 1;
