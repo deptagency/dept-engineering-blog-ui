@@ -282,7 +282,7 @@ export const globals = css`
 
   ::selection {
     text-shadow: none;
-    background: color-mod(var(--blue) lightness(+30%));
+    background: #6ac0ff;
   }
 
   hr {

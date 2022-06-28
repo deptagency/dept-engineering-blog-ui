@@ -130,6 +130,7 @@ html.casper .post-full-byline-meta h4 {
 
 html.casper .post-full-header {
   padding: 0 0 32px;
+  margin: 0;
 }
 
 html.casper .post-full-custom-excerpt {
