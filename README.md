@@ -18,6 +18,16 @@ yarn dev
 yarn build
 ```
 
+## Previewing Posts
+
+Clicking on the `Preview` button on an unpublished post in the Ghost Admin UI will show you the post in the default Ghost theme along with a URL where you can preview the post in isolation (this url will end in `/p/[hash-of-characters]`). You can view it in our DEPT® Theme if you replace the supplied URL's domain with the Engineering blogs, so that the URL reads `https://engineering.deptagency.com/p/[hash-of-characters]`
+
+
+## Unsuported Ghost Admin functionality
+
+Not all fields and settings in the Ghost Admin UI are available in our theme. This includes, but is not limited to, the following:
+- Custom scripts in the header and footer of a Blog Post
+
 
 ## 🤯 Ensure headless mode of Ghost CMS
 
