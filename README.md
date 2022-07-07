@@ -1,7 +1,5 @@
 # DEPT® Engineering Blog UI
 
-Based off of the [next-cms-ghost](https://github.com/styxlab/next-cms-ghost) template.
-
 ## 🏁 Getting Started
 
 If you are a DEPT Engineer, ask a DEPT® team memember for environment variables. Otherwise please see the template repository for information on how to connect this project to your Ghost instance. 
@@ -39,6 +37,11 @@ For best SEO results it is strongly recommended to disable the default Ghost Han
 
 PRs are welcome! If you want to see any new features added or see something we can be doing better please let us know!
 
+## Credits
+
+Based off of the [next-cms-ghost](https://github.com/styxlab/next-cms-ghost) template.
+
 # Copyright & License
 
+Copyright (c) 2022 DEPT® - Released under the [MIT license](LICENSE)
 Copyright (c) 2020 - 2021 styxlab - Released under the [MIT license](LICENSE).
