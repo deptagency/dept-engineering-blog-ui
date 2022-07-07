@@ -1,4 +1,6 @@
+/* eslint-disable no-console */
 import { NextApiRequest, NextApiResponse } from 'next'
+
 import { getAllSettings, getPostBySlug } from '@lib/ghost'
 import { resolveUrl } from '@utils/routing'
 import { collections } from '@lib/collections'
@@ -24,12 +26,21 @@ export async function verifySlug(postSlug: string): Promise<string | null> {
   return resolveUrl({ cmsUrl, collectionPath, slug, url })
 }
 
-const Preview = async (req: NextApiRequest, res: NextApiResponse): Promise<NextApiResponse | void> => {
-  if (req.query.secret !== process.env.JAMIFY_PREVIEW_TOKEN || !req.query.slug) {
+const Preview = async (
+  req: NextApiRequest,
+  res: NextApiResponse
+  // eslint-disable-next-line consistent-return
+): Promise<NextApiResponse | void> => {
+  if (
+    req.query.secret !== process.env.JAMIFY_PREVIEW_TOKEN ||
+    !req.query.slug
+  ) {
     return res.status(401).json({ message: 'Invalid token' })
   }
 
-  const slug = Array.isArray(req.query.slug) ? req.query.slug[0] : req.query.slug
+  const slug = Array.isArray(req.query.slug)
+    ? req.query.slug[0]
+    : req.query.slug
   const url = await verifySlug(slug)
   console.log(url)
 

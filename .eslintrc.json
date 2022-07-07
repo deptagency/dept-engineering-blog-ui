@@ -1,3 +1,72 @@
 {
-  "extends": "next/core-web-vitals"
+  "plugins": [
+    "@typescript-eslint",
+    "prettier",
+    "ordered-imports"
+  ],
+  "rules": {
+    "@typescript-eslint/no-empty-function": "error",
+    "@typescript-eslint/no-duplicate-imports": ["error"],
+    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/no-explicit-any": "error",
+    "@typescript-eslint/no-empty-interface": "off",
+    "@typescript-eslint/no-inferrable-types": "off",
+    "@typescript-eslint/member-delimiter-style": [
+      "error",
+      {
+        "multiline": {
+          "delimiter": "none",
+          "requireLast": false
+        },
+        "singleline": {
+          "delimiter": "semi",
+          "requireLast": false
+        }
+      }
+    ],
+    "no-return-await": "error",
+    "no-param-reassign": "error",
+    "consistent-return": "error",
+    "curly": ["error", "multi-line"],
+    "default-case": ["error", { "commentPattern": "^no default$" }],
+    "default-case-last": "error",
+    "default-param-last": "error",
+    "no-console": "warn",
+    "no-mixed-operators": "error",
+    "no-var": "error",
+    "no-void": "error",
+    "prefer-const": "error",
+    "prefer-destructuring": "error",
+    "no-implicit-globals": "error",
+    "no-invalid-this": "error",
+    "array-callback-return": "error",
+    "no-duplicate-imports": "error",
+    "no-unmodified-loop-condition": "error",
+    "ordered-imports/ordered-imports": [
+      "error",
+      {
+        "symbols-first": true,
+        "declaration-ordering": ["type", {
+          "ordering": ["side-effect", "default", "namespace", "destructured"],
+          "secondaryOrdering": ["name", "lowercase-last"]
+        }],
+        "specifier-ordering": "lowercase-last",
+        "group-ordering": [
+          { "name": "project paths", "match": "^@(lib|appConfig|routesConfig|dashboard|pages|mediaConfig|siteConfig|siteOptions|utils)", "order": 20 },
+          { "name": "stylesheets path", "match": "^@styles", "order": 20 },
+          { "name": "components paths", "match": "^@(components|meta|common|icons|effects|helpers)", "order": 30 },
+          { "name": "parent directories", "match": "^\\.\\.", "order": 40 },
+          { "name": "current directory", "match": "^\\.", "order": 50 },
+          { "name": "third-party", "match": ".*", "order": 10 }
+        ]
+      }
+    ]
+  },
+  "extends": [
+    "next/core-web-vitals",
+    "prettier",
+    "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:ordered-imports/recommended"
+  ]
 }

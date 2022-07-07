@@ -1,4 +1,4 @@
-import { PostOrPage, Author, Tag } from "@tryghost/content-api"
+import { Author, PostOrPage, Tag } from '@tryghost/content-api'
 
 interface BodyClassProps {
   isPost?: boolean
@@ -8,14 +8,17 @@ interface BodyClassProps {
   page?: PostOrPage
 }
 
-export const BodyClass = ({ isHome, isPost, author, tags, page }: BodyClassProps) => {
+export const BodyClass = ({
+  isHome = false,
+  isPost = false,
+  author,
+  tags,
+  page
+}: BodyClassProps) => {
   let classes = []
 
-  const isAuthor = author && author.slug || false
-  const isPage = page && page.slug || false
-
-  isHome = isHome || false
-  isPost = isPost || false
+  const isAuthor = (author && author.slug) || false
+  const isPage = (page && page.slug) || false
 
   if (isHome) {
     classes.push(`home-template`)
@@ -32,9 +35,7 @@ export const BodyClass = ({ isHome, isPost, author, tags, page }: BodyClassProps
   }
 
   if (tags) {
-    classes = classes.concat(
-      tags.map(({ slug }) => `tag-${slug}`)
-    )
+    classes = classes.concat(tags.map(({ slug }) => `tag-${slug}`))
   }
 
   //if (context.includes('paged')) {

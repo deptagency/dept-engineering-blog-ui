@@ -1,13 +1,15 @@
-import { useState, useCallback } from 'react'
+import { useCallback, useState } from 'react'
 
 /**
  * Input
  */
 
 export interface useInputProps {
-  value: string,
-  error?: string,
-  onChange: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void
+  value: string
+  error?: string
+  onChange: (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void
 }
 
 export interface useInputError {
@@ -24,10 +26,10 @@ export const useInput = (
     {
       value,
       error,
-      onChange: e => setValue(e.target.value)
+      onChange: (e) => setValue(e.target.value)
     },
-    status => setError(status),
-    () => setValue(initialValue),
+    (status) => setError(status),
+    () => setValue(initialValue)
   ]
 }
 
@@ -38,7 +40,7 @@ export const useInput = (
 export interface useSelectProps {
   index: number
   values: string[]
-  error?: string,
+  error?: string
   onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void
 }
 
@@ -60,8 +62,8 @@ export const useSelect = (
 
   return [
     { index, values, error, onChange: (e) => setIndex(e.target.selectedIndex) },
-    status => setError(status),
+    (status) => setError(status),
     () => setIndex(0),
-    useCallback(values => setValues(values), []),
+    useCallback((values) => setValues(values), [])
   ]
 }

@@ -1,18 +1,26 @@
 import { useRouter } from 'next/router'
-
+import { GetStaticPaths, GetStaticProps } from 'next'
 import { Tag } from '@tryghost/content-api'
-import { GetStaticProps, GetStaticPaths } from 'next'
-import { HeaderTag } from '@components/HeaderTag'
-import { Layout } from '@components/Layout'
-import { PostView } from '@components/PostView'
-import { SEO } from '@meta/seo'
 
-import { getTagBySlug, getAllTags, getAllSettings, getPostsByTag, GhostSettings, GhostPostOrPage, GhostPostsOrPages } from '@lib/ghost'
+import {
+  GhostPostOrPage,
+  GhostPostsOrPages,
+  GhostSettings,
+  getAllSettings,
+  getAllTags,
+  getPostsByTag,
+  getTagBySlug
+} from '@lib/ghost'
 import { resolveUrl } from '@utils/routing'
-import { ISeoImage, seoImage } from '@meta/seoImage'
 import { processEnv } from '@lib/processEnv'
+import { getPostCollectionDescription } from '@utils/get-collection-description'
 
+import { Header } from '@components/Header'
+import { SEO } from '@meta/seo'
+import { ISeoImage, seoImage } from '@meta/seoImage'
 import { BodyClass } from '@helpers/BodyClass'
+import { PostView } from '@components/PostView'
+import { Layout } from '@components/Layout'
 
 /**
  * Tag page (/tag/:slug)
@@ -42,11 +50,35 @@ const TagIndex = ({ cmsData }: TagIndexProps) => {
 
   const { tag, posts, settings, seoImage, bodyClass } = cmsData
   const { meta_title, meta_description } = tag
+  const fallbackDescription = getPostCollectionDescription(
+    tag.count?.posts,
+    settings.lang
+  )
 
   return (
     <>
-      <SEO {...{ settings, title: meta_title || '', description: meta_description || '', seoImage }} />
-      <Layout {...{ settings, bodyClass }} header={<HeaderTag {...{ settings, tag }} />}>
+      <SEO
+        {...{
+          settings,
+          title: meta_title || '',
+          description: meta_description || '',
+          seoImage
+        }}
+      />
+      <Layout
+        {...{ settings, bodyClass }}
+        header={
+          <Header
+            {...{
+              settings,
+              content: {
+                title: tag.name,
+                description: tag.description || fallbackDescription
+              }
+            }}
+          />
+        }
+      >
         <PostView {...{ settings, posts }} />
       </Layout>
     </>
@@ -56,7 +88,9 @@ const TagIndex = ({ cmsData }: TagIndexProps) => {
 export default TagIndex
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  if (!(params && params.slug && Array.isArray(params.slug))) throw Error('getStaticProps: wrong parameters.')
+  if (!(params && params.slug && Array.isArray(params.slug))) {
+    throw Error('getStaticProps: wrong parameters.')
+  }
   const [slug] = params.slug.reverse()
 
   const tag = await getTagBySlug(slug)
@@ -70,10 +104,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         posts,
         settings,
         seoImage: await seoImage({ siteUrl: settings.processEnv.siteUrl }),
-        bodyClass: BodyClass({ tags: [tag] }),
-      },
+        bodyClass: BodyClass({ tags: [tag] })
+      }
     },
-    ...(processEnv.isr.enable && { revalidate: processEnv.isr.revalidate }), // re-generate at most once every revalidate second
+    ...(processEnv.isr.enable && { revalidate: processEnv.isr.revalidate }) // re-generate at most once every revalidate second
   }
 }
 
@@ -82,10 +116,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const settings = await getAllSettings()
   const { url: cmsUrl } = settings
 
-  const paths = tags.map(({ slug, url }) => resolveUrl({ cmsUrl, slug, url })).filter((path) => path.startsWith(`/tag/`))
+  const paths = tags
+    .map(({ slug, url }) => resolveUrl({ cmsUrl, slug, url }))
+    .filter((path) => path.startsWith(`/tag/`))
 
   return {
     paths,
-    fallback: processEnv.isr.enable,
+    fallback: processEnv.isr.enable
   }
 }

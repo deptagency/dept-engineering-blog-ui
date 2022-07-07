@@ -1,18 +1,26 @@
-import { GetStaticProps, GetStaticPaths } from 'next'
+import { GetStaticPaths, GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 
-import { Layout } from '@components/Layout'
-import { PostView } from '@components/PostView'
-import { HeaderAuthor } from '@components/HeaderAuthor'
-
 import { resolveUrl } from '@utils/routing'
-import { SEO, authorSameAs } from '@meta/seo'
-
-import { getAuthorBySlug, getAllAuthors, getAllSettings, getPostsByAuthor, GhostSettings, GhostPostOrPage, GhostPostsOrPages, GhostAuthor } from '@lib/ghost'
-import { ISeoImage, seoImage } from '@meta/seoImage'
 import { processEnv } from '@lib/processEnv'
+import { getPostCollectionDescription } from '@utils/get-collection-description'
+import {
+  GhostAuthor,
+  GhostPostOrPage,
+  GhostPostsOrPages,
+  GhostSettings,
+  getAllAuthors,
+  getAllSettings,
+  getAuthorBySlug,
+  getPostsByAuthor
+} from '@lib/ghost'
 
 import { BodyClass } from '@helpers/BodyClass'
+import { SEO, authorSameAs } from '@meta/seo'
+import { ISeoImage, seoImage } from '@meta/seoImage'
+import { Layout } from '@components/Layout'
+import { PostView } from '@components/PostView'
+import { Header } from '@components/Header'
 
 /**
  * Author page (/author/:slug)
@@ -41,13 +49,37 @@ const AuthorIndex = ({ cmsData }: AuthorIndexProps) => {
 
   const { author, posts, settings, seoImage, bodyClass } = cmsData
   const { name, bio } = author
-  const description = bio || undefined
   const sameAs = authorSameAs(author)
+  const description = getPostCollectionDescription(
+    author.count?.posts,
+    settings.lang
+  )
 
   return (
     <>
-      <SEO {...{ settings, description, seoImage, sameAs, title: name }} />
-      <Layout {...{ settings, bodyClass }} header={<HeaderAuthor {...{ settings, author }} />}>
+      <SEO
+        {...{
+          settings,
+          description: bio || undefined,
+          seoImage,
+          sameAs,
+          title: name
+        }}
+      />
+      <Layout
+        {...{ settings, bodyClass }}
+        header={
+          <Header
+            {...{
+              settings,
+              content: {
+                title: author.name,
+                description: description
+              }
+            }}
+          />
+        }
+      >
         <PostView {...{ settings, posts }} />
       </Layout>
     </>
@@ -57,7 +89,9 @@ const AuthorIndex = ({ cmsData }: AuthorIndexProps) => {
 export default AuthorIndex
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  if (!(params && params.slug && Array.isArray(params.slug))) throw Error('getStaticProps: wrong parameters.')
+  if (!(params && params.slug && Array.isArray(params.slug))) {
+    throw Error('getStaticProps: wrong parameters.')
+  }
   const [slug] = params.slug.reverse()
 
   const author = await getAuthorBySlug(slug)
@@ -65,7 +99,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const settings = await getAllSettings()
 
   const { cover_image, profile_image } = author
-  const siteUrl = settings.processEnv.siteUrl
+  const { siteUrl } = settings.processEnv
   const imageUrl = cover_image || profile_image || undefined
   const authorImage = await seoImage({ siteUrl, imageUrl })
 
@@ -76,10 +110,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         posts,
         settings,
         seoImage: authorImage,
-        bodyClass: BodyClass({ author }),
-      },
+        bodyClass: BodyClass({ author })
+      }
     },
-    ...(processEnv.isr.enable && { revalidate: processEnv.isr.revalidate }), // re-generate at most once every revalidate second
+    ...(processEnv.isr.enable && { revalidate: processEnv.isr.revalidate }) // re-generate at most once every revalidate second
   }
 }
 
@@ -88,10 +122,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const settings = await getAllSettings()
   const { url: cmsUrl } = settings
 
-  const paths = authors.map(({ slug, url }) => resolveUrl({ cmsUrl, slug, url: url || undefined })).filter((path) => path.startsWith(`/author/`))
+  const paths = authors
+    .map(({ slug, url }) => resolveUrl({ cmsUrl, slug, url: url || undefined }))
+    .filter((path) => path.startsWith(`/author/`))
 
   return {
     paths,
-    fallback: processEnv.isr.enable,
+    fallback: processEnv.isr.enable
   }
 }

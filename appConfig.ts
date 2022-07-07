@@ -25,8 +25,8 @@ export const memberSubscriptions: boolean = true
 export type CommentingSystem = 'commento' | 'disqus' | null
 export const commenting: CommentingSystem = null
 
-export const commentoUrl: string = 'https://cdn.commento.io' // 'https://commento.your-blog.com'
-export const disqusShortname: string = 'short-name-here'
+export const commentoUrl = 'https://cdn.commento.io' // 'https://commento.your-blog.com'
+export const disqusShortname = 'short-name-here'
 
 // PrismJS
 export const prism: boolean = true

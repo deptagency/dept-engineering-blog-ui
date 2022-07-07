@@ -1,5 +1,3 @@
-@import 'global.css';
-
 /* Table of Content Box
 /* ---------------------------------------------------------- */
 
@@ -45,15 +43,6 @@ html.casper .kg-width-full {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-html.casper .kg-gallery-card > *,
-html.casper .kg-width-wide > *,
-html.casper .kg-width-full > *,
-html.casper figure.kg-width-full:not(.fluid-image) {
-  margin-left: -50vw;
-  margin-right: -50vw;
-  z-index: 1;
 }
 
 /* Page styles */

@@ -1,17 +1,28 @@
-import { GetStaticProps, GetStaticPaths } from 'next'
+/* eslint-disable no-console */
+import { GetStaticPaths, GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
-import { Post } from '@components/Post'
-import { Page } from '@components/Page'
 
-import { getPostsByTag, getTagBySlug, GhostPostOrPage, GhostPostsOrPages, GhostSettings } from '@lib/ghost'
-
-import { getPostBySlug, getPageBySlug, getAllPosts, getAllPages, getAllSettings, getAllPostSlugs } from '@lib/ghost'
+import {
+  GhostPostOrPage,
+  GhostPostsOrPages,
+  GhostSettings,
+  getAllPages,
+  getAllPostSlugs,
+  getAllPosts,
+  getAllSettings,
+  getPageBySlug,
+  getPostBySlug,
+  getPostsByTag,
+  getTagBySlug
+} from '@lib/ghost'
 import { resolveUrl } from '@utils/routing'
 import { collections } from '@lib/collections'
+import { processEnv } from '@lib/processEnv'
 
 import { ISeoImage, seoImage } from '@meta/seoImage'
-import { processEnv } from '@lib/processEnv'
 import { BodyClass } from '@helpers/BodyClass'
+import { Post } from '@components/Post'
+import { Page } from '@components/Page'
 
 /**
  *
@@ -53,7 +64,9 @@ const PostOrPageIndex = ({ cmsData }: PostOrPageProps) => {
 export default PostOrPageIndex
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  if (!(params && params.slug && Array.isArray(params.slug))) throw Error('getStaticProps: wrong parameters.')
+  if (!(params && params.slug && Array.isArray(params.slug))) {
+    throw Error('getStaticProps: wrong parameters.')
+  }
   const [slug] = params.slug.reverse()
 
   console.time('Post - getStaticProps')
@@ -74,7 +87,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   if (!post && !page) {
     return {
-      notFound: true,
+      notFound: true
     }
   }
 
@@ -84,7 +97,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   if (isPost && post?.id && post?.slug) {
     const tagSlug = post?.primary_tag?.slug
-    previewPosts = (tagSlug && (await getPostsByTag(tagSlug, 3, post?.id))) || []
+    previewPosts =
+      (tagSlug && (await getPostsByTag(tagSlug, 3, post?.id))) || []
 
     const postSlugs = await getAllPostSlugs()
     const index = postSlugs.indexOf(post?.slug)
@@ -95,7 +109,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     nextPost = (nextSlug && (await getPostBySlug(nextSlug))) || null
   }
 
-  const siteUrl = settings.processEnv.siteUrl
+  const { siteUrl } = settings.processEnv
   const imageUrl = (post || page)?.feature_image || undefined
   const image = await seoImage({ siteUrl, imageUrl })
 
@@ -114,10 +128,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         previewPosts,
         prevPost,
         nextPost,
-        bodyClass: BodyClass({ isPost, page: page || undefined, tags }),
-      },
+        bodyClass: BodyClass({ isPost, page: page || undefined, tags })
+      }
     },
-    ...(processEnv.isr.enable && { revalidate: processEnv.isr.revalidate }), // re-generate at most once every revalidate second
+    ...(processEnv.isr.enable && { revalidate: processEnv.isr.revalidate }) // re-generate at most once every revalidate second
   }
 }
 
@@ -136,11 +150,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
     return resolveUrl({ cmsUrl, collectionPath, slug, url })
   })
 
-  const pageRoutes = (pages as GhostPostsOrPages).map(({ slug, url }) => resolveUrl({ cmsUrl, slug, url }))
+  const pageRoutes = (pages as GhostPostsOrPages).map(({ slug, url }) =>
+    resolveUrl({ cmsUrl, slug, url })
+  )
   const paths = [...postRoutes, ...pageRoutes]
 
   return {
     paths,
-    fallback: enable && 'blocking',
+    fallback: enable && 'blocking'
   }
 }

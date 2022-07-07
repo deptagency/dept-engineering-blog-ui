@@ -1,6 +1,6 @@
-import { lang, StringKeyObjectMap } from '@utils/lang'
+import { StringKeyObjectMap, lang } from '@utils/lang'
 
-const getLang = (locale: string = 'en') => {
+const getLang = (locale = 'en') => {
   return lang[locale] ?? lang.en
 }
 
