@@ -96,6 +96,7 @@ export const dummySettings = {
       enable: true,
       ignoreMissing: true
     },
+    enableCareersPage: false,
     toc: {
       enable: true,
       maxDepth: 2
