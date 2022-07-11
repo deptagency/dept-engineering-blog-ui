@@ -88,7 +88,7 @@ const postAndPageSlugOptions: Params = {
 }
 
 const excludePostOrPageBySlug = () => {
-  if (customSlugs.length === 0 || !enableCareersPage) return ''
+  if (customSlugs.length === 0) return ''
   return customSlugs.map((slug) => `slug:-${slug}`)
 }
 
