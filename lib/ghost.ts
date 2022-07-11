@@ -10,7 +10,7 @@ import GhostContentAPI, {
 import { parse as urlParse } from 'url'
 import { Node } from 'unist'
 
-import { customSlugs } from '@appConfig'
+import { customSlugs, enableCareersPage } from '@appConfig'
 import { normalizePost } from '@lib/ghost-normalize'
 import { Collections } from '@lib/collections'
 import { IToC } from '@lib/toc'
@@ -88,7 +88,7 @@ const postAndPageSlugOptions: Params = {
 }
 
 const excludePostOrPageBySlug = () => {
-  if (customSlugs.length === 0) return ''
+  if (customSlugs.length === 0 || !enableCareersPage) return ''
   return customSlugs.map((slug) => `slug:-${slug}`)
 }
 

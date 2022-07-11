@@ -56,6 +56,7 @@ export interface ProcessEnvProps {
     enable: boolean
     ignoreMissing: boolean
   }
+  enableCareersPage: boolean
   toc: {
     enable: boolean
     maxDepth: number
@@ -113,6 +114,10 @@ export const processEnv: ProcessEnvProps = {
       appConfig.prismIgnoreMissing
     )
   },
+  enableCareersPage: resolveBool(
+    process.env.JAMIFY_ENABLE_CAREERS_PAGE,
+    appConfig.enableCareersPage
+  ),
   toc: {
     enable: resolveBool(process.env.JAMIFY_TOC, appConfig.toc),
     maxDepth: resolveNumber(
