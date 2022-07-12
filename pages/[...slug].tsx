@@ -16,11 +16,13 @@ import {
   getTagBySlug
 } from '@lib/ghost'
 import { resolveUrl } from '@utils/routing'
+import { CareersPage, defaultCareersPage } from '@lib/careersPageDefaults'
 import { collections } from '@lib/collections'
 import { processEnv } from '@lib/processEnv'
 
 import { ISeoImage, seoImage } from '@meta/seoImage'
 import { BodyClass } from '@helpers/BodyClass'
+import { Careers } from '@components/CareersPage'
 import { Post } from '@components/Post'
 import { Page } from '@components/Page'
 
@@ -33,6 +35,7 @@ import { Page } from '@components/Page'
 interface CmsDataCore {
   post: GhostPostOrPage
   page: GhostPostOrPage
+  careersPage: CareersPage
   settings: GhostSettings
   seoImage: ISeoImage
   previewPosts?: GhostPostsOrPages
@@ -53,9 +56,21 @@ const PostOrPageIndex = ({ cmsData }: PostOrPageProps) => {
   const router = useRouter()
   if (router.isFallback) return <div>Loading...</div>
 
-  const { isPost } = cmsData
+  const { isPost, careersPage } = cmsData
   if (isPost) {
     return <Post {...{ cmsData }} />
+  } else if (!!careersPage) {
+    const { careersPage, settings, seoImage, bodyClass } = cmsData
+    return (
+      <Careers
+        cmsData={{
+          page: careersPage,
+          settings,
+          seoImage,
+          bodyClass
+        }}
+      />
+    )
   } else {
     return <Page cmsData={cmsData} />
   }
@@ -75,6 +90,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   let post: GhostPostOrPage | null = null
   let page: GhostPostOrPage | null = null
+  let careersPage: CareersPage | null = null
 
   post = await getPostBySlug(slug)
   const isPost = !!post
@@ -85,7 +101,15 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     post.primary_tag = primaryTag
   }
 
-  if (!post && !page) {
+  // Add custom careers page
+  let isCareersPage = false
+  if (processEnv.enableCareersPage) {
+    careersPage = { ...defaultCareersPage }
+    isCareersPage = careersPage?.slug === slug
+    if (!isCareersPage) careersPage = null
+  }
+
+  if (!post && !page && !isCareersPage) {
     return {
       notFound: true
     }
@@ -113,7 +137,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const imageUrl = (post || page)?.feature_image || undefined
   const image = await seoImage({ siteUrl, imageUrl })
 
-  const tags = (page && page.tags) || undefined
+  const tags =
+    (careersPage && careersPage.tags) || (page && page.tags) || undefined
 
   console.timeEnd('Post - getStaticProps')
 
@@ -123,12 +148,17 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         settings,
         post,
         page,
+        careersPage,
         isPost,
         seoImage: image,
         previewPosts,
         prevPost,
         nextPost,
-        bodyClass: BodyClass({ isPost, page: page || undefined, tags })
+        bodyClass: BodyClass({
+          isPost,
+          page: careersPage || page || undefined,
+          tags
+        })
       }
     },
     ...(processEnv.isr.enable && { revalidate: processEnv.isr.revalidate }) // re-generate at most once every revalidate second
@@ -150,10 +180,18 @@ export const getStaticPaths: GetStaticPaths = async () => {
     return resolveUrl({ cmsUrl, collectionPath, slug, url })
   })
 
+  let careersPageRoute: string | null = null
+  if (processEnv.enableCareersPage) {
+    const careersPage = { ...defaultCareersPage }
+    const { slug, url } = careersPage
+    careersPageRoute = resolveUrl({ cmsUrl, slug, url })
+  }
+
+  const customRoutes = (careersPageRoute && [careersPageRoute]) || []
   const pageRoutes = (pages as GhostPostsOrPages).map(({ slug, url }) =>
     resolveUrl({ cmsUrl, slug, url })
   )
-  const paths = [...postRoutes, ...pageRoutes]
+  const paths = [...postRoutes, ...pageRoutes, ...customRoutes]
 
   return {
     paths,
