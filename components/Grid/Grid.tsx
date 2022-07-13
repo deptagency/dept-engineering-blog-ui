@@ -12,7 +12,7 @@ const getMediaQueryLabel = (breakpoint: BREAKPOINT) =>
   `@media (min-width: ${BREAKPOINTS[breakpoint]}px)`
 
 const getFlexBasis = (numColumns: number) =>
-  (numColumns / NUM_TOTAL_GRID_COLUMNS) * 100
+  Math.min((numColumns / NUM_TOTAL_GRID_COLUMNS) * 100, 100)
 
 const getMediaQueriesWithFlexBasis = (
   numColumnsByBreakpoint: Partial<Record<BREAKPOINT, number>>
