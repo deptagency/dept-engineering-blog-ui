@@ -5,7 +5,6 @@ import { colors } from '@components/common/colors'
 import { Grid } from './Grid'
 import { GridProps } from './Grid.model'
 
-// 1. Arg Types
 const disabledArgType = {
   table: {
     disable: true
@@ -60,17 +59,11 @@ const argTypes = {
   alignItems: generateSelectArgType('alignItems', alignItemsOptions)
 }
 
-// 2. Container & Item CSS Styles
-const containerStyles = {
-  border: `3px solid ${colors.onyx}`
-}
 const itemStyles = {
   background: colors.yellow,
   color: colors.onyx,
 
   padding: '5px',
-  height: '100px',
-  width: '100px',
 
   'line-height': '100px',
   'font-weight': 'bold',
@@ -78,7 +71,6 @@ const itemStyles = {
   'text-align': 'center'
 }
 
-// 3. Story
 export default {
   title: 'Grid',
   component: Grid,
@@ -109,54 +101,54 @@ const Template: ComponentStory<typeof Grid> = (args: Record<string, any>) => {
       justifyContent={args.justifyContentContainer}
       alignItems={args.alignItemsContainer}
       zeroMinWidth={args.zeroMinWidthContainer}
-      style={containerStyles}
     >
-      <Grid {...itemArgs} style={itemStyles}>
-        1
+      <Grid {...itemArgs}>
+        <div style={itemStyles}>1</div>
       </Grid>
-      <Grid {...itemArgs} style={itemStyles}>
-        2
+      <Grid {...itemArgs}>
+        <div style={itemStyles}>2</div>
       </Grid>
-      <Grid {...itemArgs} style={itemStyles}>
-        3
+      <Grid {...itemArgs}>
+        <div style={itemStyles}>3</div>
       </Grid>
-      <Grid {...itemArgs} style={itemStyles}>
-        4
+      <Grid {...itemArgs}>
+        <div style={itemStyles}>4</div>
       </Grid>
-      <Grid {...itemArgs} style={{ ...itemStyles, height: 'auto' }}>
-        5
-        <br />
-        (taller)
+      <Grid {...itemArgs}>
+        <div style={itemStyles}>
+          5
+          <br />
+          (taller)
+        </div>
       </Grid>
-      <Grid {...itemArgs} style={itemStyles}>
-        6
+      <Grid {...itemArgs}>
+        <div style={itemStyles}>6</div>
       </Grid>
-      <Grid {...itemArgs} style={itemStyles}>
-        7
+      <Grid {...itemArgs}>
+        <div style={itemStyles}>7</div>
       </Grid>
-      <Grid {...itemArgs} style={itemStyles}>
-        8
+      <Grid {...itemArgs}>
+        <div style={itemStyles}>8</div>
       </Grid>
-      <Grid {...itemArgs} style={itemStyles}>
-        9
+      <Grid {...itemArgs}>
+        <div style={itemStyles}>9</div>
       </Grid>
-      <Grid
-        {...itemArgs}
-        style={{ ...itemStyles, width: 'auto', whiteSpace: 'nowrap' }}
-      >
-        10 (wider)
+      <Grid {...itemArgs}>
+        <div style={{ ...itemStyles, whiteSpace: 'nowrap' }}>
+          10 (this is a wide block)
+        </div>
       </Grid>
-      <Grid {...itemArgs} style={itemStyles}>
-        11
+      <Grid {...itemArgs}>
+        <div style={itemStyles}>11</div>
       </Grid>
-      <Grid {...itemArgs} style={itemStyles}>
-        12
+      <Grid {...itemArgs}>
+        <div style={itemStyles}>12</div>
       </Grid>
-      <Grid {...itemArgs} style={itemStyles}>
-        13
+      <Grid {...itemArgs}>
+        <div style={itemStyles}>13</div>
       </Grid>
-      <Grid {...itemArgs} style={itemStyles}>
-        14
+      <Grid {...itemArgs}>
+        <div style={itemStyles}>14</div>
       </Grid>
     </Grid>
   )
