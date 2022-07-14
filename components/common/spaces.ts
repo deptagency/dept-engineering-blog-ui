@@ -19,3 +19,30 @@ export const spaces = {
   xxxl: 80,
   xxxxl: 120
 }
+
+/**
+ * Total number of available columns in a grid
+ */
+export const NUM_TOTAL_GRID_COLUMNS = 12
+
+/**
+ * Number of pixels (px) per grid spacing unit
+ */
+export const GRID_SPACING_PX_UNIT = 8
+
+/**
+ * Possible breakpoint values
+ */
+export type BREAKPOINT = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+
+/**
+ * Breakpoint definitions based on the default breakpoints from Material UI: https://mui.com/material-ui/customization/breakpoints/#default-breakpoints
+ *  * Note that the "xl" breakpoint is equal to MAX_WIDTH instead of the default value of 1536px
+ */
+export const BREAKPOINTS: Record<BREAKPOINT, number> = {
+  xs: 0,
+  sm: 600,
+  md: 900,
+  lg: 1200,
+  xl: MAX_WIDTH
+}

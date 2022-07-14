@@ -1,7 +1,6 @@
-import { Grid } from '@mui/material'
-
 import { GhostSettings } from '@lib/ghost'
 
+import { Grid } from '@components/Grid'
 import { SiteNav } from '@components/SiteNav'
 import { Heading } from '@components/typography/Headings'
 import { Subheading } from '@components/typography/Subheadings'
