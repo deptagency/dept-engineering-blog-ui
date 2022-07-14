@@ -1,7 +1,6 @@
-import Grid from '@mui/material/Grid'
-
 import { GhostPostOrPage, GhostSettings } from '@lib/ghost'
 
+import { Grid } from '@components/Grid'
 import { PostCard } from '@components/PostCard'
 import { Heading } from '@components/typography/Headings'
 

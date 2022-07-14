@@ -1,11 +1,11 @@
-import Grid from '@mui/material/Grid'
 import styled from '@emotion/styled'
 
 import { GhostSettings } from '@lib/ghost'
 import { get, getLang } from '@utils/use-lang'
 
-import { Copy } from '@components/typography/Copy'
 import { spaces } from '@components/common/spaces'
+import { Grid } from '@components/Grid'
+import { Copy } from '@components/typography/Copy'
 import { Heading } from '@components/typography/Headings'
 
 import { DescriptionLink } from './components'
