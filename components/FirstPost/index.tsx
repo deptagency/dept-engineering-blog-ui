@@ -1,11 +1,11 @@
-import Grid from '@mui/material/Grid'
 import styled from '@emotion/styled'
 
 import { GhostPostOrPage, GhostSettings } from '@lib/ghost'
 
-import { PostCard } from '@components/PostCard'
+import { Grid } from '@components/Grid'
 import { spaces } from '@components/common/spaces'
 import { colors } from '@components/common/colors'
+import { PostCard } from '@components/PostCard'
 
 interface FirstPostItemProps {
   settings: GhostSettings
