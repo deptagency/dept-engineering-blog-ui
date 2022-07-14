@@ -1,3 +1,5 @@
+import React from 'react'
+import styled from '@emotion/styled'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 
 import { colors } from '@components/common/colors'
@@ -59,28 +61,18 @@ const argTypes = {
   alignItems: generateSelectArgType('alignItems', alignItemsOptions)
 }
 
-const itemStyles = {
-  background: colors.yellow,
-  color: colors.onyx,
+const mapArgsToContainerProps = (args: Record<string, unknown>) =>
+  ({
+    container: true,
+    wrap: args.wrapContainer,
+    direction: args.directionContainer,
+    justifyContent: args.justifyContentContainer,
+    alignItems: args.alignItemsContainer,
+    zeroMinWidth: args.zeroMinWidthContainer
+  } as GridProps)
 
-  padding: '5px',
-
-  'line-height': '100px',
-  'font-weight': 'bold',
-  'font-size': '2em',
-  'text-align': 'center'
-}
-
-export default {
-  title: 'Grid',
-  component: Grid,
-  argTypes,
-  subcomponents: { Grid }
-} as ComponentMeta<typeof Grid>
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const Template: ComponentStory<typeof Grid> = (args: Record<string, any>) => {
-  const itemArgs: GridProps = {
+const mapArgsToItemProps = (args: Record<string, unknown>) =>
+  ({
     item: true,
     direction: args.direction,
     justifyContent: args.justifyContent,
@@ -91,70 +83,75 @@ const Template: ComponentStory<typeof Grid> = (args: Record<string, any>) => {
     md: args.md,
     lg: args.lg,
     xl: args.xl
-  }
+  } as GridProps)
 
+type DemoDivProps = {
+  children: React.ReactNode
+  extraDemoDivStyles?: string
+}
+type DemoGridItemProps = GridProps & DemoDivProps
+
+const DemoGridItem = (props: DemoGridItemProps) => {
+  const DemoDiv = styled.div<{ extraStyles?: string }>`
+    background: ${colors.yellow};
+    color: ${colors.onyx};
+
+    padding: 5px;
+    line-height: 100px;
+    font-weight: bold;
+    font-size: 2em;
+    text-align: center;
+    ${({ extraStyles }) => extraStyles ?? ''}
+  `
   return (
-    <Grid
-      container
-      wrap={args.wrapContainer}
-      direction={args.directionContainer}
-      justifyContent={args.justifyContentContainer}
-      alignItems={args.alignItemsContainer}
-      zeroMinWidth={args.zeroMinWidthContainer}
-    >
-      <Grid {...itemArgs}>
-        <div style={itemStyles}>1</div>
-      </Grid>
-      <Grid {...itemArgs}>
-        <div style={itemStyles}>2</div>
-      </Grid>
-      <Grid {...itemArgs}>
-        <div style={itemStyles}>3</div>
-      </Grid>
-      <Grid {...itemArgs}>
-        <div style={itemStyles}>4</div>
-      </Grid>
-      <Grid {...itemArgs}>
-        <div style={itemStyles}>
-          5
-          <br />
-          (taller)
-        </div>
-      </Grid>
-      <Grid {...itemArgs}>
-        <div style={itemStyles}>6</div>
-      </Grid>
-      <Grid {...itemArgs}>
-        <div style={itemStyles}>7</div>
-      </Grid>
-      <Grid {...itemArgs}>
-        <div style={itemStyles}>8</div>
-      </Grid>
-      <Grid {...itemArgs}>
-        <div style={itemStyles}>9</div>
-      </Grid>
-      <Grid {...itemArgs}>
-        <div style={{ ...itemStyles, whiteSpace: 'nowrap' }}>
-          10 (this is a wide block)
-        </div>
-      </Grid>
-      <Grid {...itemArgs}>
-        <div style={itemStyles}>11</div>
-      </Grid>
-      <Grid {...itemArgs}>
-        <div style={itemStyles}>12</div>
-      </Grid>
-      <Grid {...itemArgs}>
-        <div style={itemStyles}>13</div>
-      </Grid>
-      <Grid {...itemArgs}>
-        <div style={itemStyles}>14</div>
-      </Grid>
+    <Grid {...props}>
+      <DemoDiv extraStyles={props.extraDemoDivStyles}>{props.children}</DemoDiv>
     </Grid>
   )
 }
 
-export const Default = Template.bind({})
+export default {
+  title: 'Grid',
+  component: Grid,
+  argTypes,
+  subcomponents: { Grid }
+} as ComponentMeta<typeof Grid>
+
+const DefaultTemplate: ComponentStory<typeof Grid> = (
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  args: Record<string, any>
+) => {
+  const containerProps = mapArgsToContainerProps(args)
+  const itemProps = mapArgsToItemProps(args)
+
+  const demoDivsProps: DemoDivProps[] = Array.from({ length: 14 }, (_, i) => ({
+    children: <React.Fragment>{String(i + 1)}</React.Fragment>
+  }))
+  demoDivsProps[4].children = (
+    <React.Fragment>
+      5<br />
+      (taller)
+    </React.Fragment>
+  )
+  demoDivsProps[9] = {
+    children: <span>10 (this is a wide block)</span>,
+    extraDemoDivStyles: 'white-space: nowrap;'
+  }
+
+  return (
+    <Grid {...containerProps}>
+      {demoDivsProps.map((demoDivProps) => (
+        <DemoGridItem
+          key={demoDivProps.children?.toString()}
+          {...itemProps}
+          {...demoDivProps}
+        ></DemoGridItem>
+      ))}
+    </Grid>
+  )
+}
+
+export const Default = DefaultTemplate.bind({})
 Default.args = {
   wrapContainer: 'wrap',
   directionContainer: 'row',
