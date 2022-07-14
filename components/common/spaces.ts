@@ -26,6 +26,11 @@ export const spaces = {
 export const NUM_TOTAL_GRID_COLUMNS = 12
 
 /**
+ * Number of pixels (px) per grid spacing unit
+ */
+export const GRID_SPACING_PX_UNIT = 8
+
+/**
  * Possible breakpoint values
  */
 export type BREAKPOINT = 'xs' | 'sm' | 'md' | 'lg' | 'xl'

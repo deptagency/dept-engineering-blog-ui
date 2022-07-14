@@ -12,6 +12,8 @@ export type GridJustifyContent =
   | 'space-evenly'
 export type GridAlignItems = GridBaseAlignment | 'baseline' | 'stretch'
 
+export type GridSpacing = number | Partial<Record<BREAKPOINT, number>>
+
 export interface GridProps extends Partial<Record<BREAKPOINT, GridFlexBasis>> {
   container?: boolean
   item?: boolean
@@ -19,5 +21,8 @@ export interface GridProps extends Partial<Record<BREAKPOINT, GridFlexBasis>> {
   direction?: GridDirection
   justifyContent?: GridJustifyContent
   alignItems?: GridAlignItems
+  spacing?: GridSpacing
+  rowSpacing?: GridSpacing
+  columnSpacing?: GridSpacing
   zeroMinWidth?: boolean
 }

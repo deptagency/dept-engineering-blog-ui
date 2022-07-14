@@ -58,7 +58,16 @@ const argTypes = {
     'justifyContent',
     justifyContentOptions
   ),
-  alignItems: generateSelectArgType('alignItems', alignItemsOptions)
+  alignItems: generateSelectArgType('alignItems', alignItemsOptions),
+  spacing: disabledArgType,
+  rowSpacing: {
+    name: 'Row Spacing',
+    control: { type: 'object' }
+  },
+  columnSpacing: {
+    name: 'Column Spacing',
+    control: { type: 'object' }
+  }
 }
 
 const mapArgsToContainerProps = (args: Record<string, unknown>) =>
@@ -68,6 +77,8 @@ const mapArgsToContainerProps = (args: Record<string, unknown>) =>
     direction: args.directionContainer,
     justifyContent: args.justifyContentContainer,
     alignItems: args.alignItemsContainer,
+    rowSpacing: args.rowSpacing,
+    columnSpacing: args.columnSpacing,
     zeroMinWidth: args.zeroMinWidthContainer
   } as GridProps)
 
@@ -161,9 +172,57 @@ Default.args = {
   direction: 'row',
   justifyContent: 'flex-start',
   alignItems: 'flex-start',
+  rowSpacing: { xs: 1, md: 3 },
+  columnSpacing: { xs: 1, sm: 2, lg: 4 },
   zeroMinWidth: false,
   xs: 6,
   sm: 4,
   md: 3,
   lg: 2
 } as typeof Default.args
+
+const NestedTemplate: ComponentStory<typeof Grid> = (
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  args: Record<string, any>
+) => {
+  const containerProps = mapArgsToContainerProps(args)
+  const subContainerProps: GridProps = {
+    ...mapArgsToContainerProps(args),
+    item: true,
+    xs: 12
+  }
+  const itemProps = mapArgsToItemProps(args)
+
+  return (
+    <Grid {...containerProps}>
+      <Grid {...subContainerProps}>
+        <DemoGridItem {...itemProps}>1</DemoGridItem>
+        <DemoGridItem {...itemProps}>2</DemoGridItem>
+        <DemoGridItem {...itemProps}>3</DemoGridItem>
+      </Grid>
+      <Grid {...subContainerProps}>
+        <DemoGridItem {...itemProps}>4</DemoGridItem>
+        <DemoGridItem {...itemProps}>5</DemoGridItem>
+      </Grid>
+      <Grid {...subContainerProps}>
+        <DemoGridItem {...itemProps}>6</DemoGridItem>
+      </Grid>
+    </Grid>
+  )
+}
+
+export const Nested = NestedTemplate.bind({})
+Nested.args = {
+  wrapContainer: 'wrap',
+  directionContainer: 'row',
+  justifyContentContainer: 'space-around',
+  alignItemsContainer: 'flex-start',
+  zeroMinWidthContainer: false,
+  direction: 'row',
+  justifyContent: 'flex-start',
+  alignItems: 'flex-start',
+  rowSpacing: 1,
+  columnSpacing: 1,
+  zeroMinWidth: false,
+  xs: 4
+} as typeof Nested.args
