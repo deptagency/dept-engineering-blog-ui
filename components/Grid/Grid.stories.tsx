@@ -151,12 +151,8 @@ const DefaultTemplate: ComponentStory<typeof Grid> = (
 
   return (
     <Grid {...containerProps}>
-      {demoDivsProps.map((demoDivProps) => (
-        <DemoGridItem
-          key={demoDivProps.children?.toString()}
-          {...itemProps}
-          {...demoDivProps}
-        ></DemoGridItem>
+      {demoDivsProps.map((demoDivProps, i) => (
+        <DemoGridItem key={i} {...itemProps} {...demoDivProps}></DemoGridItem>
       ))}
     </Grid>
   )
