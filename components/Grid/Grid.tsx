@@ -6,31 +6,36 @@ import {
   NUM_TOTAL_GRID_COLUMNS
 } from '@components/common/spaces'
 
-import { GridProps } from './Grid.model'
+import { GridFlexBasis, GridProps } from './Grid.model'
 
-const getMediaQueryLabel = (breakpoint: BREAKPOINT) =>
-  `@media (min-width: ${BREAKPOINTS[breakpoint]}px)`
+const getWrappedMediaQueryRule = (breakpoint: BREAKPOINT, rule: string) =>
+  `
+  @media (min-width: ${BREAKPOINTS[breakpoint]}px) {
+    ${rule}
+  }`
 
 const getFlexBasis = (numColumns: number) =>
   Math.min((numColumns / NUM_TOTAL_GRID_COLUMNS) * 100, 100)
 
-const getMediaQueriesWithFlexBasis = (
-  numColumnsByBreakpoint: Partial<Record<BREAKPOINT, number>>
+const getAllFlexBasisStyles = (
+  numColumnsByBreakpoint: Partial<Record<BREAKPOINT, GridFlexBasis>>
 ) => {
-  let queries = ''
+  let styles = ''
 
   let breakpoint: BREAKPOINT
   for (breakpoint in BREAKPOINTS) {
     const numColumns = numColumnsByBreakpoint[breakpoint]
     if (numColumns) {
-      queries += `
-      ${getMediaQueryLabel(breakpoint)} {
-        flex: 0 0 ${getFlexBasis(numColumns)}%
-      }`
+      const flexBasis =
+        numColumns === 'auto' ? numColumns : `${getFlexBasis(numColumns)}%`
+      styles += getWrappedMediaQueryRule(
+        breakpoint,
+        `flex-basis: ${flexBasis};`
+      )
     }
   }
 
-  return queries
+  return styles
 }
 
 export const Grid = styled.div<GridProps>((inProps: GridProps) => {
@@ -58,5 +63,8 @@ export const Grid = styled.div<GridProps>((inProps: GridProps) => {
       width: 100%;`
   }
 
-  return `${baseStyles}${getMediaQueriesWithFlexBasis(props)}`
+  return `${baseStyles}
+    flex-grow: 0;
+    flex-shrink: 0;
+    ${getAllFlexBasisStyles(props)}`
 })

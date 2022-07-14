@@ -1,5 +1,6 @@
 import { BREAKPOINT } from '@components/common/spaces'
 
+export type GridFlexBasis = number | 'auto'
 export type GridDirection = 'row' | 'row-reverse' | 'column' | 'column-reverse'
 export type GridWrap = 'nowrap' | 'wrap' | 'wrap-reverse'
 
@@ -11,7 +12,7 @@ export type GridJustifyContent =
   | 'space-evenly'
 export type GridAlignItems = GridBaseAlignment | 'baseline' | 'stretch'
 
-export interface GridProps extends Partial<Record<BREAKPOINT, number>> {
+export interface GridProps extends Partial<Record<BREAKPOINT, GridFlexBasis>> {
   container?: boolean
   item?: boolean
   wrap?: GridWrap
