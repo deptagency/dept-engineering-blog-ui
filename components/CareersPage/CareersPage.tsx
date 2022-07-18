@@ -6,7 +6,6 @@ import { Header } from '@components/Header'
 import { Layout } from '@components/Layout'
 import { SEO } from '@components/meta/seo'
 import { ISeoImage } from '@components/meta/seoImage'
-import { Heading } from '@components/typography/Headings'
 
 import {
   CareersPageHeading,
