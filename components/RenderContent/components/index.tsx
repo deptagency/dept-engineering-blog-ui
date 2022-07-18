@@ -6,7 +6,7 @@ import { colors } from '@components/common/colors'
 import { fullBleedImageStyles, imageCaptionStyles } from './image'
 import { blockquoteStyles } from './blockquote'
 import { preformattedTextStyles } from './performatted-text'
-import { linkStyles } from './link'
+import { getLinkStyles } from './link'
 import { h1Styles, h2Styles, h3Styles, h4Styles, h5Styles } from './headings'
 import { tableStyles } from './table'
 import { horizontalRuleStyles } from './horizontal-rule'
@@ -49,7 +49,7 @@ export const ContentSection = styled.section`
 
   ${blockquoteStyles}
   ${preformattedTextStyles}
-  ${linkStyles}
+  ${getLinkStyles()}
 
   li {
     word-break: break-word;
