@@ -29,17 +29,12 @@ const getContainerWidthAndMarginOffsets = (
   let horizontalRules = ''
   if (columnPx) {
     horizontalRules = `width: calc(100% + ${columnPx}px);
-      margin-left: ${columnPx / -2}px;
-      margin-right: ${columnPx / -2}px;`
+      margin-left: ${columnPx * -1}px;`
   } else if (useExplicitWidth) {
     horizontalRules = 'width: 100%;'
   }
 
-  const verticalRules = rowPx
-    ? `
-      margin-top: ${rowPx / -2}px;
-      margin-bottom: ${rowPx / -2}px;`
-    : ''
+  const verticalRules = rowPx ? `margin-top: ${rowPx * -1}px;` : ''
 
   return `${horizontalRules}${verticalRules}`
 }
@@ -85,16 +80,9 @@ const getItemPadding = (
   const rowPx = getSpacingInPx(rowSpacing)
   const columnPx = getSpacingInPx(columnSpacing)
 
-  const horizontalPadding = columnPx
-    ? `padding-left: ${columnPx / 2}px;
-      padding-right: ${columnPx / 2}px;`
-    : ''
+  const horizontalPadding = columnPx ? `padding-left: ${columnPx}px;` : ''
 
-  const verticalPadding = rowPx
-    ? `
-      padding-top: ${rowPx / 2}px;
-      padding-bottom: ${rowPx / 2}px;`
-    : ''
+  const verticalPadding = rowPx ? `padding-top: ${rowPx}px;` : ''
 
   return `${horizontalPadding}${verticalPadding}`
 }
