@@ -1,16 +1,23 @@
 import Image from 'next/image'
 import styled from '@emotion/styled'
 
-import { BREAKPOINTS, spaces } from '@components/common/spaces'
-import { Grid } from '@components/Grid'
 import { colors } from '@components/common/colors'
+import {
+  BREAKPOINT,
+  BREAKPOINTS,
+  getWrappedMediaQueryRule,
+  spaces
+} from '@components/common/spaces'
+import { Grid } from '@components/Grid'
 import { getLinkStyles } from '@components/RenderContent/components/link'
 import { Heading } from '@components/typography/Headings'
 import { Subheading } from '@components/typography/Subheadings'
 
 import {
+  CareersPageContactViewProps,
   CareersPageHeadingProps,
-  CareersPageImageHeight,
+  CareersPageHeightProfile,
+  CareersPageHeightProfiles,
   CareersPageImageProps,
   CareersPageSplitViewProps,
   CareersPageSubheadingsProps
@@ -64,13 +71,17 @@ export const CareersPageSplitView = ({
   inverted,
   extraTopPadding,
   extraBottomPadding,
+  additionalWrapperStyles,
+  containerGridProps,
   leftGridProps,
+  rightGridProps,
   leftContents,
   rightContents
 }: CareersPageSplitViewProps) => {
   const CareersPageSplitViewWrapper = styled.div<{
     extraTopPadding?: boolean
     extraBottomPadding?: boolean
+    additionalWrapperStyles?: string
   }>`
     ${(props) => {
       const top = props.extraTopPadding ? spaces.xl : spaces.lg
@@ -85,19 +96,28 @@ export const CareersPageSplitView = ({
         return `padding: ${top}px 0 ${bottom}px`
       }};
     }
+
+    ${additionalWrapperStyles ?? ''}
   `
 
   const splitView = (
     <CareersPageSplitViewWrapper
       extraTopPadding={extraTopPadding}
       extraBottomPadding={extraBottomPadding}
+      additionalWrapperStyles={additionalWrapperStyles}
       className="grid-wrapper"
     >
-      <Grid className="grid-inner" container spacing={3}>
+      <Grid
+        className="grid-inner"
+        container
+        rowSpacing={3}
+        columnSpacing={6}
+        {...containerGridProps}
+      >
         <Grid item xs={12} md={6} {...leftGridProps}>
           {leftContents}
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={6} {...rightGridProps}>
           {rightContents}
         </Grid>
       </Grid>
@@ -105,7 +125,10 @@ export const CareersPageSplitView = ({
   )
 
   if (inverted) {
-    return <div style={{ background: colors.onyx }}>{splitView}</div>
+    const OnyxDiv = styled.div`
+      background: ${colors.onyx};
+    `
+    return <OnyxDiv>{splitView}</OnyxDiv>
   }
 
   return splitView
@@ -115,17 +138,33 @@ export const CareersPageImage = ({
   src,
   alt,
   quality,
-  height
+  heightProfile
 }: CareersPageImageProps) => {
   const CareersPageImageWrapper = styled.div<{
-    height: CareersPageImageHeight
+    heightProfile: CareersPageHeightProfile
   }>`
     position: relative;
-    ${({ height }) => `height: ${height}px;`};
+    ${({ heightProfile }) => {
+      let heightRules = ''
+      let breakpoint: BREAKPOINT
+      for (breakpoint in heightProfile) {
+        heightRules += getWrappedMediaQueryRule(
+          breakpoint,
+          `height: ${heightProfile[breakpoint]}px;`
+        )
+      }
+      return heightRules
+    }}
   `
 
   return (
-    <CareersPageImageWrapper height={height ?? CareersPageImageHeight.REGULAR}>
+    <CareersPageImageWrapper
+      heightProfile={
+        heightProfile
+          ? CareersPageHeightProfiles[heightProfile]
+          : CareersPageHeightProfiles.REGULAR
+      }
+    >
       <Image
         src={src}
         alt={alt}
@@ -134,5 +173,49 @@ export const CareersPageImage = ({
         objectFit="cover"
       />
     </CareersPageImageWrapper>
+  )
+}
+
+export const CareersPageContactView = ({
+  leftContents,
+  rightContents
+}: CareersPageContactViewProps) => {
+  const linearGradientStyle = `${colors.onyx} 0%, ${colors.onyx} 50%, ${colors.purple} 50%, ${colors.purple} 100%`
+  const CareersPageContactViewWrapper = styled.div`
+    background: linear-gradient(to bottom, ${linearGradientStyle});
+    @media (min-width: ${BREAKPOINTS.md}px) {
+      background: linear-gradient(to right, ${linearGradientStyle});
+    }
+  `
+
+  let wrapperStyles = ''
+  const heightProfile = CareersPageHeightProfiles.REGULAR
+  let breakpoint: BREAKPOINT
+  for (breakpoint in heightProfile) {
+    const rule = `height: ${heightProfile[breakpoint]}px;`
+    wrapperStyles += getWrappedMediaQueryRule(
+      breakpoint,
+      breakpoint === 'xs' || breakpoint === 'sm'
+        ? `& > div {
+          ${rule}
+        }`
+        : `${rule}
+        & > div {
+          height: auto
+        }`
+    )
+  }
+
+  return (
+    <CareersPageContactViewWrapper>
+      <CareersPageSplitView
+        extraTopPadding
+        extraBottomPadding
+        additionalWrapperStyles={wrapperStyles}
+        containerGridProps={{ alignItems: 'center', rowSpacing: 12 }}
+        leftContents={leftContents}
+        rightContents={rightContents}
+      ></CareersPageSplitView>
+    </CareersPageContactViewWrapper>
   )
 }

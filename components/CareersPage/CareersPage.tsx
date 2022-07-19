@@ -8,12 +8,12 @@ import { SEO } from '@components/meta/seo'
 import { ISeoImage } from '@components/meta/seoImage'
 
 import {
+  CareersPageContactView,
   CareersPageHeading,
   CareersPageImage,
   CareersPageSplitView,
   CareersPageSubheadings
 } from './components'
-import { CareersPageImageHeight } from './components.model'
 
 interface CareersPageProps {
   cmsData: {
@@ -35,8 +35,10 @@ export function Careers({ cmsData }: CareersPageProps) {
       <Layout
         {...{ settings, bodyClass }}
         header={<Header {...{ settings }} />}
+        errorClass="no-bottom-padding"
       >
         <CareersPageSplitView
+          extraBottomPadding
           leftGridProps={{
             container: true,
             direction: 'column',
@@ -48,7 +50,12 @@ export function Careers({ cmsData }: CareersPageProps) {
                 Careers in Engineering
               </CareersPageHeading>
               <div>
-                <Button.Cta as="a">Explore Open Roles</Button.Cta>
+                <Button.Cta
+                  as="a"
+                  href="https://www.deptagency.com/careers/roles/"
+                >
+                  Explore Open Roles
+                </Button.Cta>
               </div>
             </>
           }
@@ -162,7 +169,7 @@ export function Careers({ cmsData }: CareersPageProps) {
         <Grid container>
           <Grid item xs={12} md={6}>
             <CareersPageImage
-              height={CareersPageImageHeight.TALL}
+              heightProfile="TALL"
               src="/images/careers/book.jpg"
               alt={
                 'Person reading the book "Confessions of an Heiress" by Paris Hilton'
@@ -172,7 +179,7 @@ export function Careers({ cmsData }: CareersPageProps) {
           </Grid>
           <Grid item xs={12} md={6}>
             <CareersPageImage
-              height={CareersPageImageHeight.TALL}
+              heightProfile="TALL"
               src="/images/careers/backpack.jpg"
               alt={
                 'Person smiling while wearing a backpack with Steve Harvey’s laughing face printed in a pattern'
@@ -182,11 +189,23 @@ export function Careers({ cmsData }: CareersPageProps) {
           </Grid>
         </Grid>
 
-        <CareersPageImage
+        {/* TODO: Add "More About DEPT®" view and then uncomment the photo below */}
+        {/* <CareersPageImage
           src="/images/careers/desk.jpg"
           alt="Desk with laptop, coffee, magazine, skateboard, and toy"
           quality={nextImages.quality}
-        />
+        /> */}
+
+        <CareersPageContactView
+          leftContents={
+            <CareersPageHeading inverted>Interested?</CareersPageHeading>
+          }
+          rightContents={
+            <CareersPageSubheadings inverted>
+              <a href="https://www.deptagency.com/careers">Get in touch</a>
+            </CareersPageSubheadings>
+          }
+        ></CareersPageContactView>
       </Layout>
     </>
   )
