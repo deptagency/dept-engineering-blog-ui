@@ -46,3 +46,12 @@ export const BREAKPOINTS: Record<BREAKPOINT, number> = {
   lg: 1200,
   xl: MAX_WIDTH
 }
+
+export const getWrappedMediaQueryRule = (
+  breakpoint: BREAKPOINT,
+  rule: string
+) =>
+  `
+  @media (min-width: ${BREAKPOINTS[breakpoint]}px) {
+    ${rule}
+  }`

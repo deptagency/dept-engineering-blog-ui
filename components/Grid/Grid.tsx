@@ -4,16 +4,11 @@ import {
   BREAKPOINT,
   BREAKPOINTS,
   GRID_SPACING_PX_UNIT,
-  NUM_TOTAL_GRID_COLUMNS
+  NUM_TOTAL_GRID_COLUMNS,
+  getWrappedMediaQueryRule
 } from '@components/common/spaces'
 
 import { GridFlexBasis, GridProps, GridSpacing } from './Grid.model'
-
-const getWrappedMediaQueryRule = (breakpoint: BREAKPOINT, rule: string) =>
-  `
-  @media (min-width: ${BREAKPOINTS[breakpoint]}px) {
-    ${rule}
-  }`
 
 const getSpacingInPx = (spacing: number | undefined) =>
   spacing !== undefined ? spacing * GRID_SPACING_PX_UNIT : undefined
