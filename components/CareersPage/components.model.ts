@@ -30,6 +30,8 @@ export const CareersPagePaddingProfiles: Record<
 export type CareersPagePaddingProfile = keyof typeof CareersPagePaddingProfiles
 
 export interface CareersPageSplitViewProps {
+  excludeGridWrapperClass?: boolean
+  excludeGridInnerClass?: boolean
   inverted?: boolean
   topPadding?: CareersPagePaddingProfile
   bottomPadding?: CareersPagePaddingProfile

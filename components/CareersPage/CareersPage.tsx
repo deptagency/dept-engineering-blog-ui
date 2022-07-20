@@ -1,7 +1,6 @@
 import { GhostPostOrPage, GhostSettings } from '@lib/ghost'
 
 import { Button } from '@components/Button'
-import { Grid } from '@components/Grid'
 import { Header } from '@components/Header'
 import { Layout } from '@components/Layout'
 import { SEO } from '@components/meta/seo'
@@ -167,8 +166,13 @@ export function Careers({ cmsData }: CareersPageProps) {
           }
         />
 
-        <Grid container>
-          <Grid item xs={12} md={6}>
+        <CareersPageSplitView
+          excludeGridWrapperClass
+          excludeGridInnerClass
+          topPadding="NONE"
+          bottomPadding="NONE"
+          containerGridProps={{ rowSpacing: 0, columnSpacing: 0 }}
+          leftContents={
             <CareersPageImage
               heightProfile="TALL_IMAGE"
               src="/images/careers/book.jpg"
@@ -177,8 +181,8 @@ export function Careers({ cmsData }: CareersPageProps) {
               }
               quality={nextImages.quality}
             />
-          </Grid>
-          <Grid item xs={12} md={6}>
+          }
+          rightContents={
             <CareersPageImage
               heightProfile="TALL_IMAGE"
               src="/images/careers/backpack.jpg"
@@ -187,8 +191,8 @@ export function Careers({ cmsData }: CareersPageProps) {
               }
               quality={nextImages.quality}
             />
-          </Grid>
-        </Grid>
+          }
+        ></CareersPageSplitView>
 
         <CareersPageExpandableSectionsView
           leftContents={

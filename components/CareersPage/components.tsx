@@ -95,6 +95,8 @@ export const CareersPageSubheadings = ({
 }
 
 export const CareersPageSplitView = ({
+  excludeGridWrapperClass,
+  excludeGridInnerClass,
   inverted,
   topPadding = 'REGULAR',
   bottomPadding = 'REGULAR',
@@ -148,10 +150,10 @@ export const CareersPageSplitView = ({
       topPadding={topPadding}
       bottomPadding={bottomPadding}
       additionalWrapperStyles={additionalWrapperStyles}
-      className="grid-wrapper"
+      className={!excludeGridWrapperClass ? 'grid-wrapper' : ''}
     >
       <Grid
-        className="grid-inner"
+        className={!excludeGridInnerClass ? 'grid-inner' : ''}
         container
         rowSpacing={3}
         columnSpacing={6}
@@ -293,25 +295,21 @@ export const CareersPageContactView = ({
   rightContents
 }: CareersPageContactViewProps) => {
   const linearGradientStyle = `${colors.onyx} 0%, ${colors.onyx} 50%, ${colors.purple} 50%, ${colors.purple} 100%`
-  const CareersPageContactViewWrapper = styled.div`
-    background: linear-gradient(to bottom, ${linearGradientStyle});
-    @media (min-width: ${BREAKPOINTS.md}px) {
-      background: linear-gradient(to right, ${linearGradientStyle});
-    }
-  `
-
-  const wrapperStyles = getHeightStylesForWrapper('REGULAR', 'auto')
+  const wrapperStyles = `${getHeightStylesForWrapper('REGULAR', 'auto')}
+  background: linear-gradient(to bottom, ${linearGradientStyle});
+  @media (min-width: ${BREAKPOINTS.md}px) {
+    background: linear-gradient(to right, ${linearGradientStyle});
+  }`
 
   return (
-    <CareersPageContactViewWrapper>
-      <CareersPageSplitView
-        topPadding="LARGE"
-        bottomPadding="LARGE"
-        additionalWrapperStyles={wrapperStyles}
-        containerGridProps={{ alignItems: 'center', rowSpacing: 12 }}
-        leftContents={leftContents}
-        rightContents={rightContents}
-      ></CareersPageSplitView>
-    </CareersPageContactViewWrapper>
+    <CareersPageSplitView
+      excludeGridWrapperClass
+      topPadding="LARGE"
+      bottomPadding="LARGE"
+      additionalWrapperStyles={wrapperStyles}
+      containerGridProps={{ alignItems: 'center', rowSpacing: 12 }}
+      leftContents={leftContents}
+      rightContents={rightContents}
+    ></CareersPageSplitView>
   )
 }
