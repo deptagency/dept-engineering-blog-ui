@@ -5,8 +5,7 @@ import { colors } from '@components/common/colors'
 import {
   BREAKPOINT,
   BREAKPOINTS,
-  getWrappedMediaQueryRule,
-  spaces
+  getWrappedMediaQueryRule
 } from '@components/common/spaces'
 import { Grid } from '@components/Grid'
 import { getLinkStyles } from '@components/RenderContent/components/link'
@@ -15,13 +14,41 @@ import { Subheading } from '@components/typography/Subheadings'
 
 import {
   CareersPageContactViewProps,
+  CareersPageExpandableSectionsViewProps,
   CareersPageHeadingProps,
   CareersPageHeightProfile,
   CareersPageHeightProfiles,
   CareersPageImageProps,
+  CareersPagePaddingProfile,
+  CareersPagePaddingProfiles,
   CareersPageSplitViewProps,
   CareersPageSubheadingsProps
 } from './components.model'
+
+const getHeightStylesForWrapper = (
+  heightProfile: CareersPageHeightProfile,
+  defaultInnerGridHeight: string
+) => {
+  let styles = ''
+  const heightProfileVal = CareersPageHeightProfiles[heightProfile]
+  let breakpoint: BREAKPOINT
+  for (breakpoint in heightProfileVal) {
+    const rule = `height: ${heightProfileVal[breakpoint]}px;`
+    styles += getWrappedMediaQueryRule(
+      breakpoint,
+      breakpoint === 'xs' || breakpoint === 'sm'
+        ? `& > .grid-inner {
+        ${rule}
+      }`
+        : `${rule}
+      & > .grid-inner {
+        height: ${defaultInnerGridHeight};
+      }`
+    )
+  }
+
+  return styles
+}
 
 export const CareersPageHeading = ({
   as = 'h2',
@@ -69,8 +96,8 @@ export const CareersPageSubheadings = ({
 
 export const CareersPageSplitView = ({
   inverted,
-  extraTopPadding,
-  extraBottomPadding,
+  topPadding = 'REGULAR',
+  bottomPadding = 'REGULAR',
   additionalWrapperStyles,
   containerGridProps,
   leftGridProps,
@@ -79,31 +106,47 @@ export const CareersPageSplitView = ({
   rightContents
 }: CareersPageSplitViewProps) => {
   const CareersPageSplitViewWrapper = styled.div<{
-    extraTopPadding?: boolean
-    extraBottomPadding?: boolean
+    topPadding: CareersPagePaddingProfile
+    bottomPadding: CareersPagePaddingProfile
     additionalWrapperStyles?: string
   }>`
     ${(props) => {
-      const top = props.extraTopPadding ? spaces.xl : spaces.lg
-      const bottom = props.extraBottomPadding ? spaces.xl : spaces.lg
-      return `padding: ${top}px 0 ${bottom}px`
-    }};
+      let styles = ''
+      const topPaddingProfile = CareersPagePaddingProfiles[props.topPadding]
+      const bottomPaddingProfile =
+        CareersPagePaddingProfiles[props.bottomPadding]
 
-    @media (min-width: ${BREAKPOINTS.md}px) {
-      ${(props) => {
-        const top = props.extraTopPadding ? spaces.xxxxl : spaces.xxl
-        const bottom = props.extraBottomPadding ? spaces.xxxxl : spaces.xxl
-        return `padding: ${top}px 0 ${bottom}px`
-      }};
-    }
+      let breakpoint: BREAKPOINT
+      for (breakpoint in BREAKPOINTS) {
+        const topPaddingForBreakpoint =
+          typeof topPaddingProfile === 'object'
+            ? topPaddingProfile[breakpoint]
+            : undefined
+        const bottomPaddingForBreakpoint =
+          typeof bottomPaddingProfile === 'object'
+            ? bottomPaddingProfile[breakpoint]
+            : undefined
 
-    ${additionalWrapperStyles ?? ''}
+        let rulesForBreakpoint =
+          topPaddingForBreakpoint !== undefined
+            ? `padding-top: ${topPaddingForBreakpoint}px;`
+            : ''
+        if (bottomPaddingForBreakpoint !== undefined) {
+          rulesForBreakpoint += `
+          padding-bottom: ${bottomPaddingForBreakpoint}px;`
+        }
+        styles += getWrappedMediaQueryRule(breakpoint, rulesForBreakpoint)
+      }
+
+      styles += props.additionalWrapperStyles ?? ''
+      return styles
+    }}
   `
 
   const splitView = (
     <CareersPageSplitViewWrapper
-      extraTopPadding={extraTopPadding}
-      extraBottomPadding={extraBottomPadding}
+      topPadding={topPadding}
+      bottomPadding={bottomPadding}
       additionalWrapperStyles={additionalWrapperStyles}
       className="grid-wrapper"
     >
@@ -146,11 +189,12 @@ export const CareersPageImage = ({
     position: relative;
     ${({ heightProfile }) => {
       let heightRules = ''
+      const heightProfileVal = CareersPageHeightProfiles[heightProfile]
       let breakpoint: BREAKPOINT
-      for (breakpoint in heightProfile) {
+      for (breakpoint in heightProfileVal) {
         heightRules += getWrappedMediaQueryRule(
           breakpoint,
-          `height: ${heightProfile[breakpoint]}px;`
+          `height: ${heightProfileVal[breakpoint]}px;`
         )
       }
       return heightRules
@@ -158,13 +202,7 @@ export const CareersPageImage = ({
   `
 
   return (
-    <CareersPageImageWrapper
-      heightProfile={
-        heightProfile
-          ? CareersPageHeightProfiles[heightProfile]
-          : CareersPageHeightProfiles.REGULAR
-      }
-    >
+    <CareersPageImageWrapper heightProfile={heightProfile ?? 'REGULAR'}>
       <Image
         src={src}
         alt={alt}
@@ -173,6 +211,54 @@ export const CareersPageImage = ({
         objectFit="cover"
       />
     </CareersPageImageWrapper>
+  )
+}
+
+export const CareersPageExpandableSectionsView = ({
+  leftContents,
+  sections,
+  moreText,
+  closeText
+}: CareersPageExpandableSectionsViewProps) => {
+  const wrapperStyles = getHeightStylesForWrapper(
+    'TALL_EXPANDABLE_SECTIONS',
+    '100%'
+  )
+
+  return (
+    <CareersPageSplitView
+      topPadding="NONE"
+      bottomPadding="NONE"
+      additionalWrapperStyles={wrapperStyles}
+      leftContents={leftContents}
+      rightGridProps={{
+        container: true
+      }}
+      rightContents={
+        <>
+          <Grid item xs={12} md={6}>
+            <Heading.Two
+              as="h3"
+              // $color={inverted ? 'white' : undefined}
+              responsive
+              noMargin
+            >
+              {sections[0].title}
+            </Heading.Two>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Heading.Two
+              as="h3"
+              // $color={inverted ? 'white' : undefined}
+              responsive
+              noMargin
+            >
+              {sections[1].title}
+            </Heading.Two>
+          </Grid>
+        </>
+      }
+    ></CareersPageSplitView>
   )
 }
 
@@ -188,29 +274,13 @@ export const CareersPageContactView = ({
     }
   `
 
-  let wrapperStyles = ''
-  const heightProfile = CareersPageHeightProfiles.REGULAR
-  let breakpoint: BREAKPOINT
-  for (breakpoint in heightProfile) {
-    const rule = `height: ${heightProfile[breakpoint]}px;`
-    wrapperStyles += getWrappedMediaQueryRule(
-      breakpoint,
-      breakpoint === 'xs' || breakpoint === 'sm'
-        ? `& > div {
-          ${rule}
-        }`
-        : `${rule}
-        & > div {
-          height: auto
-        }`
-    )
-  }
+  const wrapperStyles = getHeightStylesForWrapper('REGULAR', 'auto')
 
   return (
     <CareersPageContactViewWrapper>
       <CareersPageSplitView
-        extraTopPadding
-        extraBottomPadding
+        topPadding="LARGE"
+        bottomPadding="LARGE"
         additionalWrapperStyles={wrapperStyles}
         containerGridProps={{ alignItems: 'center', rowSpacing: 12 }}
         leftContents={leftContents}

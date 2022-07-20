@@ -1,12 +1,38 @@
-import { ElementType } from 'react'
+import React, { ElementType } from 'react'
 
 import { GridProps } from '@components/Grid'
-import { BREAKPOINT } from '@components/common/spaces'
+import { BREAKPOINT, spaces } from '@components/common/spaces'
+import { Colors } from '@components/common/colors'
+
+export type CareersPageAmountsByBreakpoint = Partial<Record<BREAKPOINT, number>>
+
+export const CareersPagePaddingProfiles: Record<
+  string,
+  CareersPageAmountsByBreakpoint
+> = {
+  NONE: {
+    xs: spaces.none
+  },
+  REGULAR: {
+    xs: spaces.lg,
+    md: spaces.xxl
+  },
+  MEDIUM: {
+    xs: spaces.lg,
+    md: spaces.xxxxl
+  },
+  LARGE: {
+    xs: spaces.xl,
+    md: spaces.xxxxxl
+  }
+}
+
+export type CareersPagePaddingProfile = keyof typeof CareersPagePaddingProfiles
 
 export interface CareersPageSplitViewProps {
   inverted?: boolean
-  extraTopPadding?: boolean
-  extraBottomPadding?: boolean
+  topPadding?: CareersPagePaddingProfile
+  bottomPadding?: CareersPagePaddingProfile
   additionalWrapperStyles?: string
   containerGridProps?: GridProps
   leftGridProps?: GridProps
@@ -26,33 +52,50 @@ export interface CareersPageSubheadingsProps extends CareersPageHeadingProps {
   children: React.ReactNode | React.ReactNode[]
 }
 
-export type CareersPageHeightProfile = Partial<Record<BREAKPOINT, number>>
+export interface CareersPageExpandableSection {
+  color: Colors
+  title: string
+  contents: React.ReactNode
+}
+
+export interface CareersPageExpandableSectionsViewProps {
+  leftContents: React.ReactNode
+  sections: CareersPageExpandableSection[]
+  moreText: string
+  closeText: string
+}
 
 export const CareersPageHeightProfiles: Record<
   string,
-  CareersPageHeightProfile
+  CareersPageAmountsByBreakpoint
 > = {
   REGULAR: {
     xs: 300,
-    sm: 450,
+    sm: 400,
     md: 600
   },
-  TALL: {
+  TALL_IMAGE: {
     xs: 400,
     sm: 600,
     md: 700,
     lg: 800
+  },
+  TALL_EXPANDABLE_SECTIONS: {
+    xs: 600,
+    md: 800
   }
 }
+
+export type CareersPageHeightProfile = keyof typeof CareersPageHeightProfiles
 
 export interface CareersPageImageProps {
   src: string
   alt?: string
   quality?: string | number
-  heightProfile?: keyof typeof CareersPageHeightProfiles
+  heightProfile?: CareersPageHeightProfile
 }
 
 export interface CareersPageContactViewProps {
-  leftContents?: React.ReactNode
-  rightContents?: React.ReactNode
+  leftContents: React.ReactNode
+  rightContents: React.ReactNode
 }

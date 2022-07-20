@@ -9,6 +9,7 @@ import { ISeoImage } from '@components/meta/seoImage'
 
 import {
   CareersPageContactView,
+  CareersPageExpandableSectionsView,
   CareersPageHeading,
   CareersPageImage,
   CareersPageSplitView,
@@ -38,7 +39,7 @@ export function Careers({ cmsData }: CareersPageProps) {
         errorClass="no-bottom-padding"
       >
         <CareersPageSplitView
-          extraBottomPadding
+          bottomPadding="MEDIUM"
           leftGridProps={{
             container: true,
             direction: 'column',
@@ -78,7 +79,7 @@ export function Careers({ cmsData }: CareersPageProps) {
         />
 
         <CareersPageSplitView
-          extraTopPadding
+          topPadding="LARGE"
           leftContents={
             <CareersPageHeading>
               Happy Employees == Happy Clients
@@ -99,7 +100,7 @@ export function Careers({ cmsData }: CareersPageProps) {
         />
 
         <CareersPageSplitView
-          extraBottomPadding
+          bottomPadding="LARGE"
           leftContents={<CareersPageHeading>How we work</CareersPageHeading>}
           rightContents={
             <CareersPageSubheadings>
@@ -122,8 +123,8 @@ export function Careers({ cmsData }: CareersPageProps) {
         />
 
         <CareersPageSplitView
-          extraTopPadding
-          extraBottomPadding
+          topPadding="LARGE"
+          bottomPadding="LARGE"
           inverted
           leftContents={
             <CareersPageHeading inverted>
@@ -189,12 +190,36 @@ export function Careers({ cmsData }: CareersPageProps) {
           </Grid>
         </Grid>
 
-        {/* TODO: Add "More About DEPT®" view and then uncomment the photo below */}
-        {/* <CareersPageImage
+        <CareersPageExpandableSectionsView
+          leftContents={
+            <CareersPageHeading>More about DEPT®</CareersPageHeading>
+          }
+          sections={[
+            {
+              color: 'platinum',
+              title: 'Why Join DEPT®?',
+              contents: <p>Content for Why Join DEPT®?</p>
+            },
+            {
+              color: 'white',
+              title: 'Who We Are',
+              contents: <p>Content for Who We Are</p>
+            },
+            {
+              color: 'onyx',
+              title: 'Extra stuff',
+              contents: <p>Content for Extra Stuff</p>
+            }
+          ]}
+          moreText="More"
+          closeText="Close"
+        />
+
+        <CareersPageImage
           src="/images/careers/desk.jpg"
           alt="Desk with laptop, coffee, magazine, skateboard, and toy"
           quality={nextImages.quality}
-        /> */}
+        />
 
         <CareersPageContactView
           leftContents={
