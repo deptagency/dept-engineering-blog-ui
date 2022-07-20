@@ -170,7 +170,7 @@ export function Careers({ cmsData }: CareersPageProps) {
         <Grid container>
           <Grid item xs={12} md={6}>
             <CareersPageImage
-              heightProfile="TALL"
+              heightProfile="TALL_IMAGE"
               src="/images/careers/book.jpg"
               alt={
                 'Person reading the book "Confessions of an Heiress" by Paris Hilton'
@@ -180,7 +180,7 @@ export function Careers({ cmsData }: CareersPageProps) {
           </Grid>
           <Grid item xs={12} md={6}>
             <CareersPageImage
-              heightProfile="TALL"
+              heightProfile="TALL_IMAGE"
               src="/images/careers/backpack.jpg"
               alt={
                 'Person smiling while wearing a backpack with Steve Harvey’s laughing face printed in a pattern'

@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import styled from '@emotion/styled'
 
-import { colors } from '@components/common/colors'
+import { Colors, colors } from '@components/common/colors'
 import {
   BREAKPOINT,
   BREAKPOINTS,
@@ -220,42 +220,68 @@ export const CareersPageExpandableSectionsView = ({
   moreText,
   closeText
 }: CareersPageExpandableSectionsViewProps) => {
-  const wrapperStyles = getHeightStylesForWrapper(
+  const wrapperStyles = `${getHeightStylesForWrapper(
     'TALL_EXPANDABLE_SECTIONS',
     '100%'
-  )
+  )}
+  & > .grid-inner > div { height: 100%; }`
+
+  const StyledGrid = styled(Grid)<{ height?: string }>`
+    ${({ height }) => `${height ? `height: ${height};` : ''}`};
+  `
+
+  const StyledDiv = styled.div<{ height?: string; backgroundColor?: Colors }>`
+    ${({ height, backgroundColor }) => `${height ? `height: ${height};` : ''}
+    ${backgroundColor ? `background: ${colors[backgroundColor]}` : ''}`};
+  `
 
   return (
     <CareersPageSplitView
       topPadding="NONE"
       bottomPadding="NONE"
       additionalWrapperStyles={wrapperStyles}
+      containerGridProps={{ rowSpacing: 0, columnSpacing: 0 }}
       leftContents={leftContents}
       rightGridProps={{
         container: true
       }}
       rightContents={
         <>
-          <Grid item xs={12} md={6}>
-            <Heading.Two
-              as="h3"
-              // $color={inverted ? 'white' : undefined}
-              responsive
-              noMargin
-            >
-              {sections[0].title}
-            </Heading.Two>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <Heading.Two
-              as="h3"
-              // $color={inverted ? 'white' : undefined}
-              responsive
-              noMargin
-            >
-              {sections[1].title}
-            </Heading.Two>
-          </Grid>
+          <StyledGrid height="100%" item xs={12} md={6}>
+            <StyledDiv height="100%" backgroundColor="platinum">
+              <Heading.Two
+                as="h3"
+                // $color={inverted ? 'white' : undefined}
+                responsive
+                noMargin
+              >
+                {sections[0].title}
+              </Heading.Two>
+            </StyledDiv>
+          </StyledGrid>
+          <StyledGrid height="100%" item direction="column" xs={12} md={6}>
+            <StyledDiv height="50%" backgroundColor="white">
+              <Heading.Two
+                as="h3"
+                // $color={inverted ? 'white' : undefined}
+                responsive
+                noMargin
+              >
+                {sections[1].title}
+              </Heading.Two>
+            </StyledDiv>
+            <StyledDiv height="50%" backgroundColor="onyx">
+              <Heading.Two
+                as="h3"
+                $color="white"
+                // $color={inverted ? 'white' : undefined}
+                responsive
+                noMargin
+              >
+                {sections[2].title}
+              </Heading.Two>
+            </StyledDiv>
+          </StyledGrid>
         </>
       }
     ></CareersPageSplitView>
