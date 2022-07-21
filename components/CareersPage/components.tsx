@@ -268,8 +268,8 @@ export const CareersPageExpandableSectionsView = ({
           className="careers-expandable-sections__section-preview background-platinum"
           item
           container
-          direction="column"
           justifyContent="space-between"
+          alignItems="center"
           xs={12}
           md={6}
         >
@@ -278,22 +278,22 @@ export const CareersPageExpandableSectionsView = ({
         </Grid>
         <Grid item direction="column" xs={12} md={6}>
           <Grid
-            className="careers-expandable-sections__section-preview careers-expandable-sections__section-preview-half"
+            className="careers-expandable-sections__section-preview-half"
             item
             container
-            direction="column"
             justifyContent="space-between"
+            alignItems="center"
             xs={12}
           >
             <CareersPageHeadingTwo>{sections[1].title}</CareersPageHeadingTwo>
             <CareersPageSubheadings>{moreText}</CareersPageSubheadings>
           </Grid>
           <Grid
-            className="careers-expandable-sections__section-preview careers-expandable-sections__section-preview-half background-onyx"
+            className="careers-expandable-sections__section-preview-half background-onyx"
             item
             container
-            direction="column"
             justifyContent="space-between"
+            alignItems="center"
             xs={12}
           >
             <CareersPageHeadingTwo inverted>

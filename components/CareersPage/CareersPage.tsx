@@ -198,18 +198,18 @@ export function Careers({ cmsData }: CareersPageProps) {
           sections={[
             {
               color: 'platinum',
-              title: 'Why Join DEPT®?',
-              contents: <p>Content for Why Join DEPT®?</p>
+              title: 'Why join DEPT®?',
+              contents: <p>Content for Why join DEPT®?</p>
             },
             {
               color: 'white',
-              title: 'Who We Are',
-              contents: <p>Content for Who We Are</p>
+              title: 'Who we are',
+              contents: <p>Content for Who we are</p>
             },
             {
               color: 'onyx',
               title: 'Extra stuff',
-              contents: <p>Content for Extra Stuff</p>
+              contents: <p>Content for Extra stuff</p>
             }
           ]}
           moreText="More"
