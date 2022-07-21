@@ -10,15 +10,21 @@ import { StyledHeader, StyledHeaderContent } from './components'
 interface HeaderProps {
   settings: GhostSettings
   isHome?: boolean
+  isCareersPage?: boolean
   content?: {
     title?: string
     description?: string
   }
 }
 
-export const Header = ({ settings, isHome, content }: HeaderProps) => (
+export const Header = ({
+  settings,
+  isHome,
+  isCareersPage,
+  content
+}: HeaderProps) => (
   <StyledHeader>
-    <SiteNav {...{ settings }} />
+    <SiteNav {...{ settings, isCareersPage }} />
     {content && (
       <div className="grid-wrapper">
         <Grid className="grid-inner" container>

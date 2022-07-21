@@ -37,7 +37,7 @@ export function Careers({ cmsData }: CareersPageProps) {
       <SEO {...{ settings, meta_title, meta_description, seoImage }} />
       <Layout
         {...{ settings, bodyClass }}
-        header={<Header {...{ settings }} />}
+        header={<Header {...{ settings }} isCareersPage />}
         errorClass="no-bottom-padding"
       >
         <CareersPageWrappedSplitView
