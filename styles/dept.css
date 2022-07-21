@@ -378,6 +378,37 @@ html.casper .site-archive-header .no-image .author-header {
   padding-bottom: 10px;
 }
 
+/* Careers Page */
+html.casper .careers-expandable-sections__left-grid,
+html.casper .careers-expandable-sections__section-preview {
+  padding: 48px 24px;
+}
+
+@media (min-width: 900px) {
+  html.casper .careers-expandable-sections__left-grid {
+    padding: 64px 24px 64px calc(100vw / 12);
+  }
+  html.casper .careers-expandable-sections__right-grid {
+    padding-right: calc(100vw / 12);
+  }
+  html.casper .careers-expandable-sections__section-preview {
+    padding: 64px 24px;
+    height: 800px;
+  }
+  html.casper .careers-expandable-sections__section-preview-half {
+    height: 400px;
+  }
+}
+
+html.casper .careers-contact {
+  background: linear-gradient(to bottom, var(--onyx) 0%, var(--onyx) 50%, var(--purple) 50%, var(--purple) 100%);
+}
+
+@media (min-width: 900px) {
+  html.casper .careers-contact {
+    background: linear-gradient(to right, var(--onyx) 0%, var(--onyx) 50%, var(--purple) 50%, var(--purple) 100%);
+  }
+}
 
 /* Error Pages - 404 */
 html.casper .error-code {
@@ -449,4 +480,13 @@ html.casper .error-code-wrap {
     padding: 10vh 0 0 10vh;
     width: 50%;
   }
+}
+
+/* Backgrounds */
+.background-onyx {
+  background: var(--onyx);
+}
+
+.background-platinum {
+  background: var(--platinum);
 }

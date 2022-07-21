@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import { GhostPostOrPage, GhostSettings } from '@lib/ghost'
 
 import { Button } from '@components/Button'
@@ -12,7 +14,8 @@ import {
   CareersPageHeading,
   CareersPageImage,
   CareersPageSplitView,
-  CareersPageSubheadings
+  CareersPageSubheadings,
+  CareersPageWrappedSplitView
 } from './components'
 
 interface CareersPageProps {
@@ -37,7 +40,7 @@ export function Careers({ cmsData }: CareersPageProps) {
         header={<Header {...{ settings }} />}
         errorClass="no-bottom-padding"
       >
-        <CareersPageSplitView
+        <CareersPageWrappedSplitView
           bottomPadding="MEDIUM"
           leftGridProps={{
             container: true,
@@ -50,12 +53,9 @@ export function Careers({ cmsData }: CareersPageProps) {
                 Careers in Engineering
               </CareersPageHeading>
               <div>
-                <Button.Cta
-                  as="a"
-                  href="https://www.deptagency.com/careers/roles/"
-                >
-                  Explore Open Roles
-                </Button.Cta>
+                <Link href="https://www.deptagency.com/careers/roles/">
+                  <Button.Cta as="a">Explore Open Roles</Button.Cta>
+                </Link>
               </div>
             </>
           }
@@ -77,7 +77,7 @@ export function Careers({ cmsData }: CareersPageProps) {
           quality={nextImages.quality}
         />
 
-        <CareersPageSplitView
+        <CareersPageWrappedSplitView
           topPadding="LARGE"
           leftContents={
             <CareersPageHeading>
@@ -98,7 +98,7 @@ export function Careers({ cmsData }: CareersPageProps) {
           }
         />
 
-        <CareersPageSplitView
+        <CareersPageWrappedSplitView
           bottomPadding="LARGE"
           leftContents={<CareersPageHeading>How we work</CareersPageHeading>}
           rightContents={
@@ -121,7 +121,7 @@ export function Careers({ cmsData }: CareersPageProps) {
           }
         />
 
-        <CareersPageSplitView
+        <CareersPageWrappedSplitView
           topPadding="LARGE"
           bottomPadding="LARGE"
           inverted
@@ -167,14 +167,11 @@ export function Careers({ cmsData }: CareersPageProps) {
         />
 
         <CareersPageSplitView
-          excludeGridWrapperClass
-          excludeGridInnerClass
-          topPadding="NONE"
-          bottomPadding="NONE"
+          innerClassNames=""
           containerGridProps={{ rowSpacing: 0, columnSpacing: 0 }}
           leftContents={
             <CareersPageImage
-              heightProfile="TALL_IMAGE"
+              heightProfile="TALL"
               src="/images/careers/book.jpg"
               alt={
                 'Person reading the book "Confessions of an Heiress" by Paris Hilton'
@@ -184,7 +181,7 @@ export function Careers({ cmsData }: CareersPageProps) {
           }
           rightContents={
             <CareersPageImage
-              heightProfile="TALL_IMAGE"
+              heightProfile="TALL"
               src="/images/careers/backpack.jpg"
               alt={
                 'Person smiling while wearing a backpack with Steve Harvey’s laughing face printed in a pattern'

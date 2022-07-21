@@ -30,17 +30,23 @@ export const CareersPagePaddingProfiles: Record<
 export type CareersPagePaddingProfile = keyof typeof CareersPagePaddingProfiles
 
 export interface CareersPageSplitViewProps {
-  excludeGridWrapperClass?: boolean
-  excludeGridInnerClass?: boolean
-  inverted?: boolean
-  topPadding?: CareersPagePaddingProfile
-  bottomPadding?: CareersPagePaddingProfile
-  additionalWrapperStyles?: string
+  innerClassNames?: string
   containerGridProps?: GridProps
   leftGridProps?: GridProps
   rightGridProps?: GridProps
   leftContents?: React.ReactNode
   rightContents?: React.ReactNode
+  leftClassNames?: string
+  rightClassNames?: string
+}
+
+export interface CareersPageWrappedSplitViewProps
+  extends CareersPageSplitViewProps {
+  wrapperClassNames?: string
+  wrapperExtraStyles?: string
+  inverted?: boolean
+  topPadding?: CareersPagePaddingProfile
+  bottomPadding?: CareersPagePaddingProfile
 }
 
 export interface CareersPageHeadingProps {
@@ -76,15 +82,11 @@ export const CareersPageHeightProfiles: Record<
     sm: 400,
     md: 600
   },
-  TALL_IMAGE: {
+  TALL: {
     xs: 400,
     sm: 600,
     md: 700,
     lg: 800
-  },
-  TALL_EXPANDABLE_SECTIONS: {
-    xs: 600,
-    md: 800
   }
 }
 
