@@ -252,8 +252,7 @@ export const CareersPageImage = ({
 export const CareersPageExpandableSectionsView = ({
   leftContents,
   sections,
-  moreText,
-  closeText
+  moreText
 }: CareersPageExpandableSectionsViewProps) => (
   <CareersPageSplitView
     innerClassNames=""
