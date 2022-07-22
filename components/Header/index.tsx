@@ -22,26 +22,30 @@ export const Header = ({
   isHome,
   isCareersPage,
   content
-}: HeaderProps) => (
-  <StyledHeader>
-    <SiteNav {...{ settings, isCareersPage }} />
-    {content && (
-      <div className="grid-wrapper">
-        <Grid className="grid-inner" container>
-          <Grid item xs={12} md={10} lg={8}>
-            <StyledHeaderContent isHome={isHome}>
-              {content.title && (
-                <Heading.One responsive={isHome} noMargin>
-                  {content.title}
-                </Heading.One>
-              )}
-              {content.description && (
-                <Subheading.Two>{content.description}</Subheading.Two>
-              )}
-            </StyledHeaderContent>
+}: HeaderProps) => {
+  const showCareersNudge =
+    settings.processEnv.enableCareersPage && !isCareersPage
+  return (
+    <StyledHeader showCareersNudge={showCareersNudge}>
+      <SiteNav {...{ settings, showCareersNudge, isCareersPage }} />
+      {content && (
+        <div className="grid-wrapper">
+          <Grid className="grid-inner" container>
+            <Grid item xs={12} md={10} lg={8}>
+              <StyledHeaderContent isHome={isHome}>
+                {content.title && (
+                  <Heading.One responsive={isHome} noMargin>
+                    {content.title}
+                  </Heading.One>
+                )}
+                {content.description && (
+                  <Subheading.Two>{content.description}</Subheading.Two>
+                )}
+              </StyledHeaderContent>
+            </Grid>
           </Grid>
-        </Grid>
-      </div>
-    )}
-  </StyledHeader>
-)
+        </div>
+      )}
+    </StyledHeader>
+  )
+}

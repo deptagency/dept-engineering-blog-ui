@@ -7,17 +7,20 @@ import { Navigation } from '@components/Navigation'
 import { SubscribeButton } from '@components/Subscribe/button'
 
 import {
+  CareersPageNudge,
   NavContainer,
   NavContent,
   NavLeft,
   NavLeftWrapper,
   NavRight,
+  StyledIconWrapper,
   StyledSiteNav
 } from './components'
 import { LogoLink } from './LogoLink'
 
 export interface SiteNavProps {
   settings: GhostSettings
+  showCareersNudge?: boolean
   isCareersPage?: boolean
 }
 
@@ -26,7 +29,11 @@ interface SiteNavConfig {
   addNavigation: NavItem[]
 }
 
-export const SiteNav = ({ settings, isCareersPage }: SiteNavProps) => {
+export const SiteNav = ({
+  settings,
+  showCareersNudge = false,
+  isCareersPage = false
+}: SiteNavProps) => {
   const {
     processEnv: { customNavigation, memberSubscriptions },
     secondary_navigation,
@@ -72,12 +79,14 @@ export const SiteNav = ({ settings, isCareersPage }: SiteNavProps) => {
           url: '/',
           label: (
             <Grid container wrap="nowrap" alignItems="center" columnSpacing={2}>
-              <Image
-                alt="Back Arrow"
-                src="/icons/arrow-left.svg"
-                height="12"
-                width="18"
-              />
+              <StyledIconWrapper>
+                <Image
+                  alt=""
+                  src="/icons/arrow-left.svg"
+                  height="12"
+                  width="18"
+                />
+              </StyledIconWrapper>
               <span>Back to the DEPT® Developer Community</span>
             </Grid>
           )
@@ -95,7 +104,8 @@ export const SiteNav = ({ settings, isCareersPage }: SiteNavProps) => {
   )
 
   return (
-    <NavContainer>
+    <NavContainer showCareersNudge={showCareersNudge}>
+      {showCareersNudge && <CareersPageNudge></CareersPageNudge>}
       <StyledSiteNav>
         <NavLeftWrapper>
           <NavLeft>
