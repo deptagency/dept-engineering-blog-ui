@@ -71,7 +71,7 @@ export const SiteNav = ({ settings, isCareersPage }: SiteNavProps) => {
         {
           url: '/',
           label: (
-            <Grid container alignItems="center" columnSpacing={2}>
+            <Grid container wrap="nowrap" alignItems="center" columnSpacing={2}>
               <Image
                 alt="Back Arrow"
                 src="/icons/arrow-left.svg"

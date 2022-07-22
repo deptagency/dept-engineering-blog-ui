@@ -75,6 +75,7 @@ export function Careers({ cmsData }: CareersPageProps) {
           src="/imgs/careers/stroopy-mascot.webp"
           alt="Stroopy mascot"
           quality={nextImages.quality}
+          priority
         />
 
         <CareersPageWrappedSplitView

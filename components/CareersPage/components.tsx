@@ -216,6 +216,7 @@ export const CareersPageImage = ({
   src,
   alt,
   quality,
+  priority,
   heightProfile
 }: CareersPageImageProps) => {
   const CareersPageImageWrapper = styled.div<{
@@ -242,6 +243,7 @@ export const CareersPageImage = ({
         src={src}
         alt={alt}
         quality={quality}
+        priority={priority}
         layout="fill"
         objectFit="cover"
       />

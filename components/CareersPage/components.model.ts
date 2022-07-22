@@ -96,6 +96,7 @@ export interface CareersPageImageProps {
   src: string
   alt?: string
   quality?: string | number
+  priority?: boolean
   heightProfile?: CareersPageHeightProfile
 }
 
