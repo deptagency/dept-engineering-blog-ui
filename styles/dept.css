@@ -385,12 +385,14 @@ html.casper .careers-expandable-sections__section-preview-half {
   padding: 48px 24px;
 }
 
+html.casper .careers-expandable-sections__section-preview-half-container {
+  flex-grow: 1;
+  max-width: none;
+}
+
 @media (min-width: 900px) {
   html.casper .careers-expandable-sections__left-grid {
     padding: 64px 24px 64px calc(100vw / 12);
-  }
-  html.casper .careers-expandable-sections__right-grid {
-    padding-right: calc(100vw / 12);
   }
   html.casper .careers-expandable-sections__section-preview,
   html.casper .careers-expandable-sections__section-preview-half {
@@ -400,9 +402,30 @@ html.casper .careers-expandable-sections__section-preview-half {
   }
   html.casper .careers-expandable-sections__section-preview {
     height: 800px;
+    /* 360px = 1440px / 4 */
+    max-width: 360px;
   }
   html.casper .careers-expandable-sections__section-preview-half {
     height: 400px;
+  }
+}
+
+@media (min-width: 1440px) {
+  html.casper .careers-expandable-sections__left-grid {
+    /* Explanation for calc(50vw - 600px)
+      1440px = max wrapper width
+      720px = half of the max wrapper width
+      120px = 1440px / 12 = the "gutter" used when screen width = max wrapper width (ie, 100% / 12)
+      600px = 720px - 120px = remaining space for content = 5/12 of the grid at 1440px */
+    padding: 64px 24px 64px calc(50vw - 600px);
+  }
+  html.casper .careers-expandable-sections__section-preview-half {
+    /* Explanation for calc(50w - 696px)
+      360px = 1440px / 4 = max width of section preview tile
+      24px = padding on each side of section preview tile
+      336px = 360px - 24px = remaining space for right section preview tile 
+      696px = 360px + 336px = space for left & right section preview tiles */
+    padding-right: calc(50vw - 696px);
   }
 }
 

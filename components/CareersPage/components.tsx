@@ -276,7 +276,13 @@ export const CareersPageExpandableSectionsView = ({
           <CareersPageHeadingTwo>{sections[0].title}</CareersPageHeadingTwo>
           <CareersPageSubheadings>{moreText}</CareersPageSubheadings>
         </Grid>
-        <Grid item direction="column" xs={12} md={6}>
+        <Grid
+          item
+          direction="column"
+          xs={12}
+          md={6}
+          className="careers-expandable-sections__section-preview-half-container"
+        >
           <Grid
             className="careers-expandable-sections__section-preview-half"
             item
@@ -311,13 +317,14 @@ export const CareersPageContactView = ({
   leftContents,
   rightContents
 }: CareersPageContactViewProps) => (
-  <CareersPageWrappedSplitView
-    wrapperClassNames="careers-contact"
-    wrapperExtraStyles={getHeightStylesForWrapper('REGULAR')}
-    topPadding="LARGE"
-    bottomPadding="LARGE"
-    containerGridProps={{ alignItems: 'center', rowSpacing: 12 }}
-    leftContents={leftContents}
-    rightContents={rightContents}
-  />
+  <div className="careers-contact">
+    <CareersPageWrappedSplitView
+      wrapperExtraStyles={getHeightStylesForWrapper('REGULAR')}
+      topPadding="LARGE"
+      bottomPadding="LARGE"
+      containerGridProps={{ alignItems: 'center', rowSpacing: 12 }}
+      leftContents={leftContents}
+      rightContents={rightContents}
+    ></CareersPageWrappedSplitView>
+  </div>
 )
