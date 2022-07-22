@@ -72,7 +72,7 @@ export function Careers({ cmsData }: CareersPageProps) {
         />
 
         <CareersPageImage
-          src="/images/careers/stroopy-mascot.webp"
+          src="/imgs/careers/stroopy-mascot.webp"
           alt="Stroopy mascot"
           quality={nextImages.quality}
         />
@@ -172,7 +172,7 @@ export function Careers({ cmsData }: CareersPageProps) {
           leftContents={
             <CareersPageImage
               heightProfile="TALL"
-              src="/images/careers/book.jpg"
+              src="/imgs/careers/book.jpg"
               alt={
                 'Person reading the book "Confessions of an Heiress" by Paris Hilton'
               }
@@ -182,7 +182,7 @@ export function Careers({ cmsData }: CareersPageProps) {
           rightContents={
             <CareersPageImage
               heightProfile="TALL"
-              src="/images/careers/backpack.jpg"
+              src="/imgs/careers/backpack.jpg"
               alt={
                 'Person smiling while wearing a backpack with Steve Harvey’s laughing face printed in a pattern'
               }
@@ -217,7 +217,7 @@ export function Careers({ cmsData }: CareersPageProps) {
         />
 
         <CareersPageImage
-          src="/images/careers/desk.jpg"
+          src="/imgs/careers/desk.jpg"
           alt="Desk with laptop, coffee, magazine, skateboard, and toy"
           quality={nextImages.quality}
         />
