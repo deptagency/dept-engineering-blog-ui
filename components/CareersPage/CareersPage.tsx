@@ -53,7 +53,7 @@ export function Careers({ cmsData }: CareersPageProps) {
                 Careers in Engineering
               </CareersPageHeading>
               <div>
-                <Link href="https://www.deptagency.com/careers/roles/">
+                <Link href="https://www.deptagency.com/careers/roles/" passHref>
                   <Button.Cta as="a">Explore Open Roles</Button.Cta>
                 </Link>
               </div>
