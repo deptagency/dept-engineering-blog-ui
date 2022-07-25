@@ -428,7 +428,7 @@ export const CareersPageContactView = ({
         containerGridProps={{ alignItems: 'center', rowSpacing: 12 }}
         leftContents={leftContents}
         rightContents={
-          <CareersPageSubheadings inverted>
+          <CareersPageSubheadings inverted as="div">
             <Link href="https://www.deptagency.com/careers" passHref>
               <Grid
                 className="careers-contact__link"
