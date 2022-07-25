@@ -118,7 +118,7 @@ export const CareersPageNudge = () => {
         as="a"
       >
         <span>Happy Employees == Happy Clients</span>
-        <Subheading.Two noMargin $color="white">
+        <Subheading.Two noMargin $color="white" as="span">
           CAREERS AT DEPT®
         </Subheading.Two>
         <StyledIconWrapper>
