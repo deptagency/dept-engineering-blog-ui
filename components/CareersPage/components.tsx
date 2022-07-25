@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Modal from 'react-modal'
 import styled from '@emotion/styled'
 
 import {
@@ -14,6 +15,7 @@ import { Subheading } from '@components/typography/Subheadings'
 import {
   CareersPageContactViewProps,
   CareersPageExpandableSectionsViewProps,
+  CareersPageExpandedSectionProps,
   CareersPageHeadingProps,
   CareersPageHeightProfile,
   CareersPageHeightProfiles,
@@ -24,6 +26,8 @@ import {
   CareersPageSubheadingsProps,
   CareersPageWrappedSplitViewProps
 } from './components.model'
+
+Modal.setAppElement('#__next')
 
 const getHeightStylesForWrapper = (heightProfile: CareersPageHeightProfile) => {
   let styles = ''
@@ -274,6 +278,7 @@ export const CareersPageExpandableSectionsView = ({
           alignItems="center"
           xs={12}
           md={6}
+          onClick={sections[0].onExpand}
         >
           <CareersPageHeadingTwo>{sections[0].title}</CareersPageHeadingTwo>
           <CareersPageSubheadings>{moreText}</CareersPageSubheadings>
@@ -292,6 +297,7 @@ export const CareersPageExpandableSectionsView = ({
             justifyContent="space-between"
             alignItems="center"
             xs={12}
+            onClick={sections[1].onExpand}
           >
             <CareersPageHeadingTwo>{sections[1].title}</CareersPageHeadingTwo>
             <CareersPageSubheadings>{moreText}</CareersPageSubheadings>
@@ -303,6 +309,7 @@ export const CareersPageExpandableSectionsView = ({
             justifyContent="space-between"
             alignItems="center"
             xs={12}
+            onClick={sections[2].onExpand}
           >
             <CareersPageHeadingTwo inverted>
               {sections[2].title}
@@ -314,6 +321,42 @@ export const CareersPageExpandableSectionsView = ({
     }
   ></CareersPageSplitView>
 )
+
+export const CareersPageExpandedSection = ({
+  expandedSection,
+  onClose
+}: CareersPageExpandedSectionProps) => {
+  const modalStyles: Modal.Styles = {
+    content: {
+      inset: 0,
+      padding: 0,
+      height: '100%',
+      background: undefined,
+      border: undefined,
+      borderRadius: undefined,
+      outline: undefined
+    },
+    overlay: { background: undefined, zIndex: 2000 }
+  }
+
+  return (
+    <Modal
+      isOpen={expandedSection !== undefined}
+      onRequestClose={onClose}
+      contentLabel={expandedSection?.title}
+      style={modalStyles}
+      className={`background-${expandedSection?.color}`}
+    >
+      {expandedSection && (
+        <div className="grid-wrapper">
+          <CareersPageHeading inverted={expandedSection.inverted}>
+            {expandedSection.title}
+          </CareersPageHeading>
+        </div>
+      )}
+    </Modal>
+  )
+}
 
 export const CareersPageContactView = ({
   leftContents,

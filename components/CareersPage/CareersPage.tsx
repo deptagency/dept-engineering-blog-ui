@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { useState } from 'react'
 
 import { GhostPostOrPage, GhostSettings } from '@lib/ghost'
 
@@ -11,12 +12,14 @@ import { ISeoImage } from '@components/meta/seoImage'
 import {
   CareersPageContactView,
   CareersPageExpandableSectionsView,
+  CareersPageExpandedSection,
   CareersPageHeading,
   CareersPageImage,
   CareersPageSplitView,
   CareersPageSubheadings,
   CareersPageWrappedSplitView
 } from './components'
+import { CareersPageExpandableSection } from './components.model'
 
 interface CareersPageProps {
   cmsData: {
@@ -31,6 +34,32 @@ export function Careers({ cmsData }: CareersPageProps) {
   const { page, settings, seoImage, bodyClass } = cmsData
   const { meta_title, meta_description } = page
   const { nextImages } = settings.processEnv
+
+  const [expandedSection, setExpandedSection] = useState<number | undefined>(
+    undefined
+  )
+
+  const sections: CareersPageExpandableSection[] = [
+    {
+      color: 'platinum',
+      title: 'Why join DEPT®?',
+      onExpand: () => setExpandedSection(0),
+      contents: <p>Content for Why join DEPT®?</p>
+    },
+    {
+      color: 'white',
+      title: 'Who we are',
+      onExpand: () => setExpandedSection(1),
+      contents: <p>Content for Who we are</p>
+    },
+    {
+      inverted: true,
+      color: 'onyx',
+      title: 'Extra stuff',
+      onExpand: () => setExpandedSection(2),
+      contents: <p>Content for Extra stuff</p>
+    }
+  ]
 
   return (
     <>
@@ -196,25 +225,8 @@ export function Careers({ cmsData }: CareersPageProps) {
           leftContents={
             <CareersPageHeading>More about DEPT®</CareersPageHeading>
           }
-          sections={[
-            {
-              color: 'platinum',
-              title: 'Why join DEPT®?',
-              contents: <p>Content for Why join DEPT®?</p>
-            },
-            {
-              color: 'white',
-              title: 'Who we are',
-              contents: <p>Content for Who we are</p>
-            },
-            {
-              color: 'onyx',
-              title: 'Extra stuff',
-              contents: <p>Content for Extra stuff</p>
-            }
-          ]}
+          sections={sections}
           moreText="More"
-          closeText="Close"
         />
 
         <CareersPageImage
@@ -234,6 +246,12 @@ export function Careers({ cmsData }: CareersPageProps) {
           }
         ></CareersPageContactView>
       </Layout>
+      <CareersPageExpandedSection
+        expandedSection={
+          expandedSection !== undefined ? sections[expandedSection] : undefined
+        }
+        onClose={() => setExpandedSection(undefined)}
+      ></CareersPageExpandedSection>
     </>
   )
 }

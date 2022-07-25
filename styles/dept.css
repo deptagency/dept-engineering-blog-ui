@@ -385,6 +385,11 @@ html.casper .careers-expandable-sections__section-preview-half {
   padding: 48px 24px;
 }
 
+html.casper .careers-expandable-sections__section-preview,
+html.casper .careers-expandable-sections__section-preview-half {
+  cursor: pointer;
+}
+
 html.casper .careers-expandable-sections__section-preview-half-container {
   flex-grow: 1;
   max-width: none;
@@ -518,4 +523,8 @@ html.casper .error-code-wrap {
 
 .background-platinum {
   background: var(--platinum);
+}
+
+.background-white {
+  background: #fff;
 }

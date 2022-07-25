@@ -61,16 +61,22 @@ export interface CareersPageSubheadingsProps extends CareersPageHeadingProps {
 }
 
 export interface CareersPageExpandableSection {
+  inverted?: boolean
   color: Colors
   title: string
+  onExpand: () => void
   contents: React.ReactNode
 }
 
 export interface CareersPageExpandableSectionsViewProps {
   leftContents: React.ReactNode
-  sections: CareersPageExpandableSection[]
+  sections: Exclude<CareersPageExpandableSection, 'contents'>[]
   moreText: string
-  closeText: string
+}
+
+export interface CareersPageExpandedSectionProps {
+  expandedSection: CareersPageExpandableSection | undefined
+  onClose: () => void
 }
 
 export const CareersPageHeightProfiles: Record<
