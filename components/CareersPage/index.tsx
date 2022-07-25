@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { GhostPostOrPage, GhostSettings } from '@lib/ghost'
 
@@ -38,6 +38,11 @@ export function Careers({ cmsData }: CareersPageProps) {
   const [expandedSection, setExpandedSection] = useState<number | undefined>(
     undefined
   )
+
+  useEffect(() => {
+    document.documentElement.style.overflowY =
+      expandedSection !== undefined ? 'hidden' : 'scroll'
+  }, [expandedSection])
 
   return (
     <>
