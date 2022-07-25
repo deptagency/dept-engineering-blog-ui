@@ -109,5 +109,5 @@ export interface CareersPageImageProps {
 
 export interface CareersPageContactViewProps {
   leftContents: React.ReactNode
-  rightContents: React.ReactNode
+  getInTouchText: string
 }

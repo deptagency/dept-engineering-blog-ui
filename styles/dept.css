@@ -448,6 +448,10 @@ html.casper .careers-expanded-section__title {
 html.casper .careers-contact {
   background: linear-gradient(to bottom, var(--onyx) 0%, var(--onyx) 50%, var(--purple) 50%, var(--purple) 100%);
 }
+html.casper .careers-contact__link, html.casper .careers-contact__link:hover {
+  box-shadow: none;
+  transition: none;
+}
 
 @media (min-width: 900px) {
   html.casper .careers-contact {

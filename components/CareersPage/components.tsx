@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import Modal from 'react-modal'
 import styled from '@emotion/styled'
 
@@ -9,6 +10,7 @@ import {
 } from '@components/common/spaces'
 import { Grid } from '@components/Grid'
 import { getLinkStyles } from '@components/RenderContent/components/link'
+import { StyledIconWrapper } from '@components/SiteNav/components'
 import { Heading } from '@components/typography/Headings'
 import { Subheading } from '@components/typography/Subheadings'
 
@@ -415,16 +417,40 @@ export const CareersPageExpandedSection = ({
 
 export const CareersPageContactView = ({
   leftContents,
-  rightContents
-}: CareersPageContactViewProps) => (
-  <div className="careers-contact">
-    <CareersPageWrappedSplitView
-      wrapperExtraStyles={getHeightStylesForWrapper('REGULAR')}
-      topPadding="LARGE"
-      bottomPadding="LARGE"
-      containerGridProps={{ alignItems: 'center', rowSpacing: 12 }}
-      leftContents={leftContents}
-      rightContents={rightContents}
-    ></CareersPageWrappedSplitView>
-  </div>
-)
+  getInTouchText
+}: CareersPageContactViewProps) => {
+  return (
+    <div className="careers-contact">
+      <CareersPageWrappedSplitView
+        wrapperExtraStyles={getHeightStylesForWrapper('REGULAR')}
+        topPadding="LARGE"
+        bottomPadding="LARGE"
+        containerGridProps={{ alignItems: 'center', rowSpacing: 12 }}
+        leftContents={leftContents}
+        rightContents={
+          <CareersPageSubheadings inverted>
+            <Link href="https://www.deptagency.com/careers" passHref>
+              <Grid
+                className="careers-contact__link"
+                container
+                alignItems="center"
+                columnSpacing={2}
+                as="a"
+              >
+                <span>{getInTouchText}</span>
+                <StyledIconWrapper>
+                  <Image
+                    alt=""
+                    src="/icons/arrow-right.svg"
+                    height="12"
+                    width="18"
+                  />
+                </StyledIconWrapper>
+              </Grid>
+            </Link>
+          </CareersPageSubheadings>
+        }
+      ></CareersPageWrappedSplitView>
+    </div>
+  )
+}

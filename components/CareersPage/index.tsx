@@ -223,11 +223,7 @@ export function Careers({ cmsData }: CareersPageProps) {
           leftContents={
             <CareersPageHeading inverted>Interested?</CareersPageHeading>
           }
-          rightContents={
-            <CareersPageSubheadings inverted>
-              <a href="https://www.deptagency.com/careers">Get in touch</a>
-            </CareersPageSubheadings>
-          }
+          getInTouchText="Get in touch"
         ></CareersPageContactView>
       </Layout>
       <CareersPageExpandedSection
