@@ -19,7 +19,7 @@ import {
   CareersPageSubheadings,
   CareersPageWrappedSplitView
 } from './components'
-import { CareersPageExpandableSection } from './components.model'
+import { sections } from './sections'
 
 interface CareersPageProps {
   cmsData: {
@@ -38,28 +38,6 @@ export function Careers({ cmsData }: CareersPageProps) {
   const [expandedSection, setExpandedSection] = useState<number | undefined>(
     undefined
   )
-
-  const sections: CareersPageExpandableSection[] = [
-    {
-      color: 'platinum',
-      title: 'Why join DEPT®?',
-      onExpand: () => setExpandedSection(0),
-      contents: <p>Content for Why join DEPT®?</p>
-    },
-    {
-      color: 'white',
-      title: 'Who we are',
-      onExpand: () => setExpandedSection(1),
-      contents: <p>Content for Who we are</p>
-    },
-    {
-      inverted: true,
-      color: 'onyx',
-      title: 'Extra stuff',
-      onExpand: () => setExpandedSection(2),
-      contents: <p>Content for Extra stuff</p>
-    }
-  ]
 
   return (
     <>
@@ -226,6 +204,7 @@ export function Careers({ cmsData }: CareersPageProps) {
             <CareersPageHeading>More about DEPT®</CareersPageHeading>
           }
           sections={sections}
+          onExpand={(sectionIndex) => setExpandedSection(sectionIndex)}
           moreText="More"
         />
 
@@ -250,6 +229,7 @@ export function Careers({ cmsData }: CareersPageProps) {
         expandedSection={
           expandedSection !== undefined ? sections[expandedSection] : undefined
         }
+        closeText="Close"
         onClose={() => setExpandedSection(undefined)}
       ></CareersPageExpandedSection>
     </>

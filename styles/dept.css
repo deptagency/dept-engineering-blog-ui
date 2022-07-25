@@ -387,12 +387,20 @@ html.casper .careers-expandable-sections__section-preview-half {
 
 html.casper .careers-expandable-sections__section-preview,
 html.casper .careers-expandable-sections__section-preview-half {
-  cursor: pointer;
+  text-align: left;
 }
 
 html.casper .careers-expandable-sections__section-preview-half-container {
   flex-grow: 1;
   max-width: none;
+}
+
+html.casper .careers-expanded-section__close {
+  background: none;
+}
+
+html.casper .careers-expanded-section__title {
+  margin: 24px 0;
 }
 
 @media (min-width: 900px) {
@@ -412,6 +420,9 @@ html.casper .careers-expandable-sections__section-preview-half-container {
   }
   html.casper .careers-expandable-sections__section-preview-half {
     height: 400px;
+  }
+  html.casper .careers-expanded-section__title {
+    margin: 48px 0;
   }
 }
 

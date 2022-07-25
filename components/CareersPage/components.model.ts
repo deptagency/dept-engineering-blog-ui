@@ -64,18 +64,19 @@ export interface CareersPageExpandableSection {
   inverted?: boolean
   color: Colors
   title: string
-  onExpand: () => void
   contents: React.ReactNode
 }
 
 export interface CareersPageExpandableSectionsViewProps {
   leftContents: React.ReactNode
-  sections: Exclude<CareersPageExpandableSection, 'contents'>[]
+  sections: CareersPageExpandableSection[]
+  onExpand: (sectionIndex: number) => void
   moreText: string
 }
 
 export interface CareersPageExpandedSectionProps {
   expandedSection: CareersPageExpandableSection | undefined
+  closeText: string
   onClose: () => void
 }
 
