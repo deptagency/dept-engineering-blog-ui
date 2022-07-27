@@ -33,7 +33,7 @@ export const prism: boolean = true
 export const prismIgnoreMissing: boolean = true
 
 // Careers Page
-export const enableCareersPage: boolean = false
+export const enableCareersPage: boolean = true
 
 // Table of Contents
 export const toc: boolean = true

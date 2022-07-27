@@ -57,7 +57,7 @@ export const PostCardArticle = styled.article<{ isFirstPost?: boolean }>`
   overflow: hidden;
   margin: 0 0 ${spaces.lg}px;
   padding: 0 0 ${spaces.lg}px;
-  min-height: ${spaces.xxxxl}px;
+  min-height: ${spaces.xxxxxl}px;
   background-size: cover;
 
   ${({ isFirstPost }) =>

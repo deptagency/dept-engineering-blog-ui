@@ -1,10 +1,16 @@
 import styled from '@emotion/styled'
 
-import { SITE_NAV_HEIGHT } from '@components/SiteNav/components'
+import {
+  CAREERS_NUDGE_HEIGHT,
+  SITE_NAV_HEIGHT
+} from '@components/SiteNav/components'
 import { spaces } from '@components/common/spaces'
 
-export const StyledHeader = styled.header`
-  padding-top: ${SITE_NAV_HEIGHT}px;
+export const StyledHeader = styled.header<{
+  showCareersNudge?: boolean
+}>`
+  padding-top: ${({ showCareersNudge }) =>
+    SITE_NAV_HEIGHT + (showCareersNudge ? CAREERS_NUDGE_HEIGHT : 0)}px;
 `
 
 export const StyledHeaderContent = styled.div<{ isHome?: boolean }>`

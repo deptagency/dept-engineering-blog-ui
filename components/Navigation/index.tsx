@@ -14,8 +14,12 @@ import { NavList, NavListItem } from './components'
  *
  */
 
+interface CustomNavItem extends Pick<NavItem, 'url'> {
+  label: React.ReactNode
+}
+
 interface NavigationProps {
-  data?: NavItem[]
+  data?: CustomNavItem[]
   isRightNav?: boolean
 }
 

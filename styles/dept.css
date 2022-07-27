@@ -36,7 +36,8 @@ html.casper .post-feed {
 }
 
 /* Single Post Page */
-html.casper .post-template .site-main {
+html.casper .post-template .site-main,
+html.casper .site-main.no-bottom-padding {
   padding-bottom: 0;
 }
 

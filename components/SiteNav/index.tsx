@@ -1,20 +1,27 @@
+import Image from 'next/image'
+
 import { GhostSettings, NavItem } from '@lib/ghost'
 
+import { Grid } from '@components/Grid'
 import { Navigation } from '@components/Navigation'
 import { SubscribeButton } from '@components/Subscribe/button'
 
 import {
+  CareersPageNudge,
   NavContainer,
   NavContent,
   NavLeft,
   NavLeftWrapper,
   NavRight,
+  StyledIconWrapper,
   StyledSiteNav
 } from './components'
 import { LogoLink } from './LogoLink'
 
 export interface SiteNavProps {
   settings: GhostSettings
+  showCareersNudge?: boolean
+  isCareersPage?: boolean
 }
 
 interface SiteNavConfig {
@@ -22,7 +29,11 @@ interface SiteNavConfig {
   addNavigation: NavItem[]
 }
 
-export const SiteNav = ({ settings }: SiteNavProps) => {
+export const SiteNav = ({
+  settings,
+  showCareersNudge = false,
+  isCareersPage = false
+}: SiteNavProps) => {
   const {
     processEnv: { customNavigation, memberSubscriptions },
     secondary_navigation,
@@ -61,8 +72,40 @@ export const SiteNav = ({ settings }: SiteNavProps) => {
     )
   }
 
+  const NavRightChildren = isCareersPage ? (
+    <Navigation
+      data={[
+        {
+          url: '/',
+          label: (
+            <Grid container wrap="nowrap" alignItems="center" columnSpacing={2}>
+              <StyledIconWrapper>
+                <Image
+                  alt="Left arrow"
+                  src="/icons/arrow-left.svg"
+                  height="12"
+                  width="18"
+                />
+              </StyledIconWrapper>
+              <span>Back to the DEPT® Developer Community</span>
+            </Grid>
+          )
+        }
+      ]}
+      isRightNav
+    />
+  ) : (
+    <>
+      {secondary_navigation && secondary_navigation.length > 0 && (
+        <Navigation data={secondary_navigation} isRightNav />
+      )}
+      {memberSubscriptions && <SubscribeButton {...{ lang }} />}
+    </>
+  )
+
   return (
-    <NavContainer>
+    <NavContainer showCareersNudge={showCareersNudge}>
+      {showCareersNudge && <CareersPageNudge></CareersPageNudge>}
       <StyledSiteNav>
         <NavLeftWrapper>
           <NavLeft>
@@ -74,12 +117,7 @@ export const SiteNav = ({ settings }: SiteNavProps) => {
             )}
           </NavLeft>
         </NavLeftWrapper>
-        <NavRight>
-          {secondary_navigation && secondary_navigation.length > 0 && (
-            <Navigation data={secondary_navigation} isRightNav />
-          )}
-          {memberSubscriptions && <SubscribeButton {...{ lang }} />}
-        </NavRight>
+        <NavRight>{NavRightChildren}</NavRight>
       </StyledSiteNav>
     </NavContainer>
   )
