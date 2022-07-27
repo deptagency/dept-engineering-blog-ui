@@ -60,6 +60,9 @@
       "@pages/*": [
         "pages/*"
       ],
+      "@imgs/*": [
+        "public/imgs/*"
+      ],
       "@styles/*": [
         "styles/*"
       ],

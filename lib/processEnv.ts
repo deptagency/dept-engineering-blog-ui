@@ -114,7 +114,10 @@ export const processEnv: ProcessEnvProps = {
       appConfig.prismIgnoreMissing
     )
   },
-  enableCareersPage: appConfig.enableCareersPage,
+  enableCareersPage: resolveBool(
+    process.env.ENABLE_CAREERS_PAGE,
+    appConfig.enableCareersPage
+  ),
   toc: {
     enable: resolveBool(process.env.JAMIFY_TOC, appConfig.toc),
     maxDepth: resolveNumber(

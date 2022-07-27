@@ -54,6 +54,7 @@
         "group-ordering": [
           { "name": "project paths", "match": "^@(lib|appConfig|routesConfig|dashboard|pages|mediaConfig|siteConfig|siteOptions|utils)", "order": 20 },
           { "name": "stylesheets path", "match": "^@styles", "order": 20 },
+          { "name": "images path", "match": "^@imgs", "order": 20 },
           { "name": "components paths", "match": "^@(components|meta|common|icons|effects|helpers)", "order": 30 },
           { "name": "parent directories", "match": "^\\.\\.", "order": 40 },
           { "name": "current directory", "match": "^\\.", "order": 50 },
