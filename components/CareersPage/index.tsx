@@ -2,6 +2,11 @@ import Link from 'next/link'
 
 import { GhostPostOrPage, GhostSettings } from '@lib/ghost'
 
+import backpack from '@imgs/careers/backpack.jpg'
+import book from '@imgs/careers/book.jpg'
+import desk from '@imgs/careers/desk.jpg'
+import stroopyMascot from '@imgs/careers/stroopy-mascot.webp'
+
 import { Button } from '@components/Button'
 import { Header } from '@components/Header'
 import { Layout } from '@components/Layout'
@@ -15,6 +20,7 @@ import {
   CareersPageMotto,
   CareersPageSplitView,
   CareersPageSubheadings,
+  CareersPageUnorderedList,
   CareersPageWrappedSplitView
 } from './components'
 
@@ -72,7 +78,7 @@ export function Careers({ cmsData }: CareersPageProps) {
         />
 
         <CareersPageImage
-          src="/imgs/careers/stroopy-mascot.webp"
+          src={stroopyMascot}
           alt="Stroopy mascot"
           quality={nextImages.quality}
           priority
@@ -101,7 +107,7 @@ export function Careers({ cmsData }: CareersPageProps) {
         />
 
         <CareersPageImage
-          src="/imgs/careers/desk.jpg"
+          src={desk}
           alt="Desk with laptop, coffee, magazine, skateboard, and toy"
           quality={nextImages.quality}
         />
@@ -181,7 +187,7 @@ export function Careers({ cmsData }: CareersPageProps) {
           leftContents={
             <CareersPageImage
               heightProfile="TALL"
-              src="/imgs/careers/book.jpg"
+              src={book}
               alt={
                 'Person reading the book "Confessions of an Heiress" by Paris Hilton'
               }
@@ -191,7 +197,7 @@ export function Careers({ cmsData }: CareersPageProps) {
           rightContents={
             <CareersPageImage
               heightProfile="TALL"
-              src="/imgs/careers/backpack.jpg"
+              src={backpack}
               alt={
                 'Person smiling while wearing a backpack with Steve Harvey’s laughing face printed in a pattern'
               }
@@ -263,23 +269,26 @@ export function Careers({ cmsData }: CareersPageProps) {
             <CareersPageHeading inverted>Extra stuff</CareersPageHeading>
           }
           rightContents={
-            <CareersPageSubheadings inverted as="ul">
-              <li>
-                WFH Stipend - $500 reimbursement to help outfit your home office
-                with everything you need to set yourself up for success.
-              </li>
-              <li>Annual company meeting in Amsterdam.</li>
-              <li>Dog friendly office with unlimited kibble.</li>
-              <li>
-                An open & entrepreneurial work environment where everyone is
-                treated as an adlit.
-              </li>
-              <li>
-                An organization dedicated to constantly learning and improving
-                through guild meetings, lunch & learns, conferences and
-                practice.
-              </li>
-            </CareersPageSubheadings>
+            <CareersPageUnorderedList>
+              <CareersPageSubheadings inverted as="li">
+                <>
+                  WFH Stipend - $500 reimbursement to help outfit your home
+                  office with everything you need to set yourself up for
+                  success.
+                </>
+                <>Annual company meeting in Amsterdam.</>
+                <>Dog friendly office with unlimited kibble.</>
+                <>
+                  An open & entrepreneurial work environment where everyone is
+                  treated as an adlit.
+                </>
+                <>
+                  An organization dedicated to constantly learning and improving
+                  through guild meetings, lunch & learns, conferences and
+                  practice.
+                </>
+              </CareersPageSubheadings>
+            </CareersPageUnorderedList>
           }
         />
 

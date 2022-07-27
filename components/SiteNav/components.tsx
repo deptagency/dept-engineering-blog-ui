@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import styled from '@emotion/styled'
 
@@ -7,6 +6,7 @@ import { spaces } from '@components/common/spaces'
 import { Grid } from '@components/Grid'
 import { Container } from '@components/helpers/Container'
 import { Subheading } from '@components/typography/Subheadings'
+import { ArrowRightIcon } from '@icons/ArrowIcons'
 
 export const SITE_NAV_HEIGHT = spaces.xxl
 export const CAREERS_NUDGE_HEIGHT = spaces.xxl
@@ -89,11 +89,6 @@ export const NavRight = styled.div`
   }
 `
 
-export const StyledIconWrapper = styled.div`
-  display: flex;
-  margin-bottom: 2px;
-`
-
 export const CareersPageNudge = () => {
   const CareersPageNudgeWrapper = styled(Grid)`
     position: relative;
@@ -121,14 +116,7 @@ export const CareersPageNudge = () => {
         <Subheading.Two noMargin $color="white" as="span">
           CAREERS AT DEPT®
         </Subheading.Two>
-        <StyledIconWrapper>
-          <Image
-            alt="Right arrow"
-            src="/icons/arrow-right.svg"
-            height="12"
-            width="18"
-          />
-        </StyledIconWrapper>
+        <ArrowRightIcon inverted />
       </CareersPageNudgeWrapper>
     </Link>
   )

@@ -1,4 +1,5 @@
 import React, { ElementType } from 'react'
+import { ImageProps } from 'next/image'
 
 import { GridProps } from '@components/Grid'
 import { BREAKPOINT, spaces } from '@components/common/spaces'
@@ -78,11 +79,9 @@ export const CareersPageHeightProfiles: Record<
 
 export type CareersPageHeightProfile = keyof typeof CareersPageHeightProfiles
 
-export interface CareersPageImageProps {
-  src: string
-  alt?: string
-  quality?: string | number
-  priority?: boolean
+export interface CareersPageImageProps
+  extends Omit<ImageProps, 'alt'>,
+    Required<Pick<ImageProps, 'alt'>> {
   heightProfile?: CareersPageHeightProfile
 }
 

@@ -10,9 +10,9 @@ import {
 } from '@components/common/spaces'
 import { Grid } from '@components/Grid'
 import { getLinkStyles } from '@components/RenderContent/components/link'
-import { StyledIconWrapper } from '@components/SiteNav/components'
 import { Heading } from '@components/typography/Headings'
 import { Subheading } from '@components/typography/Subheadings'
+import { ArrowRightIcon } from '@icons/ArrowIcons'
 
 import {
   CareersPageContactViewProps,
@@ -124,8 +124,10 @@ export const CareersPageSubheadings = ({
   inverted
 }: CareersPageSubheadingsProps) => {
   const CareersPageSubheading = styled(Subheading.One)<{
+    noTopMargin?: boolean
     inverted?: boolean
   }>`
+    ${({ noTopMargin }) => (noTopMargin ? 'margin-top: 0px;' : '')};
     margin-bottom: 0px;
     ${({ inverted }) => getLinkStyles(inverted ?? false)};
   `
@@ -138,6 +140,7 @@ export const CareersPageSubheadings = ({
           as={as}
           noMargin={i === 0}
           $color={inverted ? 'white' : undefined}
+          noTopMargin={i === 0}
           inverted={inverted}
         >
           {content}
@@ -146,6 +149,10 @@ export const CareersPageSubheadings = ({
     </>
   )
 }
+
+export const CareersPageUnorderedList = styled.ul`
+  margin-bottom: 0px;
+`
 
 export const CareersPageWrappedSplitView = ({
   wrapperClassNames = 'grid-wrapper',
@@ -235,11 +242,11 @@ export const CareersPageSplitView = ({
 )
 
 export const CareersPageImage = ({
-  src,
+  heightProfile,
   alt,
-  quality,
-  priority,
-  heightProfile
+  layout = 'fill',
+  objectFit = 'cover',
+  ...props
 }: CareersPageImageProps) => {
   const CareersPageImageWrapper = styled.div<{
     heightProfile: CareersPageHeightProfile
@@ -261,14 +268,7 @@ export const CareersPageImage = ({
 
   return (
     <CareersPageImageWrapper heightProfile={heightProfile ?? 'REGULAR'}>
-      <Image
-        src={src}
-        alt={alt}
-        quality={quality}
-        priority={priority}
-        layout="fill"
-        objectFit="cover"
-      />
+      <Image alt={alt} layout={layout} objectFit={objectFit} {...props} />
     </CareersPageImageWrapper>
   )
 }
@@ -346,14 +346,7 @@ export const CareersPageContactView = ({
                 as="a"
               >
                 <span>{getInTouchText}</span>
-                <StyledIconWrapper>
-                  <Image
-                    alt="Right arrow"
-                    src="/icons/arrow-right.svg"
-                    height="12"
-                    width="18"
-                  />
-                </StyledIconWrapper>
+                <ArrowRightIcon inverted />
               </CareersPageContactLink>
             </Link>
           </CareersPageSubheadings>

@@ -1,10 +1,9 @@
-import Image from 'next/image'
-
 import { GhostSettings, NavItem } from '@lib/ghost'
 
 import { Grid } from '@components/Grid'
 import { Navigation } from '@components/Navigation'
 import { SubscribeButton } from '@components/Subscribe/button'
+import { ArrowLeftIcon } from '@icons/ArrowIcons'
 
 import {
   CareersPageNudge,
@@ -13,7 +12,6 @@ import {
   NavLeft,
   NavLeftWrapper,
   NavRight,
-  StyledIconWrapper,
   StyledSiteNav
 } from './components'
 import { LogoLink } from './LogoLink'
@@ -79,14 +77,7 @@ export const SiteNav = ({
           url: '/',
           label: (
             <Grid container wrap="nowrap" alignItems="center" columnSpacing={2}>
-              <StyledIconWrapper>
-                <Image
-                  alt="Left arrow"
-                  src="/icons/arrow-left.svg"
-                  height="12"
-                  width="18"
-                />
-              </StyledIconWrapper>
+              <ArrowLeftIcon />
               <span>Back to the DEPT® Developer Community</span>
             </Grid>
           )
