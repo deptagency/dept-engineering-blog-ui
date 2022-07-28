@@ -7,6 +7,11 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 const defaultOptions = withBundleAnalyzer({
   //...(process.env.NETLIFY === 'true' && { target: 'serverless' }),
+  compiler: {
+    emotion: {
+      sourceMap: true
+    }
+  },
   images: {
     deviceSizes: [320, 500, 680, 1040, 2080, 2048, 3120],
     domains: [
