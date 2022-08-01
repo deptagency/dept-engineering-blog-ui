@@ -119,8 +119,8 @@ export function Careers({ cmsData }: CareersPageProps) {
           rightContents={
             <CareersPageSubheadings>
               <>
-                Engineers are on one project at a time — in our experience this
-                avoids burnout and makes for a better product.
+                Most of our engineers are on one project at a time — in our
+                experience this avoids burnout and makes for a better product.
               </>
               <>
                 We all contribute and have various opportunities to mentor,
@@ -238,9 +238,11 @@ export function Careers({ cmsData }: CareersPageProps) {
           rightContents={
             <CareersPageSubheadings>
               <>
-                We’re over 100 people in seven offices: Boston, Brooklyn,
-                Newburyport, Mar Del Plata, San Jose, Split and Zagreb. We’ve
-                had 100% growth every year.
+                We’re over 500 people located remotely and in offices across the
+                US (and more globally). We have engineers concentrating in web
+                application development, native development, data science,
+                machine learning, cloud engineering, a mix of all of the above,
+                and likely whatever you’re interested in too!
               </>
               <>
                 We all contribute and have various opportunities to mentor,
@@ -266,15 +268,17 @@ export function Careers({ cmsData }: CareersPageProps) {
           bottomPadding="LARGE"
           inverted
           leftContents={
-            <CareersPageHeading inverted>Extra stuff</CareersPageHeading>
+            <CareersPageHeading inverted>
+              Cool things worth mentioning
+            </CareersPageHeading>
           }
           rightContents={
             <CareersPageUnorderedList>
               <CareersPageSubheadings inverted as="li">
+                <>Fully remote, flexible work culture.</>
                 <>
-                  WFH Stipend - $500 reimbursement to help outfit your home
-                  office with everything you need to set yourself up for
-                  success.
+                  WFH Stipend to help outfit your home office with what you need
+                  to set yourself up for success
                 </>
                 <>Annual company meeting in Amsterdam.</>
                 <>Dog friendly office with unlimited kibble.</>
@@ -286,6 +290,11 @@ export function Careers({ cmsData }: CareersPageProps) {
                   An organization dedicated to constantly learning and improving
                   through guild meetings, lunch & learns, conferences and
                   practice.
+                </>
+                <>
+                  <Link href="https://www.deptagency.com/en-us/insight/dept-is-a-certified-b-corporation/">
+                    B-Corp Certified
+                  </Link>
                 </>
               </CareersPageSubheadings>
             </CareersPageUnorderedList>
