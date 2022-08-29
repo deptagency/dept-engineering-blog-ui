@@ -284,7 +284,7 @@ export function Careers({ cmsData }: CareersPageProps) {
                 <>Dog friendly office with unlimited kibble.</>
                 <>
                   An open & entrepreneurial work environment where everyone is
-                  treated as an adlit.
+                  treated as an adult.
                 </>
                 <>
                   An organization dedicated to constantly learning and improving
