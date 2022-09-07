@@ -7,7 +7,6 @@ import book from '@imgs/careers/book.jpg'
 import desk from '@imgs/careers/desk.jpg'
 import stroopyMascot from '@imgs/careers/stroopy-mascot.webp'
 
-import { Button } from '@components/Button'
 import { Header } from '@components/Header'
 import { Layout } from '@components/Layout'
 import { SEO } from '@components/meta/seo'
@@ -58,11 +57,6 @@ export function Careers({ cmsData }: CareersPageProps) {
               <CareersPageHeading as="h1">
                 Careers in Engineering
               </CareersPageHeading>
-              <div>
-                <Link href="https://www.deptagency.com/careers/roles/" passHref>
-                  <Button.Cta as="a">Explore Open Roles</Button.Cta>
-                </Link>
-              </div>
             </>
           }
           rightContents={
