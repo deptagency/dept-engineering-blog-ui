@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import styled from '@emotion/styled'
 
+import { Button } from '@components/Button'
 import { colors } from '@components/common/colors'
 import { spaces } from '@components/common/spaces'
 import { Grid } from '@components/Grid'
@@ -87,6 +88,10 @@ export const NavRight = styled.div`
   @media (max-width: 700px) {
     display: inherit;
   }
+`
+
+export const OpenRolesButton = styled(Button.Cta)`
+  margin-top: -5px;
 `
 
 export const CareersPageNudge = () => {
