@@ -296,32 +296,20 @@ export function Careers({ cmsData }: CareersPageProps) {
                     B-Corp Certified
                   </Link>
                 </>
+                <>
+                  <p>DEPT® Cares - Our annual day of giving to support the
+                  communities we live and work in</p>
+                  <iframe
+                    title="vimeo-player"
+                    src="https://player.vimeo.com/video/652559524?h=23623cf5d5"
+                    width="640"
+                    height="360"
+                    frameBorder="0"
+                    allowFullScreen
+                  ></iframe>
+                </>
               </CareersPageSubheadings>
             </CareersPageUnorderedList>
-          }
-        />
-
-<CareersPageWrappedSplitView
-          topPadding="LARGE"
-          bottomPadding="LARGE"
-          leftContents={
-            <>
-              <CareersPageHeading>DEPT® Cares</CareersPageHeading>
-              <CareersPageSubheadings>
-                Our annual day of giving to support the communities we live and
-                work in
-              </CareersPageSubheadings>
-            </>
-          }
-          rightContents={
-            <iframe
-              title="vimeo-player"
-              src="https://player.vimeo.com/video/652559524?h=23623cf5d5"
-              width="640"
-              height="360"
-              frameBorder="0"
-              allowFullScreen
-            ></iframe>
           }
         />
 
