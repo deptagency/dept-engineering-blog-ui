@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import styled from '@emotion/styled'
 
 import { GhostPostOrPage, GhostSettings } from '@lib/ghost'
 
@@ -31,6 +32,14 @@ interface CareersPageProps {
     bodyClass: string
   }
 }
+
+const IframeHolder = styled.div`
+  aspect-ratio: 1.769911504424779;
+  iframe {
+    height: 100%;
+    width: 100%;
+  }
+`
 
 export function Careers({ cmsData }: CareersPageProps) {
   const { page, settings, seoImage, bodyClass } = cmsData
@@ -295,14 +304,14 @@ export function Careers({ cmsData }: CareersPageProps) {
                     DEPT® Cares - Our annual day of giving to support the
                     communities we live and work in
                   </p>
-                  <iframe
-                    title="vimeo-player"
-                    src="https://player.vimeo.com/video/652559524?h=23623cf5d5"
-                    width="640"
-                    height="360"
-                    frameBorder="0"
-                    allowFullScreen
-                  ></iframe>
+                  <IframeHolder>
+                    <iframe
+                      title="vimeo-player"
+                      src="https://player.vimeo.com/video/652559524?h=23623cf5d5"
+                      frameBorder="0"
+                      allowFullScreen
+                    />
+                  </IframeHolder>
                 </>
               </CareersPageSubheadings>
             </CareersPageUnorderedList>
