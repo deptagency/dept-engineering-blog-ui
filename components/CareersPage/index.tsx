@@ -5,7 +5,7 @@ import { GhostPostOrPage, GhostSettings } from '@lib/ghost'
 import backpack from '@imgs/careers/backpack.jpg'
 import book from '@imgs/careers/book.jpg'
 import desk from '@imgs/careers/desk.jpg'
-import stroopyMascot from '@imgs/careers/stroopy-mascot.webp'
+import groupShot from '@imgs/careers/group-shot.jpg'
 
 import { Header } from '@components/Header'
 import { Layout } from '@components/Layout'
@@ -72,8 +72,8 @@ export function Careers({ cmsData }: CareersPageProps) {
         />
 
         <CareersPageImage
-          src={stroopyMascot}
-          alt="Stroopy mascot"
+          src={groupShot}
+          alt="Group shot after the annual Newburyport, MA Bed Race"
           quality={nextImages.quality}
           priority
         />
