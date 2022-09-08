@@ -291,8 +291,10 @@ export function Careers({ cmsData }: CareersPageProps) {
                   </Link>
                 </>
                 <>
-                  <p>DEPT® Cares - Our annual day of giving to support the
-                  communities we live and work in</p>
+                  <p>
+                    DEPT® Cares - Our annual day of giving to support the
+                    communities we live and work in
+                  </p>
                   <iframe
                     title="vimeo-player"
                     src="https://player.vimeo.com/video/652559524?h=23623cf5d5"
