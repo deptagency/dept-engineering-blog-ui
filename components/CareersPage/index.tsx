@@ -248,11 +248,6 @@ export function Careers({ cmsData }: CareersPageProps) {
                 and likely whatever you’re interested in too!
               </>
               <>
-                We all contribute and have various opportunities to mentor,
-                coach, and lead. We are problem solvers who take active roles to
-                get it done with lots of laughs along the way.
-              </>
-              <>
                 We have long term goals and the endurance to keep running the
                 race. We are resilient, optimistic, and approach all things with
                 confidence. We strive for excellence, not perfection.
