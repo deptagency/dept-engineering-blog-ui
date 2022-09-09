@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import { GhostSettings, NavItem } from '@lib/ghost'
 
 import { Grid } from '@components/Grid'
@@ -12,6 +14,7 @@ import {
   NavLeft,
   NavLeftWrapper,
   NavRight,
+  OpenRolesButton,
   StyledSiteNav
 } from './components'
 import { LogoLink } from './LogoLink'
@@ -101,6 +104,11 @@ export const SiteNav = ({
         <NavLeftWrapper>
           <NavLeft>
             <LogoLink settings={settings} />
+            {isCareersPage && (
+              <Link href="https://www.deptagency.com/careers/roles/" passHref>
+                <OpenRolesButton as="a">Explore Open Roles</OpenRolesButton>
+              </Link>
+            )}
             {navigation && navigation.length > 0 && (
               <NavContent>
                 <Navigation data={navigation} />

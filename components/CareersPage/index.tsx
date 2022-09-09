@@ -1,13 +1,13 @@
 import Link from 'next/link'
+import styled from '@emotion/styled'
 
 import { GhostPostOrPage, GhostSettings } from '@lib/ghost'
 
 import backpack from '@imgs/careers/backpack.jpg'
 import book from '@imgs/careers/book.jpg'
 import desk from '@imgs/careers/desk.jpg'
-import stroopyMascot from '@imgs/careers/stroopy-mascot.webp'
+import groupShot from '@imgs/careers/group-shot.jpg'
 
-import { Button } from '@components/Button'
 import { Header } from '@components/Header'
 import { Layout } from '@components/Layout'
 import { SEO } from '@components/meta/seo'
@@ -32,6 +32,14 @@ interface CareersPageProps {
     bodyClass: string
   }
 }
+
+const IframeHolder = styled.div`
+  aspect-ratio: 16 / 9;
+  iframe {
+    height: 100%;
+    width: 100%;
+  }
+`
 
 export function Careers({ cmsData }: CareersPageProps) {
   const { page, settings, seoImage, bodyClass } = cmsData
@@ -58,11 +66,6 @@ export function Careers({ cmsData }: CareersPageProps) {
               <CareersPageHeading as="h1">
                 Careers in Engineering
               </CareersPageHeading>
-              <div>
-                <Link href="https://www.deptagency.com/careers/roles/" passHref>
-                  <Button.Cta as="a">Explore Open Roles</Button.Cta>
-                </Link>
-              </div>
             </>
           }
           rightContents={
@@ -78,8 +81,8 @@ export function Careers({ cmsData }: CareersPageProps) {
         />
 
         <CareersPageImage
-          src={stroopyMascot}
-          alt="Stroopy mascot"
+          src={groupShot}
+          alt="Group shot after the annual Newburyport, MA Bed Race"
           quality={nextImages.quality}
           priority
         />
@@ -119,8 +122,8 @@ export function Careers({ cmsData }: CareersPageProps) {
           rightContents={
             <CareersPageSubheadings>
               <>
-                Engineers are on one project at a time — in our experience this
-                avoids burnout and makes for a better product.
+                Most of our engineers are on one project at a time — in our
+                experience this avoids burnout and makes for a better product.
               </>
               <>
                 We all contribute and have various opportunities to mentor,
@@ -238,14 +241,11 @@ export function Careers({ cmsData }: CareersPageProps) {
           rightContents={
             <CareersPageSubheadings>
               <>
-                We’re over 100 people in seven offices: Boston, Brooklyn,
-                Newburyport, Mar Del Plata, San Jose, Split and Zagreb. We’ve
-                had 100% growth every year.
-              </>
-              <>
-                We all contribute and have various opportunities to mentor,
-                coach, and lead. We are problem solvers who take active roles to
-                get it done with lots of laughs along the way.
+                We’re over 500 people located remotely and in offices across the
+                US (and more globally). We have engineers concentrating in web
+                application development, native development, data science,
+                machine learning, cloud engineering, a mix of all of the above,
+                and likely whatever you’re interested in too!
               </>
               <>
                 We have long term goals and the endurance to keep running the
@@ -266,26 +266,47 @@ export function Careers({ cmsData }: CareersPageProps) {
           bottomPadding="LARGE"
           inverted
           leftContents={
-            <CareersPageHeading inverted>Extra stuff</CareersPageHeading>
+            <CareersPageHeading inverted>
+              Cool things worth mentioning
+            </CareersPageHeading>
           }
           rightContents={
             <CareersPageUnorderedList>
               <CareersPageSubheadings inverted as="li">
+                <>Fully remote, flexible work culture.</>
                 <>
-                  WFH Stipend - $500 reimbursement to help outfit your home
-                  office with everything you need to set yourself up for
-                  success.
+                  WFH Stipend to help outfit your home office with what you need
+                  to set yourself up for success
                 </>
                 <>Annual company meeting in Amsterdam.</>
                 <>Dog friendly office with unlimited kibble.</>
                 <>
                   An open & entrepreneurial work environment where everyone is
-                  treated as an adlit.
+                  treated as an adult.
                 </>
                 <>
                   An organization dedicated to constantly learning and improving
                   through guild meetings, lunch & learns, conferences and
                   practice.
+                </>
+                <>
+                  <Link href="https://www.deptagency.com/en-us/insight/dept-is-a-certified-b-corporation/">
+                    B-Corp Certified
+                  </Link>
+                </>
+                <>
+                  <p>
+                    DEPT® Cares - Our annual day of giving to support the
+                    communities we live and work in
+                  </p>
+                  <IframeHolder>
+                    <iframe
+                      title="vimeo-player"
+                      src="https://player.vimeo.com/video/652559524?h=23623cf5d5"
+                      frameBorder="0"
+                      allowFullScreen
+                    />
+                  </IframeHolder>
                 </>
               </CareersPageSubheadings>
             </CareersPageUnorderedList>

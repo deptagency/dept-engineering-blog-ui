@@ -1,6 +1,7 @@
-import Link from 'next/link'
 import styled from '@emotion/styled'
+import { useRouter } from 'next/router'
 
+import { Button } from '@components/Button'
 import { colors } from '@components/common/colors'
 import { spaces } from '@components/common/spaces'
 import { Grid } from '@components/Grid'
@@ -89,8 +90,13 @@ export const NavRight = styled.div`
   }
 `
 
+export const OpenRolesButton = styled(Button.Cta)`
+  margin-top: -5px;
+`
+
 export const CareersPageNudge = () => {
   const CareersPageNudgeWrapper = styled(Grid)`
+    cursor: pointer;
     position: relative;
     z-index: 100;
     overflow: hidden;
@@ -103,21 +109,31 @@ export const CareersPageNudge = () => {
     }
   `
 
+  const router = useRouter()
+
+  const handleCareersClick = () => {
+    const careersLink =
+      navigator.language === 'en-US'
+        ? '/careers'
+        : 'https://www.deptagency.com/careers'
+
+    router.push(careersLink)
+  }
+
   return (
-    <Link href="/careers" passHref>
-      <CareersPageNudgeWrapper
-        container
-        justifyContent="flex-end"
-        alignItems="center"
-        columnSpacing={2}
-        as="a"
-      >
-        <span>Happy Employees == Happy Clients</span>
-        <Subheading.Two noMargin $color="white" as="span">
-          CAREERS AT DEPT®
-        </Subheading.Two>
-        <ArrowRightIcon inverted />
-      </CareersPageNudgeWrapper>
-    </Link>
+    <CareersPageNudgeWrapper
+      container
+      justifyContent="flex-end"
+      alignItems="center"
+      columnSpacing={2}
+      as="a"
+      onClick={handleCareersClick}
+    >
+      <span>Happy Employees == Happy Clients</span>
+      <Subheading.Two noMargin $color="white" as="span">
+        CAREERS AT DEPT®
+      </Subheading.Two>
+      <ArrowRightIcon inverted />
+    </CareersPageNudgeWrapper>
   )
 }
