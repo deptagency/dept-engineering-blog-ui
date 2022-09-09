@@ -34,7 +34,7 @@ interface CareersPageProps {
 }
 
 const IframeHolder = styled.div`
-  aspect-ratio: 1.769911504424779;
+  aspect-ratio: 16 / 9;
   iframe {
     height: 100%;
     width: 100%;
