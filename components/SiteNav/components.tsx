@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { Global, css } from '@emotion/react'
 import { useRouter } from 'next/router'
 
 import { Button } from '@components/Button'
@@ -121,19 +122,28 @@ export const CareersPageNudge = () => {
   }
 
   return (
-    <CareersPageNudgeWrapper
-      container
-      justifyContent="flex-end"
-      alignItems="center"
-      columnSpacing={2}
-      as="a"
-      onClick={handleCareersClick}
-    >
-      <span>Happy Employees == Happy Clients</span>
-      <Subheading.Two noMargin $color="white" as="span">
-        CAREERS AT DEPT®
-      </Subheading.Two>
-      <ArrowRightIcon inverted />
-    </CareersPageNudgeWrapper>
+    <>
+      <Global
+        styles={css`
+          html {
+            scroll-padding-top: ${CAREERS_NUDGE_HEIGHT}px;
+          }
+        `}
+      />
+      <CareersPageNudgeWrapper
+        container
+        justifyContent="flex-end"
+        alignItems="center"
+        columnSpacing={2}
+        as="a"
+        onClick={handleCareersClick}
+      >
+        <span>Happy Employees == Happy Clients</span>
+        <Subheading.Two noMargin $color="white" as="span">
+          CAREERS AT DEPT®
+        </Subheading.Two>
+        <ArrowRightIcon inverted />
+      </CareersPageNudgeWrapper>
+    </>
   )
 }
