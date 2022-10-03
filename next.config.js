@@ -35,6 +35,11 @@ const defaultOptions = withBundleAnalyzer({
         source: '/contact',
         destination: 'https://www.deptagency.com/contact/',
         permanent: true
+      },
+      {
+        source: '/why-i-built-a-new-state-management-library-2',
+        destination: '/why-i-built-a-new-state-management-library',
+        permanent: true
       }
     ]
   }
