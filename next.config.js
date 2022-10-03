@@ -37,8 +37,8 @@ const defaultOptions = withBundleAnalyzer({
         permanent: true
       },
       {
-        source: '/why-i-built-a-new-state-management-library-2/',
-        destination: '/why-i-built-a-new-state-management-library/',
+        source: '/why-i-built-a-new-state-management-library-2',
+        destination: '/why-i-built-a-new-state-management-library',
         permanent: true
       }
     ]
