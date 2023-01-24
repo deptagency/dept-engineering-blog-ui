@@ -68,11 +68,11 @@ export const imageDimensions = async (
       height = h
       hasError = false
     } catch (e) {
-
       hasError = true
       retry = retry + 1
-
-      console.warn(`images.ts: Network error while probing image with url: ${url}.`)
+      console.warn(
+        `images.ts: Network error while probing image with url: ${url}.`
+      )
     }
   } while (hasError && retry < maxRetries)
   if (hasError) {
