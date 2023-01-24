@@ -40,7 +40,6 @@ PRs are welcome! If you want to see any new features added or see something we c
 ## Credits
 
 Based off of the [next-cms-ghost](https://github.com/styxlab/next-cms-ghost) template.
-
 # Copyright & License
 
 Copyright (c) 2022 DEPT® - Released under the [MIT license](LICENSE)
