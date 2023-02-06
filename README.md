@@ -18,7 +18,7 @@ yarn build
 
 ## Deployment
 
-Preview instances will be created on Vercel with every pull request. Merging to the `staging` branch will kick off a staging build and merging to `main` will start a new production build. Additionally, every time a post is published, edited, or unpublished from within Ghost we start a new production build. All 3 environments (production, staging, preview) draw content from the same Ghost instance. We do have a separate Ghost account to test changes against the hosted Ghost instance. Please reach out to Nat Ring or Matt Merrill fo access.
+Merging to the `staging` branch will kick off a staging build and merging to `main` will start a new production build. Additionally, every time a post is published, edited, or unpublished from within Ghost we start a new production build. Both environments draw content from the same Ghost instance. We do have a separate Ghost account to test changes against the hosted Ghost instance. Please reach out to Nat Ring or Matt Merrill fo access.
 
 ## Previewing Posts
 
