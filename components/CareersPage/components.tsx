@@ -338,7 +338,11 @@ export const CareersPageContactView = ({
         leftContents={leftContents}
         rightContents={
           <CareersPageSubheadings inverted as="div">
-            <Link href="https://www.deptagency.com/careers" passHref>
+            <Link
+              href="https://www.deptagency.com/careers"
+              passHref
+              legacyBehavior
+            >
               <CareersPageContactLink
                 container
                 alignItems="center"

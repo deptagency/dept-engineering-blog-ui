@@ -44,8 +44,11 @@ const createItems = (
     return (
       <li key={`${url}#${head.id}-${depth}-${index}`}>
         {head.id && (
-          <Link href={`${url}#${head.id}`}>
-            <a className={isActive ? 'link active' : 'link'}>{head.heading}</a>
+          <Link
+            href={`${url}#${head.id}`}
+            className={isActive ? 'link active' : 'link'}
+          >
+            {head.heading}
           </Link>
         )}
         {head.items && isUnderDepthLimit(depth, maxDepth) && (

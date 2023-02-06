@@ -105,7 +105,11 @@ export const SiteNav = ({
           <NavLeft>
             <LogoLink settings={settings} />
             {isCareersPage && (
-              <Link href="https://www.deptagency.com/careers/roles/" passHref>
+              <Link
+                href="https://www.deptagency.com/careers/roles/"
+                passHref
+                legacyBehavior
+              >
                 <OpenRolesButton as="a">Explore Open Roles</OpenRolesButton>
               </Link>
             )}

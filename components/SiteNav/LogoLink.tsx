@@ -62,7 +62,7 @@ export const LogoLink: React.FC<LogoLinkProps> = ({ settings }) => {
   const imageWidth = logoImage ? calcSiteLogoWidth(logoImage) : undefined
 
   return (
-    <Link href="/" passHref>
+    <Link href="/" passHref legacyBehavior>
       {logoImage && nextImages.feature ? (
         <NavLogoLink>
           <ImageWrapper imageWidth={imageWidth}>
