@@ -81,6 +81,19 @@ export const Layout = ({
                 />
               </a>
               <a
+                href="https://www.twitch.tv/deptagencyus"
+                target="_blank"
+                title="Twitch"
+                rel="noopener noreferrer"
+              >
+                <Image
+                  alt="Twitch Logo"
+                  src="/icons/twitch.svg"
+                  height="18"
+                  width="18"
+                />
+              </a>
+              <a
                 href="https://www.instagram.com/deptagency"
                 target="_blank"
                 title="Instagram"

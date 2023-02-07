@@ -63,6 +63,9 @@ export const Post = ({ cmsData }: PostProps) => {
 
   const collectionPath = collections.getCollectionByNode(post)
 
+  const hasCareersPageNudge =
+    cmsData.settings.processEnv.enableCareersPage && 'has-careers-page-nudge'
+
   return (
     <>
       <SEO {...{ description, settings, seoImage, article: post, title }} />
@@ -81,7 +84,7 @@ export const Post = ({ cmsData }: PostProps) => {
           />
         }
       >
-        <div className="inner">
+        <div className={`inner ${hasCareersPageNudge}`}>
           <div className="grid-wrapper">
             <article className={`post-full grid-inner ${postClass}`}>
               <div className="grid-post">
