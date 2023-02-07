@@ -153,6 +153,12 @@ html.casper aside.toc {
   margin: 0;
 }
 
+@media (min-width: 1170px) {
+  html.casper .has-careers-page-nudge aside.toc {
+    top: 140px;
+  }
+}
+
 html.casper aside.toc h2 {
   color: var(--onyx);
   font-size: 1.4rem;
