@@ -1,5 +1,5 @@
 import React, { ElementType } from 'react'
-import { ImageProps } from 'next/image'
+import { ImageProps } from 'next/legacy/image'
 
 import { GridProps } from '@components/Grid'
 import { BREAKPOINT, spaces } from '@components/common/spaces'

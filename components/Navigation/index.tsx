@@ -38,9 +38,7 @@ export const Navigation = ({ data, isRightNav }: NavigationProps) => {
     return (
       <NavListItem key={i} role="menuitem" isRightNav={isRightNav}>
         <div>
-          <Link href={navItem.url}>
-            <a>{navItem.label}</a>
-          </Link>
+          <Link href={navItem.url}>{navItem.label}</Link>
         </div>
       </NavListItem>
     )

@@ -1,5 +1,5 @@
 import 'react-medium-image-zoom/dist/styles.css'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import Zoom from 'react-medium-image-zoom'
 import { ComponentPropsWithNode } from 'rehype-react'
 import { Node } from 'unist'
