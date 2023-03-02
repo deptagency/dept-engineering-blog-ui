@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import dayjs from 'dayjs'
 import styled from '@emotion/styled'
+import timezone from 'dayjs/plugin/timezone'
+import utc from 'dayjs/plugin/utc'
 import { Author } from '@tryghost/content-api'
 
 import { resolveUrl } from '@utils/routing'
@@ -48,6 +50,9 @@ const AuthorListItem = styled.span`
   color: inherit;
 `
 
+dayjs.extend(utc)
+dayjs.extend(timezone)
+
 const resolveAuthors = (
   authors?: Author[],
   cmsUrl?: string,
@@ -79,7 +84,9 @@ export const PostByline: React.FC<PostBylineProps> = ({
   )
 
   const authors = resolveAuthors(post?.authors, settings.url, maxAuthorCount)
-  const publishedAt = dayjs(post.published_at || '').format('D MMM YYYY')
+  const publishedAt = dayjs(post.published_at || '')
+    .tz('America/New_York')
+    .format('D MMM YYYY')
   const textColor = isColorInverted ? 'white' : 'black'
 
   return (
