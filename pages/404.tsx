@@ -41,10 +41,8 @@ export default function Custom404({ settings, bodyClass }: Custom404Props) {
         </div>
         <section className="error-message">
           <p className="error-description">{text(`PAGE_NOT_FOUND`)}</p>
-          <Link href="/">
-            <a className="btn btn-inverted error-link">
-              {text(`GOTO_FRONT_PAGE`)}
-            </a>
+          <Link href="/" className="btn btn-inverted error-link">
+            {text(`GOTO_FRONT_PAGE`)}
           </Link>
         </section>
       </div>

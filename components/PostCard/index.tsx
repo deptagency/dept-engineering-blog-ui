@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import Link from 'next/link'
 
 import { resolveUrl } from '@utils/routing'
@@ -64,7 +64,7 @@ export const PostCard = ({
   return (
     <PostCardArticle isFirstPost={isFirstPost}>
       {featureImage && (
-        <Link href={postUrl} passHref>
+        <Link href={postUrl} passHref legacyBehavior>
           <PostCardImageLink aria-label={title}>
             {nextImages.feature ? (
               <PostCardImage>
@@ -95,7 +95,7 @@ export const PostCard = ({
             </PostCardTag>
           </div>
         )}
-        <Link href={postUrl} passHref>
+        <Link href={postUrl} passHref legacyBehavior>
           <PostCardLinkAnchor>
             <header>
               <Heading.Two $color={textColor}>{title}</Heading.Two>
@@ -116,7 +116,7 @@ export const PostCard = ({
             settings={settings}
             isColorInverted={isColorInverted}
           />
-          <Link href={postUrl} passHref>
+          <Link href={postUrl} passHref legacyBehavior>
             <Button.Cta as="a" inverted={isColorInverted}>
               {text(`READ`)}
             </Button.Cta>

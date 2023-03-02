@@ -22,9 +22,7 @@ export const NextLink = (props: ComponentPropsWithNode) => {
     <>
       {!!href && (
         <Link href={href}>
-          <a>
-            <RenderContent isLink htmlAst={child} />
-          </a>
+          <RenderContent isLink htmlAst={child} />
         </Link>
       )}
     </>

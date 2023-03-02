@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import Link from 'next/link'
 import React from 'react'
 import styled from '@emotion/styled'
@@ -62,7 +62,7 @@ export const LogoLink: React.FC<LogoLinkProps> = ({ settings }) => {
   const imageWidth = logoImage ? calcSiteLogoWidth(logoImage) : undefined
 
   return (
-    <Link href="/" passHref>
+    <Link href="/" passHref legacyBehavior>
       {logoImage && nextImages.feature ? (
         <NavLogoLink>
           <ImageWrapper imageWidth={imageWidth}>

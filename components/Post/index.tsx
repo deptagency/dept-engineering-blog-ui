@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import Link from 'next/link'
 import React from 'react'
 import dayjs from 'dayjs'
@@ -91,10 +91,8 @@ export const Post = ({ cmsData }: PostProps) => {
                 <header className="post-full-header post-header">
                   {post.primary_tag && (
                     <section className="post-full-tags">
-                      <Link href="/">
-                        <a className="breadcrumb-home">
-                          DEPT® Engineering Blog
-                        </a>
+                      <Link href="/" className="breadcrumb-home">
+                        DEPT® Engineering Blog
                       </Link>
                       <Link
                         href={resolveUrl({
@@ -103,7 +101,7 @@ export const Post = ({ cmsData }: PostProps) => {
                           url: post.primary_tag.url
                         })}
                       >
-                        <a>{post.primary_tag.name}</a>
+                        {post.primary_tag.name}
                       </Link>
                     </section>
                   )}
@@ -130,7 +128,7 @@ export const Post = ({ cmsData }: PostProps) => {
                                   url: author.url || undefined
                                 })}
                               >
-                                <a>{author.name}</a>
+                                {author.name}
                               </Link>
                             </div>
                           ))}

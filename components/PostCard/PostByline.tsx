@@ -94,7 +94,7 @@ export const PostByline: React.FC<PostBylineProps> = ({
           {authors.map((author, i) => (
             <AuthorListItem key={i}>
               {i > 0 && `, `}
-              <Link href={author.url} passHref>
+              <Link href={author.url} passHref legacyBehavior>
                 <BylineAuthor as="a" $color={textColor}>
                   {author.name}
                 </BylineAuthor>

@@ -21,7 +21,13 @@ export const FilterTags = ({ currentTag, tags }: FilterTagsProps) => (
     <FilterTagWrapper>
       {tags.map((tag, i) =>
         tag.toLowerCase() === currentTag ? (
-          <Link href="/" passHref key={currentTag} title="Remove Filter">
+          <Link
+            href="/"
+            passHref
+            key={currentTag}
+            title="Remove Filter"
+            legacyBehavior
+          >
             <StyledTag small white selected as="a">
               {' '}
               {tag}
@@ -29,7 +35,12 @@ export const FilterTags = ({ currentTag, tags }: FilterTagsProps) => (
             </StyledTag>
           </Link>
         ) : (
-          <Link href={`/tag/${tag.toLowerCase()}`} key={`${tag}-${i}`} passHref>
+          <Link
+            href={`/tag/${tag.toLowerCase()}`}
+            key={`${tag}-${i}`}
+            passHref
+            legacyBehavior
+          >
             <Button.Tag small white as="a">
               {tag}
             </Button.Tag>
