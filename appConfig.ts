@@ -7,7 +7,7 @@
 export const fileCache: boolean = true
 
 // Google analytics tracking ID (now called measurement ID in version 4)
-export const gaMeasurementId: string = 'UA-76046545-1'
+export const gaMeasurementId: string = 'G-WE2Y75J655'
 
 // Images
 export const nextFeatureImages: boolean = true
