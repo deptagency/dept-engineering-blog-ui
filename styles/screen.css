@@ -684,10 +684,6 @@ html.casper .kg-embed-card {
     width: 100%;
 }
 
-html.casper .kg-embed-card .fluid-width-video-wrapper {
-    margin: 0;
-}
-
 
 @media (max-width: 1040px) {
     html.casper .post-full-content .kg-width-full .kg-image {

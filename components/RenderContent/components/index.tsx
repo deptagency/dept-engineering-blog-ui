@@ -10,7 +10,7 @@ import { getLinkStyles } from './link'
 import { h1Styles, h2Styles, h3Styles, h4Styles, h5Styles } from './headings'
 import { tableStyles } from './table'
 import { horizontalRuleStyles } from './horizontal-rule'
-import { iframeStyles } from './iframe'
+import { figureCaptionStyles, figureEmbedVideoStyles } from './figure'
 import { codeStyles } from './code'
 
 /* Using display: flex prevents margin collapse between the components. */
@@ -94,11 +94,8 @@ export const ContentSection = styled.section`
 
   ${fullBleedImageStyles}
   ${imageCaptionStyles}
-  ${iframeStyles}
-
-  .fluid-width-video-wrapper {
-    margin: ${spaces.md}px 0 ${spaces.xxl}px;
-  }
+  ${figureEmbedVideoStyles}
+  ${figureCaptionStyles}
 
   ${horizontalRuleStyles}
   ${tableStyles}
