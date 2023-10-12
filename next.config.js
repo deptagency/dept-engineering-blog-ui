@@ -24,6 +24,7 @@ const defaultOptions = withBundleAnalyzer({
       'repository-images.githubusercontent.com',
       'www.gravatar.com',
       'github.githubassets.com',
+      'dept-engineering-blog-staging.ghost.io',
       ...(process.env.IMAGE_DOMAINS || '').split(',')
     ]
   },
