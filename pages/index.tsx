@@ -17,6 +17,7 @@ import { SEO } from '@meta/seo'
 import { Layout } from '@components/Layout'
 import { PostView } from '@components/PostView'
 import { Header } from '@components/Header'
+import { Unsubscribe } from '@components/Unsubscribe'
 
 /**
  * Main index page (home page)
@@ -41,6 +42,7 @@ interface IndexProps {
 
 export default function Index({ cmsData }: IndexProps) {
   const router = useRouter()
+
   if (router.isFallback) return <div>Loading...</div>
 
   const { settings, posts, seoImage, bodyClass } = cmsData
@@ -63,6 +65,7 @@ export default function Index({ cmsData }: IndexProps) {
         }
       >
         <PostView {...{ settings, posts, isHome: true }} />
+        <Unsubscribe />
       </Layout>
     </>
   )
