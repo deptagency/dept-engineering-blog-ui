@@ -27,5 +27,7 @@ export const figureEmbedVideoStyles = `
 export const figureCaptionStyles = `
   figure > figcaption {
     margin-top: ${spaces.xxs}px;
+    text-align: center;
+    font-style: italic;
   }
 `
